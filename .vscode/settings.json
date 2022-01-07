@@ -1,0 +1,24 @@
+{
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "**/node_modules": true,
+    ".idea": true,
+    ".husky": true,
+    "*.log": true,
+    "*.lock": true
+  },
+  "search.exclude": {
+    "yarn.lock": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.xml": "html",
+    "*.svg": "html"
+  },
+  "deno.enable": false
+}
