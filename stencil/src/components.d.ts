@@ -6,56 +6,45 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface KnockrApp {
+    }
+    interface KnockrFab {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLKnockrAppElement extends Components.KnockrApp, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLKnockrAppElement: {
+        prototype: HTMLKnockrAppElement;
+        new (): HTMLKnockrAppElement;
+    };
+    interface HTMLKnockrFabElement extends Components.KnockrFab, HTMLStencilElement {
+    }
+    var HTMLKnockrFabElement: {
+        prototype: HTMLKnockrFabElement;
+        new (): HTMLKnockrFabElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "knockr-app": HTMLKnockrAppElement;
+        "knockr-fab": HTMLKnockrFabElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface KnockrApp {
+    }
+    interface KnockrFab {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "knockr-app": KnockrApp;
+        "knockr-fab": KnockrFab;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "knockr-app": LocalJSX.KnockrApp & JSXBase.HTMLAttributes<HTMLKnockrAppElement>;
+            "knockr-fab": LocalJSX.KnockrFab & JSXBase.HTMLAttributes<HTMLKnockrFabElement>;
         }
     }
 }
