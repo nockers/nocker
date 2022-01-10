@@ -6,7 +6,7 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "stencil"
+      "packages/*"
     ]
   },
   "devDependencies": {
