@@ -8,7 +8,7 @@ export default [
   {
     input: "src/index.ts",
     output: {
-      file: "lib/iife.js",
+      file: "public/main.js",
       format: "iife",
       name: "knockr",
       sourcemap: false,
@@ -17,10 +17,8 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
+      replace({ "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV) }),
       terser(),
-      replace({
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-      }),
     ],
   },
 ]

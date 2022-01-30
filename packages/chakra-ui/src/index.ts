@@ -1,2 +1,2 @@
 export { KnockrFab } from "./components/KnockrFab"
-export { iife } from "./iife"
+export { render } from "./render"

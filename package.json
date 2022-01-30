@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "yarn workspace @knockr/chakra-ui build:iife"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
