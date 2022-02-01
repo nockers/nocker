@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production rollup -c",
     "build:iife": "NODE_ENV=production rollup -c rollup.iife.config.js",
     "build:storybook": "build-storybook",
-    "serve": "serve ."
+    "serve": "serve . -l 1234"
   },
   "peerDependencies": {
     "@chakra-ui/icons": "^1.1.1",
