@@ -1,7 +1,7 @@
-import { Config, Environment } from "./types"
+import { Config, WidgetEnvironment } from "./types"
 
 export class Client {
-  readonly environment: Environment
+  readonly environment: WidgetEnvironment
 
   readonly projectId: string
 

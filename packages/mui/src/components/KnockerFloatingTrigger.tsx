@@ -1,12 +1,12 @@
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesomeRounded"
 import { Box, Fab } from "@mui/material"
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { useEffect, useState, VFC } from "react"
 
 type Props = {
   onOpen(): void
 }
 
-export const KnockerFabTrigger: FunctionComponent<Props> = (props) => {
+export const KnockerFloatingTrigger: VFC<Props> = (props) => {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {}, [])

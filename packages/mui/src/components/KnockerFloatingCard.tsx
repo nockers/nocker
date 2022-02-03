@@ -1,29 +1,28 @@
 import SearchIcon from "@mui/icons-material/SearchRounded"
 import { Box, Card, Divider, InputBase, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { FunctionComponent } from "react"
-import { Knocker } from "../client"
-import type { HelpTreeItem } from "../client/types/helpTreeItem"
+import React, { VFC } from "react"
+import type { WidgetHelpTreeItem } from "../client/types/widgetHelpTreeItem"
+import { useClient } from "../hooks/useClient"
 import { KnockerFloatingCardHeader } from "./KnockerFloatingCardHeader"
 import { KnockerFormTicket } from "./KnockerFormTicket"
 import { KnockerFabTypeListHelps } from "./KnockerListHelps"
 
 type Props = {
-  projectId: string
   onClose(): void
-  helpTreeItems: HelpTreeItem[]
+  helpTreeItems: WidgetHelpTreeItem[]
 }
 
-export const KnockerFloatingCard: FunctionComponent<Props> = (props) => {
-  const onCreate = async (form: { text: string }) => {
-    try {
-      const knocker = new Knocker({
-        projectId: props.projectId,
-        environment: "PRODUCTION",
-        baseURL: "/api",
-      })
+type Form = {
+  text: string
+}
 
-      await knocker.tickets().create({ text: form.text })
+export const KnockerFloatingCard: VFC<Props> = (props) => {
+  const client = useClient()
+
+  const onCreate = async (form: Form) => {
+    try {
+      await client.tickets().create({ text: form.text })
     } catch (error) {
       captureException(error)
     }

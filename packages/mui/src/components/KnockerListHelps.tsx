@@ -1,14 +1,14 @@
 import { Divider, List, ListItemButton, ListItemText } from "@mui/material"
-import React, { Fragment, FunctionComponent } from "react"
-import type { HelpTreeItem } from "../client/types/helpTreeItem"
+import React, { Fragment, VFC } from "react"
+import type { WidgetHelpTreeItem } from "../client/types/widgetHelpTreeItem"
 
 type Props = {
   title?: string
   isSinglePage?: boolean
-  helpTreeItems: HelpTreeItem[]
+  helpTreeItems: WidgetHelpTreeItem[]
 }
 
-export const KnockerFabTypeListHelps: FunctionComponent<Props> = (props) => {
+export const KnockerFabTypeListHelps: VFC<Props> = (props) => {
   return (
     <List>
       {props.helpTreeItems.map((helpTreeItem) => (

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { useEffect, useState, VFC } from "react"
 import { Knocker, LoginResponse } from "../client"
 import { KnockerStaticCard } from "./KnockerStaticCard"
 
@@ -6,7 +6,7 @@ type Props = {
   projectId: string
 }
 
-export const KnockerStatic: FunctionComponent<Props> = (props) => {
+export const KnockerStatic: VFC<Props> = (props) => {
   const [data, setData] = useState<LoginResponse | Error | null>(null)
 
   useEffect(() => {

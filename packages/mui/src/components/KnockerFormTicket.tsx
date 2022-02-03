@@ -1,6 +1,6 @@
 import { Button, InputBase, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { FunctionComponent, useState } from "react"
+import React, { useState, VFC } from "react"
 
 type Form = {
   text: string
@@ -12,7 +12,7 @@ type Props = {
   onCreate(form: Form): Promise<void>
 }
 
-export const KnockerFormTicket: FunctionComponent<Props> = (props) => {
+export const KnockerFormTicket: VFC<Props> = (props) => {
   const [text, setText] = useState("")
 
   const defautPlaceholder =

@@ -5,7 +5,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "yarn workspace @knockr/chakra-ui build:iife"
+    "build": "yarn workspace @knockr/mui build:iife",
+    "build:storybook": "yarn workspace @knockr/mui build:storybook",
+    "dev": "yarn workspace @knockr/mui dev",
+    "preview": "yarn workspace @knockr/mui preview"
   },
   "workspaces": {
     "packages": [

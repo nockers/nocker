@@ -13,3 +13,7 @@ export default meta
 export const Story: ComponentStory<typeof KnockrFab> = (args) => {
   return <KnockrFab {...args} />
 }
+
+Story.storyName = "KnockrFab"
+
+Story.args = {}

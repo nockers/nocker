@@ -1,7 +1,7 @@
-import { Environment } from "./environment"
+import { WidgetEnvironment } from "./widgetEnvironment"
 
 export type Config = {
   projectId: string
-  environment?: Environment
+  environment?: WidgetEnvironment
   baseURL?: string
 }

@@ -1,2 +1,2 @@
-export { KnockerFloating } from "./components/KnockerFloating"
+export { KnockerFab } from "./components/KnockerFab"
 export { render } from "./render"

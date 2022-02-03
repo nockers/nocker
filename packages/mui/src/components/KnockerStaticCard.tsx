@@ -1,18 +1,18 @@
 import SearchIcon from "@mui/icons-material/SearchRounded"
 import { Box, Card, Divider, InputBase, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { FunctionComponent } from "react"
+import React, { VFC } from "react"
 import { Knocker } from "../client"
-import type { HelpTreeItem } from "../client/types/helpTreeItem"
+import type { WidgetHelpTreeItem } from "../client/types/widgetHelpTreeItem"
 import { KnockerFormTicket } from "./KnockerFormTicket"
 import { KnockerFabTypeListHelps } from "./KnockerListHelps"
 
 type Props = {
   projectId: string
-  helpTreeItems: HelpTreeItem[]
+  helpTreeItems: WidgetHelpTreeItem[]
 }
 
-export const KnockerStaticCard: FunctionComponent<Props> = (props) => {
+export const KnockerStaticCard: VFC<Props> = (props) => {
   const onCreate = async (form: { text: string }) => {
     try {
       const knocker = new Knocker({

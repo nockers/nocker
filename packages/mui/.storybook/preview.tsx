@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from "@mui/material"
 import { Story } from "@storybook/react"
-import { createDefaultTheme } from "../src/utils/createDefaultTheme"
+import { KnockrProvider } from "../src/components/KnockrProvider"
+import { createConfig, createDefaultTheme } from "../src/utils"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -17,9 +18,13 @@ const withChakra = (Story: Story) => {
 
   const theme = createTheme(defaultTheme)
 
+  const config = createConfig()
+
   return (
     <ThemeProvider theme={theme}>
-      <Story />
+      <KnockrProvider config={config}>
+        <Story />
+      </KnockrProvider>
     </ThemeProvider>
   )
 }

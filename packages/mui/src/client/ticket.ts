@@ -1,5 +1,10 @@
 import { Client } from "./client"
-import { Config, Environment, TicketStatus, TicketType } from "./types"
+import {
+  Config,
+  WidgetEnvironment,
+  WidgetTicketStatus,
+  WidgetTicketType,
+} from "./types"
 
 export type UpdateTicketRequest = {
   text: string
@@ -7,9 +12,9 @@ export type UpdateTicketRequest = {
 
 export type UpdateTicketResponse = {
   id: string
-  environment: Environment
-  type: TicketType | null
-  status: TicketStatus
+  environment: WidgetEnvironment
+  type: WidgetTicketType | null
+  status: WidgetTicketStatus
   text: string
   helpId: string | null
 }
