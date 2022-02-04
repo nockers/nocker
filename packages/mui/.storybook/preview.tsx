@@ -24,7 +24,12 @@ const withChakra = (Story: Story) => {
 
   const theme = createTheme(defaultTheme)
 
-  const config = createConfig()
+  const baseURL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/api"
+      : "https://knocker.app/api"
+
+  const config = createConfig({ baseURL })
 
   return (
     <ThemeProvider theme={theme}>
