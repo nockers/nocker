@@ -1,11 +1,11 @@
-import type {
+import {
   Config,
   WidgetCustomer,
   WidgetEnvironment,
   WidgetHelp,
   WidgetHelpCategory,
+  WidgetHelpTreeItem,
 } from "../types"
-import { WidgetHelpTreeItem } from "../types"
 import { Client } from "./client"
 import { Ticket } from "./ticket"
 import { Tickets } from "./tickets"
