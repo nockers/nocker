@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material"
+import { Box, createTheme, ThemeProvider } from "@mui/material"
 import { Story } from "@storybook/react"
 import { KnockrProvider } from "../src/components/KnockrProvider"
 import { createConfig, createDefaultTheme } from "../src/utils"
@@ -11,6 +11,12 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  previewTabs: {
+    "storybook/docs/panel": {
+      hidden: true,
+    },
+  },
+  layout: "centered",
 }
 
 const withChakra = (Story: Story) => {
@@ -23,7 +29,9 @@ const withChakra = (Story: Story) => {
   return (
     <ThemeProvider theme={theme}>
       <KnockrProvider config={config}>
-        <Story />
+        <Box sx={{ width: (theme) => theme.spacing(40) }}>
+          <Story />
+        </Box>
       </KnockrProvider>
     </ThemeProvider>
   )

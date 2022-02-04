@@ -8,7 +8,7 @@ type Props = {
 
 export const KnockerFloatingCardHeader: VFC<Props> = (props) => {
   return (
-    <Paper sx={{ borderRadius: 0, borderWidth: 0 }}>
+    <Paper sx={{ borderRadius: 0, borderWidth: 0, width: "100%" }}>
       <Stack
         direction={"row"}
         alignItems={"center"}
