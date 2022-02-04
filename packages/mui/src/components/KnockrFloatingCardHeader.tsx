@@ -6,7 +6,7 @@ type Props = {
   onClose(): void
 }
 
-export const KnockerFloatingCardHeader: VFC<Props> = (props) => {
+export const KnockrFloatingCardHeader: VFC<Props> = (props) => {
   return (
     <Paper sx={{ borderRadius: 0, borderWidth: 0, width: "100%" }}>
       <Stack

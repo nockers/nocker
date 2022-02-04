@@ -6,7 +6,7 @@ type Props = {
   onOpen(): void
 }
 
-export const KnockerFloatingTrigger: VFC<Props> = (props) => {
+export const KnockrFloatingTrigger: VFC<Props> = (props) => {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {}, [])

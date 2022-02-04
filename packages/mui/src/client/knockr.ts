@@ -21,7 +21,7 @@ export type LoginResponse = {
   helpTreeItems: WidgetHelpTreeItem[]
 }
 
-export class Knocker extends Client {
+export class Knockr extends Client {
   constructor(private config: Config) {
     super(config)
     this.config = config

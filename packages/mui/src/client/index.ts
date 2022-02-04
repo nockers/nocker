@@ -1,4 +1,4 @@
 export * from "./client"
-export * from "./knocker"
+export * from "./Knockr"
 export * from "./ticket"
 export * from "./tickets"

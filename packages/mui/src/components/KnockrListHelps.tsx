@@ -8,7 +8,7 @@ type Props = {
   helpTreeItems: WidgetHelpTreeItem[]
 }
 
-export const KnockerFabTypeListHelps: VFC<Props> = (props) => {
+export const KnockrFabTypeListHelps: VFC<Props> = (props) => {
   return (
     <List>
       {props.helpTreeItems.map((helpTreeItem) => (

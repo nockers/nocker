@@ -1,26 +1,21 @@
 import SearchIcon from "@mui/icons-material/SearchRounded"
-import { Box, Card, Divider, InputBase, Stack } from "@mui/material"
+import { Box, Divider, InputBase, Paper, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { VFC } from "react"
 import { useClient } from "../hooks"
-import type { WidgetHelpTreeItem } from "../types"
-import { KnockerFloatingCardHeader } from "./KnockerFloatingCardHeader"
-import { KnockerFormTicket } from "./KnockerFormTicket"
-import { KnockerFabTypeListHelps } from "./KnockerListHelps"
+import { WidgetHelpTreeItem } from "../types"
+import { KnockrFormTicket } from "./KnockrFormTicket"
+import { KnockrFabTypeListHelps } from "./KnockrListHelps"
 
 type Props = {
-  onClose(): void
+  projectId: string
   helpTreeItems: WidgetHelpTreeItem[]
 }
 
-type Form = {
-  text: string
-}
-
-export const KnockerFloatingCard: VFC<Props> = (props) => {
+export const KnockrStaticCard: VFC<Props> = (props) => {
   const client = useClient()
 
-  const onCreate = async (form: Form) => {
+  const onCreate = async (form: { text: string }) => {
     try {
       await client.tickets().create({ text: form.text })
     } catch (error) {
@@ -31,12 +26,9 @@ export const KnockerFloatingCard: VFC<Props> = (props) => {
   const hasHelps = 0 < props.helpTreeItems.length
 
   return (
-    <Card sx={{ width: (theme) => theme.spacing(40) }}>
-      <KnockerFloatingCardHeader onClose={props.onClose} />
+    <Paper sx={{ width: (theme) => theme.spacing(40) }}>
       <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
-        <Box sx={{ backgroundColor: "rgba(0,0,0,0.1)" }}>
-          <KnockerFormTicket onCreate={onCreate} />
-        </Box>
+        <KnockrFormTicket onCreate={onCreate} />
         {hasHelps && <Divider />}
         {hasHelps && (
           <Stack>
@@ -50,10 +42,10 @@ export const KnockerFloatingCard: VFC<Props> = (props) => {
               <SearchIcon fontSize={"small"} />
               <InputBase sx={{ flex: 1 }} placeholder={"何かお困りですか？"} />
             </Stack>
-            <KnockerFabTypeListHelps helpTreeItems={props.helpTreeItems} />
+            <KnockrFabTypeListHelps helpTreeItems={props.helpTreeItems} />
           </Stack>
         )}
       </Stack>
-    </Card>
+    </Paper>
   )
 }

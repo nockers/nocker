@@ -12,7 +12,7 @@ type Props = {
   onCreate(form: Form): Promise<void>
 }
 
-export const KnockerFormTicket: VFC<Props> = (props) => {
+export const KnockrFormTicket: VFC<Props> = (props) => {
   const [text, setText] = useState("")
 
   const defautPlaceholder =

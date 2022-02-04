@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build:rollup": "yarn workspace @knockr/mui build:rollup",
+    "build": "yarn workspace @knockr/mui build:rollup",
     "build:storybook": "yarn workspace @knockr/mui build:storybook",
     "dev": "yarn workspace @knockr/mui dev",
     "dev:preview": "yarn workspace @knockr/mui preview",

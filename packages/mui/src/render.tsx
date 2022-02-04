@@ -1,7 +1,7 @@
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import React from "react"
 import reactDOM from "react-dom"
-import { KnockerFab } from "./components/KnockerFab"
+import { KnockrFab } from "./components/KnockrFab"
 import { KnockrProvider } from "./components/KnockrProvider"
 import { WidgetEnvironment } from "./types"
 import { createConfig } from "./utils"
@@ -33,7 +33,7 @@ export const render = (props: Props) => {
   reactDOM.render(
     <ThemeProvider theme={theme}>
       <KnockrProvider config={config}>
-        <KnockerFab />
+        <KnockrFab />
       </KnockrProvider>
     </ThemeProvider>,
     container

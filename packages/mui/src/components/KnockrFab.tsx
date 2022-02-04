@@ -1,10 +1,10 @@
 import { Box, Grow } from "@mui/material"
 import React, { useContext, useState, VFC } from "react"
 import { WidgetContext } from "../contexts"
-import { KnockerFloatingCard } from "./KnockerFloatingCard"
-import { KnockerFloatingTrigger } from "./KnockerFloatingTrigger"
+import { KnockrFloatingCard } from "./KnockrFloatingCard"
+import { KnockrFloatingTrigger } from "./KnockrFloatingTrigger"
 
-export const KnockerFab: VFC = () => {
+export const KnockrFab: VFC = () => {
   const [isOpen, setOpen] = useState(false)
 
   const widget = useContext(WidgetContext)
@@ -21,7 +21,7 @@ export const KnockerFab: VFC = () => {
     <Box>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockerFloatingCard
+          <KnockrFloatingCard
             onClose={onClose}
             helpTreeItems={widget.helpTreeItems}
           />
@@ -29,7 +29,7 @@ export const KnockerFab: VFC = () => {
       </Grow>
       <Grow in={!isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockerFloatingTrigger onOpen={onOpen} />
+          <KnockrFloatingTrigger onOpen={onOpen} />
         </Box>
       </Grow>
     </Box>
