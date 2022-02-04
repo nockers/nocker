@@ -5,10 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "NODE_ENV=production rollup -c",
-    "build:iife": "NODE_ENV=production rollup -c rollup.iife.config.js",
     "build:storybook": "build-storybook",
-    "preview": "serve . -l 1234"
+    "preview": "serve . -l 1234",
+    "prepublish": "tsc"
   },
   "peerDependencies": {
     "@chakra-ui/icons": "^1.1.1",
@@ -20,21 +19,13 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@storybook/addon-essentials": "^6.4.10",
-    "@storybook/react": "^6.4.10",
-    "rollup": "^2.66.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-terser": "^7.0.2",
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.4",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "framer-motion": "4.1.17",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "@types/react-dom": "^17.0.11"
   }
 }

@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "build:rollup": "NODE_ENV=production rollup -c",
     "build:storybook": "build-storybook",
     "preview": "serve . -l 1234",
     "prepublish": "tsc"
@@ -17,9 +17,9 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.3.1",
-    "@mui/lab": "^5.0.0-alpha.66",
-    "@mui/material": "^5.3.1",
-    "@sentry/minimal": "^6.17.3",
+    "@mui/lab": "^5.0.0-alpha.67",
+    "@mui/material": "^5.4.0",
+    "@sentry/minimal": "^6.17.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -29,19 +29,8 @@
     "@mui/icons-material": "^5.3.1",
     "@mui/lab": "^5.0.0-alpha.67",
     "@mui/material": "^5.4.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@sentry/minimal": "^6.17.3",
-    "@storybook/addon-essentials": "^6.4.10",
-    "@storybook/react": "^6.4.10",
-    "@storybook/theming": "^6.4.18",
     "@types/react-dom": "^17.0.11",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "rollup": "^2.66.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "react-dom": "^17.0.2"
   }
 }
