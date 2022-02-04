@@ -34,7 +34,9 @@ export const KnockerFloatingCard: VFC<Props> = (props) => {
     <Card sx={{ width: (theme) => theme.spacing(40) }}>
       <KnockerFloatingCardHeader onClose={props.onClose} />
       <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
-        <KnockerFormTicket onCreate={onCreate} />
+        <Box sx={{ backgroundColor: "rgba(0,0,0,0.1)" }}>
+          <KnockerFormTicket onCreate={onCreate} />
+        </Box>
         {hasHelps && <Divider />}
         {hasHelps && (
           <Stack>

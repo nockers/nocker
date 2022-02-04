@@ -1,8 +1,8 @@
 import SearchIcon from "@mui/icons-material/SearchRounded"
-import { Box, Card, Divider, InputBase, Stack } from "@mui/material"
+import { Box, Divider, InputBase, Paper, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { VFC } from "react"
-import { Knocker } from "../client"
+import { useClient } from "../hooks"
 import { WidgetHelpTreeItem } from "../types"
 import { KnockerFormTicket } from "./KnockerFormTicket"
 import { KnockerFabTypeListHelps } from "./KnockerListHelps"
@@ -13,15 +13,11 @@ type Props = {
 }
 
 export const KnockerStaticCard: VFC<Props> = (props) => {
+  const client = useClient()
+
   const onCreate = async (form: { text: string }) => {
     try {
-      const knocker = new Knocker({
-        projectId: props.projectId,
-        environment: "PRODUCTION",
-        baseURL: "/api",
-      })
-
-      await knocker.tickets().create({ text: form.text })
+      await client.tickets().create({ text: form.text })
     } catch (error) {
       captureException(error)
     }
@@ -30,7 +26,7 @@ export const KnockerStaticCard: VFC<Props> = (props) => {
   const hasHelps = 0 < props.helpTreeItems.length
 
   return (
-    <Card sx={{ width: (theme) => theme.spacing(40) }}>
+    <Paper sx={{ width: (theme) => theme.spacing(40) }}>
       <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
         <KnockerFormTicket onCreate={onCreate} />
         {hasHelps && <Divider />}
@@ -50,6 +46,6 @@ export const KnockerStaticCard: VFC<Props> = (props) => {
           </Stack>
         )}
       </Stack>
-    </Card>
+    </Paper>
   )
 }

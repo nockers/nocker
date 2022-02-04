@@ -1,5 +1,5 @@
-import React, { useEffect, useState, VFC } from "react"
-import { Knocker, LoginResponse } from "../client"
+import React, { useContext, VFC } from "react"
+import { WidgetContext } from "../contexts"
 import { KnockerStaticCard } from "./KnockerStaticCard"
 
 type Props = {
@@ -7,36 +7,12 @@ type Props = {
 }
 
 export const KnockerStatic: VFC<Props> = (props) => {
-  const [data, setData] = useState<LoginResponse | Error | null>(null)
-
-  useEffect(() => {
-    try {
-      const knocker = new Knocker({
-        projectId: props.projectId,
-        environment: "PRODUCTION",
-        baseURL: "/api",
-      })
-
-      knocker.login().then((loginResponse) => {
-        setData(loginResponse)
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }, [props.projectId])
-
-  if (data === null) {
-    return null
-  }
-
-  if (data instanceof Error) {
-    return null
-  }
+  const widget = useContext(WidgetContext)
 
   return (
     <KnockerStaticCard
       projectId={props.projectId}
-      helpTreeItems={data.helpTreeItems}
+      helpTreeItems={widget.helpTreeItems}
     />
   )
 }

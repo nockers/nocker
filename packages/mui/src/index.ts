@@ -1,5 +1,6 @@
 export * from "./client"
 export { KnockerFab } from "./components/KnockerFab"
+export { KnockerStatic } from "./components/KnockerStatic"
 export { KnockrProvider } from "./components/KnockrProvider"
 export * from "./contexts"
 export * from "./hooks"
