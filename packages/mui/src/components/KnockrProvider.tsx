@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import { LoginResponse } from "../client"
 import { ConfigContext, WidgetContext } from "../contexts"
-import { useClient } from "../hooks/useClient"
+import { useClient } from "../hooks"
 import { Config } from "../types"
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 }
 
 export const KnockrProvider: FC<Props> = (props) => {
-  const client = useClient()
+  const client = useClient(props.config)
 
   const [data, setData] = useState<LoginResponse | Error | null>(null)
 
