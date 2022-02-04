@@ -1,5 +1,4 @@
 .storybook
-lib
 public
 src
 storybook-static

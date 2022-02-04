@@ -3,7 +3,7 @@ import { Box, Card, Divider, InputBase, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { VFC } from "react"
 import { Knocker } from "../client"
-import type { WidgetHelpTreeItem } from "../client/types/widgetHelpTreeItem"
+import { WidgetHelpTreeItem } from "../types"
 import { KnockerFormTicket } from "./KnockerFormTicket"
 import { KnockerFabTypeListHelps } from "./KnockerListHelps"
 

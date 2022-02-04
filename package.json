@@ -5,11 +5,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "yarn workspace @knockr/mui build:iife",
+    "build": "yarn workspace @knockr/mui build",
+    "build:module": "yarn workspace @knockr/mui prepublish",
     "build:storybook": "yarn workspace @knockr/mui build:storybook",
     "dev": "yarn workspace @knockr/mui dev",
     "dev:preview": "yarn workspace @knockr/mui preview",
-    "preview": "yarn workspace @knockr/mui preview"
+    "preview": "yarn workspace @knockr/mui preview",
+    "publish:mui": "yarn workspace @knockr/mui publish --access=public"
   },
   "workspaces": {
     "packages": [
@@ -17,6 +19,8 @@
     ]
   },
   "devDependencies": {
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.136",
     "prettier": "^2.5.1",
     "prettier-plugin-organize-imports": "^2.3.4",
     "serve": "^13.0.2",

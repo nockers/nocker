@@ -1,6 +1,6 @@
 import { Divider, List, ListItemButton, ListItemText } from "@mui/material"
 import React, { Fragment, VFC } from "react"
-import type { WidgetHelpTreeItem } from "../client/types/widgetHelpTreeItem"
+import { WidgetHelpTreeItem } from "../types"
 
 type Props = {
   title?: string

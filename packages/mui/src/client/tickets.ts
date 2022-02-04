@@ -1,10 +1,10 @@
-import { Client } from "./client"
 import {
   Config,
   WidgetEnvironment,
   WidgetTicketStatus,
   WidgetTicketType,
-} from "./types"
+} from "../types"
+import { Client } from "./client"
 
 export type CreateTicketRequest = {
   text: string

@@ -1,9 +1,9 @@
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import React from "react"
 import reactDOM from "react-dom"
-import { WidgetEnvironment } from "./client/types"
 import { KnockerFab } from "./components/KnockerFab"
 import { KnockrProvider } from "./components/KnockrProvider"
+import { WidgetEnvironment } from "./types"
 import { createConfig } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
 

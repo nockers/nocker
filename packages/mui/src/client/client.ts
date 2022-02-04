@@ -1,4 +1,4 @@
-import { Config, WidgetEnvironment } from "./types"
+import { Config, WidgetEnvironment } from "../types"
 
 export class Client {
   readonly environment: WidgetEnvironment

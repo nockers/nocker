@@ -1,2 +1,8 @@
+export * from "./client"
 export { KnockerFab } from "./components/KnockerFab"
+export { KnockrProvider } from "./components/KnockrProvider"
+export * from "./contexts"
+export * from "./hooks"
 export { render } from "./render"
+export * from "./types"
+export * from "./utils"

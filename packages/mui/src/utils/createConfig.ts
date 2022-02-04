@@ -1,5 +1,4 @@
-import { WidgetEnvironment } from "../client/types"
-import { Config } from "../types"
+import { Config, WidgetEnvironment } from "../types"
 
 type Props = {
   projectId?: string

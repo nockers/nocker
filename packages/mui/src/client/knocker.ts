@@ -1,16 +1,14 @@
-import { Client } from "./client"
-import { Ticket } from "./ticket"
-import { Tickets } from "./tickets"
 import type {
   Config,
   WidgetCustomer,
   WidgetEnvironment,
   WidgetHelp,
   WidgetHelpCategory,
-} from "./types"
-import { WidgetHelpTreeItem } from "./types/widgetHelpTreeItem"
-
-export * from "./types"
+} from "../types"
+import { WidgetHelpTreeItem } from "../types"
+import { Client } from "./client"
+import { Ticket } from "./ticket"
+import { Tickets } from "./tickets"
 
 export type LoginRequest = {
   environment: WidgetEnvironment
