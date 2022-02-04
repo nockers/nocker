@@ -8,6 +8,7 @@
     "build": "yarn workspace @knockr/mui build:iife",
     "build:storybook": "yarn workspace @knockr/mui build:storybook",
     "dev": "yarn workspace @knockr/mui dev",
+    "dev:preview": "yarn workspace @knockr/mui preview",
     "preview": "yarn workspace @knockr/mui preview"
   },
   "workspaces": {
