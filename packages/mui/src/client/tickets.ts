@@ -8,6 +8,8 @@ import { Client } from "./client"
 
 export type CreateTicketRequest = {
   text: string
+  type: string | null
+  imageText: string | null
 }
 
 export type CreateTicketResponse = {

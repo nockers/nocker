@@ -1,33 +1,25 @@
+import PhotoCamera from "@mui/icons-material/PhotoCameraRounded"
 import { Button, InputBase, Stack } from "@mui/material"
-import { captureException } from "@sentry/minimal"
 import React, { useState, VFC } from "react"
-
-type Form = {
-  text: string
-}
 
 type Props = {
   placeholder?: string
   buttonText?: string
-  onCreate(form: Form): Promise<void>
+  onChangeText(text: string): void
+  onSubmit(): Promise<void>
+  onOpenCapture(): void
+  text: string
 }
 
 export const KnockrFormTicket: VFC<Props> = (props) => {
-  const [text, setText] = useState("")
+  const [isOpenCapture, openCapture] = useState(false)
+
+  const [imageText, setImageText] = useState<string | null>(null)
 
   const defautPlaceholder =
     "製品の改善についてご意見・ご要望をお聞かせください。"
 
   const defaultButtonText = "送信する"
-
-  const onCreate = async () => {
-    try {
-      await props.onCreate({ text })
-      setText("")
-    } catch (error) {
-      captureException(error)
-    }
-  }
 
   return (
     <Stack sx={{ p: 2 }} spacing={2}>
@@ -35,19 +27,29 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
         multiline
         rows={4}
         placeholder={props.placeholder ?? defautPlaceholder}
-        value={text}
+        value={props.text}
         onChange={(event) => {
-          setText(event.target.value)
+          props.onChangeText(event.target.value)
         }}
       />
-      <Button
-        size={"small"}
-        variant={"outlined"}
-        sx={{ width: "100%" }}
-        onClick={onCreate}
-      >
-        {props.buttonText ?? defaultButtonText}
-      </Button>
+      <Stack direction={"row"} spacing={2}>
+        <Button
+          size={"small"}
+          variant={"outlined"}
+          startIcon={<PhotoCamera />}
+          onClick={props.onOpenCapture}
+        >
+          {"スクショ"}
+        </Button>
+        <Button
+          size={"small"}
+          variant={"outlined"}
+          onClick={props.onSubmit}
+          sx={{ flex: 1 }}
+        >
+          {props.buttonText ?? defaultButtonText}
+        </Button>
+      </Stack>
     </Stack>
   )
 }

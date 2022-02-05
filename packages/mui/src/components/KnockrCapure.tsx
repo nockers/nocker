@@ -55,6 +55,7 @@ export const KnockrCapure: VFC<Props> = (props) => {
   return (
     <KnockrBackdrop>
       <Paper
+        ref={boxRef}
         sx={{
           position: "relative",
           width: "calc(100vw - 4rem)",
@@ -65,7 +66,6 @@ export const KnockrCapure: VFC<Props> = (props) => {
         }}
       >
         <Box
-          ref={boxRef}
           component={"img"}
           alt={"background"}
           src={backgroundImage}
