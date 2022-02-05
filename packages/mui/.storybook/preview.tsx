@@ -27,7 +27,7 @@ const withChakra = (Story: Story) => {
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000/api"
-      : "https://Knockr.app/api"
+      : "https://knocker.app/api"
 
   const config = createConfig({ baseURL })
 
