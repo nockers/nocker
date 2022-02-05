@@ -7,7 +7,7 @@ export const createDefaultTheme = (mode: "dark" | "light") => {
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: 20,
+            borderRadius: 4,
           },
         },
       },
@@ -29,7 +29,7 @@ export const createDefaultTheme = (mode: "dark" | "light") => {
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
-            borderRadius: 20,
+            borderRadius: 4,
           },
         },
       },
