@@ -6,13 +6,14 @@
   "private": true,
   "scripts": {
     "build": "yarn workspace @knockr/mui build:rollup",
+    "build:mui": "yarn workspace @knockr/mui prepublish",
     "build:storybook": "yarn workspace @knockr/mui build:storybook",
     "dev": "yarn workspace @knockr/mui dev",
     "dev:preview": "yarn workspace @knockr/mui preview",
     "preview": "yarn workspace @knockr/mui preview",
     "www": "serve www -l 1234",
     "publish:mui": "yarn workspace @knockr/mui publish --access=public",
-    "check": "yarn workspace @knockr/mui tsc"
+    "check": "yarn workspace @knockr/mui tsc --noEmit"
   },
   "workspaces": {
     "packages": [
