@@ -1,6 +1,6 @@
 import PhotoCamera from "@mui/icons-material/PhotoCameraRounded"
 import { Button, InputBase, Stack } from "@mui/material"
-import React, { useState, VFC } from "react"
+import React, { VFC } from "react"
 
 type Props = {
   placeholder?: string
@@ -12,10 +12,6 @@ type Props = {
 }
 
 export const KnockrFormTicket: VFC<Props> = (props) => {
-  const [isOpenCapture, openCapture] = useState(false)
-
-  const [imageText, setImageText] = useState<string | null>(null)
-
   const defautPlaceholder =
     "製品の改善についてご意見・ご要望をお聞かせください。"
 
