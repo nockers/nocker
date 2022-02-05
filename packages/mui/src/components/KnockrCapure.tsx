@@ -28,7 +28,8 @@ export const KnockrCapure: VFC<Props> = (props) => {
   const [backgroundImage, setBackgroundImage] = useState<string | null>(null)
 
   const onCapture = async () => {
-    const canvas = await html2canvas(document.body)
+    if (boxRef.current === null) return
+    const canvas = await html2canvas(boxRef.current)
     const dataURL = canvas.toDataURL("image/png")
     props.onCapture(dataURL)
   }

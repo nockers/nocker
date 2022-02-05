@@ -22,7 +22,11 @@ export const KnockrCanvas: VFC<Props> = (props) => {
       setFirst(false)
     }
 
+    if (canvasRef.current === null) return
+
     const context = canvasRef.current.getContext("2d")
+
+    if (context === null) return
 
     context.lineCap = "round"
 
@@ -46,14 +50,18 @@ export const KnockrCanvas: VFC<Props> = (props) => {
   }
 
   const onDrawEnd = () => {
+    if (canvasRef.current === null) return
     const context = canvasRef.current.getContext("2d")
+    if (context === null) return
     context.closePath()
     setDrawing(false)
     setLastPosition({ x: 0, y: 0 })
   }
 
   const onDrawStart = () => {
+    if (canvasRef.current === null) return
     const context = canvasRef.current.getContext("2d")
+    if (context === null) return
     context.closePath()
     setDrawing(true)
   }

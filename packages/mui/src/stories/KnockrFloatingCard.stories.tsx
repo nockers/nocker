@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
 import { KnockrFloatingCard } from "../components/KnockrFloatingCard"
+import { WidgetHelpTreeItem } from "../types"
 
 const meta: ComponentMeta<typeof KnockrFloatingCard> = {
   title: "KnockrFloatingCard",
@@ -11,9 +12,11 @@ const meta: ComponentMeta<typeof KnockrFloatingCard> = {
 export default meta
 
 export const Story: ComponentStory<typeof KnockrFloatingCard> = (args) => {
-  return <KnockrFloatingCard helpTreeItems={[]} {...args} />
+  return <KnockrFloatingCard {...args} />
 }
 
 Story.storyName = "KnockrFloatingCard"
 
-Story.args = {}
+Story.args = {
+  helpTreeItems: [] as WidgetHelpTreeItem[],
+}

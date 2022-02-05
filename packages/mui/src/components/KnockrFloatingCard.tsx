@@ -14,10 +14,6 @@ type Props = {
   helpTreeItems: WidgetHelpTreeItem[]
 }
 
-type Form = {
-  text: string
-}
-
 export const KnockrFloatingCard: VFC<Props> = (props) => {
   const client = useClient()
 
