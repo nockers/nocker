@@ -19,7 +19,7 @@ export const parameters = {
   layout: "centered",
 }
 
-const withChakra = (Story: Story) => {
+const withProvider = (Story: Story) => {
   const defaultTheme = createDefaultTheme("light")
 
   const theme = createTheme(defaultTheme)
@@ -42,4 +42,4 @@ const withChakra = (Story: Story) => {
   )
 }
 
-export const decorators = [withChakra]
+export const decorators = [withProvider]
