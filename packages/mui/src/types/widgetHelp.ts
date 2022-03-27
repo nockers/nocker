@@ -3,10 +3,9 @@ import { WidgetTag } from "./widgetTag"
 
 export type WidgetHelp = {
   id: string
-  title: string
-  body: { [key in string]?: any }
-  categoryId: string
   projectId: string
   environment: WidgetEnvironment
+  title: string
+  body: string
   tags: WidgetTag[]
 }

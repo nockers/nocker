@@ -4,6 +4,7 @@ import { WidgetTicketType } from "./widgetTicketType"
 
 export type WidgetTicket = {
   id: string
+  projectId: string
   environment: WidgetEnvironment
   type: WidgetTicketType | null
   status: WidgetTicketStatus

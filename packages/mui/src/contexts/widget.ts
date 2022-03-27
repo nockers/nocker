@@ -5,10 +5,10 @@ export const WidgetContext = createContext<WidgetRoot>({
   projectId: "xxxxxxxxxxxxxxxxxxxxx",
   customer: {
     id: "xxxxxxxxxxxxxxxxxxxxx",
+    projectId: "xxxxxxxxxxxxxxxxxxxxx",
     environment: "PRODUCTION",
     userId: null,
     name: null,
-    projectId: "xxxxxxxxxxxxxxxxxxxxx",
   },
   helps: [],
 })
