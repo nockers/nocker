@@ -1,4 +1,5 @@
-import type { WidgetEnvironment } from "../types"
+import { WidgetEnvironment } from "./widgetEnvironment"
+import { WidgetTag } from "./widgetTag"
 
 export type WidgetHelp = {
   id: string
@@ -7,4 +8,5 @@ export type WidgetHelp = {
   categoryId: string
   projectId: string
   environment: WidgetEnvironment
+  tags: WidgetTag[]
 }

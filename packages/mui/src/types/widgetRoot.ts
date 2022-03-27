@@ -1,13 +1,7 @@
-import {
-  WidgetCustomer,
-  WidgetHelp,
-  WidgetHelpCategory,
-  WidgetHelpTreeItem,
-} from "../types"
+import { WidgetCustomer, WidgetHelp } from "../types"
 
 export type WidgetRoot = {
+  projectId: string
   customer: WidgetCustomer
   helps: WidgetHelp[]
-  helpCategories: WidgetHelpCategory[]
-  helpTreeItems: WidgetHelpTreeItem[]
 }

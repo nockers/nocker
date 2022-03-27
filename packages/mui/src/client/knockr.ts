@@ -1,11 +1,4 @@
-import {
-  Config,
-  WidgetCustomer,
-  WidgetEnvironment,
-  WidgetHelp,
-  WidgetHelpCategory,
-  WidgetHelpTreeItem,
-} from "../types"
+import { Config, WidgetCustomer, WidgetEnvironment, WidgetHelp } from "../types"
 import { Client } from "./client"
 import { Ticket } from "./ticket"
 import { Tickets } from "./tickets"
@@ -15,10 +8,9 @@ export type LoginRequest = {
 }
 
 export type LoginResponse = {
+  projectId: string
   customer: WidgetCustomer
   helps: WidgetHelp[]
-  helpCategories: WidgetHelpCategory[]
-  helpTreeItems: WidgetHelpTreeItem[]
 }
 
 export class Knockr extends Client {

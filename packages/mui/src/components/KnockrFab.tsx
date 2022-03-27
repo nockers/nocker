@@ -21,10 +21,7 @@ export const KnockrFab: VFC = () => {
     <Box>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockrFloatingCard
-            onClose={onClose}
-            helpTreeItems={widget.helpTreeItems}
-          />
+          <KnockrFloatingCard onClose={onClose} helps={widget.helps} />
         </Box>
       </Grow>
       <Grow in={!isOpen} unmountOnExit>

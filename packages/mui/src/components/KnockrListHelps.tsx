@@ -1,52 +1,21 @@
 import { Divider, List, ListItemButton, ListItemText } from "@mui/material"
 import React, { Fragment, VFC } from "react"
-import { WidgetHelpTreeItem } from "../types"
+import { WidgetHelp } from ".."
 
 type Props = {
   title?: string
   isSinglePage?: boolean
-  helpTreeItems: WidgetHelpTreeItem[]
+  helps: WidgetHelp[]
 }
 
-export const KnockrFabTypeListHelps: VFC<Props> = (props) => {
+export const KnockrListHelps: VFC<Props> = (props) => {
   return (
     <List>
-      {props.helpTreeItems.map((helpTreeItem) => (
-        <Fragment key={helpTreeItem.id}>
+      {props.helps.map((help) => (
+        <Fragment key={help.id}>
           <ListItemButton>
-            <ListItemText primary={helpTreeItem.name} />
+            <ListItemText primary={help.title} />
           </ListItemButton>
-          <Divider />
-          <List disablePadding>
-            {helpTreeItem.children.map((item) => {
-              if ("parentCategoryId" in item) {
-                return (
-                  <Fragment key={item.id}>
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemText primary={item.name} />
-                    </ListItemButton>
-                    <Divider />
-                    <List disablePadding>
-                      {item.children.map((subItem, index) => (
-                        <Fragment key={item.id}>
-                          <ListItemButton sx={{ pl: 6 }}>
-                            <ListItemText primary={subItem.title} />
-                          </ListItemButton>
-                          {index < item.children.length + 1 && <Divider />}
-                        </Fragment>
-                      ))}
-                    </List>
-                  </Fragment>
-                )
-              }
-
-              return (
-                <ListItemButton key={item.id} sx={{ pl: 4 }}>
-                  <ListItemText primary={item.title} />
-                </ListItemButton>
-              )
-            })}
-          </List>
           <Divider />
         </Fragment>
       ))}

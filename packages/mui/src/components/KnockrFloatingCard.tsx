@@ -3,15 +3,15 @@ import { Box, Card, Divider, InputBase, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { useState, VFC } from "react"
 import { useClient } from "../hooks"
-import type { WidgetHelpTreeItem } from "../types"
+import { WidgetHelp } from "../types"
 import { KnockrCapure } from "./KnockrCapure"
 import { KnockrFloatingCardHeader } from "./KnockrFloatingCardHeader"
 import { KnockrFormTicket } from "./KnockrFormTicket"
-import { KnockrFabTypeListHelps } from "./KnockrListHelps"
+import { KnockrListHelps } from "./KnockrListHelps"
 
 type Props = {
   onClose(): void
-  helpTreeItems: WidgetHelpTreeItem[]
+  helps: WidgetHelp[]
 }
 
 export const KnockrFloatingCard: VFC<Props> = (props) => {
@@ -54,7 +54,9 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
     openCapture(false)
   }
 
-  const hasHelps = 0 < props.helpTreeItems.length
+  const hasHelps = 0 < props.helps.length
+
+  console.log(props.helps)
 
   return (
     <>
@@ -88,7 +90,7 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
                     placeholder={"何かお困りですか？"}
                   />
                 </Stack>
-                <KnockrFabTypeListHelps helpTreeItems={props.helpTreeItems} />
+                <KnockrListHelps helps={props.helps} />
               </Stack>
             )}
           </Stack>

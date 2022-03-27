@@ -1,4 +1,4 @@
-import { WidgetEnvironment } from "../types"
+import { WidgetEnvironment } from "./widgetEnvironment"
 
 export type Config = {
   projectId: string

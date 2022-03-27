@@ -14,7 +14,8 @@
     ".blitz**": true,
     ".husky": true,
     ".next": true,
-    ".vercel": true
+    ".vercel": true,
+    "packages/**/lib": true
   },
   "search.exclude": {
     "yarn.lock": true
