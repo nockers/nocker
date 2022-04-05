@@ -56,8 +56,6 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
 
   const hasHelps = 0 < props.helps.length
 
-  console.log(props.helps)
-
   return (
     <>
       {!isOpenCapture && (

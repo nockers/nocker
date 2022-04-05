@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/minimal"
 import { Config, WidgetCustomer, WidgetEnvironment, WidgetHelp } from "../types"
 import { Client } from "./client"
 import { Ticket } from "./ticket"
@@ -19,7 +20,7 @@ export class Knockr extends Client {
     this.config = config
   }
 
-  async login() {
+  login() {
     return this.post<LoginRequest, LoginResponse>({
       url: `${this.baseURL}/widgets/${this.projectId}/login`,
       data: { environment: this.environment },

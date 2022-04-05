@@ -6,6 +6,7 @@ import { KnockrProvider } from "./components/KnockrProvider"
 import { WidgetEnvironment } from "./types"
 import { createConfig } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
+import { captureException, init } from "@sentry/browser"
 
 type Props = {
   projectId: string
@@ -13,29 +14,47 @@ type Props = {
   environment: WidgetEnvironment
   colorMode: "dark" | "light"
   theme?: ThemeOptions
+  disableSentry?: boolean
 }
 
 export const render = (props: Props) => {
-  var container = document.createElement("div")
+  if (props.disableSentry !== true) {
+    init({
+      dsn: "https://6e199171fc8e4bc29906ad62cf2178e2@o482319.ingest.sentry.io/6312067",
+      tracesSampleRate: 1.0,
+      beforeSend(event) {
+        for (const exception of event.exception?.values ?? []) {
+          console.error(exception.value)
+        }
+        return event
+      },
+    })
+  }
 
-  document.body.appendChild(container)
+  try {
+    const container = document.createElement("div")
 
-  const defaultTheme = createDefaultTheme(props.colorMode)
+    document.body.appendChild(container)
 
-  const theme = createTheme(props.theme ?? defaultTheme)
+    const defaultTheme = createDefaultTheme(props.colorMode)
 
-  const config = createConfig({
-    projectId: props.projectId,
-    baseURL: props.baseURL,
-    environment: props.environment,
-  })
+    const theme = createTheme(props.theme ?? defaultTheme)
 
-  reactDOM.render(
-    <ThemeProvider theme={theme}>
-      <KnockrProvider config={config}>
-        <KnockrFab />
-      </KnockrProvider>
-    </ThemeProvider>,
-    container
-  )
+    const config = createConfig({
+      projectId: props.projectId,
+      baseURL: props.baseURL,
+      environment: props.environment,
+    })
+
+    reactDOM.render(
+      <ThemeProvider theme={theme}>
+        <KnockrProvider config={config}>
+          <KnockrFab />
+        </KnockrProvider>
+      </ThemeProvider>,
+      container
+    )
+  } catch (error) {
+    captureException(error)
+  }
 }

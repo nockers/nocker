@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/minimal"
 import {
   Config,
   WidgetEnvironment,

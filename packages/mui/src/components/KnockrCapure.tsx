@@ -1,4 +1,5 @@
 import { Box, Button, Paper, Stack } from "@mui/material"
+import { captureException } from "@sentry/minimal"
 import html2canvas from "html2canvas"
 import React, { useEffect, useRef, useState, VFC } from "react"
 import { useResize } from "../hooks/useResize"
@@ -16,11 +17,15 @@ export const KnockrCapure: VFC<Props> = (props) => {
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
 
   const onResize = () => {
-    if (boxRef.current === null) return
-    setCanvasSize({
-      width: boxRef.current.clientWidth,
-      height: boxRef.current.clientHeight,
-    })
+    try {
+      if (boxRef.current === null) return
+      setCanvasSize({
+        width: boxRef.current.clientWidth,
+        height: boxRef.current.clientHeight,
+      })
+    } catch (error) {
+      captureException(error)
+    }
   }
 
   useResize(onResize)
@@ -28,10 +33,14 @@ export const KnockrCapure: VFC<Props> = (props) => {
   const [backgroundImage, setBackgroundImage] = useState<string | null>(null)
 
   const onCapture = async () => {
-    if (boxRef.current === null) return
-    const canvas = await html2canvas(boxRef.current)
-    const dataURL = canvas.toDataURL("image/png")
-    props.onCapture(dataURL)
+    try {
+      if (boxRef.current === null) return
+      const canvas = await html2canvas(boxRef.current)
+      const dataURL = canvas.toDataURL("image/png")
+      props.onCapture(dataURL)
+    } catch (error) {
+      captureException(error)
+    }
   }
 
   const onCancel = () => {
@@ -39,10 +48,14 @@ export const KnockrCapure: VFC<Props> = (props) => {
   }
 
   const onCaptureBackground = async () => {
-    const canvas = await html2canvas(document.body)
-    const dataURL = canvas.toDataURL()
-    setBackgroundImage(dataURL)
-    onResize()
+    try {
+      const canvas = await html2canvas(document.body)
+      const dataURL = canvas.toDataURL()
+      setBackgroundImage(dataURL)
+      onResize()
+    } catch (error) {
+      captureException(error)
+    }
   }
 
   useEffect(() => {

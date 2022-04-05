@@ -1,4 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material"
+import { captureException } from "@sentry/minimal"
 import React, { useRef, useState, VFC } from "react"
 
 type Props = {
@@ -16,54 +17,66 @@ export const KnockrCanvas: VFC<Props> = (props) => {
   const [isFirst, setFirst] = useState(true)
 
   const onDraw = (x: number, y: number) => {
-    if (!isDrawing) return
+    try {
+      if (!isDrawing) return
 
-    if (isFirst) {
-      setFirst(false)
+      if (isFirst) {
+        setFirst(false)
+      }
+
+      if (canvasRef.current === null) return
+
+      const context = canvasRef.current.getContext("2d")
+
+      if (context === null) return
+
+      context.lineCap = "round"
+
+      context.lineJoin = "round"
+
+      context.lineWidth = 2
+
+      context.strokeStyle = "mediumturquoise"
+
+      if (lastPosition.x === 0 || lastPosition.y === 0) {
+        context.moveTo(x, y)
+      } else {
+        context.moveTo(lastPosition.x, lastPosition.y)
+      }
+
+      context.lineTo(x, y)
+
+      context.stroke()
+
+      setLastPosition({ x: x, y: y })
+    } catch (error) {
+      captureException(error)
     }
-
-    if (canvasRef.current === null) return
-
-    const context = canvasRef.current.getContext("2d")
-
-    if (context === null) return
-
-    context.lineCap = "round"
-
-    context.lineJoin = "round"
-
-    context.lineWidth = 2
-
-    context.strokeStyle = "mediumturquoise"
-
-    if (lastPosition.x === 0 || lastPosition.y === 0) {
-      context.moveTo(x, y)
-    } else {
-      context.moveTo(lastPosition.x, lastPosition.y)
-    }
-
-    context.lineTo(x, y)
-
-    context.stroke()
-
-    setLastPosition({ x: x, y: y })
   }
 
   const onDrawEnd = () => {
-    if (canvasRef.current === null) return
-    const context = canvasRef.current.getContext("2d")
-    if (context === null) return
-    context.closePath()
-    setDrawing(false)
-    setLastPosition({ x: 0, y: 0 })
+    try {
+      if (canvasRef.current === null) return
+      const context = canvasRef.current.getContext("2d")
+      if (context === null) return
+      context.closePath()
+      setDrawing(false)
+      setLastPosition({ x: 0, y: 0 })
+    } catch (error) {
+      captureException(error)
+    }
   }
 
   const onDrawStart = () => {
-    if (canvasRef.current === null) return
-    const context = canvasRef.current.getContext("2d")
-    if (context === null) return
-    context.closePath()
-    setDrawing(true)
+    try {
+      if (canvasRef.current === null) return
+      const context = canvasRef.current.getContext("2d")
+      if (context === null) return
+      context.closePath()
+      setDrawing(true)
+    } catch (error) {
+      captureException(error)
+    }
   }
 
   return (

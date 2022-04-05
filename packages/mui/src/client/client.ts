@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/minimal"
 import { Config, WidgetEnvironment } from "../types"
 
 export class Client {
@@ -31,11 +32,11 @@ export class Client {
 
       return json as U
     } catch (error) {
+      captureException(error)
       if (error instanceof Error) {
         return new Error(error.message)
       }
-
-      return new Error()
+      return new Error("UNEXPECTED_ERROR")
     }
   }
 }

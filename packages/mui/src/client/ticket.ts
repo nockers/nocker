@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/minimal"
 import {
   Config,
   WidgetEnvironment,
@@ -24,7 +25,7 @@ export class Ticket extends Client {
     super(config)
   }
 
-  async update(data: UpdateTicketRequest) {
+  update(data: UpdateTicketRequest) {
     return this.post<UpdateTicketRequest, UpdateTicketResponse>({
       url: `${this.baseURL}/widgets/${this.projectId}/tickets/${this.ticketId}`,
       data,

@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/minimal"
 import React, { FC, useEffect, useState } from "react"
 import { LoginResponse } from "../client"
 import { ConfigContext, WidgetContext } from "../contexts"
@@ -14,9 +15,14 @@ export const KnockrProvider: FC<Props> = (props) => {
   const [data, setData] = useState<LoginResponse | Error | null>(null)
 
   useEffect(() => {
-    client.login().then((data) => {
-      setData(data)
-    })
+    client
+      .login()
+      .then((data) => {
+        setData(data)
+      })
+      .catch((error) => {
+        captureException(error)
+      })
   }, [])
 
   if (data === null || data instanceof Error) {
