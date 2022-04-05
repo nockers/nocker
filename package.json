@@ -9,6 +9,7 @@
     "build:mui": "yarn workspace @knockr/mui prepublish",
     "build:storybook": "yarn workspace @knockr/mui build:storybook",
     "dev": "yarn workspace @knockr/mui dev",
+    "dev:local": "yarn workspace @knockr/mui dev:local",
     "dev:preview": "yarn workspace @knockr/mui preview",
     "preview": "yarn workspace @knockr/mui preview",
     "www": "serve www -l 1234",
