@@ -13,7 +13,7 @@ export class Client {
 
     this.environment = config.environment ?? "PRODUCTION"
 
-    this.baseURL = config.baseURL ?? "https://knockr.app/api"
+    this.baseURL = config.baseURL ?? "https://knocker.app/api"
   }
 
   async post<T, U>(props: { url: string; data: T }): Promise<U | Error> {
