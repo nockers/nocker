@@ -31,7 +31,7 @@
     "@mui/material": "^5.5.2"
   },
   "dependencies": {
-    "@knockr/client": "^0.1.1",
+    "@knockr/client": "0.1.1",
     "html2canvas": "^1.4.1"
   }
 }
