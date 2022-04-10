@@ -15,7 +15,9 @@
     ".husky": true,
     ".next": true,
     ".vercel": true,
-    "packages/**/lib": true
+    "packages/**/lib": true,
+    "packages/**/public": true,
+    "packages/**/storybook-static": true
   },
   "search.exclude": {
     "yarn.lock": true

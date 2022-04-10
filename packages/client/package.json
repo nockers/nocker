@@ -1,0 +1,16 @@
+{
+  "name": "@knockr/client",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
+    "build": "NODE_ENV=production rollup -c",
+    "preview": "serve . -l 1234",
+    "prepublish": "tsc"
+  }
+}
