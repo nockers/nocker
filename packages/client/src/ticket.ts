@@ -1,11 +1,10 @@
-import { captureException } from "@sentry/minimal"
+import { Client } from "./client"
 import {
   Config,
   WidgetEnvironment,
   WidgetTicketStatus,
   WidgetTicketType,
-} from "../types"
-import { Client } from "./client"
+} from "./types"
 
 export type UpdateTicketRequest = {
   text: string

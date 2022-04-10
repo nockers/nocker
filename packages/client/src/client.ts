@@ -1,5 +1,5 @@
 import { captureException } from "@sentry/minimal"
-import { Config, WidgetEnvironment } from "../types"
+import { Config, WidgetEnvironment } from "./types"
 
 export class Client {
   readonly environment: WidgetEnvironment
@@ -13,7 +13,7 @@ export class Client {
 
     this.environment = config.environment ?? "PRODUCTION"
 
-    this.baseURL = config.baseURL ?? "https://Knockr.app/api"
+    this.baseURL = config.baseURL ?? "https://knockr.app/api"
   }
 
   async post<T, U>(props: { url: string; data: T }): Promise<U | Error> {

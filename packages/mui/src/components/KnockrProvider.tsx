@@ -1,9 +1,8 @@
+import { Config, LoginResponse } from "@knockr/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useEffect, useState } from "react"
-import { LoginResponse } from "../client"
 import { ConfigContext, WidgetContext } from "../contexts"
 import { useClient } from "../hooks"
-import { Config } from "../types"
 
 type Props = {
   config: Config

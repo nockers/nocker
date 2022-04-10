@@ -14,6 +14,7 @@
     "preview": "yarn workspace @knockr/mui preview",
     "www": "serve www -l 1234",
     "publish:mui": "yarn workspace @knockr/mui publish --access=public",
+    "publish:client": "yarn workspace @knockr/client publish --access=public",
     "lint": "yarn workspace @knockr/mui tsc"
   },
   "workspaces": {

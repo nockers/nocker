@@ -1,7 +1,6 @@
+import { Config, Knockr } from "@knockr/client"
 import { useContext } from "react"
-import { Knockr } from "../client"
-import { ConfigContext } from "../contexts/config"
-import { Config } from "../types"
+import { ConfigContext } from "../contexts"
 
 export const useClient = (defaultConfig?: Config) => {
   const config = useContext(ConfigContext)

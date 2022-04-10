@@ -1,6 +1,6 @@
 {
   "name": "@knockr/mui",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -26,11 +26,13 @@
   "devDependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@knockr/client": "file:../../client",
     "@mui/icons-material": "^5.5.1",
     "@mui/lab": "^5.0.0-alpha.74",
     "@mui/material": "^5.5.2"
   },
   "dependencies": {
+    "@knockr/client": "^0.1.0",
     "html2canvas": "^1.4.1"
   }
 }

@@ -1,5 +1,5 @@
+import type { WidgetRoot } from "@knockr/client"
 import { createContext } from "react"
-import type { WidgetRoot } from "../types"
 
 export const WidgetContext = createContext<WidgetRoot>({
   projectId: "xxxxxxxxxxxxxxxxxxxxx",

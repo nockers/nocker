@@ -2,7 +2,7 @@ import { Box, Button, Paper, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import html2canvas from "html2canvas"
 import React, { useEffect, useRef, useState, VFC } from "react"
-import { useResize } from "../hooks/useResize"
+import { useResize } from "../hooks"
 import { KnockrBackdrop } from "./KnockrBackdrop"
 import { KnockrCanvas } from "./KnockrCanvas"
 

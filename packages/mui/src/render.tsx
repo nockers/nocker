@@ -1,12 +1,12 @@
+import { WidgetEnvironment } from "@knockr/client"
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
+import { captureException, init } from "@sentry/browser"
 import React from "react"
 import reactDOM from "react-dom"
 import { KnockrFab } from "./components/KnockrFab"
 import { KnockrProvider } from "./components/KnockrProvider"
-import { WidgetEnvironment } from "./types"
 import { createConfig } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
-import { captureException, init } from "@sentry/browser"
 
 type Props = {
   projectId: string

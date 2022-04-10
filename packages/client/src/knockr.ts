@@ -1,8 +1,7 @@
-import { captureException } from "@sentry/minimal"
-import { Config, WidgetCustomer, WidgetEnvironment, WidgetHelp } from "../types"
 import { Client } from "./client"
 import { Ticket } from "./ticket"
 import { Tickets } from "./tickets"
+import { Config, WidgetCustomer, WidgetEnvironment, WidgetHelp } from "./types"
 
 export type LoginRequest = {
   environment: WidgetEnvironment

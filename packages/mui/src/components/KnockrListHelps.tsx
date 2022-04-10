@@ -1,6 +1,6 @@
+import { WidgetHelp } from "@knockr/client"
 import { Divider, List, ListItemButton, ListItemText } from "@mui/material"
 import React, { Fragment, VFC } from "react"
-import { WidgetHelp } from ".."
 
 type Props = {
   title?: string
