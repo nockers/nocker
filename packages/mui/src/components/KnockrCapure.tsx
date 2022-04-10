@@ -99,20 +99,10 @@ export const KnockrCapure: VFC<Props> = (props) => {
         >
           <Box sx={{ padding: 1 }}>
             <Stack direction={"row"} justifyContent={"flex-end"} spacing={1}>
-              <Button
-                variant={"text"}
-                size={"small"}
-                onClick={onCancel}
-                sx={{ pt: 1 }}
-              >
+              <Button variant={"text"} size={"small"} onClick={onCancel}>
                 {"キャンセル"}
               </Button>
-              <Button
-                variant={"contained"}
-                size={"small"}
-                onClick={onCapture}
-                sx={{ pt: 1 }}
-              >
+              <Button variant={"contained"} size={"small"} onClick={onCapture}>
                 {"完了"}
               </Button>
             </Stack>
