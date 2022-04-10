@@ -9,7 +9,7 @@ type Props = {
 export const createConfig = (props: Props = {}): Config => {
   return {
     projectId: props.projectId ?? "xxxxxxxxxxxxxxxxxxxxx",
-    baseURL: props.baseURL ?? "https://Knockr.app/api",
+    baseURL: props.baseURL ?? "https://knockr.app/api",
     environment: props.environment ?? "PRODUCTION",
   }
 }

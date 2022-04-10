@@ -21,9 +21,7 @@
     "@mui/lab": "^5.0.0-alpha.74",
     "@mui/material": "^5.5.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@knockr/client": "^0.1.1",
-    "html2canvas": "^1.4.1"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.8.2",
