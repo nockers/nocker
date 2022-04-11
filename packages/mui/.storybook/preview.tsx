@@ -1,8 +1,8 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material"
+import { init } from "@sentry/browser"
 import { Story } from "@storybook/react"
 import { KnockrProvider } from "../src/components/KnockrProvider"
 import { createConfig, createDefaultTheme } from "../src/utils"
-import { init } from "@sentry/browser"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -36,8 +36,6 @@ const withProvider = (Story: Story) => {
   const defaultTheme = createDefaultTheme("light")
 
   const theme = createTheme(defaultTheme)
-
-  console.log(process.env.STORYBOOK_LOCALHOST)
 
   const baseURL =
     process.env.STORYBOOK_LOCALHOST === "true"
