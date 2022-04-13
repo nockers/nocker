@@ -1,3 +1,4 @@
+import { WidgetGrade } from "@knockr/client"
 import {
   Collapse,
   Fade,
@@ -29,9 +30,7 @@ export const KnockrCardEmotion: VFC<Props> = (props) => {
 
   const [formText, setFormText] = useState("")
 
-  const [emotions, setEmotions] = useState<(0 | 1 | 2 | 3 | 4)[]>([
-    0, 1, 2, 3, 4,
-  ])
+  const [emotions, setEmotions] = useState<WidgetGrade[]>([0, 1, 2, 3, 4])
 
   const [selectedEmotion = null] = emotions.length === 1 ? emotions : []
 
@@ -47,10 +46,11 @@ export const KnockrCardEmotion: VFC<Props> = (props) => {
 
   const onSubmit = async () => {
     try {
-      await client.tickets().create({
-        type: null,
-        text: formText,
-        imageText: null,
+      const [emotion] = emotions
+      await client.emotions().create({
+        path: "xxxx",
+        grade: emotion,
+        ticketId: null,
       })
       setFormText("")
     } catch (error) {
@@ -58,7 +58,7 @@ export const KnockrCardEmotion: VFC<Props> = (props) => {
     }
   }
 
-  const onClick = (emotion: 0 | 1 | 2 | 3 | 4) => {
+  const onClick = (emotion: WidgetGrade) => {
     setEmotions([emotion])
 
     if (typeof props.onSubmit !== "undefined") {

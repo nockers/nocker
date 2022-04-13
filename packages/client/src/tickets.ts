@@ -1,25 +1,15 @@
 import { Client } from "./client"
-import {
-  Config,
-  WidgetEnvironment,
-  WidgetTicketStatus,
-  WidgetTicketType,
-} from "./types"
+import { Config, WidgetTicket } from "./types"
 
 export type CreateTicketRequest = {
-  text: string
+  path: string
   type: string | null
+  text: string
   imageText: string | null
+  emotionId: string | null
 }
 
-export type CreateTicketResponse = {
-  id: string
-  environment: WidgetEnvironment
-  type: WidgetTicketType | null
-  status: WidgetTicketStatus
-  text: string
-  helpId: string | null
-}
+export type CreateTicketResponse = WidgetTicket
 
 export class Tickets extends Client {
   constructor(config: Config) {

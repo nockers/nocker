@@ -26,9 +26,11 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
   const onCreate = async () => {
     try {
       await client.tickets().create({
+        path: "xxxx",
         type: null,
         text: formText,
-        imageText: formImageText,
+        imageText: null,
+        emotionId: null,
       })
       setFormText("")
       setFormImageText(null)
