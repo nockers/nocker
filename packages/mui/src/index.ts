@@ -1,7 +1,7 @@
 export * from "@knockr/client"
+export { KnockrCard as KnockrStatic } from "./components/KnockrCard"
 export { KnockrFab } from "./components/KnockrFab"
 export { KnockrProvider } from "./components/KnockrProvider"
-export { KnockrStatic } from "./components/KnockrStatic"
 export * from "./contexts"
 export * from "./hooks"
 export { render } from "./render"

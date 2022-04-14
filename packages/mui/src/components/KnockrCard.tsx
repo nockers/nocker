@@ -1,18 +1,20 @@
-import { WidgetHelp } from "@knockr/client"
-import SearchIcon from "@mui/icons-material/SearchRounded"
-import { Box, Divider, InputBase, Paper, Stack } from "@mui/material"
+import { Divider, Paper, Stack, Typography } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { useState, VFC } from "react"
+import React, { useContext, useState, VFC } from "react"
+import { WidgetContext } from "../contexts"
 import { useClient } from "../hooks"
+import { KnockrBoxEmotion } from "./KnockrBoxEmotion"
+import { KnockrBoxHelps } from "./KnockrBoxHelps"
 import { KnockrCapure } from "./KnockrCapure"
 import { KnockrFormTicket } from "./KnockrFormTicket"
-import { KnockrListHelps } from "./KnockrListHelps"
 
 type Props = {
-  helps: WidgetHelp[]
+  hasHelps: boolean
 }
 
-export const KnockrStaticCard: VFC<Props> = (props) => {
+export const KnockrCard: VFC<Props> = (props) => {
+  const widget = useContext(WidgetContext)
+
   const client = useClient()
 
   const [isOpenCapture, openCapture] = useState(false)
@@ -54,37 +56,26 @@ export const KnockrStaticCard: VFC<Props> = (props) => {
     openCapture(false)
   }
 
-  const hasHelps = 0 < props.helps.length
+  const hasHelps = props.hasHelps && 0 < widget.helps.length
 
   return (
     <>
       <Paper sx={{ width: (theme) => theme.spacing(40) }}>
         <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
+          <Stack spacing={1} sx={{ p: 2 }}>
+            <Typography fontSize={14} color={"text.secondary"}>
+              {"このページはお役に立ちましたか？"}
+            </Typography>
+            <KnockrBoxEmotion />
+          </Stack>
+          <Divider />
           <KnockrFormTicket
             onChangeText={onChangeText}
             onOpenCapture={onOpenCapture}
             onSubmit={onCreate}
             text={formText}
           />
-          {hasHelps && <Divider />}
-          {hasHelps && (
-            <Stack>
-              <Box sx={{ p: 1 }}></Box>
-              <Stack
-                direction={"row"}
-                alignItems={"center"}
-                spacing={1}
-                sx={{ px: 2 }}
-              >
-                <SearchIcon fontSize={"small"} />
-                <InputBase
-                  sx={{ flex: 1 }}
-                  placeholder={"何かお困りですか？"}
-                />
-              </Stack>
-              <KnockrListHelps helps={props.helps} />
-            </Stack>
-          )}
+          {hasHelps && <KnockrBoxHelps helps={widget.helps} />}
         </Stack>
       </Paper>
       {isOpenCapture && (

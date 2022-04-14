@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
+import { KnockrCard } from "../components/KnockrCard"
 import { KnockrCardEmotion } from "../components/KnockrCardEmotion"
-import { KnockrStatic } from "../components/KnockrStatic"
 
-const meta: ComponentMeta<typeof KnockrStatic> = {
+const meta: ComponentMeta<typeof KnockrCard> = {
   title: "KnockrCardEmotion",
   component: KnockrCardEmotion,
 }

@@ -60,11 +60,7 @@ export const KnockrCardEmotion: VFC<Props> = (props) => {
 
   const onClick = (emotion: WidgetGrade) => {
     setEmotions([emotion])
-
-    if (typeof props.onSubmit !== "undefined") {
-      props.onSubmit()
-    }
-
+    props.onSubmit?.()
     onSubmit()
   }
 

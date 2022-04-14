@@ -1,5 +1,5 @@
 import PhotoCamera from "@mui/icons-material/PhotoCameraRounded"
-import { Button, InputBase, Stack } from "@mui/material"
+import { Button, IconButton, InputBase, Stack } from "@mui/material"
 import React, { VFC } from "react"
 
 type Props = {
@@ -29,19 +29,14 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
         }}
       />
       <Stack direction={"row"} spacing={2}>
+        <IconButton onClick={props.onOpenCapture} size={"small"}>
+          <PhotoCamera />
+        </IconButton>
         <Button
           size={"small"}
           variant={"outlined"}
-          startIcon={<PhotoCamera />}
-          onClick={props.onOpenCapture}
-        >
-          {"スクショ"}
-        </Button>
-        <Button
-          size={"small"}
-          variant={"outlined"}
-          onClick={props.onSubmit}
           sx={{ flex: 1 }}
+          onClick={props.onSubmit}
         >
           {props.buttonText ?? defaultButtonText}
         </Button>

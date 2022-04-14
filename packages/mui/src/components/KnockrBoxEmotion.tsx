@@ -13,7 +13,7 @@ type Props = {
   onSubmit?(): void
 }
 
-export const KnockrEmotion: VFC<Props> = (props) => {
+export const KnockrBoxEmotion: VFC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const client = useClient()
