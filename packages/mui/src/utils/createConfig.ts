@@ -9,7 +9,7 @@ type Props = {
 export const createConfig = (props: Props): Config => {
   return {
     projectId: props.projectId,
-    baseURL: props.baseURL ?? "https://knocker.app/api",
     environment: props.environment ?? "PRODUCTION",
+    baseURL: props.baseURL ?? "https://knocker.app/api",
   }
 }

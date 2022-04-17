@@ -17,6 +17,7 @@ type Props = {
   theme?: ThemeOptions
   disableSentry?: boolean
   path?: string
+  hasHelps?: boolean
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
 }
@@ -46,6 +47,7 @@ export const renderCardTicket = (props: Props) => {
         <KnockrProvider config={config}>
           <KnockrCardTicket
             path={props.path}
+            hasHelps={props.hasHelps === true}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
           />

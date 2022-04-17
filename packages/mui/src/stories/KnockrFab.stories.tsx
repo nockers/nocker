@@ -30,6 +30,6 @@ Story.storyName = "KnockrFab"
 
 Story.args = {
   path: "/xxx/xxx",
-  hasHelps: true,
+  hasHelps: false,
   hasEmotion: true,
 }

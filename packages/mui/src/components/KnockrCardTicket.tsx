@@ -10,6 +10,7 @@ import { KnockrFormTicket } from "./KnockrFormTicket"
 
 type Props = {
   path?: string
+  hasHelps: boolean
   onSubmitted?(ticket: WidgetTicket): void
   onError?(error: Error): void
 }
@@ -62,7 +63,7 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
     openCapture(false)
   }
 
-  const hasHelps = 0 < widget.helps.length
+  const hasHelps = props.hasHelps && 0 < widget.helps.length
 
   return (
     <>

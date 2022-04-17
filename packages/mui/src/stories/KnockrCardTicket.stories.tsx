@@ -15,4 +15,7 @@ export const Story: ComponentStory<typeof KnockrCardTicket> = (args) => {
 
 Story.storyName = "KnockrCardTicket"
 
-Story.args = {}
+Story.args = {
+  path: "/xxx/xxx",
+  hasHelps: false,
+}

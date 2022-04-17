@@ -88,6 +88,8 @@ export const KnockrCard: VFC<Props> = (props) => {
 
   const hasHelps = props.hasHelps && 0 < widget.helps.length
 
+  console.log(emotionId)
+
   return (
     <>
       <Paper sx={{ width: (theme) => theme.spacing(40) }}>
