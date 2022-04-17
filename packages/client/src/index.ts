@@ -1,4 +1,6 @@
 export * from "./client"
+export * from "./emotion"
+export * from "./emotions"
 export * from "./knockr"
 export * from "./ticket"
 export * from "./tickets"

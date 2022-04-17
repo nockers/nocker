@@ -31,7 +31,10 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
 
   const [isDone, markAsDone] = useState(false)
 
+  const [isLoading, setLoading] = useState(false)
+
   const onCreateTicket = async () => {
+    setLoading(true)
     const ticket = await client.tickets().create({
       path: props.path ?? window.location.pathname,
       type: null,
@@ -42,10 +45,12 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
     if (ticket instanceof Error) {
       captureException(ticket)
       props.onError?.(ticket)
+      setLoading(false)
       return
     }
     markAsDone(true)
     props.onSubmitted?.(ticket)
+    setLoading(false)
   }
 
   const onChangeText = (text: string) => {
@@ -86,6 +91,7 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
                 buttonText={"送信する"}
                 text={formText}
                 hasImage={formImageText !== null}
+                isLoading={isLoading}
                 onChangeText={onChangeText}
                 onOpenCapture={onOpenCapture}
                 onSubmit={onCreateTicket}

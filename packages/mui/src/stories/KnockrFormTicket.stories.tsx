@@ -20,4 +20,5 @@ Story.args = {
   inputPlaceholder: "製品の改善についてご意見・ご要望をお聞かせください。",
   buttonText: "送信する",
   hasImage: false,
+  isLoading: false,
 }

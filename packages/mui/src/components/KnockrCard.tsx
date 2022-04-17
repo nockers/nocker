@@ -46,6 +46,8 @@ export const KnockrCard: VFC<Props> = (props) => {
 
   const [isDone, markAsDone] = useState(false)
 
+  const [isLoading, setLoading] = useState(false)
+
   const onCreateEmotion = async (emotionGrade: WidgetGrade) => {
     if (emotionGrade === null) return
     setEmotionGrade(emotionGrade)
@@ -76,9 +78,12 @@ export const KnockrCard: VFC<Props> = (props) => {
       props.onError?.(ticket)
       return
     }
-    // setTicketId(ticket.id)
     markAsDone(true)
     props.onSubmitted?.(ticket)
+    setLoading(false)
+    setTimeout(() => {
+      setEmotionGrade(null)
+    }, 1000)
   }
 
   const onChangeText = (text: string) => {
@@ -133,6 +138,7 @@ export const KnockrCard: VFC<Props> = (props) => {
                 buttonText={"送信する"}
                 text={formText}
                 hasImage={formImageText !== null}
+                isLoading={isLoading}
                 onChangeText={onChangeText}
                 onOpenCapture={onOpenCapture}
                 onSubmit={onCreateTicket}

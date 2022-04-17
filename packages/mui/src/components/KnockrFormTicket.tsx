@@ -9,6 +9,7 @@ type Props = {
   inputPlaceholder: string
   buttonText: string
   hasImage: boolean
+  isLoading: boolean
   onChangeText(text: string): void
   onSubmit(): Promise<void>
   onOpenCapture(): void
@@ -36,10 +37,11 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
         </IconButton>
         <LoadingButton
           size={"small"}
-          variant={"outlined"}
+          variant={"contained"}
           sx={{ flex: 1 }}
           onClick={props.onSubmit}
           disabled={props.text.length < 4}
+          loading={props.isLoading}
         >
           {props.buttonText}
         </LoadingButton>

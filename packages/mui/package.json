@@ -17,7 +17,7 @@
   "peerDependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
-    "@knockr/client": "^0.1.4",
+    "@knockr/client": "^0.1.5",
     "@mui/icons-material": "^5.5.1",
     "@mui/lab": "^5.0.0-alpha.74",
     "@mui/material": "^5.5.2",
@@ -34,7 +34,6 @@
   "dependencies": {
     "@knockr/client": "^0.1.1",
     "html2canvas": "^1.4.1",
-    "react-transition-group": "^4.4.2",
-    "react-query": "^3.34.19"
+    "react-transition-group": "^4.4.2"
   }
 }

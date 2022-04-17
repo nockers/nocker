@@ -41,6 +41,12 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
 
   const [isDone, markAsDone] = useState(false)
 
+  const [isLoading, setLoading] = useState(false)
+
+  // const createTicket = useMutation((props: CreateTicketRequest) => {
+  //   return client.tickets().create(props)
+  // })
+
   const onSubmitEmotion = async (emotionGrade: WidgetGrade) => {
     if (emotionGrade === null) return
     setEmotionGrade(emotionGrade)
@@ -59,6 +65,7 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
   }
 
   const onCreate = async () => {
+    setLoading(true)
     const ticket = await client.tickets().create({
       path: props.path ?? window.location.pathname,
       type: null,
@@ -69,10 +76,16 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
     if (ticket instanceof Error) {
       captureException(ticket)
       props.onError?.(ticket)
+      setLoading(false)
       return
     }
     // setTicketId(ticket.id)
     markAsDone(true)
+    props.onSubmitted?.(ticket)
+    setLoading(false)
+    setTimeout(() => {
+      setEmotionGrade(null)
+    }, 1000)
   }
 
   const onChangeText = (text: string) => {
@@ -141,6 +154,7 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
                 buttonText={"送信する"}
                 text={formText}
                 hasImage={formImageText !== null}
+                isLoading={isLoading}
                 onChangeText={onChangeText}
                 onOpenCapture={onOpenCapture}
                 onSubmit={onCreate}
