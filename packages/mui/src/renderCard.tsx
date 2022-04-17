@@ -3,35 +3,34 @@ import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import reactDOM from "react-dom"
-import { KnockrFab } from "./components/KnockrFab"
+import { KnockrCard } from "./components"
 import { KnockrProvider } from "./components/KnockrProvider"
 import { createConfig, initSentry } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
 
 type Props = {
+  element: HTMLElement
   projectId: string
-  baseURL?: string | null
-  environment?: WidgetEnvironment | null
-  colorMode?: "dark" | "light" | null
-  theme?: ThemeOptions | null
+  baseURL: string
+  environment: WidgetEnvironment
+  colorMode: "dark" | "light"
+  theme?: ThemeOptions
   disableSentry?: boolean
+  path?: string
+  hasHelps?: boolean
   onOpen?(): void
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
 }
 
-export const render = (props: Props) => {
+export const renderCard = (props: Props) => {
   if (props.disableSentry !== true) {
     initSentry()
   }
 
   try {
-    const container = document.createElement("div")
-
-    document.body.appendChild(container)
-
-    const defaultTheme = createDefaultTheme(props.colorMode ?? "light")
+    const defaultTheme = createDefaultTheme(props.colorMode)
 
     const theme = createTheme(props.theme ?? defaultTheme)
 
@@ -44,17 +43,15 @@ export const render = (props: Props) => {
     reactDOM.render(
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
-          <KnockrFab
-            hasHelps={false}
-            hasEmotion={true}
-            onOpen={props.onOpen}
-            onClose={props.onClose}
+          <KnockrCard
+            path={props.path}
+            hasHelps={props.hasHelps === true}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
           />
         </KnockrProvider>
       </ThemeProvider>,
-      container
+      props.element
     )
   } catch (error) {
     captureException(error)

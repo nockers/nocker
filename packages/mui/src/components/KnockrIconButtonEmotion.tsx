@@ -1,7 +1,7 @@
 import { WidgetGrade } from "@knockr/client"
 import { IconButton } from "@mui/material"
 import React, { VFC } from "react"
-import { useEmotionColor } from "../utils"
+import { useEmotionColor } from "../hooks"
 import { KnockrIconEmotion } from "./KnockrIconEmotion"
 
 type Props = {

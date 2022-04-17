@@ -3,25 +3,25 @@ import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import reactDOM from "react-dom"
-import { KnockrFab } from "./components/KnockrFab"
+import { KnockrEmotion } from "./components"
 import { KnockrProvider } from "./components/KnockrProvider"
 import { createConfig, initSentry } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
 
 type Props = {
+  element: HTMLElement
   projectId: string
-  baseURL?: string | null
-  environment?: WidgetEnvironment | null
-  colorMode?: "dark" | "light" | null
-  theme?: ThemeOptions | null
+  baseURL: string
+  environment: WidgetEnvironment
+  colorMode: "dark" | "light"
+  theme?: ThemeOptions
   disableSentry?: boolean
-  onOpen?(): void
-  onClose?(): void
+  path?: string
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
 }
 
-export const render = (props: Props) => {
+export const renderEmotion = (props: Props) => {
   if (props.disableSentry !== true) {
     initSentry()
   }
@@ -31,7 +31,7 @@ export const render = (props: Props) => {
 
     document.body.appendChild(container)
 
-    const defaultTheme = createDefaultTheme(props.colorMode ?? "light")
+    const defaultTheme = createDefaultTheme(props.colorMode)
 
     const theme = createTheme(props.theme ?? defaultTheme)
 
@@ -44,11 +44,8 @@ export const render = (props: Props) => {
     reactDOM.render(
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
-          <KnockrFab
-            hasHelps={false}
-            hasEmotion={true}
-            onOpen={props.onOpen}
-            onClose={props.onClose}
+          <KnockrEmotion
+            path={props.path}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
           />
