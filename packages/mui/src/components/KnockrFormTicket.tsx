@@ -1,11 +1,14 @@
+import PhotoCameraBackIcon from "@mui/icons-material/PhotoCameraBackRounded"
 import PhotoCamera from "@mui/icons-material/PhotoCameraRounded"
-import { Button, IconButton, InputBase, Stack } from "@mui/material"
+import { LoadingButton } from "@mui/lab"
+import { IconButton, InputBase, Stack } from "@mui/material"
 import React, { VFC } from "react"
 
 type Props = {
   text: string
   inputPlaceholder: string
   buttonText: string
+  hasImage: boolean
   onChangeText(text: string): void
   onSubmit(): Promise<void>
   onOpenCapture(): void
@@ -24,10 +27,14 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
         }}
       />
       <Stack direction={"row"} spacing={2}>
-        <IconButton onClick={props.onOpenCapture} size={"small"}>
-          <PhotoCamera />
+        <IconButton
+          onClick={props.onOpenCapture}
+          size={"small"}
+          color={props.hasImage ? "info" : "default"}
+        >
+          {props.hasImage ? <PhotoCameraBackIcon /> : <PhotoCamera />}
         </IconButton>
-        <Button
+        <LoadingButton
           size={"small"}
           variant={"outlined"}
           sx={{ flex: 1 }}
@@ -35,7 +42,7 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
           disabled={props.text.length < 4}
         >
           {props.buttonText}
-        </Button>
+        </LoadingButton>
       </Stack>
     </Stack>
   )

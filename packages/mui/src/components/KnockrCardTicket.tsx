@@ -1,5 +1,5 @@
 import { WidgetTicket } from "@knockr/client"
-import { Collapse, Divider, Paper, Stack } from "@mui/material"
+import { Box, Collapse, Divider, Fade, Paper, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { useContext, useState, VFC } from "react"
 import { WidgetContext } from "../contexts"
@@ -7,6 +7,7 @@ import { useClient } from "../hooks"
 import { KnockrCapure } from "./KnockrCapure"
 import { KnockrFormHelps } from "./KnockrFormHelps"
 import { KnockrFormTicket } from "./KnockrFormTicket"
+import { KnockrThanks } from "./KnockrThanks"
 
 type Props = {
   path?: string
@@ -28,7 +29,9 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
 
   const [isOpenHelpForm, openHelpForm] = useState(false)
 
-  const onCreate = async () => {
+  const [isDone, markAsDone] = useState(false)
+
+  const onCreateTicket = async () => {
     const ticket = await client.tickets().create({
       path: props.path ?? window.location.pathname,
       type: null,
@@ -41,8 +44,7 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
       props.onError?.(ticket)
       return
     }
-    setFormText("")
-    setFormImageText(null)
+    markAsDone(true)
     props.onSubmitted?.(ticket)
   }
 
@@ -63,23 +65,42 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
     openCapture(false)
   }
 
+  const onReset = () => {
+    setFormText("")
+    setFormImageText(null)
+    markAsDone(false)
+  }
+
   const hasHelps = props.hasHelps && 0 < widget.helps.length
 
   return (
     <>
-      <Paper sx={{ width: (theme) => theme.spacing(40) }}>
+      <Paper sx={{ width: (theme) => theme.spacing(40), overflow: "hidden" }}>
         <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
           <Collapse in={!isOpenHelpForm}>
-            <KnockrFormTicket
-              inputPlaceholder={
-                "製品の改善についてご意見・ご要望をお聞かせください。"
-              }
-              buttonText={"送信する"}
-              text={formText}
-              onChangeText={onChangeText}
-              onOpenCapture={onOpenCapture}
-              onSubmit={onCreate}
-            />
+            <Box sx={{ position: "relative" }}>
+              <KnockrFormTicket
+                inputPlaceholder={
+                  "製品の改善についてご意見・ご要望をお聞かせください。"
+                }
+                buttonText={"送信する"}
+                text={formText}
+                hasImage={formImageText !== null}
+                onChangeText={onChangeText}
+                onOpenCapture={onOpenCapture}
+                onSubmit={onCreateTicket}
+              />
+              <Fade in={isDone}>
+                <Box>
+                  <KnockrThanks
+                    text={
+                      "ありがとうございます。フィードバックを送信しました。"
+                    }
+                    onReset={onReset}
+                  />
+                </Box>
+              </Fade>
+            </Box>
           </Collapse>
           {hasHelps && (
             <Stack>

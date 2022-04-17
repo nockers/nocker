@@ -1,5 +1,5 @@
 import { WidgetEmotion, WidgetGrade, WidgetTicket } from "@knockr/client"
-import { Box, Card, Divider, Stack } from "@mui/material"
+import { Box, Card, Collapse, Divider, Fade, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { useContext, useState, VFC } from "react"
 import { WidgetContext } from "../contexts"
@@ -9,6 +9,7 @@ import { KnockrFloatingCardHeader } from "./KnockrFloatingCardHeader"
 import { KnockrFormEmotion } from "./KnockrFormEmotion"
 import { KnockrFormHelps } from "./KnockrFormHelps"
 import { KnockrFormTicket } from "./KnockrFormTicket"
+import { KnockrThanks } from "./KnockrThanks"
 
 type Props = {
   path?: string
@@ -37,6 +38,8 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
   const [ticketId, setTicketId] = useState<string | null>(null)
 
   const emotionText = useEmotionText(emotionGrade)
+
+  const [isDone, markAsDone] = useState(false)
 
   const onSubmitEmotion = async (emotionGrade: WidgetGrade) => {
     if (emotionGrade === null) return
@@ -68,9 +71,8 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
       props.onError?.(ticket)
       return
     }
-    setTicketId(ticket.id)
-    setFormText("")
-    setFormImageText(null)
+    // setTicketId(ticket.id)
+    markAsDone(true)
   }
 
   const onChangeText = (text: string) => {
@@ -90,39 +92,69 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
     openCapture(false)
   }
 
+  const onReset = () => {
+    setEmotionGrade(null)
+    setFormText("")
+    setFormImageText(null)
+    setEmotionid(null)
+    setTicketId(null)
+    markAsDone(false)
+  }
+
   const hasHelps = props.hasHelps && 0 < widget.helps.length
 
   return (
     <>
       {!isOpenCapture && (
-        <Card sx={{ width: (theme) => theme.spacing(40) }}>
-          <KnockrFloatingCardHeader
-            title={props.hasEmotion ? "どのような気分ですか？" : null}
-            onClose={props.onClose}
-          />
-          {props.hasEmotion === true && (
-            <Stack spacing={1} sx={{ px: 2, pb: 2 }}>
-              <KnockrFormEmotion
-                textMessage={emotionText}
-                emotionGrade={emotionGrade}
-                onSelect={onSubmitEmotion}
-              />
-            </Stack>
-          )}
+        <Card sx={{ width: (theme) => theme.spacing(40), overflow: "hidden" }}>
+          <Collapse in={!isDone}>
+            <KnockrFloatingCardHeader
+              title={props.hasEmotion ? "どのような気分ですか？" : null}
+              onClose={props.onClose}
+            />
+            {props.hasEmotion === true && (
+              <Stack spacing={1} sx={{ px: 2, pb: 2 }}>
+                <KnockrFormEmotion
+                  textMessage={emotionText}
+                  emotionGrade={emotionGrade}
+                  onSelect={onSubmitEmotion}
+                />
+              </Stack>
+            )}
+          </Collapse>
           <Stack
-            sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}
+            sx={{
+              height: hasHelps ? "24rem" : "auto",
+              overflowY: "auto",
+            }}
           >
-            <Box sx={{ backgroundColor: "rgba(0,0,0,0.1)" }}>
+            <Box
+              sx={{
+                position: "relative",
+                backgroundColor: "rgba(0,0,0,0.1)",
+              }}
+            >
               <KnockrFormTicket
                 inputPlaceholder={
                   "製品の改善についてご意見・ご要望をお聞かせください。"
                 }
                 buttonText={"送信する"}
                 text={formText}
+                hasImage={formImageText !== null}
                 onChangeText={onChangeText}
                 onOpenCapture={onOpenCapture}
                 onSubmit={onCreate}
               />
+              <Fade in={isDone}>
+                <Box>
+                  <KnockrThanks
+                    text={
+                      "ありがとうございます。フィードバックを送信しました。"
+                    }
+                    onReset={onReset}
+                  />
+                </Box>
+              </Fade>
             </Box>
             {hasHelps && <Divider />}
             {hasHelps && (

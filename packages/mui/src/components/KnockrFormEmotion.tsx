@@ -14,7 +14,10 @@ export const KnockrFormEmotion: VFC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   useEffect(() => {
-    if (props.emotionGrade === null) return
+    if (props.emotionGrade === null) {
+      openMessage(false)
+      return
+    }
     const id = setTimeout(() => {
       openMessage(true)
     }, 400)

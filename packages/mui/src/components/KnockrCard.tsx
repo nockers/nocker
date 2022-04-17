@@ -1,5 +1,13 @@
 import { WidgetEmotion, WidgetGrade, WidgetTicket } from "@knockr/client"
-import { Collapse, Divider, Paper, Stack, Typography } from "@mui/material"
+import {
+  Box,
+  Collapse,
+  Divider,
+  Fade,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { useContext, useState, VFC } from "react"
 import { WidgetContext } from "../contexts"
@@ -8,6 +16,7 @@ import { KnockrCapure } from "./KnockrCapure"
 import { KnockrFormEmotion } from "./KnockrFormEmotion"
 import { KnockrFormHelps } from "./KnockrFormHelps"
 import { KnockrFormTicket } from "./KnockrFormTicket"
+import { KnockrThanks } from "./KnockrThanks"
 
 type Props = {
   path?: string
@@ -35,7 +44,9 @@ export const KnockrCard: VFC<Props> = (props) => {
 
   const emotionText = useEmotionText(emotionGrade)
 
-  const onSubmitEmotion = async (emotionGrade: WidgetGrade) => {
+  const [isDone, markAsDone] = useState(false)
+
+  const onCreateEmotion = async (emotionGrade: WidgetGrade) => {
     if (emotionGrade === null) return
     setEmotionGrade(emotionGrade)
     const emotion = await client.emotions().create({
@@ -52,7 +63,7 @@ export const KnockrCard: VFC<Props> = (props) => {
     props.onSubmitted?.(emotion)
   }
 
-  const onCreate = async () => {
+  const onCreateTicket = async () => {
     const ticket = await client.tickets().create({
       path: props.path ?? window.location.pathname,
       type: null,
@@ -65,7 +76,8 @@ export const KnockrCard: VFC<Props> = (props) => {
       props.onError?.(ticket)
       return
     }
-    setTicketId(ticket.id)
+    // setTicketId(ticket.id)
+    markAsDone(true)
     props.onSubmitted?.(ticket)
   }
 
@@ -86,37 +98,57 @@ export const KnockrCard: VFC<Props> = (props) => {
     openCapture(false)
   }
 
-  const hasHelps = props.hasHelps && 0 < widget.helps.length
+  const onReset = () => {
+    setEmotionGrade(null)
+    setFormText("")
+    setFormImageText(null)
+    setEmotionid(null)
+    setTicketId(null)
+    markAsDone(false)
+  }
 
-  console.log(emotionId)
+  const hasHelps = props.hasHelps && 0 < widget.helps.length
 
   return (
     <>
-      <Paper sx={{ width: (theme) => theme.spacing(40) }}>
+      <Paper sx={{ width: (theme) => theme.spacing(40), overflow: "hidden" }}>
         <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
-          <Stack spacing={1} sx={{ p: 2 }}>
-            <Typography fontSize={14} color={"text.secondary"}>
-              {"どのような気分ですか？"}
-            </Typography>
-            <KnockrFormEmotion
-              textMessage={emotionText}
-              emotionGrade={emotionGrade}
-              onSelect={onSubmitEmotion}
-            />
-          </Stack>
-          <Collapse in={emotionId !== null}>
-            <Divider />
-            <KnockrFormTicket
-              inputPlaceholder={
-                "製品の改善についてご意見・ご要望をお聞かせください。"
-              }
-              buttonText={"送信する"}
-              text={formText}
-              onChangeText={onChangeText}
-              onOpenCapture={onOpenCapture}
-              onSubmit={onCreate}
-            />
-          </Collapse>
+          <Box sx={{ position: "relative" }}>
+            <Stack spacing={1} sx={{ p: 2 }}>
+              <Typography fontSize={14} color={"text.secondary"}>
+                {"どのような気分ですか？"}
+              </Typography>
+              <KnockrFormEmotion
+                textMessage={emotionText}
+                emotionGrade={emotionGrade}
+                onSelect={onCreateEmotion}
+              />
+            </Stack>
+            <Collapse in={emotionId !== null}>
+              <Divider />
+              <KnockrFormTicket
+                inputPlaceholder={
+                  "製品の改善についてご意見・ご要望をお聞かせください。"
+                }
+                buttonText={"送信する"}
+                text={formText}
+                hasImage={formImageText !== null}
+                onChangeText={onChangeText}
+                onOpenCapture={onOpenCapture}
+                onSubmit={onCreateTicket}
+              />
+              <Fade in={isDone}>
+                <Box>
+                  <KnockrThanks
+                    text={
+                      "ありがとうございます。フィードバックを送信しました。"
+                    }
+                    onReset={onReset}
+                  />
+                </Box>
+              </Fade>
+            </Collapse>
+          </Box>
           {hasHelps && (
             <KnockrFormHelps
               inputPlaceholder={"何かお困りですか？"}
