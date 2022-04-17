@@ -10,11 +10,14 @@ type Props = {
 
 export const KnockrListHelps: VFC<Props> = (props) => {
   return (
-    <List>
+    <List dense>
       {props.helps.map((help) => (
         <Fragment key={help.id}>
           <ListItemButton>
-            <ListItemText primary={help.title} />
+            <ListItemText
+              primary={help.title}
+              primaryTypographyProps={{ sx: { fontSize: 14 } }}
+            />
           </ListItemButton>
           <Divider />
         </Fragment>

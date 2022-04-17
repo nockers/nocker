@@ -1,110 +1,49 @@
-import { WidgetGrade } from "@knockr/client"
-import {
-  Collapse,
-  Fade,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material"
+import { WidgetEmotion, WidgetGrade } from "@knockr/client"
+import { Paper, Stack, Typography } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { useContext, useEffect, useState, VFC } from "react"
-import { TransitionGroup } from "react-transition-group"
-import { WidgetContext } from "../contexts"
+import React, { useState, VFC } from "react"
 import { useClient } from "../hooks"
-import { toEmotionColor } from "../utils"
-import { KnockrIconEmotion } from "./KnockrIconEmotion"
+import { KnockrFormEmotion } from "./KnockrFormEmotion"
 
 type Props = {
-  message?: string
-  endMessage?: string
-  onSubmit?(): void
+  path?: string
+  onSubmitted?(emotion: WidgetEmotion): void
+  onError?(error: Error): void
 }
 
 export const KnockrCardEmotion: VFC<Props> = (props) => {
-  const widget = useContext(WidgetContext)
-
   const client = useClient()
 
-  const [isOpenMessage, openMessage] = useState(false)
+  const [grade, setGrade] = useState<WidgetGrade | null>(null)
 
-  const [formText, setFormText] = useState("")
-
-  const [emotions, setEmotions] = useState<WidgetGrade[]>([0, 1, 2, 3, 4])
-
-  const [selectedEmotion = null] = emotions.length === 1 ? emotions : []
-
-  useEffect(() => {
-    if (emotions.length !== 1) return
-    const id = setTimeout(() => {
-      openMessage(true)
-    }, 400)
-    return () => {
-      clearTimeout(id)
+  const onSubmit = async (grade: WidgetGrade) => {
+    setGrade(grade)
+    const emotion = await client.emotions().create({
+      path: props.path ?? window.location.pathname,
+      grade,
+      ticketId: null,
+    })
+    if (emotion instanceof Error) {
+      captureException(emotion)
+      props.onError?.(emotion)
+      return
     }
-  }, [emotions])
-
-  const onSubmit = async () => {
-    try {
-      const [emotion] = emotions
-      await client.emotions().create({
-        path: "xxxx",
-        grade: emotion,
-        ticketId: null,
-      })
-      setFormText("")
-    } catch (error) {
-      captureException(error)
-    }
-  }
-
-  const onClick = (emotion: WidgetGrade) => {
-    setEmotions([emotion])
-    props.onSubmit?.()
-    onSubmit()
+    props.onSubmitted?.(emotion)
   }
 
   return (
-    <Paper sx={{ p: 2 }}>
-      <Stack spacing={1}>
+    <Paper>
+      <Stack spacing={1} sx={{ p: 2 }}>
         <Typography fontSize={14} color={"text.secondary"}>
-          {props.message ?? "このページはお役に立ちましたか？"}
+          {"どのような気分ですか？"}
         </Typography>
-        <Stack direction={"row"} alignItems={"center"}>
-          <TransitionGroup>
-            {emotions.map((emotion) => (
-              <Collapse
-                key={emotion}
-                orientation={"horizontal"}
-                sx={{
-                  display: "inline-block",
-                  verticalAlign: "top",
-                  mr: 1,
-                  height: "2.5rem",
-                  overflow: "hidden",
-                }}
-              >
-                <IconButton
-                  color={
-                    isOpenMessage ? toEmotionColor(selectedEmotion) : "default"
-                  }
-                  onClick={() => {
-                    onClick(emotion)
-                  }}
-                >
-                  <KnockrIconEmotion emotion={emotion} />
-                </IconButton>
-              </Collapse>
-            ))}
-          </TransitionGroup>
-          {isOpenMessage && (
-            <Fade in={isOpenMessage}>
-              <Typography>
-                {props.endMessage ?? "ありがとうございました！"}
-              </Typography>
-            </Fade>
-          )}
-        </Stack>
+        <KnockrFormEmotion
+          emotionGrade={grade}
+          textMessage={"回答ありがとうございます"}
+          onSelect={(grade) => {
+            onSubmit(grade)
+          }}
+        />
       </Stack>
     </Paper>
   )

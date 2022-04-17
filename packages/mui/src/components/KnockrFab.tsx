@@ -1,27 +1,44 @@
+import { WidgetEmotion, WidgetTicket } from "@knockr/client"
 import { Box, Grow } from "@mui/material"
-import React, { useContext, useState, VFC } from "react"
-import { WidgetContext } from "../contexts"
+import React, { useState, VFC } from "react"
 import { KnockrFloatingCard } from "./KnockrFloatingCard"
 import { KnockrFloatingTrigger } from "./KnockrFloatingTrigger"
 
-export const KnockrFab: VFC = () => {
-  const [isOpen, setOpen] = useState(false)
+type Props = {
+  path?: string
+  hasHelps: boolean
+  hasEmotion: boolean
+  onOpen?(): void
+  onClose?(): void
+  onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
+  onError?(error: Error): void
+}
 
-  const widget = useContext(WidgetContext)
+export const KnockrFab: VFC<Props> = (props) => {
+  const [isOpen, setOpen] = useState(false)
 
   const onClose = () => {
     setOpen(false)
+    props.onClose?.()
   }
 
   const onOpen = () => {
     setOpen(true)
+    props.onOpen?.()
   }
 
   return (
     <Box>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockrFloatingCard onClose={onClose} helps={widget.helps} />
+          <KnockrFloatingCard
+            path={props.path}
+            hasHelps={props.hasHelps}
+            hasEmotion={props.hasEmotion}
+            onClose={onClose}
+            onSubmitted={props.onSubmitted}
+            onError={props.onError}
+          />
         </Box>
       </Grow>
       <Grow in={!isOpen} unmountOnExit>

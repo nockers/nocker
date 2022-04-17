@@ -1,4 +1,4 @@
-export const toEmotionColor = (emotion: number | null) => {
+export const useEmotionColor = (emotion: number | null) => {
   if (emotion === null) {
     return "info"
   }

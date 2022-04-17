@@ -1,3 +1,4 @@
+import { WidgetGrade } from "@knockr/client"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfiedRounded"
 import SentimentNeutralIcon from "@mui/icons-material/SentimentNeutralRounded"
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfiedRounded"
@@ -6,27 +7,27 @@ import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfi
 import React, { VFC } from "react"
 
 type Props = {
-  emotion: 0 | 1 | 2 | 3 | 4
+  grade: WidgetGrade
 }
 
 export const KnockrIconEmotion: VFC<Props> = (props) => {
-  if (props.emotion === 0) {
+  if (props.grade === 0) {
     return <SentimentVeryDissatisfiedIcon />
   }
 
-  if (props.emotion === 1) {
+  if (props.grade === 1) {
     return <SentimentDissatisfiedIcon />
   }
 
-  if (props.emotion === 2) {
+  if (props.grade === 2) {
     return <SentimentNeutralIcon />
   }
 
-  if (props.emotion === 3) {
+  if (props.grade === 3) {
     return <SentimentSatisfiedIcon />
   }
 
-  if (props.emotion === 4) {
+  if (props.grade === 4) {
     return <SentimentVerySatisfiedIcon />
   }
 

@@ -1,9 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
-import { KnockrCard } from "../components/KnockrCard"
-import { KnockrCardEmotion } from "../components/KnockrCardEmotion"
+import { KnockrCardEmotion } from "../components"
 
-const meta: ComponentMeta<typeof KnockrCard> = {
+const meta: ComponentMeta<typeof KnockrCardEmotion> = {
   title: "KnockrCardEmotion",
   component: KnockrCardEmotion,
 }
@@ -17,6 +16,5 @@ export const Story: ComponentStory<typeof KnockrCardEmotion> = (args) => {
 Story.storyName = "KnockrCardEmotion"
 
 Story.args = {
-  message: "このページはお役に立ちましたか？",
-  endMessage: "ありがとうございました！",
+  path: "/xxx/xxx",
 }

@@ -1,8 +1,9 @@
 import CloseIcon from "@mui/icons-material/CloseRounded"
-import { IconButton, Paper, Stack } from "@mui/material"
+import { IconButton, Paper, Stack, Typography } from "@mui/material"
 import React, { VFC } from "react"
 
 type Props = {
+  title?: string | null
   onClose(): void
 }
 
@@ -12,10 +13,15 @@ export const KnockrFloatingCardHeader: VFC<Props> = (props) => {
       <Stack
         direction={"row"}
         alignItems={"center"}
-        justifyContent={"flex-end"}
+        justifyContent={"space-between"}
         spacing={2}
         sx={{ p: 1 }}
       >
+        <Stack sx={{ pl: 1 }}>
+          {typeof props.title === "string" && (
+            <Typography fontSize={14}>{props.title}</Typography>
+          )}
+        </Stack>
         <IconButton
           size={"small"}
           onClick={props.onClose}

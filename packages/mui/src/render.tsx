@@ -1,4 +1,4 @@
-import { WidgetEnvironment } from "@knockr/client"
+import { WidgetEmotion, WidgetEnvironment, WidgetTicket } from "@knockr/client"
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import { captureException, init } from "@sentry/browser"
 import React from "react"
@@ -15,6 +15,10 @@ type Props = {
   colorMode: "dark" | "light"
   theme?: ThemeOptions
   disableSentry?: boolean
+  onOpen?(): void
+  onClose?(): void
+  onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
+  onError?(error: Error): void
 }
 
 export const render = (props: Props) => {
@@ -50,7 +54,14 @@ export const render = (props: Props) => {
     reactDOM.render(
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
-          <KnockrFab />
+          <KnockrFab
+            hasHelps={false}
+            hasEmotion={true}
+            onOpen={props.onOpen}
+            onClose={props.onClose}
+            onSubmitted={props.onSubmitted}
+            onError={props.onError}
+          />
         </KnockrProvider>
       </ThemeProvider>,
       container

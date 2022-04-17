@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
-import { KnockrFloatingCard } from "../components/KnockrFloatingCard"
+import { KnockrFloatingCard } from "../components"
 
 const meta: ComponentMeta<typeof KnockrFloatingCard> = {
   title: "KnockrFloatingCard",
@@ -17,5 +17,7 @@ export const Story: ComponentStory<typeof KnockrFloatingCard> = (args) => {
 Story.storyName = "KnockrFloatingCard"
 
 Story.args = {
-  helps: [],
+  path: "/xxx/xxx",
+  hasHelps: false,
+  hasEmotion: true,
 }

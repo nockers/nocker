@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
-import { KnockrCapure } from "../components/KnockrCapure"
+import { KnockrCapure } from "../components"
 
 const meta: ComponentMeta<typeof KnockrCapure> = {
   title: "KnockrCapure",

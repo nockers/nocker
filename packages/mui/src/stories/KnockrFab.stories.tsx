@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
-import { KnockrFab } from "../components/KnockrFab"
+import { KnockrFab } from "../components"
 
 const meta: ComponentMeta<typeof KnockrFab> = {
   title: "KnockrFab",
@@ -28,4 +28,8 @@ export const Story: ComponentStory<typeof KnockrFab> = (args) => {
 
 Story.storyName = "KnockrFab"
 
-Story.args = {}
+Story.args = {
+  path: "/xxx/xxx",
+  hasHelps: true,
+  hasEmotion: true,
+}

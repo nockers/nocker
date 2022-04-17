@@ -1,16 +1,12 @@
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesomeRounded"
 import { Box, Fab } from "@mui/material"
-import React, { useEffect, useState, VFC } from "react"
+import React, { VFC } from "react"
 
 type Props = {
   onOpen(): void
 }
 
 export const KnockrFloatingTrigger: VFC<Props> = (props) => {
-  const [isLoading, setLoading] = useState(true)
-
-  useEffect(() => {}, [])
-
   return (
     <Fab
       variant={"extended"}
