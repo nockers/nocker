@@ -2,6 +2,6 @@ import { WidgetEnvironment } from "./widgetEnvironment"
 
 export type Config = {
   projectId: string
-  baseURL: string
-  environment: WidgetEnvironment
+  environment?: WidgetEnvironment | null
+  baseURL?: string | null
 }

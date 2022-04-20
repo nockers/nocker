@@ -2,9 +2,10 @@ import { Client } from "./client"
 import { Config, WidgetEmotion, WidgetGrade } from "./types"
 
 export type CreateEmotionRequest = {
-  path: string
-  grade: WidgetGrade | null
-  ticketId: string | null
+  grade?: WidgetGrade | null
+  pagePath: string
+  pageTitle?: string | null
+  ticketId?: string | null
 }
 
 export type CreateEmotionResponse = WidgetEmotion

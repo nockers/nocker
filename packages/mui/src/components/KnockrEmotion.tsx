@@ -5,7 +5,7 @@ import { useClient } from "../hooks"
 import { KnockrFormEmotion } from "./KnockrFormEmotion"
 
 type Props = {
-  path?: string
+  pagePath?: string
   onSubmitted?(emotion: WidgetEmotion): void
   onError?(error: Error): void
 }
@@ -18,7 +18,7 @@ export const KnockrEmotion: VFC<Props> = (props) => {
   const onSubmit = async (grade: WidgetGrade) => {
     setGrade(grade)
     const emotion = await client.emotions().create({
-      path: props.path ?? window.location.pathname,
+      pagePath: props.pagePath ?? window.location.pathname,
       grade,
       ticketId: null,
     })

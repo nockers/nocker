@@ -16,5 +16,5 @@ export const Story: ComponentStory<typeof KnockrEmotion> = (args) => {
 Story.storyName = "KnockrEmotion"
 
 Story.args = {
-  path: "/xxx/xxx",
+  pagePath: "/xxx/xxx",
 }

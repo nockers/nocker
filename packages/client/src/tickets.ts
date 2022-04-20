@@ -2,11 +2,15 @@ import { Client } from "./client"
 import { Config, WidgetTicket } from "./types"
 
 export type CreateTicketRequest = {
-  path: string
-  type: string | null
+  type?: string | null
   text: string
-  imageText: string | null
-  emotionId: string | null
+  imageText?: string | null
+  pagePath: string
+  pageTitle?: string | null
+  appPlatform?: string | null
+  appVersion?: string | null
+  appDevice?: string | null
+  emotionId?: string | null
 }
 
 export type CreateTicketResponse = WidgetTicket

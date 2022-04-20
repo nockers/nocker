@@ -3,10 +3,11 @@ import { WidgetGrade } from "./widgetGrade"
 
 export type WidgetEmotion = {
   id: string
-  projectId: string
   environment: WidgetEnvironment
+  grade: WidgetGrade
+  pagePath: string
+  pageTitle: string | null
+  projectId: string
   customerId: string
   ticketId: string | null
-  grade: WidgetGrade
-  path: string | null
 }

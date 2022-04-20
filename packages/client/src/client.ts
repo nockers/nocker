@@ -2,21 +2,31 @@ import { captureException } from "@sentry/minimal"
 import { Config, WidgetEnvironment } from "./types"
 
 export class Client {
+  /**
+   * 環境
+   */
   readonly environment: WidgetEnvironment
 
+  /**
+   * プロジェクトID
+   */
   readonly projectId: string
 
+  /**
+   * URL
+   */
   readonly baseURL: string
 
   constructor(config: Config) {
     this.projectId = config.projectId
-
     this.environment = config.environment ?? "PRODUCTION"
-
     this.baseURL = config.baseURL ?? "https://knocker.app/api"
   }
 
-  async post<T, U>(props: { url: string; data: T }): Promise<U | Error> {
+  protected async post<T, U>(props: {
+    url: string
+    data: T
+  }): Promise<U | Error> {
     try {
       const response = await fetch(props.url, {
         method: "POST",
@@ -40,7 +50,7 @@ export class Client {
     }
   }
 
-  async get<T>(props: { url: string }): Promise<T | Error> {
+  protected async get<T>(props: { url: string }): Promise<T | Error> {
     try {
       const response = await fetch(props.url, {
         method: "GET",
@@ -63,7 +73,10 @@ export class Client {
     }
   }
 
-  async put<T, U>(props: { url: string; data: T }): Promise<U | Error> {
+  protected async put<T, U>(props: {
+    url: string
+    data: T
+  }): Promise<U | Error> {
     try {
       const response = await fetch(props.url, {
         method: "PUT",

@@ -17,7 +17,7 @@ export const Story: ComponentStory<typeof KnockrFloatingCard> = (args) => {
 Story.storyName = "KnockrFloatingCard"
 
 Story.args = {
-  path: "/xxx/xxx",
+  pagePath: "/xxx/xxx",
   hasHelps: false,
   hasEmotion: true,
 }

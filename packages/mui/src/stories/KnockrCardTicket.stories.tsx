@@ -16,6 +16,9 @@ export const Story: ComponentStory<typeof KnockrCardTicket> = (args) => {
 Story.storyName = "KnockrCardTicket"
 
 Story.args = {
-  path: "/xxx/xxx",
+  pagePath: "/xxx/xxx",
+  formTicketInputPlaceholder:
+    "製品の改善についてご意見・ご要望をお聞かせください。",
+  formTicketButtonText: "送信する",
   hasHelps: false,
 }

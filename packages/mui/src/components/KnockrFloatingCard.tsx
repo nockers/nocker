@@ -12,7 +12,7 @@ import { KnockrFormTicket } from "./KnockrFormTicket"
 import { KnockrThanks } from "./KnockrThanks"
 
 type Props = {
-  path?: string
+  pagePath?: string
   hasHelps: boolean
   hasEmotion: boolean
   onClose(): void
@@ -51,7 +51,7 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
     if (emotionGrade === null) return
     setEmotionGrade(emotionGrade)
     const emotion = await client.emotions().create({
-      path: props.path ?? window.location.pathname,
+      pagePath: props.pagePath ?? window.location.pathname,
       grade: emotionGrade,
       ticketId,
     })
@@ -67,7 +67,7 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
   const onCreate = async () => {
     setLoading(true)
     const ticket = await client.tickets().create({
-      path: props.path ?? window.location.pathname,
+      pagePath: props.pagePath ?? window.location.pathname,
       type: null,
       text: formText,
       imageText: formImageText,

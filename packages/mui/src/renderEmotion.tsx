@@ -45,7 +45,7 @@ export const renderEmotion = (props: Props) => {
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
           <KnockrEmotion
-            path={props.path}
+            pagePath={props.path}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
           />

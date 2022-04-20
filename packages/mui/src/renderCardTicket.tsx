@@ -46,7 +46,7 @@ export const renderCardTicket = (props: Props) => {
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
           <KnockrCardTicket
-            path={props.path}
+            pagePath={props.path}
             hasHelps={props.hasHelps === true}
             onSubmitted={props.onSubmitted}
             onError={props.onError}

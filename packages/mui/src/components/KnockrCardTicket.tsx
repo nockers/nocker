@@ -10,7 +10,11 @@ import { KnockrFormTicket } from "./KnockrFormTicket"
 import { KnockrThanks } from "./KnockrThanks"
 
 type Props = {
-  path?: string
+  pagePath?: string | null
+  formTicketInputPlaceholder?: string | null
+  formTicketButtonText?: string | null
+  formTicketTextThanks?: string | null
+  formHelpInputPlaceholder?: string | null
   hasHelps: boolean
   onSubmitted?(ticket: WidgetTicket): void
   onError?(error: Error): void
@@ -36,7 +40,7 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
   const onCreateTicket = async () => {
     setLoading(true)
     const ticket = await client.tickets().create({
-      path: props.path ?? window.location.pathname,
+      pagePath: props.pagePath ?? window.location.pathname,
       type: null,
       text: formText,
       imageText: formImageText,
@@ -86,9 +90,10 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
             <Box sx={{ position: "relative" }}>
               <KnockrFormTicket
                 inputPlaceholder={
+                  props.formTicketInputPlaceholder ??
                   "製品の改善についてご意見・ご要望をお聞かせください。"
                 }
-                buttonText={"送信する"}
+                buttonText={props.formTicketButtonText ?? "送信する"}
                 text={formText}
                 hasImage={formImageText !== null}
                 isLoading={isLoading}
@@ -100,6 +105,7 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
                 <Box>
                   <KnockrThanks
                     text={
+                      props.formTicketTextThanks ??
                       "ありがとうございます。フィードバックを送信しました。"
                     }
                     onReset={onReset}
@@ -112,7 +118,9 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
             <Stack>
               {!isOpenHelpForm && <Divider />}
               <KnockrFormHelps
-                inputPlaceholder={"何かお困りですか？"}
+                inputPlaceholder={
+                  props.formHelpInputPlaceholder ?? "何かお困りですか？"
+                }
                 helps={widget.helps}
                 onOpen={() => {
                   openHelpForm(true)

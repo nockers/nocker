@@ -1,12 +1,14 @@
 {
   "name": "@knockr/client",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch"
   }
 }

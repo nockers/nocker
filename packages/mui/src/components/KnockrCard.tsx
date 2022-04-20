@@ -19,7 +19,7 @@ import { KnockrFormTicket } from "./KnockrFormTicket"
 import { KnockrThanks } from "./KnockrThanks"
 
 type Props = {
-  path?: string
+  pagePath?: string
   hasHelps: boolean
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
@@ -52,7 +52,7 @@ export const KnockrCard: VFC<Props> = (props) => {
     if (emotionGrade === null) return
     setEmotionGrade(emotionGrade)
     const emotion = await client.emotions().create({
-      path: props.path ?? window.location.pathname,
+      pagePath: props.pagePath ?? window.location.pathname,
       grade: emotionGrade,
       ticketId,
     })
@@ -67,7 +67,7 @@ export const KnockrCard: VFC<Props> = (props) => {
 
   const onCreateTicket = async () => {
     const ticket = await client.tickets().create({
-      path: props.path ?? window.location.pathname,
+      pagePath: props.pagePath ?? window.location.pathname,
       type: null,
       text: formText,
       imageText: formImageText,
