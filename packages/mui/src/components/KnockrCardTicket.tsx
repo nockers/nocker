@@ -87,7 +87,7 @@ export const KnockrCardTicket: VFC<Props> = (props) => {
       <Paper sx={{ width: (theme) => theme.spacing(40), overflow: "hidden" }}>
         <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
           <Collapse in={!isOpenHelpForm}>
-            <Box sx={{ position: "relative" }}>
+            <Box sx={{ position: "relative", overflow: "hidden" }}>
               <KnockrFormTicket
                 inputPlaceholder={
                   props.formTicketInputPlaceholder ??

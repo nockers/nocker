@@ -28,7 +28,7 @@ export const KnockrFab: VFC<Props> = (props) => {
   }
 
   return (
-    <Box>
+    <>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
           <KnockrFloatingCard
@@ -46,6 +46,6 @@ export const KnockrFab: VFC<Props> = (props) => {
           <KnockrFloatingTrigger onOpen={onOpen} />
         </Box>
       </Grow>
-    </Box>
+    </>
   )
 }
