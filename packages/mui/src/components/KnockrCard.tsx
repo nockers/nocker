@@ -118,7 +118,7 @@ export const KnockrCard: VFC<Props> = (props) => {
     <>
       <Paper sx={{ width: (theme) => theme.spacing(40), overflow: "hidden" }}>
         <Stack sx={{ height: hasHelps ? "24rem" : "auto", overflowY: "auto" }}>
-          <Box sx={{ position: "relative" }}>
+          <Box sx={{ position: "relative", overflow: "hidden" }}>
             <Stack spacing={1} sx={{ p: 2 }}>
               <Typography fontSize={14} color={"text.secondary"}>
                 {"どのような気分ですか？"}
