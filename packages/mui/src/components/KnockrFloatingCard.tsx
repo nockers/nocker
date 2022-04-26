@@ -138,7 +138,7 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
           <Stack
             sx={{
               height: hasHelps ? "24rem" : "auto",
-              overflowY: "auto",
+              overflowY: hasHelps ? "auto" : "hidden",
             }}
           >
             <Box
