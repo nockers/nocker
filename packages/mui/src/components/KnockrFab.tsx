@@ -12,6 +12,7 @@ type Props = {
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
+  onDone?(): void
 }
 
 export const KnockrFab: VFC<Props> = (props) => {
@@ -27,9 +28,9 @@ export const KnockrFab: VFC<Props> = (props) => {
     props.onOpen?.()
   }
 
-  const onSubmitted = (ticket: WidgetTicket | WidgetEmotion) => {
+  const onDone = () => {
     setOpen(false)
-    props.onSubmitted?.(ticket)
+    props.onDone?.()
   }
 
   return (
@@ -41,8 +42,9 @@ export const KnockrFab: VFC<Props> = (props) => {
             hasHelps={props.hasHelps}
             hasEmotion={props.hasEmotion}
             onClose={onClose}
-            onSubmitted={onSubmitted}
+            onSubmitted={props.onSubmitted}
             onError={props.onError}
+            onDone={onDone}
           />
         </Box>
       </Grow>

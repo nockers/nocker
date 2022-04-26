@@ -18,6 +18,7 @@ type Props = {
   onClose(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
+  onDone?(): void
 }
 
 export const KnockrFloatingCard: VFC<Props> = (props) => {
@@ -106,12 +107,15 @@ export const KnockrFloatingCard: VFC<Props> = (props) => {
   }
 
   const onReset = () => {
-    setEmotionGrade(null)
-    setFormText("")
-    setFormImageText(null)
-    setEmotionid(null)
-    setTicketId(null)
-    markAsDone(false)
+    if (typeof props.onDone === "undefined") {
+      setEmotionGrade(null)
+      setFormText("")
+      setFormImageText(null)
+      setEmotionid(null)
+      setTicketId(null)
+      markAsDone(false)
+    }
+    props.onDone?.()
   }
 
   const hasHelps = props.hasHelps && 0 < widget.helps.length
