@@ -27,6 +27,11 @@ export const KnockrFab: VFC<Props> = (props) => {
     props.onOpen?.()
   }
 
+  const onSubmitted = (ticket: WidgetTicket | WidgetEmotion) => {
+    setOpen(false)
+    props.onSubmitted?.(ticket)
+  }
+
   return (
     <>
       <Grow in={isOpen} unmountOnExit>
@@ -36,7 +41,7 @@ export const KnockrFab: VFC<Props> = (props) => {
             hasHelps={props.hasHelps}
             hasEmotion={props.hasEmotion}
             onClose={onClose}
-            onSubmitted={props.onSubmitted}
+            onSubmitted={onSubmitted}
             onError={props.onError}
           />
         </Box>
