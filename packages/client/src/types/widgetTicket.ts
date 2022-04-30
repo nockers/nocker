@@ -9,6 +9,7 @@ export type WidgetTicket = {
   type: WidgetTicketType | null
   status: WidgetTicketStatus
   text: string
+  slug: string | null
   pagePath: string
   pageTitle: string | null
   projectId: string
@@ -16,4 +17,5 @@ export type WidgetTicket = {
   emotionId: string | null
   emotion: WidgetEmotion | null
   helpId: string | null
+  surveyId: string | null
 }

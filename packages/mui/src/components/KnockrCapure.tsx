@@ -3,7 +3,7 @@ import { captureException } from "@sentry/minimal"
 import html2canvas from "html2canvas"
 import React, { useEffect, useRef, useState, VFC } from "react"
 import { useResize } from "../hooks"
-import { KnockrBackdrop } from "./KnockrBackdrop"
+import { BoxBackdrop } from "./box/BoxBackdrop"
 import { KnockrCanvas } from "./KnockrCanvas"
 
 type Props = {
@@ -67,7 +67,7 @@ export const KnockrCapure: VFC<Props> = (props) => {
   }
 
   return (
-    <KnockrBackdrop>
+    <BoxBackdrop>
       <Paper
         ref={boxRef}
         sx={{
@@ -109,6 +109,6 @@ export const KnockrCapure: VFC<Props> = (props) => {
           </Box>
         </Box>
       </Paper>
-    </KnockrBackdrop>
+    </BoxBackdrop>
   )
 }

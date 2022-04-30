@@ -7,7 +7,7 @@ type Props = {
   onReset(): void
 }
 
-export const KnockrThanks: VFC<Props> = (props) => {
+export const BoxThanks: VFC<Props> = (props) => {
   return (
     <Box
       sx={{

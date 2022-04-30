@@ -3,7 +3,7 @@ import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import reactDOM from "react-dom"
-import { KnockrCardTicket } from "./components"
+import { KnockrTicket } from "./components"
 import { KnockrProvider } from "./components/KnockrProvider"
 import { createConfig, initSentry } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
@@ -45,7 +45,7 @@ export const renderCardTicket = (props: Props) => {
     reactDOM.render(
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
-          <KnockrCardTicket
+          <KnockrTicket
             pagePath={props.path}
             hasHelps={props.hasHelps === true}
             onSubmitted={props.onSubmitted}

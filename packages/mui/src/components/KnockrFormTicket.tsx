@@ -17,17 +17,21 @@ type Props = {
 
 export const KnockrFormTicket: VFC<Props> = (props) => {
   return (
-    <Stack sx={{ p: 2 }} spacing={2}>
-      <InputBase
-        multiline
-        rows={4}
-        placeholder={props.inputPlaceholder}
-        value={props.text}
-        onChange={(event) => {
-          props.onChangeText(event.target.value)
-        }}
-      />
-      <Stack direction={"row"} spacing={2}>
+    <Stack sx={{ width: "100%" }} spacing={1}>
+      <Stack sx={{ pl: 1, flex: 1 }}>
+        <InputBase
+          fullWidth
+          multiline
+          rows={3}
+          placeholder={props.inputPlaceholder}
+          value={props.text}
+          sx={{ p: 0 }}
+          onChange={(event) => {
+            props.onChangeText(event.target.value)
+          }}
+        />
+      </Stack>
+      <Stack direction={"row"} spacing={1} sx={{ pl: 0 }}>
         <IconButton
           onClick={props.onOpenCapture}
           size={"small"}

@@ -16,6 +16,6 @@ export const Story: ComponentStory<typeof KnockrFormEmotion> = (args) => {
 Story.storyName = "KnockrFormEmotion"
 
 Story.args = {
-  emotionGrade: 2,
+  grade: 2,
   textMessage: "回答ありがとうございます",
 }

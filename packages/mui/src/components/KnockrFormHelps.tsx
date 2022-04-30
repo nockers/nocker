@@ -2,7 +2,7 @@ import { WidgetHelp } from "@knockr/client"
 import SearchIcon from "@mui/icons-material/SearchRounded"
 import { InputBase, Stack } from "@mui/material"
 import React, { VFC } from "react"
-import { KnockrListHelps } from "./KnockrListHelps"
+import { KnockrListHelps } from "./list/ListHelps"
 
 type Props = {
   inputPlaceholder: string

@@ -1,4 +1,4 @@
-import { colors, createTheme } from "@mui/material"
+import { createTheme } from "@mui/material"
 
 export const createDefaultTheme = (mode: "dark" | "light") => {
   const isDarkMode = mode == "dark"
@@ -39,13 +39,13 @@ export const createDefaultTheme = (mode: "dark" | "light") => {
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: "9999px", // roundedLevel * 2,
+            borderRadius: 8, // "9999px", // roundedLevel * 2,
             textTransform: "none",
           },
           text: {
-            fontSize: "0.8rem",
-            color: isDarkMode ? "transparent" : colors.grey[800],
-            background: isDarkMode ? colors.grey[900] : colors.grey[50],
+            // fontSize: "0.8rem",
+            // color: isDarkMode ? "transparent" : colors.grey[800],
+            // background: isDarkMode ? colors.grey[900] : colors.grey[50],
           },
         },
         defaultProps: {

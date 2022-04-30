@@ -1,11 +1,11 @@
 import { WidgetGrade } from "@knockr/client"
-import { Collapse, Fade, Stack, Typography } from "@mui/material"
+import { Box, Collapse, Fade, Stack, Typography } from "@mui/material"
 import React, { useEffect, useState, VFC } from "react"
 import { TransitionGroup } from "react-transition-group"
-import { KnockrIconButtonEmotion } from "./KnockrIconButtonEmotion"
+import { ButtonEmotion } from "./button/ButtonEmotion"
 
 type Props = {
-  emotionGrade: WidgetGrade | null
+  grade: WidgetGrade | null
   textMessage: string
   onSelect(grade: WidgetGrade): void
 }
@@ -14,7 +14,7 @@ export const KnockrFormEmotion: VFC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   useEffect(() => {
-    if (props.emotionGrade === null) {
+    if (props.grade === null) {
       openMessage(false)
       return
     }
@@ -24,10 +24,10 @@ export const KnockrFormEmotion: VFC<Props> = (props) => {
     return () => {
       clearTimeout(id)
     }
-  }, [props.emotionGrade])
+  }, [props.grade])
 
   const grades: WidgetGrade[] =
-    props.emotionGrade !== null ? [props.emotionGrade] : [0, 1, 2, 3, 4]
+    props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (
     <Stack direction={"row"} alignItems={"center"}>
@@ -39,18 +39,18 @@ export const KnockrFormEmotion: VFC<Props> = (props) => {
             sx={{
               display: "inline-block",
               verticalAlign: "top",
-              mr: 1,
               height: "2.5rem",
               overflow: "hidden",
             }}
           >
-            <KnockrIconButtonEmotion
+            <ButtonEmotion
               grade={grade}
               isActive={isOpenMessage}
               onClick={() => {
                 props.onSelect(grade)
               }}
             />
+            <Box sx={{ display: "inline-block", width: "0.5rem" }} />
           </Collapse>
         ))}
       </TransitionGroup>

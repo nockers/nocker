@@ -1,13 +1,16 @@
 import { WidgetEmotion, WidgetTicket } from "@knockr/client"
 import { Box, Grow } from "@mui/material"
 import React, { useState, VFC } from "react"
-import { KnockrFloatingCard } from "./KnockrFloatingCard"
-import { KnockrFloatingTrigger } from "./KnockrFloatingTrigger"
+import { ButtonTrigger } from "./button/ButtonTrigger"
+import { KnockrCard } from "./KnockrCard"
 
 type Props = {
   pagePath?: string
+  pageTitle?: string
   hasHelps: boolean
-  hasEmotion: boolean
+  emotionType?: "FIVE" | "TWO" | null
+  emotionMessage?: string | null
+  emotionThanksMessage?: string | undefined
   onOpen?(): void
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
@@ -37,10 +40,13 @@ export const KnockrFab: VFC<Props> = (props) => {
     <>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockrFloatingCard
+          <KnockrCard
             pagePath={props.pagePath}
+            isNotEmbedded={true}
             hasHelps={props.hasHelps}
-            hasEmotion={props.hasEmotion}
+            emotionType={props.emotionType}
+            emotionMessage={props.emotionMessage}
+            emotionThanksMessage={props.emotionThanksMessage}
             onClose={onClose}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
@@ -50,7 +56,7 @@ export const KnockrFab: VFC<Props> = (props) => {
       </Grow>
       <Grow in={!isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockrFloatingTrigger onOpen={onOpen} />
+          <ButtonTrigger onOpen={onOpen} />
         </Box>
       </Grow>
     </>

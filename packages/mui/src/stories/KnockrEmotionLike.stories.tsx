@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
-import { KnockrEmotion } from "../components"
+import { KnockrEmotionLike } from "../components"
 
-const meta: ComponentMeta<typeof KnockrEmotion> = {
-  title: "KnockrEmotion",
-  component: KnockrEmotion,
+const meta: ComponentMeta<typeof KnockrEmotionLike> = {
+  title: "KnockrEmotionLike",
+  component: KnockrEmotionLike,
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
@@ -16,14 +16,14 @@ const meta: ComponentMeta<typeof KnockrEmotion> = {
 
 export default meta
 
-export const Story: ComponentStory<typeof KnockrEmotion> = (args) => {
-  return <KnockrEmotion {...args} />
+export const Story: ComponentStory<typeof KnockrEmotionLike> = (args) => {
+  return <KnockrEmotionLike {...args} />
 }
 
-Story.storyName = "KnockrEmotion"
+Story.storyName = "KnockrEmotionLike"
 
 Story.args = {
-  textQuestion: "どのような気分ですか？",
+  textQuestion: "このページは役に立ちましたか？",
   textThanks: "回答ありがとうございます",
   hasBorder: true,
 }

@@ -10,7 +10,7 @@ type Props = {
   grade: WidgetGrade
 }
 
-export const KnockrIconEmotion: VFC<Props> = (props) => {
+export const IconEmotion: VFC<Props> = (props) => {
   if (props.grade === 0) {
     return <SentimentVeryDissatisfiedIcon />
   }

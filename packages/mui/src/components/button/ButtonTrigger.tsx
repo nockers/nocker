@@ -6,7 +6,7 @@ type Props = {
   onOpen(): void
 }
 
-export const KnockrFloatingTrigger: VFC<Props> = (props) => {
+export const ButtonTrigger: VFC<Props> = (props) => {
   return (
     <Fab
       variant={"extended"}

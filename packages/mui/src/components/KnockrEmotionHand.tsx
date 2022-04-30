@@ -3,7 +3,7 @@ import { Box, Card, Stack, Typography } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { useState, VFC } from "react"
 import { useClient } from "../hooks"
-import { KnockrFormEmotion } from "./KnockrFormEmotion"
+import { KnockrFormEmotionTwo } from "./KnockrFormEmotionTwo"
 
 type Props = {
   pagePath?: string
@@ -15,7 +15,7 @@ type Props = {
   onError?(error: Error): void
 }
 
-export const KnockrEmotion: VFC<Props> = (props) => {
+export const KnockrEmotionHand: VFC<Props> = (props) => {
   const client = useClient()
 
   const [grade, setGrade] = useState<WidgetGrade | null>(null)
@@ -24,9 +24,8 @@ export const KnockrEmotion: VFC<Props> = (props) => {
     setGrade(grade)
     const emotion = await client.emotions().create({
       pagePath: props.pagePath ?? window.location.pathname,
-      type: "FIVE",
+      type: "TWO",
       grade,
-      slug: null,
       ticketId: null,
     })
     if (emotion instanceof Error) {
@@ -53,18 +52,18 @@ export const KnockrEmotion: VFC<Props> = (props) => {
     >
       <Stack sx={{ width: "100%" }}>
         {hasText && (
-          <Box sx={{ pt: 2, px: 2 }}>
+          <Box sx={{ pt: 2, pb: 0, pr: 1, pl: 2 }}>
             <Typography
               fontSize={14}
               color={"text.secondary"}
               sx={{ lineHeight: "22px" }}
             >
-              {props.textQuestion ?? "どのような気分ですか？"}
+              {props.textQuestion ?? "このページは役に立ちましたか？"}
             </Typography>
           </Box>
         )}
-        <Box sx={{ pt: 0.5, pb: 0.75, px: 0.75 }}>
-          <KnockrFormEmotion
+        <Box sx={{ pt: 1, pb: 1.25, px: 1.25 }}>
+          <KnockrFormEmotionTwo
             grade={grade}
             textMessage={props.textThanks ?? "回答ありがとうございます"}
             onSelect={(grade) => {

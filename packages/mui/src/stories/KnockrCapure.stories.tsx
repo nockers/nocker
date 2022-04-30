@@ -6,7 +6,6 @@ import { KnockrCapure } from "../components"
 const meta: ComponentMeta<typeof KnockrCapure> = {
   title: "KnockrCapure",
   component: KnockrCapure,
-  argTypes: {},
   parameters: {
     layout: "fullscreen",
   },

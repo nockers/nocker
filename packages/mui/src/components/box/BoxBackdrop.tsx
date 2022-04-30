@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material"
 import React, { FC } from "react"
 
-export const KnockrBackdrop: FC = (props) => {
+export const BoxBackdrop: FC = (props) => {
   return (
     <Stack
       sx={{

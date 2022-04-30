@@ -9,6 +9,11 @@ const meta: ComponentMeta<typeof KnockrFab> = {
   parameters: {
     layout: "fullscreen",
   },
+  argTypes: {
+    pagePath: { table: { disable: true } },
+    pageTitle: { table: { disable: true } },
+    emotionMessage: { control: "text" },
+  },
 }
 
 export default meta
@@ -29,7 +34,7 @@ export const Story: ComponentStory<typeof KnockrFab> = (args) => {
 Story.storyName = "KnockrFab"
 
 Story.args = {
-  pagePath: "/xxx/xxx",
-  hasHelps: false,
-  hasEmotion: true,
+  emotionType: "FIVE",
+  emotionMessage: "このページは役に立ちましたか？",
+  emotionThanksMessage: "回答ありがとうございます",
 }

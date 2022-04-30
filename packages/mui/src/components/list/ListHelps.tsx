@@ -1,5 +1,5 @@
 import { WidgetHelp } from "@knockr/client"
-import { Divider, List, ListItemButton, ListItemText } from "@mui/material"
+import { List, ListItemButton, ListItemText } from "@mui/material"
 import React, { Fragment, VFC } from "react"
 
 type Props = {
@@ -19,7 +19,6 @@ export const KnockrListHelps: VFC<Props> = (props) => {
               primaryTypographyProps={{ sx: { fontSize: 14 } }}
             />
           </ListItemButton>
-          <Divider />
         </Fragment>
       ))}
     </List>

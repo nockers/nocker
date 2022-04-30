@@ -1,4 +1,4 @@
-export * from "./components"
+export { KnockrCard, KnockrEmotion, KnockrFab as KnockrFab } from "./components"
 export * from "./contexts"
 export * from "./hooks"
 export { render } from "./render"
