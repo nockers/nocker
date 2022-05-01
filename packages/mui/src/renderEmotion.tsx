@@ -16,7 +16,6 @@ type Props = {
   colorMode: "dark" | "light"
   theme?: ThemeOptions
   disableSentry?: boolean
-  path?: string
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
 }
@@ -45,7 +44,6 @@ export const renderEmotion = (props: Props) => {
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
           <KnockrEmotion
-            pagePath={props.path}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
           />

@@ -7,9 +7,7 @@ export type CreateEmotionData = {
   slug?: string | null
   pagePath: string
   pageTitle?: string | null
-  appPlatform?: string | null
   appVersion?: string | null
-  appDevice?: string | null
   ticketId?: string | null
 }
 

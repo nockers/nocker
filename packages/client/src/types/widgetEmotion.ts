@@ -6,7 +6,7 @@ export type WidgetEmotion = {
   environment: WidgetEnvironment
   grade: WidgetGrade
   gradeSum: number | null
-  type: string | null
+  type: string
   slug: string | null
   pagePath: string
   pageTitle: string | null

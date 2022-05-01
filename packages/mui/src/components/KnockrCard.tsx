@@ -23,7 +23,7 @@ import { KnockrFormTicket } from "./KnockrFormTicket"
 type Props = {
   pagePath?: string
   pageTitle?: string
-  hasHelps: boolean
+  hasHelps?: boolean
   emotionType?: "FIVE" | "TWO" | null
   emotionMessage?: string | null
   emotionThanksMessage?: string | undefined
@@ -66,6 +66,8 @@ export const KnockrCard: VFC<Props> = (props) => {
       pagePath: props.pagePath ?? window.location.pathname,
       grade: emotionGrade,
       ticketId,
+      type: "FIVE",
+      slug: "test",
     })
     if (emotion instanceof Error) {
       captureException(emotion)
@@ -126,7 +128,7 @@ export const KnockrCard: VFC<Props> = (props) => {
     props.onDone?.()
   }
 
-  const hasHelps = props.hasHelps && 0 < widget.helps.length
+  const hasHelps = props.hasHelps === true && 0 < widget.helps.length
 
   const emotionType = props.emotionType ?? null
 

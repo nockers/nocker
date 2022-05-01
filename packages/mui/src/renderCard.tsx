@@ -16,8 +16,6 @@ type Props = {
   colorMode: "dark" | "light"
   theme?: ThemeOptions
   disableSentry?: boolean
-  path?: string
-  hasHelps?: boolean
   onOpen?(): void
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
@@ -43,12 +41,7 @@ export const renderCard = (props: Props) => {
     reactDOM.render(
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
-          <KnockrCard
-            pagePath={props.path}
-            hasHelps={props.hasHelps === true}
-            onSubmitted={props.onSubmitted}
-            onError={props.onError}
-          />
+          <KnockrCard onSubmitted={props.onSubmitted} onError={props.onError} />
         </KnockrProvider>
       </ThemeProvider>,
       props.element

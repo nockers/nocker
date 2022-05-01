@@ -7,7 +7,7 @@ import { KnockrCard } from "./KnockrCard"
 type Props = {
   pagePath?: string
   pageTitle?: string
-  hasHelps: boolean
+  hasHelps?: boolean
   emotionType?: "FIVE" | "TWO" | null
   emotionMessage?: string | null
   emotionThanksMessage?: string | undefined

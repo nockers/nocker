@@ -16,13 +16,11 @@ type Props = {
   colorMode: "dark" | "light"
   theme?: ThemeOptions
   disableSentry?: boolean
-  path?: string
-  hasHelps?: boolean
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
   onError?(error: Error): void
 }
 
-export const renderCardTicket = (props: Props) => {
+export const renderTicket = (props: Props) => {
   if (props.disableSentry !== true) {
     initSentry()
   }
@@ -46,8 +44,6 @@ export const renderCardTicket = (props: Props) => {
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
           <KnockrTicket
-            pagePath={props.path}
-            hasHelps={props.hasHelps === true}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
           />

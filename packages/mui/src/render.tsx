@@ -45,8 +45,6 @@ export const render = (props: Props) => {
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
           <KnockrFab
-            hasHelps={false}
-            hasEmotion={true}
             onOpen={props.onOpen}
             onClose={props.onClose}
             onSubmitted={props.onSubmitted}
