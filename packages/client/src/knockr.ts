@@ -4,6 +4,7 @@ import { Emotions } from "./emotions"
 import { Ticket } from "./ticket"
 import { Tickets } from "./tickets"
 import { Config, WidgetCustomer, WidgetEnvironment, WidgetHelp } from "./types"
+import { WidgetConfig } from "./types/widgetConfig"
 
 export type LoginRequest = {
   environment: WidgetEnvironment
@@ -13,6 +14,7 @@ export type LoginResponse = {
   projectId: string
   customer: WidgetCustomer
   helps: WidgetHelp[]
+  widgetConfig: WidgetConfig
 }
 
 export class Knockr extends Client {
