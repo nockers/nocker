@@ -4,6 +4,7 @@ export {
   KnockrEmotionHand,
   KnockrEmotionLike,
   KnockrFab,
+  KnockrProvider,
   KnockrTicket,
 } from "./components"
 export * from "./contexts"
