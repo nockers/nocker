@@ -13,6 +13,7 @@ type Props = {
   hasBorder?: boolean | null
   onSubmitted?(emotion: WidgetEmotion): void
   onError?(error: Error): void
+  isStandalone?: boolean
 }
 
 export const KnockrEmotion: VFC<Props> = (props) => {
