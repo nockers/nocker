@@ -3,29 +3,11 @@ import { Emotion } from "./emotion"
 import { Emotions } from "./emotions"
 import { Ticket } from "./ticket"
 import { Tickets } from "./tickets"
-import { Config, WidgetEnvironment, WidgetLogin } from "./types"
-
-export type LoginData = {
-  environment: WidgetEnvironment
-}
+import { Config } from "./types"
 
 export class Knockr extends Client {
   constructor(private config: Config) {
     super(config)
-    this.config = config
-  }
-
-  async login() {
-    const widgetLogin = await this.post<LoginData, WidgetLogin>({
-      url: `${this.baseURL}/widgets/${this.projectId}/login`,
-      data: { environment: this.environment },
-    })
-
-    if (widgetLogin instanceof Error) {
-      return widgetLogin
-    }
-
-    return widgetLogin
   }
 
   customer() {}

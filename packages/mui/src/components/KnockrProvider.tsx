@@ -1,4 +1,4 @@
-import { Config, LoginResponse } from "@knockr/client"
+import { Config, WidgetLogin } from "@knockr/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useEffect, useState } from "react"
 import { ConfigContext, WidgetContext } from "../contexts"
@@ -11,7 +11,7 @@ type Props = {
 export const KnockrProvider: FC<Props> = (props) => {
   const client = useClient(props.config)
 
-  const [data, setData] = useState<LoginResponse | Error | null>(null)
+  const [data, setData] = useState<WidgetLogin | Error | null>(null)
 
   useEffect(() => {
     client

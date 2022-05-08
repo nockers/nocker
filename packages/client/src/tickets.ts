@@ -26,21 +26,24 @@ export class Tickets extends Client {
   }
 
   async create(data: CreateTicketData) {
-    return this.post<CreateTicketData, WidgetTicket>({
-      url: `${this.baseURL}/widgets/${this.projectId}/tickets`,
-      data,
+    return await this.call<WidgetTicket, CreateTicketData>({
+      method: "POST",
+      path: "tickets",
+      body: data,
     })
   }
 
   async read(params: ReadTicketParams) {
     if (typeof params.slug === "string") {
-      return this.get<WidgetTicket[]>({
-        url: `${this.baseURL}/widgets/${this.projectId}/emotions?slug=${params.slug}`,
+      return this.call<WidgetTicket[], null>({
+        method: "GET",
+        path: `tickets?slug=${params.slug}`,
       })
     }
 
-    return this.get<WidgetTicket[]>({
-      url: `${this.baseURL}/widgets/${this.projectId}/emotions`,
+    return this.call<WidgetTicket[], null>({
+      method: "GET",
+      path: "tickets",
     })
   }
 }

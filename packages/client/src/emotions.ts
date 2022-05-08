@@ -22,21 +22,24 @@ export class Emotions extends Client {
   }
 
   async create(data: CreateEmotionData) {
-    return this.post<CreateEmotionData, WidgetEmotion>({
-      url: `${this.baseURL}/widgets/${this.projectId}/emotions`,
-      data,
+    return await this.call<WidgetEmotion, CreateEmotionData>({
+      method: "POST",
+      path: "emotions",
+      body: data,
     })
   }
 
   async read(params: ReadEmotionParams) {
     if (typeof params.slug === "string") {
-      return this.get<WidgetEmotion[]>({
-        url: `${this.baseURL}/widgets/${this.projectId}/emotions?slug=${params.slug}`,
+      return this.call<WidgetEmotion[], null>({
+        method: "GET",
+        path: `emotions?slug=${params.slug}`,
       })
     }
 
-    return this.get<WidgetEmotion[]>({
-      url: `${this.baseURL}/widgets/${this.projectId}/emotions`,
+    return this.call<WidgetEmotion[], null>({
+      method: "GET",
+      path: "emotions",
     })
   }
 }

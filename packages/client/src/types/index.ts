@@ -1,4 +1,5 @@
 export * from "./config"
+export * from "./recordToken"
 export * from "./widgetConfig"
 export * from "./widgetCustomer"
 export * from "./widgetEmotion"
