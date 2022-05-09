@@ -1,3 +1,4 @@
+import { widgetConfigDefault } from "@knockr/client"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
 import { KnockrFormEmotion } from "../components"
@@ -17,5 +18,11 @@ Story.storyName = "KnockrFormEmotion"
 
 Story.args = {
   grade: 2,
-  textMessage: "回答ありがとうございます",
+  config: {
+    gradeFiveMessage: widgetConfigDefault.emotionFiveGradeFiveMessage,
+    gradeFourMessage: widgetConfigDefault.emotionFiveGradeFourMessage,
+    gradeThreeMessage: widgetConfigDefault.emotionFiveGradeThreeMessage,
+    gradeTwoMessage: widgetConfigDefault.emotionFiveGradeTwoMessage,
+    gradeOneMessage: widgetConfigDefault.emotionFiveGradeOneMessage,
+  },
 }

@@ -1,3 +1,4 @@
+import { widgetConfigDefault } from "@knockr/client"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
 import { KnockrFormEmotionTwo } from "../components"
@@ -19,5 +20,10 @@ export const Story: ComponentStory<typeof KnockrFormEmotionTwo> = (args) => {
 Story.storyName = "KnockrFormEmotionTwo"
 
 Story.args = {
+  config: {
+    gradeOneMessage: widgetConfigDefault.emotionTwoGradeOneMessage,
+    gradeTwoMessage: widgetConfigDefault.emotionTwoGradeTwoMessage,
+    thanksMessage: widgetConfigDefault.emotionThanksMessage,
+  },
   grade: 0,
 }

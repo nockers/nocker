@@ -2,27 +2,36 @@ import { WidgetGrade } from "@knockr/client"
 import { Box, Collapse, Fade, Stack, Typography } from "@mui/material"
 import React, { useEffect, useState, VFC } from "react"
 import { TransitionGroup } from "react-transition-group"
+import { useEmotionText } from "../hooks"
 import { ButtonEmotion } from "./button/ButtonEmotion"
 
 type Props = {
+  config: {
+    gradeFiveMessage: string
+    gradeFourMessage: string
+    gradeThreeMessage: string
+    gradeTwoMessage: string
+    gradeOneMessage: string
+  }
   grade: WidgetGrade | null
-  textMessage: string
   onSelect(grade: WidgetGrade): void
 }
 
 export const KnockrFormEmotion: VFC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
+  const emotionText = useEmotionText(props.config, props.grade)
+
   useEffect(() => {
     if (props.grade === null) {
       openMessage(false)
       return
     }
-    const id = setTimeout(() => {
+    const timeout = setTimeout(() => {
       openMessage(true)
     }, 400)
     return () => {
-      clearTimeout(id)
+      clearTimeout(timeout)
     }
   }, [props.grade])
 
@@ -56,7 +65,7 @@ export const KnockrFormEmotion: VFC<Props> = (props) => {
       </TransitionGroup>
       {isOpenMessage && (
         <Fade in={isOpenMessage}>
-          <Typography>{props.textMessage}</Typography>
+          <Typography>{emotionText}</Typography>
         </Fade>
       )}
     </Stack>

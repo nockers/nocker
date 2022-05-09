@@ -1,3 +1,4 @@
+import { widgetConfigDefault } from "@knockr/client"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
 import { BoxThanks } from "../components/box/BoxThanks"
@@ -16,5 +17,8 @@ export const Story: ComponentStory<typeof BoxThanks> = (args) => {
 Story.storyName = "BoxThanks"
 
 Story.args = {
-  text: "ありがとうございます。フィードバックを送信しました。",
+  config: {
+    thanksMessage: widgetConfigDefault.ticketThanksMessage,
+    buttonResetText: widgetConfigDefault.ticketButtonResetText,
+  },
 }

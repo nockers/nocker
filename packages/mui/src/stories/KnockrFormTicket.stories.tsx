@@ -1,3 +1,4 @@
+import { widgetConfigDefault } from "@knockr/client"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
 import { KnockrFormTicket } from "../components"
@@ -16,9 +17,11 @@ export const Story: ComponentStory<typeof KnockrFormTicket> = (args) => {
 Story.storyName = "KnockrFormTicket"
 
 Story.args = {
+  config: {
+    buttonSubmitText: widgetConfigDefault.ticketButtonSubmitText,
+    inputPlaceholder: widgetConfigDefault.ticketInputPlaceholder,
+  },
   text: "",
-  inputPlaceholder: "製品の改善についてご意見・ご要望をお聞かせください。",
-  buttonText: "送信する",
-  hasImage: false,
   isLoading: false,
+  hasImage: false,
 }

@@ -1,16 +1,15 @@
-import { WidgetEmotion, WidgetTicket } from "@knockr/client"
+import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@knockr/client"
 import { Box, Grow } from "@mui/material"
-import React, { useState, VFC } from "react"
+import React, { useContext, useState, VFC } from "react"
+import { WidgetContext } from "../contexts"
+import { useWidgetConfig } from "../hooks"
 import { ButtonTrigger } from "./button/ButtonTrigger"
 import { KnockrCard } from "./KnockrCard"
 
 type Props = {
-  pagePath?: string
-  pageTitle?: string
-  hasHelps?: boolean
-  emotionType?: "FIVE" | "TWO" | null
-  emotionMessage?: string | null
-  emotionThanksMessage?: string | undefined
+  widgetConfig?: WidgetConfig | null
+  pagePath?: string | null
+  pageTitle?: string | null
   onOpen?(): void
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
@@ -19,6 +18,10 @@ type Props = {
 }
 
 export const KnockrFab: VFC<Props> = (props) => {
+  const widget = useContext(WidgetContext)
+
+  const widgetConfig = useWidgetConfig(props.widgetConfig)
+
   const [isOpen, setOpen] = useState(false)
 
   const onClose = () => {
@@ -36,17 +39,19 @@ export const KnockrFab: VFC<Props> = (props) => {
     props.onDone?.()
   }
 
+  if (widget.isLoading) {
+    return null
+  }
+
   return (
     <>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
           <KnockrCard
+            widgetConfig={props.widgetConfig}
             pagePath={props.pagePath}
             isNotEmbedded={true}
-            hasHelps={props.hasHelps}
-            emotionType={props.emotionType}
-            emotionMessage={props.emotionMessage}
-            emotionThanksMessage={props.emotionThanksMessage}
+            hasHelps={false}
             onClose={onClose}
             onSubmitted={props.onSubmitted}
             onError={props.onError}
@@ -56,7 +61,12 @@ export const KnockrFab: VFC<Props> = (props) => {
       </Grow>
       <Grow in={!isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <ButtonTrigger onOpen={onOpen} />
+          <ButtonTrigger
+            config={{
+              text: widgetConfig.fabText,
+            }}
+            onOpen={onOpen}
+          />
         </Box>
       </Grow>
     </>

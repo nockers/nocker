@@ -1,3 +1,4 @@
+import { widgetConfigDefault } from "@knockr/client"
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
@@ -12,7 +13,6 @@ const meta: ComponentMeta<typeof KnockrFab> = {
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
-    emotionMessage: { control: "text" },
   },
 }
 
@@ -34,7 +34,5 @@ export const Story: ComponentStory<typeof KnockrFab> = (args) => {
 Story.storyName = "KnockrFab"
 
 Story.args = {
-  emotionType: "FIVE",
-  emotionMessage: "このページは役に立ちましたか？",
-  emotionThanksMessage: "回答ありがとうございます",
+  widgetConfig: widgetConfigDefault,
 }

@@ -1,24 +1,25 @@
-import { WidgetTicket } from "@knockr/client"
+import { WidgetConfig, WidgetTicket } from "@knockr/client"
 import { Box, Collapse, Fade, Paper } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import React, { useContext, useState, VFC } from "react"
 import { WidgetContext } from "../contexts"
-import { useClient } from "../hooks"
+import { useClient, useWidgetConfig } from "../hooks"
 import { BoxThanks } from "./box/BoxThanks"
 import { KnockrCapure } from "./KnockrCapure"
 import { KnockrFormTicket } from "./KnockrFormTicket"
 
 type Props = {
+  widgetConfig?: WidgetConfig | null
   pagePath?: string | null
-  inputPlaceholder?: string | null
-  buttonText?: string | null
-  textThanks?: string | null
+  pageTitle?: string | null
   onSubmitted?(ticket: WidgetTicket): void
   onError?(error: Error): void
 }
 
 export const KnockrTicket: VFC<Props> = (props) => {
   const widget = useContext(WidgetContext)
+
+  const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const client = useClient()
 
@@ -37,7 +38,7 @@ export const KnockrTicket: VFC<Props> = (props) => {
   const onCreateTicket = async () => {
     setLoading(true)
     const ticket = await client.tickets().create({
-      pagePath: props.pagePath ?? window.location.pathname,
+      pagePath: props.pagePath || window.location.pathname,
       type: null,
       text: formText,
       imageText: formImageText,
@@ -77,6 +78,10 @@ export const KnockrTicket: VFC<Props> = (props) => {
     markAsDone(false)
   }
 
+  if (widget.isLoading) {
+    return null
+  }
+
   return (
     <>
       <Paper sx={{ width: (theme) => theme.spacing(40) }}>
@@ -92,11 +97,10 @@ export const KnockrTicket: VFC<Props> = (props) => {
             }}
           >
             <KnockrFormTicket
-              inputPlaceholder={
-                props.inputPlaceholder ??
-                "製品の改善についてご意見・ご要望をお聞かせください。"
-              }
-              buttonText={props.buttonText ?? "送信する"}
+              config={{
+                buttonSubmitText: widgetConfig.ticketButtonSubmitText,
+                inputPlaceholder: widgetConfig.ticketInputPlaceholder,
+              }}
               text={formText}
               hasImage={formImageText !== null}
               isLoading={isLoading}
@@ -107,10 +111,10 @@ export const KnockrTicket: VFC<Props> = (props) => {
             <Fade in={isDone}>
               <Box>
                 <BoxThanks
-                  text={
-                    props.textThanks ??
-                    "ありがとうございます。フィードバックを送信しました。"
-                  }
+                  config={{
+                    thanksMessage: widgetConfig.ticketThanksMessage,
+                    buttonResetText: widgetConfig.ticketButtonResetText,
+                  }}
                   onReset={onReset}
                 />
               </Box>

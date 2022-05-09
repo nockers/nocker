@@ -5,11 +5,13 @@ import { IconButton, InputBase, Stack } from "@mui/material"
 import React, { VFC } from "react"
 
 type Props = {
+  config: {
+    buttonSubmitText: string
+    inputPlaceholder: string
+  }
   text: string
-  inputPlaceholder: string
-  buttonText: string
-  hasImage: boolean
   isLoading: boolean
+  hasImage: boolean
   onChangeText(text: string): void
   onSubmit(): Promise<void>
   onOpenCapture(): void
@@ -23,7 +25,7 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
           fullWidth
           multiline
           rows={3}
-          placeholder={props.inputPlaceholder}
+          placeholder={props.config.inputPlaceholder}
           value={props.text}
           sx={{ p: 0 }}
           onChange={(event) => {
@@ -47,7 +49,7 @@ export const KnockrFormTicket: VFC<Props> = (props) => {
           disabled={props.text.length < 4}
           loading={props.isLoading}
         >
-          {props.buttonText}
+          {props.config.buttonSubmitText}
         </LoadingButton>
       </Stack>
     </Stack>

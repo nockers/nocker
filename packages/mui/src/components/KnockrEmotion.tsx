@@ -1,22 +1,26 @@
-import { WidgetEmotion, WidgetGrade } from "@knockr/client"
+import { WidgetConfig, WidgetEmotion, WidgetGrade } from "@knockr/client"
 import { Box, Card, Stack, Typography } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { useState, VFC } from "react"
-import { useClient } from "../hooks"
+import React, { useContext, useState, VFC } from "react"
+import { WidgetContext } from "../contexts"
+import { useClient, useWidgetConfig } from "../hooks"
 import { KnockrFormEmotion } from "./KnockrFormEmotion"
 
 type Props = {
-  pagePath?: string
-  pageTitle?: string
-  textQuestion?: string | null
-  textThanks?: string | null
+  widgetConfig?: WidgetConfig | null
+  pagePath?: string | null
+  pageTitle?: string | null
   hasBorder?: boolean | null
+  isStandalone?: boolean | null
   onSubmitted?(emotion: WidgetEmotion): void
   onError?(error: Error): void
-  isStandalone?: boolean
 }
 
 export const KnockrEmotion: VFC<Props> = (props) => {
+  const widget = useContext(WidgetContext)
+
+  const widgetConfig = useWidgetConfig(props.widgetConfig)
+
   const client = useClient()
 
   const [grade, setGrade] = useState<WidgetGrade | null>(null)
@@ -24,7 +28,7 @@ export const KnockrEmotion: VFC<Props> = (props) => {
   const onSubmit = async (grade: WidgetGrade) => {
     setGrade(grade)
     const emotion = await client.emotions().create({
-      pagePath: props.pagePath ?? window.location.pathname,
+      pagePath: props.pagePath || window.location.pathname,
       type: "FIVE",
       grade,
       slug: null,
@@ -38,10 +42,11 @@ export const KnockrEmotion: VFC<Props> = (props) => {
     props.onSubmitted?.(emotion)
   }
 
-  const hasText =
-    typeof props.textQuestion === "string" && 0 < props.textQuestion.length
-
   const hasBorder = props.hasBorder ?? true
+
+  if (widget.isLoading) {
+    return null
+  }
 
   return (
     <Card
@@ -53,21 +58,27 @@ export const KnockrEmotion: VFC<Props> = (props) => {
       }}
     >
       <Stack sx={{ width: "100%" }}>
-        {hasText && (
+        {widgetConfig.hasEmotionQuestionMessage && (
           <Box sx={{ pt: 2, px: 2 }}>
             <Typography
               fontSize={14}
               color={"text.secondary"}
               sx={{ lineHeight: "22px" }}
             >
-              {props.textQuestion ?? "どのような気分ですか？"}
+              {widgetConfig.emotionQuestionMessage}
             </Typography>
           </Box>
         )}
         <Box sx={{ pt: 0.5, pb: 0.75, px: 0.75 }}>
           <KnockrFormEmotion
+            config={{
+              gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
+              gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,
+              gradeThreeMessage: widgetConfig.emotionFiveGradeThreeMessage,
+              gradeTwoMessage: widgetConfig.emotionFiveGradeTwoMessage,
+              gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
+            }}
             grade={grade}
-            textMessage={props.textThanks ?? "回答ありがとうございます"}
             onSelect={(grade) => {
               onSubmit(grade)
             }}

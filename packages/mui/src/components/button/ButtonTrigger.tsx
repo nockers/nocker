@@ -3,6 +3,9 @@ import { Box, Fab } from "@mui/material"
 import React, { VFC } from "react"
 
 type Props = {
+  config: {
+    text: string | null
+  }
   onOpen(): void
 }
 
@@ -11,10 +14,12 @@ export const ButtonTrigger: VFC<Props> = (props) => {
     <Fab
       variant={"extended"}
       onClick={props.onOpen}
-      aria-label={"フィードバック"}
+      aria-label={props.config.text ?? "ボタン"}
     >
       <AutoAwesomeIcon />
-      <Box sx={{ pl: 1 }}>{"フィードバック"}</Box>
+      {props.config.text !== null && (
+        <Box sx={{ pl: 1 }}>{props.config.text}</Box>
+      )}
     </Fab>
   )
 }

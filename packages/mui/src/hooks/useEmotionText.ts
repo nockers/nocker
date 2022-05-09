@@ -1,25 +1,33 @@
 import { WidgetGrade } from "@knockr/client"
 
-export const useEmotionText = (grade: WidgetGrade | null) => {
+type Config = {
+  gradeFiveMessage: string
+  gradeFourMessage: string
+  gradeThreeMessage: string
+  gradeTwoMessage: string
+  gradeOneMessage: string
+}
+
+export const useEmotionText = (config: Config, grade: WidgetGrade | null) => {
   if (grade === 0) {
-    return "非常に良くない"
+    return config.gradeOneMessage
   }
 
   if (grade === 1) {
-    return "あまり良くない"
+    return config.gradeTwoMessage
   }
 
   if (grade === 2) {
-    return "良くも悪くもない"
+    return config.gradeThreeMessage
   }
 
   if (grade === 3) {
-    return "そこそこ良い"
+    return config.gradeFourMessage
   }
 
   if (grade === 4) {
-    return "非常に良い"
+    return config.gradeFiveMessage
   }
 
-  return ""
+  return "予期しないエラー"
 }

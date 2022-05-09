@@ -1,3 +1,4 @@
+import { widgetConfigDefault } from "@knockr/client"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import React from "react"
 import { KnockrFormEmotionOne } from "../components"
@@ -15,4 +16,9 @@ export const Story: ComponentStory<typeof KnockrFormEmotionOne> = (args) => {
 
 Story.storyName = "KnockrFormEmotionOne"
 
-Story.args = {}
+Story.args = {
+  config: {
+    buttonText: widgetConfigDefault.emotionOneButtonText,
+  },
+  isActive: true,
+}

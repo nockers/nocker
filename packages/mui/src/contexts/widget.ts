@@ -1,18 +1,27 @@
-import type { WidgetCustomer, WidgetHelp } from "@knockr/client"
+import {
+  WidgetConfig,
+  widgetConfigDefault,
+  WidgetCustomer,
+  WidgetHelp,
+} from "@knockr/client"
 import { createContext } from "react"
 
-type WidgetRoot = {
+type Context = {
+  isLoading: boolean
   projectId: string
   customer: WidgetCustomer
   helps: WidgetHelp[]
+  widgetConfig: WidgetConfig
 }
 
-export const WidgetContext = createContext<WidgetRoot>({
+export const WidgetContext = createContext<Context>({
+  isLoading: true,
   projectId: "xxxxxxxxxxxxxxxxxxxxx",
+  widgetConfig: widgetConfigDefault,
   customer: {
     id: "xxxxxxxxxxxxxxxxxxxxx",
     projectId: "xxxxxxxxxxxxxxxxxxxxx",
-    environment: "PRODUCTION",
+    environment: "DEVELOPMENT",
     userId: null,
     name: null,
   },
