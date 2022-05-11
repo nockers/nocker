@@ -20,4 +20,6 @@ export const widgetConfigDefault: WidgetConfig = {
   fabIcon: "",
   emotionType: "FIVE",
   isMinimal: false,
+  hasBorder: true,
+  hasHelps: false,
 }

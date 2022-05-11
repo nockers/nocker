@@ -17,4 +17,5 @@ export type WidgetConfig = {
   fabIcon: string | null
   emotionType: "ONE" | "TWO" | "FIVE" | null
   isMinimal: boolean
-}
+  hasBorder: boolean
+  hasHelps: boolean

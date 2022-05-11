@@ -46,11 +46,15 @@ export class Client {
 
       // 認証エラー
       if (data instanceof UnauthorizedError) {
-        const refresh = await this.relogin()
+        const refresh = await this.refreshToken()
+
         if (refresh instanceof Error) {
           return refresh
         }
+
         const token = await this.store.readAccessToken()
+
+        // リクエストを送信する
         return await this.fetch<T, U>({
           method: props.method,
           path: props.path,
@@ -69,6 +73,11 @@ export class Client {
     }
   }
 
+  /**
+   * リクエストを送信する
+   * @param props
+   * @returns
+   */
   protected async fetch<T, U>(props: {
     method: "POST" | "PUT" | "GET"
     path: string
@@ -110,6 +119,10 @@ export class Client {
     }
   }
 
+  /**
+   * ログインする
+   * @returns
+   */
   async login() {
     const token = await this.store.readAccessToken()
 
@@ -120,15 +133,16 @@ export class Client {
       body: { environment: this.environment },
     })
 
-    // アクセストークンの更新に失敗した場合
+    // 認証に失敗失敗した場合
     if (data instanceof UnauthorizedError) {
-      return await this.relogin()
+      return await this.refreshToken()
     }
 
     if (data instanceof Error) {
-      return data
+      return new InternalError()
     }
 
+    // アクセストークンがあれば書き込む
     if (data.accessToken !== null && data.refreshToken !== null) {
       await this.store.writeTokens(data.accessToken, data.refreshToken)
     }
@@ -136,10 +150,14 @@ export class Client {
     return data
   }
 
-  async relogin() {
+  /**
+   * アクセストークンを更新する
+   * @returns
+   */
+  async refreshToken() {
     const token = await this.store.readRefreshToken()
 
-    const data = await this.fetch<WidgetLogin, LoginData>({
+    const widgetLogin = await this.fetch<WidgetLogin, LoginData>({
       method: "POST",
       path: "login",
       token: token,
@@ -147,27 +165,54 @@ export class Client {
     })
 
     // アクセストークンの更新に失敗した場合
-    if (data instanceof UnauthorizedError) {
-      await this.store.removeTokens()
-      // ログインする
-      return await this.fetch<WidgetLogin, LoginData>({
-        method: "POST",
-        path: "login",
-        token: null,
-        body: { environment: this.environment },
-      })
+    if (widgetLogin instanceof UnauthorizedError) {
+      return await this.refetchToken()
     }
 
-    if (data instanceof Error) {
-      return data
+    if (widgetLogin instanceof Error) {
+      return new InternalError()
     }
 
-    if (data.accessToken === null || data.refreshToken === null) {
-      return new InternalError("トークンの取得に失敗した")
+    if (widgetLogin.accessToken === null || widgetLogin.refreshToken === null) {
+      return new InternalError()
     }
 
-    await this.store.writeTokens(data.accessToken, data.refreshToken)
+    await this.store.writeTokens(
+      widgetLogin.accessToken,
+      widgetLogin.refreshToken
+    )
 
-    return data
+    return widgetLogin
+  }
+
+  /**
+   * アクセストークンを再取得する
+   * @returns
+   */
+  async refetchToken() {
+    await this.store.removeTokens()
+
+    // ログインする
+    const widgetLogin = await this.fetch<WidgetLogin, LoginData>({
+      method: "POST",
+      path: "login",
+      token: null,
+      body: { environment: this.environment },
+    })
+
+    if (widgetLogin instanceof Error) {
+      return new InternalError()
+    }
+
+    if (widgetLogin.accessToken === null || widgetLogin.refreshToken === null) {
+      return new InternalError()
+    }
+
+    await this.store.writeTokens(
+      widgetLogin.accessToken,
+      widgetLogin.refreshToken
+    )
+
+    return widgetLogin
   }
 }
