@@ -19,3 +19,4 @@ export type WidgetConfig = {
   isMinimal: boolean
   hasBorder: boolean
   hasHelps: boolean
+}
