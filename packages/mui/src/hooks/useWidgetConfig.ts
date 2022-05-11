@@ -60,5 +60,7 @@ export const useWidgetConfig = (
     fabIcon: widgetConfig?.fabIcon ?? remoteConfig.fabIcon,
     emotionType: widgetConfig?.emotionType ?? remoteConfig.emotionType,
     isMinimal: widgetConfig?.isMinimal ?? remoteConfig.isMinimal,
+    hasBorder: widgetConfig?.hasBorder ?? remoteConfig.hasBorder,
+    hasHelps: widgetConfig?.hasHelps ?? remoteConfig.hasHelps,
   }
 }
