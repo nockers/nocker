@@ -2,7 +2,7 @@ import PhotoCameraBackIcon from "@mui/icons-material/PhotoCameraBackRounded"
 import PhotoCamera from "@mui/icons-material/PhotoCameraRounded"
 import { LoadingButton } from "@mui/lab"
 import { IconButton, InputBase, Stack } from "@mui/material"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 
 type Props = {
   config: {
@@ -17,7 +17,7 @@ type Props = {
   onOpenCapture(): void
 }
 
-export const KnockrFormTicket: VFC<Props> = (props) => {
+export const KnockrFormTicket: FC<Props> = (props) => {
   return (
     <Stack sx={{ width: "100%" }} spacing={1}>
       <Stack sx={{ pl: 1, flex: 1 }}>

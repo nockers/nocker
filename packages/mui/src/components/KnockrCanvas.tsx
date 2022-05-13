@@ -1,13 +1,13 @@
 import { Box, Stack, Typography } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { useRef, useState, VFC } from "react"
+import React, { useRef, useState, FC } from "react"
 
 type Props = {
   width: number
   height: number
 }
 
-export const KnockrCanvas: VFC<Props> = (props) => {
+export const KnockrCanvas: FC<Props> = (props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const [isDrawing, setDrawing] = useState(false)

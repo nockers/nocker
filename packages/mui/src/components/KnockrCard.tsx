@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { useContext, useState, VFC } from "react"
+import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { BoxThanks } from "./box/BoxThanks"
@@ -38,7 +38,7 @@ type Props = {
   onDone?(): void
 }
 
-export const KnockrCard: VFC<Props> = (props) => {
+export const KnockrCard: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)

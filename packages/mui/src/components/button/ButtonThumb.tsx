@@ -2,10 +2,11 @@ import { WidgetGrade } from "@knockr/client"
 import ThumbDownIcon from "@mui/icons-material/ThumbDownRounded"
 import ThumbUpIcon from "@mui/icons-material/ThumbUpRounded"
 import { Button, Typography } from "@mui/material"
-import React, { FC } from "react"
+import React, { FC, ReactNode } from "react"
 import { useEmotionColor } from "../../hooks"
 
 type Props = {
+  children: ReactNode
   grade: WidgetGrade
   isActive: boolean
   isDisabled: boolean

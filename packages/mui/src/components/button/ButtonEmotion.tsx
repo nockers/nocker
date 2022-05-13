@@ -1,6 +1,6 @@
 import { WidgetGrade } from "@knockr/client"
 import { IconButton } from "@mui/material"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 import { useEmotionColor } from "../../hooks"
 import { IconEmotion } from "../icon/IconEmotion"
 
@@ -10,7 +10,7 @@ type Props = {
   onClick(): void
 }
 
-export const ButtonEmotion: VFC<Props> = (props) => {
+export const ButtonEmotion: FC<Props> = (props) => {
   const color = useEmotionColor(props.grade)
 
   return (

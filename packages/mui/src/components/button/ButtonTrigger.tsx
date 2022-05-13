@@ -1,6 +1,6 @@
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesomeRounded"
 import { Box, Fab } from "@mui/material"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 
 type Props = {
   config: {
@@ -9,7 +9,7 @@ type Props = {
   onOpen(): void
 }
 
-export const ButtonTrigger: VFC<Props> = (props) => {
+export const ButtonTrigger: FC<Props> = (props) => {
   return (
     <Fab
       variant={"extended"}

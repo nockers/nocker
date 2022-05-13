@@ -1,6 +1,6 @@
 import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@knockr/client"
 import { Box, Grow } from "@mui/material"
-import React, { useContext, useState, VFC } from "react"
+import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useWidgetConfig } from "../hooks"
 import { ButtonTrigger } from "./button/ButtonTrigger"
@@ -17,7 +17,7 @@ type Props = {
   onDone?(): void
 }
 
-export const KnockrFab: VFC<Props> = (props) => {
+export const KnockrFab: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)

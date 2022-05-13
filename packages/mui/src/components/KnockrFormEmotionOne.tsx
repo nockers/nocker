@@ -1,6 +1,6 @@
 import FavoriteIcon from "@mui/icons-material/FavoriteRounded"
 import { Button, Stack, Typography } from "@mui/material"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 
 type Props = {
   config: {
@@ -10,7 +10,7 @@ type Props = {
   onClick(): void
 }
 
-export const KnockrFormEmotionOne: VFC<Props> = (props) => {
+export const KnockrFormEmotionOne: FC<Props> = (props) => {
   return (
     <Button
       startIcon={<FavoriteIcon />}

@@ -1,6 +1,6 @@
 import { WidgetHelp } from "@knockr/client"
 import { List, ListItemButton, ListItemText } from "@mui/material"
-import React, { Fragment, VFC } from "react"
+import React, { FC, Fragment } from "react"
 
 type Props = {
   title?: string
@@ -8,7 +8,7 @@ type Props = {
   helps: WidgetHelp[]
 }
 
-export const KnockrListHelps: VFC<Props> = (props) => {
+export const KnockrListHelps: FC<Props> = (props) => {
   return (
     <List dense>
       {props.helps.map((help) => (

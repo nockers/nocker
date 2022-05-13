@@ -1,7 +1,11 @@
 import { Stack } from "@mui/material"
-import React, { FC } from "react"
+import React, { FC, ReactNode } from "react"
 
-export const BoxBackdrop: FC = (props) => {
+type Props = {
+  children: ReactNode
+}
+
+export const BoxBackdrop: FC<Props> = (props) => {
   return (
     <Stack
       sx={{

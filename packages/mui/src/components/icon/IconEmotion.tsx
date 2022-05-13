@@ -4,13 +4,13 @@ import SentimentNeutralIcon from "@mui/icons-material/SentimentNeutralRounded"
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfiedRounded"
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfiedRounded"
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfiedRounded"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 
 type Props = {
   grade: WidgetGrade
 }
 
-export const IconEmotion: VFC<Props> = (props) => {
+export const IconEmotion: FC<Props> = (props) => {
   if (props.grade === 0) {
     return <SentimentVeryDissatisfiedIcon />
   }

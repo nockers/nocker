@@ -1,6 +1,6 @@
 import DoneOutlineIcon from "@mui/icons-material/DoneOutlineRounded"
 import { Box, Button, Stack, Typography } from "@mui/material"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 
 type Props = {
   config: {
@@ -10,7 +10,7 @@ type Props = {
   onReset(): void
 }
 
-export const BoxThanks: VFC<Props> = (props) => {
+export const BoxThanks: FC<Props> = (props) => {
   return (
     <Box
       sx={{

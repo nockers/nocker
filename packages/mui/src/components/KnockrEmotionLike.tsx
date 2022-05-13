@@ -1,7 +1,7 @@
 import { WidgetConfig, WidgetEmotion } from "@knockr/client"
 import { Box, Card } from "@mui/material"
 import { captureException } from "@sentry/minimal"
-import React, { useContext, useState, VFC } from "react"
+import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { KnockrFormEmotionOne } from "./KnockrFormEmotionOne"
@@ -15,7 +15,7 @@ type Props = {
   onError?(error: Error): void
 }
 
-export const KnockrEmotionLike: VFC<Props> = (props) => {
+export const KnockrEmotionLike: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)

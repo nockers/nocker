@@ -5,12 +5,13 @@ import {
   WidgetLogin,
 } from "@knockr/client"
 import { captureException } from "@sentry/minimal"
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, ReactNode, useEffect, useState } from "react"
 import { ConfigContext, WidgetContext } from "../contexts"
 import { useClient } from "../hooks"
 
 type Props = {
   config: Config
+  children: ReactNode
 }
 
 export const KnockrProvider: FC<Props> = (props) => {

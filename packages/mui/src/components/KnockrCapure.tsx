@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import html2canvas from "html2canvas"
-import React, { useEffect, useRef, useState, VFC } from "react"
+import React, { FC, useEffect, useRef, useState } from "react"
 import { useResize } from "../hooks"
 import { BoxBackdrop } from "./box/BoxBackdrop"
 import { KnockrCanvas } from "./KnockrCanvas"
@@ -11,7 +11,7 @@ type Props = {
   onCancel(): void
 }
 
-export const KnockrCapure: VFC<Props> = (props) => {
+export const KnockrCapure: FC<Props> = (props) => {
   const boxRef = useRef<HTMLDivElement>(null)
 
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })

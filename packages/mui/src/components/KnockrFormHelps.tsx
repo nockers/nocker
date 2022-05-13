@@ -1,7 +1,7 @@
 import { WidgetHelp } from "@knockr/client"
 import SearchIcon from "@mui/icons-material/SearchRounded"
 import { InputBase, Stack } from "@mui/material"
-import React, { VFC } from "react"
+import React, { FC } from "react"
 import { KnockrListHelps } from "./list/ListHelps"
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   onOpen?(): void
 }
 
-export const KnockrFormHelps: VFC<Props> = (props) => {
+export const KnockrFormHelps: FC<Props> = (props) => {
   return (
     <Stack>
       <Stack
