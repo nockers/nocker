@@ -1,24 +1,18 @@
 import { widgetConfigDefault } from "@knockr/client"
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { BoxThanks } from "../components/box/BoxThanks"
 
-const meta: ComponentMeta<typeof BoxThanks> = {
+export default {
   title: "BoxThanks",
   component: BoxThanks,
-}
+} as ComponentMeta<typeof BoxThanks>
 
-export default meta
-
-export const Story: ComponentStory<typeof BoxThanks> = (args) => {
-  return <BoxThanks {...args} />
-}
-
-Story.storyName = "BoxThanks"
-
-Story.args = {
-  config: {
-    thanksMessage: widgetConfigDefault.ticketThanksMessage,
-    buttonResetText: widgetConfigDefault.ticketButtonResetText,
+export const Default: ComponentStoryObj<typeof BoxThanks> = {
+  storyName: "BoxThanks",
+  args: {
+    config: {
+      thanksMessage: widgetConfigDefault.ticketThanksMessage,
+      buttonResetText: widgetConfigDefault.ticketButtonResetText,
+    },
   },
 }

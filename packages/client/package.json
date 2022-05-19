@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "prepublish": "tsc",
     "test": "jest",

@@ -1,21 +1,15 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { KnockrFormHelps } from "../components"
 
-const meta: ComponentMeta<typeof KnockrFormHelps> = {
+export default {
   title: "KnockrFormHelps",
   component: KnockrFormHelps,
-}
+} as ComponentMeta<typeof KnockrFormHelps>
 
-export default meta
-
-export const Story: ComponentStory<typeof KnockrFormHelps> = (args) => {
-  return <KnockrFormHelps {...args} />
-}
-
-Story.storyName = "KnockrFormHelps"
-
-Story.args = {
-  inputPlaceholder: "何かお困りですか？",
-  helps: [],
+export const Default: ComponentStoryObj<typeof KnockrFormHelps> = {
+  storyName: "KnockrFormHelps",
+  args: {
+    inputPlaceholder: "何かお困りですか？",
+    helps: [],
+  },
 }

@@ -1,24 +1,18 @@
 import { widgetConfigDefault } from "@knockr/client"
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { KnockrFormEmotionOne } from "../components"
 
-const meta: ComponentMeta<typeof KnockrFormEmotionOne> = {
+export default {
   title: "KnockrFormEmotionOne",
   component: KnockrFormEmotionOne,
-}
+} as ComponentMeta<typeof KnockrFormEmotionOne>
 
-export default meta
-
-export const Story: ComponentStory<typeof KnockrFormEmotionOne> = (args) => {
-  return <KnockrFormEmotionOne {...args} />
-}
-
-Story.storyName = "KnockrFormEmotionOne"
-
-Story.args = {
-  config: {
-    buttonText: widgetConfigDefault.emotionOneButtonText,
+export const Default: ComponentStoryObj<typeof KnockrFormEmotionOne> = {
+  storyName: "KnockrFormEmotionOne",
+  args: {
+    config: {
+      buttonText: widgetConfigDefault.emotionOneButtonText,
+    },
+    isActive: true,
   },
-  isActive: true,
 }

@@ -1,9 +1,8 @@
 import { widgetConfigDefault } from "@knockr/client"
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { KnockrEmotionHand } from "../components"
 
-const meta: ComponentMeta<typeof KnockrEmotionHand> = {
+export default {
   title: "KnockrEmotionHand",
   component: KnockrEmotionHand,
   argTypes: {
@@ -11,17 +10,12 @@ const meta: ComponentMeta<typeof KnockrEmotionHand> = {
     pageTitle: { table: { disable: true } },
     hasBorder: { control: "boolean" },
   },
-}
+} as ComponentMeta<typeof KnockrEmotionHand>
 
-export default meta
-
-export const Story: ComponentStory<typeof KnockrEmotionHand> = (args) => {
-  return <KnockrEmotionHand {...args} />
-}
-
-Story.storyName = "KnockrEmotionHand"
-
-Story.args = {
-  widgetConfig: widgetConfigDefault,
-  hasBorder: true,
+export const Default: ComponentStoryObj<typeof KnockrEmotionHand> = {
+  storyName: "KnockrEmotionHand",
+  args: {
+    widgetConfig: widgetConfigDefault,
+    hasBorder: true,
+  },
 }

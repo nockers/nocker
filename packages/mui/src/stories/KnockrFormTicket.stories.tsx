@@ -1,27 +1,21 @@
 import { widgetConfigDefault } from "@knockr/client"
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { KnockrFormTicket } from "../components"
 
-const meta: ComponentMeta<typeof KnockrFormTicket> = {
+export default {
   title: "KnockrFormTicket",
   component: KnockrFormTicket,
-}
+} as ComponentMeta<typeof KnockrFormTicket>
 
-export default meta
-
-export const Story: ComponentStory<typeof KnockrFormTicket> = (args) => {
-  return <KnockrFormTicket {...args} />
-}
-
-Story.storyName = "KnockrFormTicket"
-
-Story.args = {
-  config: {
-    buttonSubmitText: widgetConfigDefault.ticketButtonSubmitText,
-    inputPlaceholder: widgetConfigDefault.ticketInputPlaceholder,
+export const Default: ComponentStoryObj<typeof KnockrFormTicket> = {
+  storyName: "KnockrFormTicket",
+  args: {
+    config: {
+      buttonSubmitText: widgetConfigDefault.ticketButtonSubmitText,
+      inputPlaceholder: widgetConfigDefault.ticketInputPlaceholder,
+    },
+    text: "",
+    isLoading: false,
+    hasImage: false,
   },
-  text: "",
-  isLoading: false,
-  hasImage: false,
 }

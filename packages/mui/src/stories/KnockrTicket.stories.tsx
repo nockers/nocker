@@ -1,25 +1,19 @@
 import { widgetConfigDefault } from "@knockr/client"
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import React from "react"
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { KnockrTicket } from "../components"
 
-const meta: ComponentMeta<typeof KnockrTicket> = {
+export default {
   title: "KnockrTicket",
   component: KnockrTicket,
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
   },
-}
+} as ComponentMeta<typeof KnockrTicket>
 
-export default meta
-
-export const Story: ComponentStory<typeof KnockrTicket> = (args) => {
-  return <KnockrTicket {...args} />
-}
-
-Story.storyName = "KnockrTicket"
-
-Story.args = {
-  widgetConfig: widgetConfigDefault,
+export const Default: ComponentStoryObj<typeof KnockrTicket> = {
+  storyName: "KnockrTicket",
+  args: {
+    widgetConfig: widgetConfigDefault,
+  },
 }
