@@ -53,7 +53,7 @@ export const KnockrCard: FC<Props> = (props) => {
 
   const [emotionGrade, setEmotionGrade] = useState<WidgetGrade | null>(null)
 
-  const [emotionId, setEmotionid] = useState<string | null>(null)
+  const [emotionId, setEmotionId] = useState<string | null>(null)
 
   const [ticketId, setTicketId] = useState<string | null>(null)
 
@@ -76,7 +76,7 @@ export const KnockrCard: FC<Props> = (props) => {
       props.onError?.(emotion)
       return
     }
-    setEmotionid(emotion.id)
+    setEmotionId(emotion.id)
     props.onSubmitted?.(emotion)
   }
 
@@ -123,7 +123,7 @@ export const KnockrCard: FC<Props> = (props) => {
       setEmotionGrade(null)
       setFormText("")
       setFormImageText(null)
-      setEmotionid(null)
+      setEmotionId(null)
       setTicketId(null)
       markAsDone(false)
     }

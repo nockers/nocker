@@ -2,7 +2,7 @@ import { WidgetEmotion, WidgetEnvironment, WidgetTicket } from "@knockr/client"
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
 import { captureException } from "@sentry/browser"
 import React from "react"
-import reactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import { KnockrFab } from "./components/KnockrFab"
 import { KnockrProvider } from "./components/KnockrProvider"
 import { createConfig, initSentry } from "./utils"
@@ -10,9 +10,8 @@ import { createDefaultTheme } from "./utils/createDefaultTheme"
 
 type Props = {
   projectId: string
-  baseURL?: string | null
   environment?: WidgetEnvironment | null
-  colorMode?: "dark" | "light" | null
+  baseURL?: string | null
   theme?: ThemeOptions | null
   disableSentry?: boolean
   onOpen?(): void
@@ -26,14 +25,16 @@ export const render = (props: Props) => {
     initSentry()
   }
 
+  if (typeof props.projectId === "undefined" || props.projectId === null) {
+    throw new Error("projectId is required")
+  }
+
   try {
-    const container = document.createElement("div")
+    const defaultTheme = createDefaultTheme(
+      props.theme?.palette?.mode ?? "light"
+    )
 
-    document.body.appendChild(container)
-
-    const defaultTheme = createDefaultTheme(props.colorMode ?? "light")
-
-    const theme = createTheme(props.theme ?? defaultTheme)
+    const theme = createTheme(defaultTheme, props.theme ?? {})
 
     const config = createConfig({
       projectId: props.projectId,
@@ -41,7 +42,13 @@ export const render = (props: Props) => {
       environment: props.environment,
     })
 
-    reactDOM.render(
+    const element = document.createElement("div")
+
+    document.body.appendChild(element)
+
+    const root = createRoot(element)
+
+    root.render(
       <ThemeProvider theme={theme}>
         <KnockrProvider config={config}>
           <KnockrFab
@@ -51,8 +58,7 @@ export const render = (props: Props) => {
             onError={props.onError}
           />
         </KnockrProvider>
-      </ThemeProvider>,
-      container
+      </ThemeProvider>
     )
   } catch (error) {
     captureException(error)

@@ -1,10 +1,10 @@
 import { createTheme } from "@mui/material"
 
-export const createDefaultTheme = (mode: "dark" | "light") => {
-  const isDarkMode = mode == "dark"
-
+export const createDefaultTheme = (colorMode: "dark" | "light") => {
   return createTheme({
-    palette: { mode },
+    palette: {
+      mode: colorMode,
+    },
     shadows: [
       "none",
       "none",
@@ -37,25 +37,13 @@ export const createDefaultTheme = (mode: "dark" | "light") => {
     },
     components: {
       MuiButton: {
-        styleOverrides: {
-          root: {
-            borderRadius: 8, // "9999px", // roundedLevel * 2,
-            textTransform: "none",
-          },
-          text: {
-            // fontSize: "0.8rem",
-            // color: isDarkMode ? "transparent" : colors.grey[800],
-            // background: isDarkMode ? colors.grey[900] : colors.grey[50],
-          },
-        },
         defaultProps: {
           disableRipple: true,
         },
-      },
-      MuiToggleButtonGroup: {
         styleOverrides: {
-          grouped: {
+          root: {
             borderRadius: 8,
+            textTransform: "none",
           },
         },
       },
@@ -76,10 +64,17 @@ export const createDefaultTheme = (mode: "dark" | "light") => {
       },
       MuiPaper: {
         defaultProps: {
-          variant: mode === "dark" ? "elevation" : "outlined",
+          variant: colorMode === "dark" ? "elevation" : "outlined",
         },
         styleOverrides: {
           rounded: {
+            borderRadius: 8,
+          },
+        },
+      },
+      MuiToggleButtonGroup: {
+        styleOverrides: {
+          grouped: {
             borderRadius: 8,
           },
         },
