@@ -11,7 +11,7 @@ export default [
       file: "public/main.js",
       format: "iife",
       name: "nocker",
-      sourcemap: false,
+      sourcemap: true,
     },
     plugins: [
       resolve(),

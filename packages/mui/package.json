@@ -15,24 +15,23 @@
     "prepublish": "tsc"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.8.2",
+    "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@nocker/client": "^0.1.19",
-    "@mui/icons-material": "^5.5.1",
-    "@mui/lab": "^5.0.0-alpha.74",
-    "@mui/material": "^5.5.2",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/lab": "^5.0.0-alpha.83",
+    "@mui/material": "^5.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "@emotion/react": "^11.8.2",
+    "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.5.1",
-    "@mui/lab": "^5.0.0-alpha.74",
-    "@mui/material": "^5.5.2"
+    "@mui/icons-material": "^5.8.0",
+    "@mui/lab": "^5.0.0-alpha.83",
+    "@mui/material": "^5.8.1"
   },
   "dependencies": {
-    "@nocker/client": "^0.1.15",
+    "@nocker/client": "^0.1.19",
     "html2canvas": "^1.4.1",
     "react-transition-group": "^4.4.2"
   }
