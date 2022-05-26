@@ -29,7 +29,7 @@ const withProvider = (Story: Story) => {
   const baseURL =
     process.env.STORYBOOK_LOCALHOST === "true"
       ? "http://localhost:3000/api"
-      : "https://knocker.app/api"
+      : "https://nocker.app/api"
 
   const config = createConfig({
     projectId: "xxxxxxxxxxxxxxxxxxxxx",

@@ -10,6 +10,6 @@ export const createConfig = (props: Props): Config => {
   return {
     projectId: props.projectId,
     environment: props.environment ?? "PRODUCTION",
-    baseURL: props.baseURL ?? "https://knocker.app/api",
+    baseURL: props.baseURL ?? "https://nocker.app/api",
   }
 }

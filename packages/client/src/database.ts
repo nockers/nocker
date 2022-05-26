@@ -27,9 +27,9 @@ export class Database {
 
   private async createTransaction<T>(
     name: string,
-    toRequest: (store: IDBObjectStore) => IDBRequest
+    toRequest: (store: IDBObjectStore) => IDBRequest,
   ) {
-    const idb = await this.openDatabase("knocker", 1)
+    const idb = await this.openDatabase("nocker", 1)
     const transaction = idb.transaction(name, "readwrite")
     const store = transaction.objectStore(name)
     return new Promise<T | null>((resolve, reject) => {

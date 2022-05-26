@@ -20,7 +20,7 @@ export class Client {
   constructor(config: Config) {
     this.projectId = config.projectId
     this.environment = config.environment ?? "PRODUCTION"
-    this.baseURL = config.baseURL ?? "https://knocker.app/api"
+    this.baseURL = config.baseURL ?? "https://nocker.app/api"
     this.store =
       config.store ??
       new Store({
@@ -179,7 +179,7 @@ export class Client {
 
     await this.store.writeTokens(
       widgetLogin.accessToken,
-      widgetLogin.refreshToken
+      widgetLogin.refreshToken,
     )
 
     return widgetLogin
@@ -210,7 +210,7 @@ export class Client {
 
     await this.store.writeTokens(
       widgetLogin.accessToken,
-      widgetLogin.refreshToken
+      widgetLogin.refreshToken,
     )
 
     return widgetLogin
