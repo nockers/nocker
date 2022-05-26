@@ -1,10 +1,4 @@
 import {
-  WidgetConfig,
-  WidgetEmotion,
-  WidgetGrade,
-  WidgetTicket,
-} from "@knockr/client"
-import {
   Box,
   Card,
   Collapse,
@@ -13,17 +7,23 @@ import {
   Stack,
   Typography,
 } from "@mui/material"
+import {
+  WidgetConfig,
+  WidgetEmotion,
+  WidgetGrade,
+  WidgetTicket,
+} from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { BoxThanks } from "./box/BoxThanks"
 import { ButtonClose } from "./button/ButtonClose"
-import { KnockrCapure } from "./KnockrCapure"
-import { KnockrFormEmotion } from "./KnockrFormEmotion"
-import { KnockrFormEmotionTwo } from "./KnockrFormEmotionTwo"
-import { KnockrFormHelps } from "./KnockrFormHelps"
-import { KnockrFormTicket } from "./KnockrFormTicket"
+import { NockerCapure } from "./NockerCapure"
+import { NockerFormEmotion } from "./NockerFormEmotion"
+import { NockerFormEmotionTwo } from "./NockerFormEmotionTwo"
+import { NockerFormHelps } from "./NockerFormHelps"
+import { NockerFormTicket } from "./NockerFormTicket"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -38,7 +38,7 @@ type Props = {
   onDone?(): void
 }
 
-export const KnockrCard: FC<Props> = (props) => {
+export const NockerCard: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
@@ -181,7 +181,7 @@ export const KnockrCard: FC<Props> = (props) => {
               )}
               {widgetConfig.emotionType === "FIVE" && (
                 <Box sx={{ pb: 0.75, px: 0.75 }}>
-                  <KnockrFormEmotion
+                  <NockerFormEmotion
                     config={{
                       gradeFiveMessage:
                         widgetConfig.emotionFiveGradeFiveMessage,
@@ -199,7 +199,7 @@ export const KnockrCard: FC<Props> = (props) => {
               )}
               {widgetConfig.emotionType === "TWO" && (
                 <Box sx={{ pt: 0.5, pb: 1.25, px: 1.25 }}>
-                  <KnockrFormEmotionTwo
+                  <NockerFormEmotionTwo
                     config={{
                       gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
                       gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
@@ -222,7 +222,7 @@ export const KnockrCard: FC<Props> = (props) => {
               <Collapse in={isOpenTicket}>
                 {hasEmotion && <Divider />}
                 <Box sx={{ pl: 1, pr: 2, pt: hasEmotion ? 2 : 0.5, pb: 2 }}>
-                  <KnockrFormTicket
+                  <NockerFormTicket
                     config={{
                       buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                       inputPlaceholder: widgetConfig.ticketInputPlaceholder,
@@ -251,7 +251,7 @@ export const KnockrCard: FC<Props> = (props) => {
             {hasHelps && (
               <>
                 <Divider />
-                <KnockrFormHelps
+                <NockerFormHelps
                   inputPlaceholder={"何かお困りですか？"}
                   helps={widget.helps}
                 />
@@ -261,7 +261,7 @@ export const KnockrCard: FC<Props> = (props) => {
         </Card>
       )}
       {isOpenCapture && (
-        <KnockrCapure onCapture={onCapture} onCancel={onCancelCapture} />
+        <NockerCapure onCapture={onCapture} onCancel={onCancelCapture} />
       )}
     </>
   )

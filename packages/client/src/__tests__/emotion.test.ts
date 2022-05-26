@@ -1,12 +1,12 @@
-import { Knockr } from "../knockr"
+import { Nocker } from "../nocker"
 
 describe("Emotion", () => {
   test("login", async () => {
-    const knockr = new Knockr({
+    const nocker = new Nocker({
       projectId: "xxxxxxxxxxxxxxxxxxxxx",
     })
 
-    const login = await knockr.login()
+    const login = await nocker.login()
 
     if (login instanceof Error) {
       throw login

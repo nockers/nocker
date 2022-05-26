@@ -4,14 +4,14 @@ import html2canvas from "html2canvas"
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useResize } from "../hooks"
 import { BoxBackdrop } from "./box/BoxBackdrop"
-import { KnockrCanvas } from "./KnockrCanvas"
+import { NockerCanvas } from "./NockerCanvas"
 
 type Props = {
   onCapture(imageText: string): void
   onCancel(): void
 }
 
-export const KnockrCapure: FC<Props> = (props) => {
+export const NockerCapure: FC<Props> = (props) => {
   const boxRef = useRef<HTMLDivElement>(null)
 
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
@@ -85,7 +85,7 @@ export const KnockrCapure: FC<Props> = (props) => {
           src={backgroundImage}
           sx={{ width: "100%", overflow: "hidden" }}
         />
-        <KnockrCanvas width={canvasSize.width} height={canvasSize.height} />
+        <NockerCanvas width={canvasSize.width} height={canvasSize.height} />
         <Box
           sx={{
             position: "absolute",

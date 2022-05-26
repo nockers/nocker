@@ -1,9 +1,9 @@
-import { WidgetGrade } from "@knockr/client"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfiedRounded"
 import SentimentNeutralIcon from "@mui/icons-material/SentimentNeutralRounded"
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfiedRounded"
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfiedRounded"
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfiedRounded"
+import { WidgetGrade } from "@nocker/client"
 import React, { FC } from "react"
 
 type Props = {

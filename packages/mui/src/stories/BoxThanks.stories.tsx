@@ -1,4 +1,4 @@
-import { widgetConfigDefault } from "@knockr/client"
+import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { BoxThanks } from "../components/box/BoxThanks"
 

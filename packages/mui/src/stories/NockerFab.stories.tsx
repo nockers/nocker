@@ -1,12 +1,12 @@
-import { widgetConfigDefault } from "@knockr/client"
 import { Box } from "@mui/material"
+import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
-import { KnockrFab } from "../components"
+import { NockerFab } from "../components"
 
-const meta: ComponentMeta<typeof KnockrFab> = {
-  title: "KnockrFab",
-  component: KnockrFab,
+const meta: ComponentMeta<typeof NockerFab> = {
+  title: "NockerFab",
+  component: NockerFab,
   parameters: {
     layout: "fullscreen",
   },
@@ -16,8 +16,8 @@ const meta: ComponentMeta<typeof KnockrFab> = {
   },
 }
 
-export const Story: ComponentStoryObj<typeof KnockrFab> = {
-  storyName: "KnockrFab",
+export const Story: ComponentStoryObj<typeof NockerFab> = {
+  storyName: "NockerFab",
   args: {
     widgetConfig: widgetConfigDefault,
   },
@@ -29,7 +29,7 @@ export const Story: ComponentStoryObj<typeof KnockrFab> = {
           src={"images/background.png"}
           sx={{ position: "absolute", top: 0, left: 0, width: "100%" }}
         />
-        <KnockrFab {...args} />
+        <NockerFab {...args} />
       </>
     )
   },

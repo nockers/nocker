@@ -3,7 +3,7 @@ import {
   widgetConfigDefault,
   WidgetCustomer,
   WidgetLogin,
-} from "@knockr/client"
+} from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import { ConfigContext, WidgetContext } from "../contexts"
@@ -14,7 +14,7 @@ type Props = {
   children: ReactNode
 }
 
-export const KnockrProvider: FC<Props> = (props) => {
+export const NockerProvider: FC<Props> = (props) => {
   const client = useClient(props.config)
 
   const [data, setData] = useState<WidgetLogin | Error | null>(null)

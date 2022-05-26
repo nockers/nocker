@@ -1,4 +1,4 @@
-import { WidgetGrade } from "@knockr/client"
+import { WidgetGrade } from "@nocker/client"
 
 type Config = {
   gradeFiveMessage: string

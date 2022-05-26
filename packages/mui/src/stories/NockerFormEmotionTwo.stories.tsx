@@ -1,17 +1,17 @@
-import { widgetConfigDefault } from "@knockr/client"
+import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { KnockrFormEmotionTwo } from "../components"
+import { NockerFormEmotionTwo } from "../components"
 
 export default {
-  title: "KnockrFormEmotionTwo",
-  component: KnockrFormEmotionTwo,
+  title: "NockerFormEmotionTwo",
+  component: NockerFormEmotionTwo,
   argTypes: {
     grade: { control: "number" },
   },
-} as ComponentMeta<typeof KnockrFormEmotionTwo>
+} as ComponentMeta<typeof NockerFormEmotionTwo>
 
-export const Default: ComponentStoryObj<typeof KnockrFormEmotionTwo> = {
-  storyName: "KnockrFormEmotionTwo",
+export const Default: ComponentStoryObj<typeof NockerFormEmotionTwo> = {
+  storyName: "NockerFormEmotionTwo",
   args: {
     config: {
       gradeOneMessage: widgetConfigDefault.emotionTwoGradeOneMessage,

@@ -1,8 +1,8 @@
-import { WidgetHelp } from "@knockr/client"
 import SearchIcon from "@mui/icons-material/SearchRounded"
 import { InputBase, Stack } from "@mui/material"
+import { WidgetHelp } from "@nocker/client"
 import React, { FC } from "react"
-import { KnockrListHelps } from "./list/ListHelps"
+import { NockerListHelps } from "./list/ListHelps"
 
 type Props = {
   inputPlaceholder: string
@@ -10,7 +10,7 @@ type Props = {
   onOpen?(): void
 }
 
-export const KnockrFormHelps: FC<Props> = (props) => {
+export const NockerFormHelps: FC<Props> = (props) => {
   return (
     <Stack>
       <Stack
@@ -28,7 +28,7 @@ export const KnockrFormHelps: FC<Props> = (props) => {
           }}
         />
       </Stack>
-      <KnockrListHelps helps={props.helps} />
+      <NockerListHelps helps={props.helps} />
     </Stack>
   )
 }

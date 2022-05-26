@@ -1,11 +1,11 @@
 export {
-  KnockrCard,
-  KnockrEmotion,
-  KnockrEmotionHand,
-  KnockrEmotionLike,
-  KnockrFab,
-  KnockrProvider,
-  KnockrTicket,
+  NockerCard,
+  NockerEmotion,
+  NockerEmotionHand,
+  NockerEmotionLike,
+  NockerFab,
+  NockerProvider,
+  NockerTicket,
 } from "./components"
 export * from "./contexts"
 export * from "./hooks"

@@ -1,5 +1,5 @@
-import { WidgetGrade } from "@knockr/client"
 import { Box, Collapse, Fade, Stack, Typography } from "@mui/material"
+import { WidgetGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
 import { useEmotionText } from "../hooks"
@@ -17,7 +17,7 @@ type Props = {
   onSelect(grade: WidgetGrade): void
 }
 
-export const KnockrFormEmotion: FC<Props> = (props) => {
+export const NockerFormEmotion: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   const emotionText = useEmotionText(props.config, props.grade)

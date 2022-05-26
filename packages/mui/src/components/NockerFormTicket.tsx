@@ -17,7 +17,7 @@ type Props = {
   onOpenCapture(): void
 }
 
-export const KnockrFormTicket: FC<Props> = (props) => {
+export const NockerFormTicket: FC<Props> = (props) => {
   return (
     <Stack sx={{ width: "100%" }} spacing={1}>
       <Stack sx={{ pl: 1, flex: 1 }}>

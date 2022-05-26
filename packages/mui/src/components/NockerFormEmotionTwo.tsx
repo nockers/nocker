@@ -1,5 +1,5 @@
-import { WidgetGrade } from "@knockr/client"
 import { Box, Collapse, Fade, Stack, Typography } from "@mui/material"
+import { WidgetGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
 import { ButtonThumb } from "./button/ButtonThumb"
@@ -14,7 +14,7 @@ type Props = {
   onSelect(grade: WidgetGrade): void
 }
 
-export const KnockrFormEmotionTwo: FC<Props> = (props) => {
+export const NockerFormEmotionTwo: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   useEffect(() => {

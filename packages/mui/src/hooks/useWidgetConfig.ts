@@ -1,4 +1,4 @@
-import { WidgetConfig } from "@knockr/client"
+import { WidgetConfig } from "@nocker/client"
 import { useContext } from "react"
 import { WidgetContext } from "../contexts"
 

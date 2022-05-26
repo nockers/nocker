@@ -3,7 +3,7 @@ import {
   widgetConfigDefault,
   WidgetCustomer,
   WidgetHelp,
-} from "@knockr/client"
+} from "@nocker/client"
 import { createContext } from "react"
 
 type Context = {

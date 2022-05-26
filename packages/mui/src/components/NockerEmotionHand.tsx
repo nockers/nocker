@@ -1,22 +1,21 @@
-import { WidgetConfig, WidgetEmotion, WidgetGrade } from "@knockr/client"
 import { Box, Card, Stack, Typography } from "@mui/material"
+import { WidgetConfig, WidgetEmotion, WidgetGrade } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
-import { KnockrFormEmotion } from "./KnockrFormEmotion"
+import { NockerFormEmotionTwo } from "./NockerFormEmotionTwo"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
   pagePath?: string | null
   pageTitle?: string | null
   hasBorder?: boolean | null
-  isStandalone?: boolean | null
   onSubmitted?(emotion: WidgetEmotion): void
   onError?(error: Error): void
 }
 
-export const KnockrEmotion: FC<Props> = (props) => {
+export const NockerEmotionHand: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
@@ -29,9 +28,8 @@ export const KnockrEmotion: FC<Props> = (props) => {
     setGrade(grade)
     const emotion = await client.emotions().create({
       pagePath: props.pagePath || window.location.pathname,
-      type: "FIVE",
+      type: "TWO",
       grade,
-      slug: null,
       ticketId: null,
     })
     if (emotion instanceof Error) {
@@ -58,8 +56,8 @@ export const KnockrEmotion: FC<Props> = (props) => {
       }}
     >
       <Stack sx={{ width: "100%" }}>
-        {widgetConfig.hasEmotionQuestionMessage && (
-          <Box sx={{ pt: 2, px: 2 }}>
+        {widgetConfig.emotionType !== null && (
+          <Box sx={{ pt: 2, pb: 0, pr: 1, pl: 2 }}>
             <Typography
               fontSize={14}
               color={"text.secondary"}
@@ -69,14 +67,12 @@ export const KnockrEmotion: FC<Props> = (props) => {
             </Typography>
           </Box>
         )}
-        <Box sx={{ pt: 0.5, pb: 0.75, px: 0.75 }}>
-          <KnockrFormEmotion
+        <Box sx={{ pt: 1, pb: 1.25, px: 1.25 }}>
+          <NockerFormEmotionTwo
             config={{
-              gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
-              gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,
-              gradeThreeMessage: widgetConfig.emotionFiveGradeThreeMessage,
-              gradeTwoMessage: widgetConfig.emotionFiveGradeTwoMessage,
-              gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
+              gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
+              gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
+              thanksMessage: widgetConfig.emotionThanksMessage,
             }}
             grade={grade}
             onSelect={(grade) => {

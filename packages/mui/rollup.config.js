@@ -10,7 +10,7 @@ export default [
     output: {
       file: "public/main.js",
       format: "iife",
-      name: "knockr",
+      name: "nocker",
       sourcemap: false,
     },
     plugins: [

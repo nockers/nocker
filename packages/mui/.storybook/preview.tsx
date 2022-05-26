@@ -1,6 +1,6 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material"
 import { Story } from "@storybook/react"
-import { KnockrProvider } from "../src/components/KnockrProvider"
+import { NockerProvider } from "../src/components/NockerProvider"
 import { createConfig, createDefaultTheme, initSentry } from "../src/utils"
 
 export const parameters = {
@@ -39,11 +39,11 @@ const withProvider = (Story: Story) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <KnockrProvider config={config}>
+      <NockerProvider config={config}>
         <Box sx={{ width: (theme) => theme.spacing(40) }}>
           <Story />
         </Box>
-      </KnockrProvider>
+      </NockerProvider>
     </ThemeProvider>
   )
 }

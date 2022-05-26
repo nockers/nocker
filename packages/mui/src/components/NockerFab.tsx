@@ -1,10 +1,10 @@
-import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@knockr/client"
 import { Box, Grow } from "@mui/material"
+import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@nocker/client"
 import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useWidgetConfig } from "../hooks"
 import { ButtonTrigger } from "./button/ButtonTrigger"
-import { KnockrCard } from "./KnockrCard"
+import { NockerCard } from "./NockerCard"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -17,7 +17,7 @@ type Props = {
   onDone?(): void
 }
 
-export const KnockrFab: FC<Props> = (props) => {
+export const NockerFab: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
@@ -47,7 +47,7 @@ export const KnockrFab: FC<Props> = (props) => {
     <>
       <Grow in={isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
-          <KnockrCard
+          <NockerCard
             widgetConfig={props.widgetConfig}
             pagePath={props.pagePath}
             isNotEmbedded={true}

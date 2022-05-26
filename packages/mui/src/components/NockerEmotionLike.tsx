@@ -1,10 +1,10 @@
-import { WidgetConfig, WidgetEmotion } from "@knockr/client"
 import { Box, Card } from "@mui/material"
+import { WidgetConfig, WidgetEmotion } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
-import { KnockrFormEmotionOne } from "./KnockrFormEmotionOne"
+import { NockerFormEmotionOne } from "./NockerFormEmotionOne"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -15,7 +15,7 @@ type Props = {
   onError?(error: Error): void
 }
 
-export const KnockrEmotionLike: FC<Props> = (props) => {
+export const NockerEmotionLike: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
@@ -55,7 +55,7 @@ export const KnockrEmotionLike: FC<Props> = (props) => {
       }}
     >
       <Box sx={{ py: 0, px: 0 }}>
-        <KnockrFormEmotionOne
+        <NockerFormEmotionOne
           config={{
             buttonText: widgetConfig.emotionOneButtonText,
           }}

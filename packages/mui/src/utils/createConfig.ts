@@ -1,4 +1,4 @@
-import { Config, WidgetEnvironment } from "@knockr/client"
+import { Config, WidgetEnvironment } from "@nocker/client"
 
 type Props = {
   projectId: string

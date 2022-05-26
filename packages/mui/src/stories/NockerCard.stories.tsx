@@ -1,20 +1,20 @@
-import { widgetConfigDefault } from "@knockr/client"
+import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { KnockrCard } from "../components"
+import { NockerCard } from "../components"
 
 export default {
-  title: "KnockrCard",
-  component: KnockrCard,
+  title: "NockerCard",
+  component: NockerCard,
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
     isNotEmbedded: { control: "boolean" },
     hasBorder: { control: "boolean" },
   },
-} as ComponentMeta<typeof KnockrCard>
+} as ComponentMeta<typeof NockerCard>
 
-export const Default: ComponentStoryObj<typeof KnockrCard> = {
-  storyName: "KnockrCard",
+export const Default: ComponentStoryObj<typeof NockerCard> = {
+  storyName: "NockerCard",
   args: {
     widgetConfig: widgetConfigDefault,
     hasHelps: false,

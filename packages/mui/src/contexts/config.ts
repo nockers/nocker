@@ -1,4 +1,4 @@
-import { Config, WidgetConfig, widgetConfigDefault } from "@knockr/client"
+import { Config, WidgetConfig, widgetConfigDefault } from "@nocker/client"
 import { createContext } from "react"
 
 type Context = Config & {

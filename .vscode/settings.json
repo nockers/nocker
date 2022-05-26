@@ -11,10 +11,6 @@
     "*.lock": true,
     "*.log": true,
     "*.tsbuildinfo": true,
-    ".blitz**": true,
-    ".husky": true,
-    ".next": true,
-    ".vercel": true,
     "packages/**/lib": true,
     "packages/**/public": true,
     "packages/**/storybook-static": true

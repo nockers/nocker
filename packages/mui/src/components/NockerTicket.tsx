@@ -1,12 +1,12 @@
-import { WidgetConfig, WidgetTicket } from "@knockr/client"
 import { Box, Collapse, Fade, Paper } from "@mui/material"
+import { WidgetConfig, WidgetTicket } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
 import { WidgetContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { BoxThanks } from "./box/BoxThanks"
-import { KnockrCapure } from "./KnockrCapure"
-import { KnockrFormTicket } from "./KnockrFormTicket"
+import { NockerCapure } from "./NockerCapure"
+import { NockerFormTicket } from "./NockerFormTicket"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -16,7 +16,7 @@ type Props = {
   onError?(error: Error): void
 }
 
-export const KnockrTicket: FC<Props> = (props) => {
+export const NockerTicket: FC<Props> = (props) => {
   const widget = useContext(WidgetContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
@@ -96,7 +96,7 @@ export const KnockrTicket: FC<Props> = (props) => {
               pb: 2,
             }}
           >
-            <KnockrFormTicket
+            <NockerFormTicket
               config={{
                 buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                 inputPlaceholder: widgetConfig.ticketInputPlaceholder,
@@ -123,7 +123,7 @@ export const KnockrTicket: FC<Props> = (props) => {
         </Collapse>
       </Paper>
       {isOpenCapture && (
-        <KnockrCapure onCapture={onCapture} onCancel={onCancelCapture} />
+        <NockerCapure onCapture={onCapture} onCancel={onCancelCapture} />
       )}
     </>
   )

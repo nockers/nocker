@@ -1,5 +1,5 @@
-import { WidgetGrade } from "@knockr/client"
 import { IconButton } from "@mui/material"
+import { WidgetGrade } from "@nocker/client"
 import React, { FC } from "react"
 import { useEmotionColor } from "../../hooks"
 import { IconEmotion } from "../icon/IconEmotion"

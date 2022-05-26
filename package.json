@@ -1,21 +1,21 @@
 {
-  "name": "knockr",
+  "name": "nocker",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "yarn workspace @knockr/mui build:rollup",
-    "build:mui": "yarn workspace @knockr/mui prepublish",
-    "build:storybook": "yarn workspace @knockr/mui build:storybook",
-    "dev": "yarn workspace @knockr/mui dev",
-    "dev:local": "yarn workspace @knockr/mui dev:local",
-    "dev:preview": "yarn workspace @knockr/mui preview",
-    "preview": "yarn workspace @knockr/mui preview",
+    "build": "yarn workspace @nocker/mui build:rollup",
+    "build:mui": "yarn workspace @nocker/mui prepublish",
+    "build:storybook": "yarn workspace @nocker/mui build:storybook",
+    "dev": "yarn workspace @nocker/mui dev",
+    "dev:local": "yarn workspace @nocker/mui dev:local",
+    "dev:preview": "yarn workspace @nocker/mui preview",
+    "preview": "yarn workspace @nocker/mui preview",
     "www": "serve www -l 1234",
-    "publish:mui": "yarn workspace @knockr/mui publish --access=public",
-    "publish:client": "yarn workspace @knockr/client publish --access=public",
-    "lint": "yarn workspace @knockr/mui tsc"
+    "publish:mui": "yarn workspace @nocker/mui publish --access=public",
+    "publish:client": "yarn workspace @nocker/client publish --access=public",
+    "lint": "yarn workspace @nocker/mui tsc"
   },
   "workspaces": {
     "packages": [

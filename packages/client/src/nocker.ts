@@ -5,7 +5,7 @@ import { Ticket } from "./ticket"
 import { Tickets } from "./tickets"
 import { Config } from "./types"
 
-export class Knockr extends Client {
+export class Nocker extends Client {
   constructor(private config: Config) {
     super(config)
   }

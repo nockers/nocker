@@ -1,18 +1,18 @@
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
-import { KnockrCapure } from "../components"
+import { NockerCapure } from "../components"
 
 export default {
-  title: "KnockrCapure",
-  component: KnockrCapure,
+  title: "NockerCapure",
+  component: NockerCapure,
   parameters: {
     layout: "fullscreen",
   },
-} as ComponentMeta<typeof KnockrCapure>
+} as ComponentMeta<typeof NockerCapure>
 
-export const Default: ComponentStoryObj<typeof KnockrCapure> = {
-  storyName: "KnockrCapure",
+export const Default: ComponentStoryObj<typeof NockerCapure> = {
+  storyName: "NockerCapure",
   args: {},
   render(args) {
     return (
@@ -22,7 +22,7 @@ export const Default: ComponentStoryObj<typeof KnockrCapure> = {
           src={"images/background.png"}
           sx={{ position: "absolute", top: 0, left: 0, width: "100%" }}
         />
-        <KnockrCapure {...args} />
+        <NockerCapure {...args} />
       </>
     )
   },

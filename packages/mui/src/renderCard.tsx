@@ -1,10 +1,10 @@
-import { WidgetEmotion, WidgetEnvironment, WidgetTicket } from "@knockr/client"
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material"
+import { WidgetEmotion, WidgetEnvironment, WidgetTicket } from "@nocker/client"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import { createRoot } from "react-dom/client"
-import { KnockrCard } from "./components"
-import { KnockrProvider } from "./components/KnockrProvider"
+import { NockerCard } from "./components"
+import { NockerProvider } from "./components/NockerProvider"
 import { createConfig, initSentry } from "./utils"
 import { createDefaultTheme } from "./utils/createDefaultTheme"
 
@@ -51,9 +51,9 @@ export const renderCard = (props: Props) => {
 
     root.render(
       <ThemeProvider theme={theme}>
-        <KnockrProvider config={config}>
-          <KnockrCard onSubmitted={props.onSubmitted} onError={props.onError} />
-        </KnockrProvider>
+        <NockerProvider config={config}>
+          <NockerCard onSubmitted={props.onSubmitted} onError={props.onError} />
+        </NockerProvider>
       </ThemeProvider>
     )
   } catch (error) {
