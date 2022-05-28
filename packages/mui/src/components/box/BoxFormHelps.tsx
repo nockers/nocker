@@ -2,7 +2,7 @@ import SearchIcon from "@mui/icons-material/SearchRounded"
 import { InputBase, Stack } from "@mui/material"
 import { WidgetHelp } from "@nocker/client"
 import React, { FC } from "react"
-import { NockerListHelps } from "./list/ListHelps"
+import { NockerListHelps } from "../list/ListHelps"
 
 type Props = {
   inputPlaceholder: string

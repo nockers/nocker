@@ -2,8 +2,8 @@ import { Box, Collapse, Fade, Stack, Typography } from "@mui/material"
 import { WidgetGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
-import { useEmotionText } from "../hooks"
-import { ButtonEmotion } from "./button/ButtonEmotion"
+import { useEmotionText } from "../../hooks"
+import { ButtonEmotion } from "../button/ButtonEmotion"
 
 type Props = {
   config: {

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { NockerFormHelps } from "../components"
+import { NockerFormHelps } from "./BoxFormHelps"
 
 export default {
   title: "NockerFormHelps",

@@ -10,10 +10,7 @@ const meta: ComponentMeta<typeof NockerFab> = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    pagePath: { table: { disable: true } },
-    pageTitle: { table: { disable: true } },
-  },
+  argTypes: {},
 }
 
 export const Story: ComponentStoryObj<typeof NockerFab> = {

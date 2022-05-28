@@ -9,14 +9,15 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@500;700&display=swap"
     />
-    <script src="./public/main.js"></script>
-  </head>
-  <body>
+    <script async src="./public/main.js"></script>
     <script>
-      window.nocker.render({
+      window.nock = (a, b) => (nock.a = nock.a || []).push([a, b])
+      window.nock("login", {
         projectId: "xxxxxxxxxxxxxxxxxxxxx",
-        colorMode: "light",
+        environment: "PRODUCTION",
       })
+      window.nock("render")
     </script>
-  </body>
+  </head>
+  <body></body>
 </html>

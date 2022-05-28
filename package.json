@@ -8,6 +8,7 @@
     "build": "yarn workspace @nocker/mui build:rollup",
     "build:mui": "yarn workspace @nocker/mui prepublish",
     "build:storybook": "yarn workspace @nocker/mui build:storybook",
+    "build:nock": "yarn workspace @nocker/mui build:rollup",
     "dev": "yarn workspace @nocker/mui dev",
     "dev:local": "yarn workspace @nocker/mui dev:local",
     "dev:preview": "yarn workspace @nocker/mui preview",

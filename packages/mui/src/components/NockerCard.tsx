@@ -15,15 +15,16 @@ import {
 } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
-import { WidgetContext } from "../contexts"
+import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
+import { WidgetEmotionSubmit, WidgetTicketSubmit } from "../types"
+import { NockerFormEmotion } from "./box/BoxFormEmotion"
+import { NockerFormEmotionTwo } from "./box/BoxFormEmotionTwo"
+import { NockerFormHelps } from "./box/BoxFormHelps"
+import { NockerFormTicket } from "./box/BoxFormTicket"
 import { BoxThanks } from "./box/BoxThanks"
 import { ButtonClose } from "./button/ButtonClose"
 import { NockerCapure } from "./NockerCapure"
-import { NockerFormEmotion } from "./NockerFormEmotion"
-import { NockerFormEmotionTwo } from "./NockerFormEmotionTwo"
-import { NockerFormHelps } from "./NockerFormHelps"
-import { NockerFormTicket } from "./NockerFormTicket"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -34,12 +35,14 @@ type Props = {
   isNotEmbedded?: boolean
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
+  onSubmitTicket?(data: WidgetTicketSubmit): void
+  onSubmitEmotion?(data: WidgetEmotionSubmit): void
   onError?(error: Error): void
   onDone?(): void
 }
 
 export const NockerCard: FC<Props> = (props) => {
-  const widget = useContext(WidgetContext)
+  const config = useContext(ConfigContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
@@ -62,39 +65,71 @@ export const NockerCard: FC<Props> = (props) => {
   const [isLoading, setLoading] = useState(false)
 
   const onCreateEmotion = async (emotionGrade: WidgetGrade) => {
+    if (config.isLoggingIn) return
     if (emotionGrade === null) return
     setEmotionGrade(emotionGrade)
-    const emotion = await client.emotions().create({
-      pagePath: props.pagePath || window.location.pathname,
-      grade: emotionGrade,
-      ticketId,
-      type: "FIVE",
-      slug: "test",
-    })
-    if (emotion instanceof Error) {
-      captureException(emotion)
-      props.onError?.(emotion)
-      return
+    if (client !== null) {
+      const emotion = await client.emotions().create({
+        pagePath: props.pagePath || window.location.pathname,
+        grade: emotionGrade,
+        ticketId,
+        type: "FIVE",
+        slug: "test",
+      })
+      if (emotion instanceof Error) {
+        captureException(emotion)
+        props.onError?.(emotion)
+        return
+      }
+      setEmotionId(emotion.id)
+      props.onSubmitted?.(emotion)
     }
-    setEmotionId(emotion.id)
-    props.onSubmitted?.(emotion)
+    if (client === null) {
+      const emotion: WidgetEmotionSubmit = {
+        grade: emotionGrade,
+        type: "FIVE",
+        pagePath: props.pagePath || window.location.pathname,
+        pageTitle: window.document.title,
+      }
+      setEmotionId("xxxxxxxxxxxxxxxxxxxxx")
+      props.onSubmitEmotion?.(emotion)
+    }
   }
 
   const onCreateTicket = async () => {
-    const ticket = await client.tickets().create({
-      pagePath: props.pagePath || window.location.pathname,
-      type: null,
-      text: formText,
-      imageText: formImageText,
-      emotionId,
-    })
-    if (ticket instanceof Error) {
-      captureException(ticket)
-      props.onError?.(ticket)
-      return
+    if (config.isLoggingIn) return
+    if (formText.length < 2) return
+    setLoading(true)
+    if (client !== null) {
+      const ticket = await client.tickets().create({
+        pagePath: props.pagePath || window.location.pathname,
+        type: null,
+        text: formText,
+        imageText: formImageText,
+        emotionId,
+      })
+      if (ticket instanceof Error) {
+        captureException(ticket)
+        props.onError?.(ticket)
+        return
+      }
+      markAsDone(true)
+      props.onSubmitted?.(ticket)
     }
-    markAsDone(true)
-    props.onSubmitted?.(ticket)
+    if (client === null) {
+      const ticket: WidgetTicketSubmit = {
+        type: null,
+        text: formText,
+        imageText: formImageText,
+        pagePath: props.pagePath || window.location.pathname,
+        pageTitle: window.document.title,
+        emotionGrade: emotionGrade,
+        emotionType: "FIVE",
+      }
+      await new Promise((resolve) => setTimeout(resolve, 500))
+      markAsDone(true)
+      props.onSubmitTicket?.(ticket)
+    }
     setLoading(false)
     setTimeout(() => {
       setEmotionGrade(null)
@@ -130,7 +165,7 @@ export const NockerCard: FC<Props> = (props) => {
     props.onDone?.()
   }
 
-  const hasHelps = false && 0 < widget.helps.length
+  const hasHelps = false && 0 < config.helps.length
 
   const hasEmotion = widgetConfig.emotionType !== null
 
@@ -140,10 +175,6 @@ export const NockerCard: FC<Props> = (props) => {
   const isShowCard = props.isNotEmbedded !== true || !isOpenCapture
 
   const hasBorder = props.hasBorder ?? true
-
-  if (widget.isLoading) {
-    return null
-  }
 
   return (
     <>
@@ -253,7 +284,7 @@ export const NockerCard: FC<Props> = (props) => {
                 <Divider />
                 <NockerFormHelps
                   inputPlaceholder={"何かお困りですか？"}
-                  helps={widget.helps}
+                  helps={config.helps}
                 />
               </>
             )}

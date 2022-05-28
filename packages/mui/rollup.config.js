@@ -6,7 +6,7 @@ import { terser } from "rollup-plugin-terser"
 
 export default [
   {
-    input: "src/index.ts",
+    input: "src/iife.ts",
     output: {
       file: "public/main.js",
       format: "iife",

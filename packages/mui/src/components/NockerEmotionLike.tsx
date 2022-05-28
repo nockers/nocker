@@ -2,9 +2,10 @@ import { Box, Card } from "@mui/material"
 import { WidgetConfig, WidgetEmotion } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
-import { WidgetContext } from "../contexts"
+import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
-import { NockerFormEmotionOne } from "./NockerFormEmotionOne"
+import { WidgetEmotionSubmit } from "../types"
+import { NockerFormEmotionOne } from "./box/BoxFormEmotionOne"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -12,11 +13,12 @@ type Props = {
   pageTitle?: string | null
   hasBorder?: boolean | null
   onSubmitted?(emotion: WidgetEmotion): void
+  onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
 }
 
 export const NockerEmotionLike: FC<Props> = (props) => {
-  const widget = useContext(WidgetContext)
+  const config = useContext(ConfigContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
@@ -25,26 +27,34 @@ export const NockerEmotionLike: FC<Props> = (props) => {
   const [isActive, markAsActive] = useState(false)
 
   const onSubmit = async () => {
+    if (config.isLoggingIn) return
     markAsActive(isActive)
-    const emotion = await client.emotions().create({
-      pagePath: props.pagePath || window.location.pathname,
-      type: "ONE",
-      grade: 1,
-      ticketId: null,
-    })
-    if (emotion instanceof Error) {
-      captureException(emotion)
-      props.onError?.(emotion)
-      return
+    if (client !== null) {
+      const emotion = await client.emotions().create({
+        pagePath: props.pagePath || window.location.pathname,
+        type: "ONE",
+        grade: 1,
+        ticketId: null,
+      })
+      if (emotion instanceof Error) {
+        captureException(emotion)
+        props.onError?.(emotion)
+        return
+      }
+      props.onSubmitted?.(emotion)
     }
-    props.onSubmitted?.(emotion)
+    if (client === null) {
+      const emotion: WidgetEmotionSubmit = {
+        type: "ONE",
+        grade: 1,
+        pagePath: props.pagePath || window.location.pathname,
+        pageTitle: window.document.title,
+      }
+      props.onSubmit?.(emotion)
+    }
   }
 
   const hasBorder = props.hasBorder ?? true
-
-  if (widget.isLoading) {
-    return null
-  }
 
   return (
     <Card

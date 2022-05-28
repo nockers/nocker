@@ -1,13 +1,28 @@
-import { Config, WidgetConfig, widgetConfigDefault } from "@nocker/client"
+import {
+  WidgetConfig,
+  widgetConfigDefault,
+  WidgetCustomer,
+  WidgetEnvironment,
+  WidgetHelp,
+} from "@nocker/client"
 import { createContext } from "react"
 
-type Context = Config & {
-  widgetConfig?: WidgetConfig | null
+type Context = {
+  isLoggingIn: boolean
+  projectId: string | null
+  environment: WidgetEnvironment
+  baseURL: string
+  customer: WidgetCustomer | null
+  helps: WidgetHelp[]
+  widgetConfig: WidgetConfig
 }
 
 export const ConfigContext = createContext<Context>({
-  projectId: "xxxxxxxxxxxxxxxxxxxxx",
-  baseURL: "http://localhost:3000/api",
+  isLoggingIn: true,
+  projectId: null,
   environment: "PRODUCTION",
+  baseURL: "https://nocker.app/api",
   widgetConfig: widgetConfigDefault,
+  customer: null,
+  helps: [],
 })

@@ -1,15 +1,15 @@
 import { WidgetConfig } from "@nocker/client"
 import { useContext } from "react"
-import { WidgetContext } from "../contexts"
+import { ConfigContext } from "../contexts"
 
 type EnhancedWidgetConfig = WidgetConfig & {
   hasEmotionQuestionMessage: boolean
 }
 
 export const useWidgetConfig = (
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: WidgetConfig | null,
 ): EnhancedWidgetConfig => {
-  const widget = useContext(WidgetContext)
+  const widget = useContext(ConfigContext)
 
   const remoteConfig = widget.widgetConfig
 

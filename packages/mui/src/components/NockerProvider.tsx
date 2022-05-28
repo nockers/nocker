@@ -6,10 +6,11 @@ import {
 } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, ReactNode, useEffect, useState } from "react"
-import { ConfigContext, WidgetContext } from "../contexts"
+import { ConfigContext } from "../contexts"
 import { useClient } from "../hooks"
 
 type Props = {
+  data?: WidgetLogin | null
   config: Config
   children: ReactNode
 }
@@ -17,20 +18,31 @@ type Props = {
 export const NockerProvider: FC<Props> = (props) => {
   const client = useClient(props.config)
 
-  const [data, setData] = useState<WidgetLogin | Error | null>(null)
+  const [isLoggingIn, setLoading] = useState(client !== null)
+
+  const [data, setData] = useState<WidgetLogin | Error | null>(() => {
+    return props.data ?? null
+  })
 
   useEffect(() => {
+    if (typeof props.data !== "undefined" && props.data !== null) {
+      setLoading(false)
+      return
+    }
+    if (client === null) {
+      setLoading(false)
+      return
+    }
     client
       .login()
       .then((data) => {
         setData(data)
+        setLoading(false)
       })
       .catch((error) => {
         captureException(error)
       })
   }, [])
-
-  const isLoading = data === null
 
   if (data instanceof Error) {
     return null
@@ -45,18 +57,18 @@ export const NockerProvider: FC<Props> = (props) => {
   }
 
   const value = {
-    isLoading,
-    projectId: data?.projectId ?? "xxxxxxxxxxxxxxxxxxxxx",
+    isLoggingIn,
+    projectId: props.config.projectId ?? "xxxxxxxxxxxxxxxxxxxxx",
+    environment: props.config.environment ?? "PRODUCTION",
+    baseURL: props.config.baseURL ?? "https://nocker.app/api",
     widgetConfig: data?.widgetConfig ?? widgetConfigDefault,
     customer: data?.customer ?? customerPlaceholder,
     helps: data?.helps ?? [],
   }
 
   return (
-    <ConfigContext.Provider value={props.config}>
-      <WidgetContext.Provider value={value}>
-        {props.children}
-      </WidgetContext.Provider>
+    <ConfigContext.Provider value={value}>
+      {props.children}
     </ConfigContext.Provider>
   )
 }

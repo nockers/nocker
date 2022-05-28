@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
-import { NockerCanvas } from "../components"
+import { NockerCanvas } from "."
 
 export default {
   title: "NockerCanvas",
