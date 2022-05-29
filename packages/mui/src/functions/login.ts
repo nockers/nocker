@@ -1,13 +1,11 @@
-import { createTheme, ThemeOptions } from "@mui/material"
 import { Nocker, WidgetEnvironment } from "@nocker/client"
 import { InternalState } from "../internals"
-import { createConfig, createDefaultTheme, initSentry } from "../utils"
+import { createConfig, initSentry } from "../utils"
 
 type Props = {
   projectId: string
   environment?: WidgetEnvironment | null
   baseURL?: string | null
-  theme?: ThemeOptions | null
   disableSentry?: boolean
 }
 
@@ -26,10 +24,6 @@ export const login = async (props: Props) => {
     return null
   }
 
-  const defaultTheme = createDefaultTheme(props.theme?.palette?.mode ?? "light")
-
-  const theme = createTheme(defaultTheme, props.theme ?? {})
-
   const config = createConfig({
     projectId: props.projectId,
     baseURL: props.baseURL,
@@ -42,12 +36,12 @@ export const login = async (props: Props) => {
     baseURL: config.baseURL,
   })
 
-  state.updateLoginState(true)
+  state.setLoginState(true)
 
   const widgetLogin = await client.login()
 
   if (widgetLogin instanceof Error) {
-    state.updateLoginState(false)
+    state.setLoginState(false)
     throw widgetLogin
   }
 
@@ -61,9 +55,7 @@ export const login = async (props: Props) => {
 
   state.setWidgetConfig(widgetLogin.widgetConfig)
 
-  state.setTheme(theme)
-
-  state.updateLoginState(false)
+  state.setLoginState(false)
 
   return null
 }

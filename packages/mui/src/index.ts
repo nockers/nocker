@@ -14,3 +14,8 @@ export {
   renderEmotion,
   renderTicket,
 } from "./functions"
+export {
+  createConfig,
+  createDefaultTheme,
+  createDefaultThemeOptions,
+} from "./utils"

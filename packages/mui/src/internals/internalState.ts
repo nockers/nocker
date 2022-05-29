@@ -5,7 +5,7 @@ import {
   WidgetCustomer,
   WidgetEnvironment,
 } from "@nocker/client"
-import { createDefaultTheme } from "../utils"
+import { createDefaultThemeOptions } from "../utils"
 
 export class InternalState {
   static isLoggingIn = false
@@ -16,9 +16,11 @@ export class InternalState {
 
   static baseURL = "https://nocker.app/api"
 
-  static theme = createDefaultTheme("light")
+  static theme = createDefaultThemeOptions("light")
 
   static customer: WidgetCustomer | null = null
+
+  static widgetConfigLocal: WidgetConfig | null = null
 
   static widgetConfig: WidgetConfig = widgetConfigDefault
 
@@ -28,10 +30,6 @@ export class InternalState {
     return InternalState.isLoggingIn
   }
 
-  get isLoggedIn() {
-    return InternalState.customer !== null
-  }
-
   listenLoginState(method: Function) {
     if (InternalState.isLoggingIn) {
       InternalState.effects.push(method)
@@ -39,11 +37,11 @@ export class InternalState {
     return null
   }
 
-  updateLoginState(isLoggingIn: boolean) {
+  setLoginState(isLoggingIn: boolean) {
     InternalState.isLoggingIn = isLoggingIn
     if (isLoggingIn) return null
-    for (const fns of InternalState.effects) {
-      fns()
+    for (const func of InternalState.effects) {
+      func()
     }
     InternalState.effects = []
     return null
@@ -55,10 +53,24 @@ export class InternalState {
       projectId: InternalState.projectId,
       environment: InternalState.environment,
       baseURL: InternalState.baseURL,
-      widgetConfig: InternalState.widgetConfig,
       customer: InternalState.customer,
       helps: [],
+      widgetConfig:
+        InternalState.widgetConfigLocal ?? InternalState.widgetConfig,
     }
+  }
+
+  setWidgetConfigLocal(widgetConfig: Partial<WidgetConfig>) {
+    InternalState.widgetConfigLocal = {
+      ...widgetConfigDefault,
+      ...widgetConfig,
+    }
+    return null
+  }
+
+  setWidgetConfig(widgetConfig: Partial<WidgetConfig>) {
+    InternalState.widgetConfig = { ...widgetConfigDefault, ...widgetConfig }
+    return null
   }
 
   setTheme(theme: Theme) {
@@ -87,11 +99,6 @@ export class InternalState {
 
   setCustomer(widgetCustomer: WidgetCustomer) {
     InternalState.customer = widgetCustomer
-    return null
-  }
-
-  setWidgetConfig(widgetConfig: WidgetConfig) {
-    InternalState.widgetConfig = widgetConfig
     return null
   }
 }

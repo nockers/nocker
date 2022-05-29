@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@mui/material"
-import { WidgetEmotion, WidgetTicket } from "@nocker/client"
+import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@nocker/client"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import { createRoot } from "react-dom/client"
@@ -8,6 +8,7 @@ import { InternalState } from "../internals"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "../types"
 
 type Props = {
+  widgetConfig?: WidgetConfig | null
   onOpen?(): void
   onClose?(): void
   onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void

@@ -16,6 +16,14 @@
         projectId: "xxxxxxxxxxxxxxxxxxxxx",
         environment: "PRODUCTION",
       })
+      window.nock("setTheme", {
+        palette: {
+          primary: { main: "#ff00ff" },
+        },
+      })
+      window.nock("setWidgetConfig", {
+        fabText: "こんにちは",
+      })
       window.nock("render")
     </script>
   </head>

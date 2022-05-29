@@ -1,84 +1,10 @@
-import { createTheme } from "@mui/material"
+import { createTheme, ThemeOptions } from "@mui/material"
+import { createDefaultThemeOptions } from "./createDefaultThemeOptions"
 
-export const createDefaultTheme = (colorMode: "dark" | "light") => {
-  return createTheme({
-    palette: {
-      mode: colorMode,
-    },
-    shadows: [
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-      "none",
-    ],
-    typography: {
-      fontFamily: ["'M PLUS 1 Code'", "sans-serif"].join(","),
-    },
-    components: {
-      MuiButton: {
-        defaultProps: {
-          disableRipple: true,
-        },
-        styleOverrides: {
-          root: {
-            borderRadius: 8,
-            textTransform: "none",
-          },
-        },
-      },
-      MuiListItem: {
-        styleOverrides: {
-          padding: {
-            paddingTop: 2,
-            paddingBottom: 2,
-          },
-        },
-      },
-      MuiOutlinedInput: {
-        styleOverrides: {
-          root: {
-            borderRadius: 4,
-          },
-        },
-      },
-      MuiPaper: {
-        defaultProps: {
-          variant: colorMode === "dark" ? "elevation" : "outlined",
-        },
-        styleOverrides: {
-          rounded: {
-            borderRadius: 8,
-          },
-        },
-      },
-      MuiToggleButtonGroup: {
-        styleOverrides: {
-          grouped: {
-            borderRadius: 8,
-          },
-        },
-      },
-    },
-  })
+export const createDefaultTheme = (
+  colorMode: "dark" | "light",
+): ThemeOptions => {
+  const themeOptions = createDefaultThemeOptions(colorMode)
+
+  return createTheme(themeOptions)
 }
