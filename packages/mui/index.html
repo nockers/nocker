@@ -14,7 +14,6 @@
       window.nock = (a, b) => (nock.a = nock.a || []).push([a, b])
       window.nock("login", {
         projectId: "xxxxxxxxxxxxxxxxxxxxx",
-        environment: "PRODUCTION",
       })
       window.nock("setTheme", {
         palette: {

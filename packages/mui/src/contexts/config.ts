@@ -7,7 +7,7 @@ import {
 } from "@nocker/client"
 import { createContext } from "react"
 
-type Context = {
+export type ConfigContext = {
   isLoggingIn: boolean
   projectId: string | null
   environment: WidgetEnvironment
@@ -17,7 +17,7 @@ type Context = {
   widgetConfig: WidgetConfig
 }
 
-export const ConfigContext = createContext<Context>({
+export const ConfigContext = createContext<ConfigContext>({
   isLoggingIn: true,
   projectId: null,
   environment: "PRODUCTION",

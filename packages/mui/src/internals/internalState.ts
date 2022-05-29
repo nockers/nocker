@@ -5,7 +5,8 @@ import {
   WidgetCustomer,
   WidgetEnvironment,
 } from "@nocker/client"
-import { createDefaultThemeOptions } from "../utils"
+import { ConfigContext } from "../contexts"
+import { createDefaultTheme } from "../utils"
 
 export class InternalState {
   static isLoggingIn = false
@@ -16,7 +17,7 @@ export class InternalState {
 
   static baseURL = "https://nocker.app/api"
 
-  static theme = createDefaultThemeOptions("light")
+  static theme: Theme = createDefaultTheme("light")
 
   static customer: WidgetCustomer | null = null
 
@@ -47,7 +48,7 @@ export class InternalState {
     return null
   }
 
-  getConfig() {
+  getConfig(): ConfigContext {
     return {
       isLoggingIn: InternalState.isLoggingIn,
       projectId: InternalState.projectId,
@@ -61,6 +62,9 @@ export class InternalState {
   }
 
   setWidgetConfigLocal(widgetConfig: Partial<WidgetConfig>) {
+    if (typeof widgetConfig === "undefined") {
+      return null
+    }
     InternalState.widgetConfigLocal = {
       ...widgetConfigDefault,
       ...widgetConfig,
@@ -68,8 +72,11 @@ export class InternalState {
     return null
   }
 
-  setWidgetConfig(widgetConfig: Partial<WidgetConfig>) {
-    InternalState.widgetConfig = { ...widgetConfigDefault, ...widgetConfig }
+  setWidgetConfig(widgetConfig: WidgetConfig) {
+    if (typeof widgetConfig === "undefined") {
+      return null
+    }
+    InternalState.widgetConfig = widgetConfig
     return null
   }
 
@@ -78,7 +85,7 @@ export class InternalState {
     return null
   }
 
-  getTheme() {
+  getTheme(): Theme {
     return InternalState.theme
   }
 
