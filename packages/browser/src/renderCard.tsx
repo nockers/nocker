@@ -1,17 +1,21 @@
 import { ThemeProvider } from "@mui/material"
 import { WidgetEmotion, WidgetTicket } from "@nocker/client"
+import {
+  NockerCard,
+  WidgetEmotionSubmit,
+  WidgetTicketSubmit,
+} from "@nocker/mui"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import { createRoot } from "react-dom/client"
-import { NockerCard, StateProvider } from "../components"
-import { InternalState } from "../internals"
-import { WidgetEmotionSubmit, WidgetTicketSubmit } from "../types"
+import { StateProvider } from "./components"
+import { InternalState } from "./models"
 
 type Props = {
   element: HTMLElement
-  onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
-  onSubmitEmotion?(data: WidgetEmotionSubmit): void
-  onSubmitTicket?(data: WidgetTicketSubmit): void
+  onSubmitted?(data: WidgetTicket | WidgetEmotion): void
+  onSubmitEmotion?(emotion: WidgetEmotionSubmit): void
+  onSubmitTicket?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
 }

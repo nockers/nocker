@@ -1,6 +1,6 @@
+import { ConfigContext } from "@nocker/mui"
 import React, { FC, ReactNode, useEffect, useState } from "react"
-import { ConfigContext } from "../contexts"
-import { InternalState } from "../internals"
+import { InternalState } from "../models"
 
 type Props = {
   children: ReactNode

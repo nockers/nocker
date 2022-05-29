@@ -1,5 +1,5 @@
 import { WidgetConfig } from "@nocker/client"
-import { InternalState } from "../internals"
+import { InternalState } from "./models"
 
 type Props = WidgetConfig | null
 

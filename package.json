@@ -5,24 +5,20 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "yarn workspace @nocker/mui build:rollup",
-    "build:mui": "yarn workspace @nocker/mui prepublish",
+    "build:mui": "yarn workspace @nocker/mui build",
     "build:storybook": "yarn workspace @nocker/mui build:storybook",
-    "build:nock": "yarn workspace @nocker/mui build:rollup",
+    "build:nock": "yarn workspace @nocker/browser build:rollup",
     "dev": "yarn workspace @nocker/mui dev",
     "dev:local": "yarn workspace @nocker/mui dev:local",
-    "dev:preview": "yarn workspace @nocker/mui preview",
-    "preview": "yarn workspace @nocker/mui preview",
+    "preview": "yarn workspace @nocker/browser preview",
     "www": "serve www -l 1234",
-    "publish:mui": "yarn workspace @nocker/mui publish --access=public",
     "publish:client": "yarn workspace @nocker/client publish --access=public",
-    "lint": "yarn workspace @nocker/mui tsc"
+    "publish:browser": "yarn workspace @nocker/browser publish --access=public",
+    "publish:mui": "yarn workspace @nocker/mui publish --access=public"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",

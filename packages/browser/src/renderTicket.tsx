@@ -1,20 +1,26 @@
-import { ThemeProvider } from "@mui/material"
-import { WidgetEmotion, WidgetTicket } from "@nocker/client"
+import { ThemeOptions, ThemeProvider } from "@mui/material"
+import { WidgetEmotion, WidgetEnvironment, WidgetTicket } from "@nocker/client"
+import { NockerTicket, WidgetTicketSubmit } from "@nocker/mui"
 import { captureException } from "@sentry/browser"
 import React from "react"
 import { createRoot } from "react-dom/client"
-import { NockerEmotion, StateProvider } from "../components"
-import { InternalState } from "../internals"
-import { WidgetEmotionSubmit } from "../types"
+import { StateProvider } from "./components"
+import { InternalState } from "./models"
 
 type Props = {
   element: HTMLElement
-  onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
-  onSubmit?(data: WidgetEmotionSubmit): void
+  projectId: string
+  environment?: WidgetEnvironment | null
+  baseURL?: string | null
+  theme?: ThemeOptions
+  disableSentry?: boolean
+  onSubmitted?(data: WidgetTicket | WidgetEmotion): void
+  onSubmit?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
+  onDone?(): void
 }
 
-export const renderEmotion = (props: Props) => {
+export const renderTicket = (props: Props) => {
   try {
     const state = new InternalState()
 
@@ -25,10 +31,11 @@ export const renderEmotion = (props: Props) => {
     root.render(
       <StateProvider>
         <ThemeProvider theme={theme}>
-          <NockerEmotion
+          <NockerTicket
             onSubmitted={props.onSubmitted}
             onSubmit={props.onSubmit}
             onError={props.onError}
+            onDone={props.onDone}
           />
         </ThemeProvider>
       </StateProvider>,

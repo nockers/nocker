@@ -1,6 +1,7 @@
 import { Nocker, WidgetEnvironment } from "@nocker/client"
-import { InternalState } from "../internals"
-import { createConfig, initSentry } from "../utils"
+import { createConfig } from "@nocker/mui"
+import { InternalState } from "./models"
+import { initSentry } from "./utils"
 
 type Props = {
   projectId: string

@@ -1,7 +1,7 @@
 import { createTheme, ThemeOptions } from "@mui/material"
 import { deepmerge } from "@mui/utils"
-import { InternalState } from "../internals"
-import { createDefaultThemeOptions } from "../utils"
+import { createDefaultThemeOptions } from "@nocker/mui"
+import { InternalState } from "./models"
 
 type Props = ThemeOptions | null
 

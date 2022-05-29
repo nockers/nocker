@@ -14,7 +14,7 @@ type Props = {
   hasBorder?: boolean | null
   isStandalone?: boolean | null
   onSubmitted?(emotion: WidgetEmotion): void
-  onSubmit?(data: WidgetEmotionSubmit): void
+  onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
 }
 

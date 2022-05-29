@@ -1,7 +1,7 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material"
 import { Story } from "@storybook/react"
 import { NockerProvider } from "../src/components/NockerProvider"
-import { createConfig, createDefaultTheme, initSentry } from "../src/utils"
+import { createConfig, createDefaultTheme } from "../src/utils"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,8 +20,6 @@ export const parameters = {
 }
 
 const withProvider = (Story: Story) => {
-  initSentry()
-
   const defaultTheme = createDefaultTheme("light")
 
   const theme = createTheme(defaultTheme)

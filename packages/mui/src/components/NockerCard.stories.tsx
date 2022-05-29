@@ -1,6 +1,6 @@
 import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { NockerCard } from "../components"
+import { NockerCard } from "./NockerCard"
 
 export default {
   title: "NockerCard",

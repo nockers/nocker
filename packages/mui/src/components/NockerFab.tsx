@@ -11,9 +11,9 @@ type Props = {
   widgetConfig?: WidgetConfig | null
   onOpen?(): void
   onClose?(): void
-  onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
-  onSubmitTicket?(data: WidgetTicketSubmit): void
-  onSubmitEmotion?(data: WidgetEmotionSubmit): void
+  onSubmitted?(data: WidgetTicket | WidgetEmotion): void
+  onSubmitEmotion?(emotion: WidgetEmotionSubmit): void
+  onSubmitTicket?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
 }
@@ -52,8 +52,8 @@ export const NockerFab: FC<Props> = (props) => {
             hasHelps={false}
             onClose={onClose}
             onSubmitted={props.onSubmitted}
-            onSubmitTicket={props.onSubmitTicket}
             onSubmitEmotion={props.onSubmitEmotion}
+            onSubmitTicket={props.onSubmitTicket}
             onError={props.onError}
             onDone={onDone}
           />

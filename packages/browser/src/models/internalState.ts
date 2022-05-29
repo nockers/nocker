@@ -5,8 +5,7 @@ import {
   WidgetCustomer,
   WidgetEnvironment,
 } from "@nocker/client"
-import { ConfigContext } from "../contexts"
-import { createDefaultTheme } from "../utils"
+import { createDefaultTheme } from "@nocker/mui"
 
 export class InternalState {
   static isLoggingIn = false
@@ -48,7 +47,7 @@ export class InternalState {
     return null
   }
 
-  getConfig(): ConfigContext {
+  getConfig() {
     return {
       isLoggingIn: InternalState.isLoggingIn,
       projectId: InternalState.projectId,

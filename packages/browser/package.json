@@ -1,6 +1,6 @@
 {
-  "name": "@nocker/mui",
-  "version": "0.4.5",
+  "name": "@nocker/browser",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,20 +10,20 @@
     "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
     "build": "tsc",
-    "build:storybook": "build-storybook",
+    "build:rollup": "NODE_ENV=production rollup -c",
+    "preview": "serve . -l 1234",
     "prepublish": "tsc"
   },
   "dependencies": {
     "@nocker/client": "^0.1.19",
-    "html2canvas": "^1.4.1",
-    "react-transition-group": "^4.4.2"
-  },
-  "peerDependencies": {
+    "@nocker/mui": "^0.4.5",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
     "@mui/lab": "^5.0.0-alpha.83",
-    "@mui/material": "^5.8.1",
+    "@mui/material": "^5.8.1"
+  },
+  "peerDependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },

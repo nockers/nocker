@@ -13,8 +13,8 @@ type Props = {
   widgetConfig?: WidgetConfig | null
   pagePath?: string | null
   pageTitle?: string | null
-  onSubmitted?(ticket: WidgetTicket): void
-  onSubmit?(data: WidgetTicketSubmit): void
+  onSubmitted?(data: WidgetTicket): void
+  onSubmit?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
 }

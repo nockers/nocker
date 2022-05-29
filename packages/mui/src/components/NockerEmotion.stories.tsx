@@ -1,6 +1,6 @@
 import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { NockerEmotion } from "../components"
+import { NockerEmotion } from "./NockerEmotion"
 
 export default {
   title: "NockerEmotion",

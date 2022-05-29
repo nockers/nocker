@@ -34,9 +34,9 @@ type Props = {
   hasBorder?: boolean | null
   isNotEmbedded?: boolean
   onClose?(): void
-  onSubmitted?(ticket: WidgetTicket | WidgetEmotion): void
-  onSubmitTicket?(data: WidgetTicketSubmit): void
-  onSubmitEmotion?(data: WidgetEmotionSubmit): void
+  onSubmitted?(data: WidgetTicket | WidgetEmotion): void
+  onSubmitEmotion?(emotion: WidgetEmotionSubmit): void
+  onSubmitTicket?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
 }

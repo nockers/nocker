@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
-import { NockerCapure } from "../components"
+import { NockerCapure } from "./NockerCapure"
 
 export default {
   title: "NockerCapure",

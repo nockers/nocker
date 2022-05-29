@@ -16,7 +16,7 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.rollup.json" }),
+      typescript(),
       replace({ "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV) }),
       terser(),
     ],

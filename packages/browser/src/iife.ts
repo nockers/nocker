@@ -1,4 +1,4 @@
-import { nock } from "./functions"
+import { nock } from "./nock"
 
 type Tuple = [string, any]
 

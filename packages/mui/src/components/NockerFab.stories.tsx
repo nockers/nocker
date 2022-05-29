@@ -2,7 +2,7 @@ import { Box } from "@mui/material"
 import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
-import { NockerFab } from "../components"
+import { NockerFab } from "./NockerFab"
 
 const meta: ComponentMeta<typeof NockerFab> = {
   title: "NockerFab",
