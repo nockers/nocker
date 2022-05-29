@@ -1,5 +1,6 @@
 import {
   Config,
+  WidgetConfig,
   widgetConfigDefault,
   WidgetCustomer,
   WidgetLogin,
@@ -11,7 +12,8 @@ import { useClient } from "../hooks"
 
 type Props = {
   data?: WidgetLogin | null
-  config: Config
+  config?: Config
+  widgetConfig?: WidgetConfig | null
   children: ReactNode
 }
 
@@ -56,14 +58,17 @@ export const NockerProvider: FC<Props> = (props) => {
     name: null,
   }
 
+  const widgetConfig: WidgetConfig =
+    props.widgetConfig ?? data?.widgetConfig ?? widgetConfigDefault
+
   const value = {
     isLoggingIn,
-    projectId: props.config.projectId ?? "xxxxxxxxxxxxxxxxxxxxx",
-    environment: props.config.environment ?? "PRODUCTION",
-    baseURL: props.config.baseURL ?? "https://nocker.app/api",
-    widgetConfig: data?.widgetConfig ?? widgetConfigDefault,
+    projectId: props.config?.projectId ?? "xxxxxxxxxxxxxxxxxxxxx",
+    environment: props.config?.environment ?? "PRODUCTION",
+    baseURL: props.config?.baseURL ?? "https://nocker.app/api",
     customer: data?.customer ?? customerPlaceholder,
     helps: data?.helps ?? [],
+    widgetConfig: widgetConfig,
   }
 
   return (
