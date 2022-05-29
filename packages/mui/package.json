@@ -14,6 +14,11 @@
     "preview": "serve . -l 1234",
     "prepublish": "tsc"
   },
+  "dependencies": {
+    "@nocker/client": "^0.1.19",
+    "html2canvas": "^1.4.1",
+    "react-transition-group": "^4.4.2"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -24,15 +29,11 @@
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
+    "@nocker/client": "file://../client",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
     "@mui/lab": "^5.0.0-alpha.83",
     "@mui/material": "^5.8.1"
-  },
-  "dependencies": {
-    "@nocker/client": "^0.1.19",
-    "html2canvas": "^1.4.1",
-    "react-transition-group": "^4.4.2"
   }
 }

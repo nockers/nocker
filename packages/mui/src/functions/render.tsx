@@ -24,7 +24,15 @@ export const render = (props: Props) => {
 
     const theme = state.getTheme()
 
+    const nockerElement = document.querySelector("#nocker")
+
+    if (nockerElement !== null) {
+      return null
+    }
+
     const element = document.createElement("div")
+
+    element.id = "nocker"
 
     document.body.appendChild(element)
 
