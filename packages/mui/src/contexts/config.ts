@@ -18,7 +18,7 @@ export type Context = {
 }
 
 export const ConfigContext = createContext<Context>({
-  isLoggingIn: true,
+  isLoggingIn: false,
   projectId: null,
   environment: "PRODUCTION",
   baseURL: "https://nocker.app/api",
