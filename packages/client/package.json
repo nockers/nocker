@@ -1,6 +1,6 @@
 {
   "name": "@nocker/client",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,5 +9,9 @@
     "prepublish": "tsc",
     "test": "jest",
     "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@sentry/browser": "^7.0.0",
+    "@sentry/minimal": "^6.19.7"
   }
 }
