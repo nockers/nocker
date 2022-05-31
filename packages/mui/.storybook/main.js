@@ -6,13 +6,14 @@ exports.addons = [
   "@storybook/addon-interactions",
 ]
 
+exports.features = {
+  storyStoreV7: true,
+}
+
+exports.core = {
+  builder: "@storybook/builder-vite",
+}
+
 exports.framework = "@storybook/react"
 
 exports.staticDirs = ["./public"]
-
-exports.webpackFinal = (config) => {
-  delete config.resolve.alias["emotion-theming"]
-  delete config.resolve.alias["@emotion/styled"]
-  delete config.resolve.alias["@emotion/core"]
-  return config
-}

@@ -9,9 +9,10 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
-    "build": "tsc",
+    "build": "rm -rf lib && tsc",
     "build:storybook": "build-storybook",
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "debug:pack": "npm pack --dry-run"
   },
   "dependencies": {
     "@nocker/client": "^0.1.20",
@@ -33,5 +34,9 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/lab": "^5.0.0-alpha.83",
     "@mui/material": "^5.8.1"
-  }
+  },
+  "files": [
+    "package.json",
+    "lib"
+  ]
 }
