@@ -7,24 +7,18 @@
     "packages/*"
   ],
   "scripts": {
-    "build:mui": "yarn workspace @nocker/mui build",
-    "build:nock": "yarn workspace @nocker/nock build",
-    "build:storybook": "yarn workspace @nocker/mui build:storybook",
-    "storybook:mui": "yarn workspace @nocker/mui dev",
-    "storybook:mui:local": "yarn workspace @nocker/mui dev:local",
-    "preview": "yarn workspace @nocker/nock preview",
     "publish:browser": "yarn workspace @nocker/browser publish --access=public",
+    "publish:chakra-ui": "yarn workspace @nocker/chakra-ui publish --access=public",
     "publish:client": "yarn workspace @nocker/client publish --access=public",
     "publish:mui": "yarn workspace @nocker/mui publish --access=public",
+    "publish:react": "yarn workspace @nocker/react publish --access=public",
+    "publish:vue": "yarn workspace @nocker/vue publish --access=public",
     "www": "serve www -l 1234"
   },
   "resolutions": {
     "jest-mock": "^28.1.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.2",
     "@storybook/addon-actions": "6.5.6",
     "@storybook/addon-essentials": "6.5.6",
     "@storybook/addon-interactions": "^6.5.6",
@@ -47,10 +41,6 @@
     "prettier-plugin-organize-imports": "^2.3.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "rollup": "^2.74.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-terser": "^7.0.2",
     "serve": "^13.0.2",
     "tailwindcss": "^3.0.24",
     "typescript": "^4.7.2",

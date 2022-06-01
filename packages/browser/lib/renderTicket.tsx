@@ -1,7 +1,7 @@
 import { ThemeOptions, ThemeProvider } from "@mui/material"
 import { WidgetEmotion, WidgetEnvironment, WidgetTicket } from "@nocker/client"
 import { NockerTicket, WidgetTicketSubmit } from "@nocker/mui"
-import { captureException } from "@sentry/browser"
+import { captureException } from "@sentry/minimal"
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { StateProvider } from "./components"

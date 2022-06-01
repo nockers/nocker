@@ -1,9 +1,10 @@
-exports.stories = ["../lib"]
+exports.stories = ["../lib/**/*.stories.tsx"]
 
 exports.addons = [
   "@storybook/addon-links",
   "@storybook/addon-essentials",
   "@storybook/addon-interactions",
+  "@chakra-ui/storybook-addon",
 ]
 
 exports.features = {
@@ -15,5 +16,3 @@ exports.core = {
 }
 
 exports.framework = "@storybook/react"
-
-exports.staticDirs = ["./public"]

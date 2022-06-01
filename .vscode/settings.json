@@ -11,13 +11,13 @@
     "*.lock": true,
     "*.log": true,
     "*.tsbuildinfo": true,
-    "packages/**/dist": true,
-    "packages/**/types": true
+    "packages/*/dist": false,
+    "packages/*/types": false
   },
   "search.exclude": {
     "*.lock": true,
-    "packages/**/dist": true,
-    "packages/**/types": true
+    "packages/*/dist": true,
+    "packages/*/types": true
   },
   "files.associations": {
     "*.xml": "html",

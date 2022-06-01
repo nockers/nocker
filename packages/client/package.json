@@ -18,12 +18,11 @@
   "scripts": {
     "build": "vite build",
     "build:types": "tsc --emitDeclarationOnly",
-    "prepublish": "build",
+    "prepublish": "yarn build",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@sentry/browser": "^7.0.0",
     "@sentry/minimal": "^6.19.7"
   }
 }
