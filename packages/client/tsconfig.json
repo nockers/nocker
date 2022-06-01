@@ -7,10 +7,10 @@
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "build",
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src"],
+  "include": ["lib"],
   "exclude": ["node_modules"]
 }

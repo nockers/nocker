@@ -2,9 +2,19 @@
   "name": "@nocker/client",
   "version": "0.1.20",
   "description": "",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    "require": "./dist/index.umd.js",
+    "import": "./dist/index.es.js"
+  },
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "package.json",
+    "dist"
+  ],
   "scripts": {
     "prepublish": "tsc",
     "test": "jest",

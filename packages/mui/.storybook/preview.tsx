@@ -1,7 +1,7 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material"
 import { Story } from "@storybook/react"
-import { NockerProvider } from "../src/components/NockerProvider"
-import { createConfig, createDefaultTheme } from "../src/utils"
+import { NockerProvider } from "../lib/components/NockerProvider"
+import { createConfig, createDefaultTheme } from "../lib/utils"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

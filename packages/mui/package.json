@@ -1,23 +1,40 @@
 {
   "name": "@nocker/mui",
   "version": "0.4.6",
-  "description": "",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "license": "MIT",
   "private": false,
+  "description": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    "require": "./dist/index.umd.js",
+    "import": "./dist/index.es.js"
+  },
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "package.json",
+    "dist"
+  ],
   "scripts": {
+    "build": "vite build",
+    "build:storybook": "build-storybook",
+    "debug:pack": "npm pack --dry-run",
     "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
-    "build": "rm -rf lib && tsc",
-    "build:storybook": "build-storybook",
-    "prepublish": "tsc",
-    "debug:pack": "npm pack --dry-run"
+    "prepublish": "tsc"
   },
   "dependencies": {
     "@nocker/client": "^0.1.20",
     "html2canvas": "^1.4.1",
     "react-transition-group": "^4.4.2"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/lab": "^5.0.0-alpha.83",
+    "@mui/material": "^5.8.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
@@ -27,16 +44,5 @@
     "@mui/material": "^5.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
-  },
-  "devDependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.0",
-    "@mui/lab": "^5.0.0-alpha.83",
-    "@mui/material": "^5.8.1"
-  },
-  "files": [
-    "package.json",
-    "lib"
-  ]
+  }
 }

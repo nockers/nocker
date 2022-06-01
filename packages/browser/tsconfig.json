@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "lib": ["dom", "es2017"],
-    "target": "es5",
-    "module": "esnext",
-    "jsx": "react",
     "declaration": true,
+    "declarationDir": "types",
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
     "outDir": "lib",
+    "skipLibCheck": true,
     "strict": true,
-    "skipLibCheck": true
+    "target": "esnext"
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["lib"],
+  "exclude": ["node_modules", "dist"]
 }
