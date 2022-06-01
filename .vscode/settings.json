@@ -11,7 +11,6 @@
     "*.lock": true,
     "*.log": true,
     "*.tsbuildinfo": true,
-    "packages/**/lib": true,
     "packages/**/public": true,
     "packages/**/storybook-static": true
   },
