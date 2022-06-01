@@ -12,11 +12,13 @@
     "*.log": true,
     "*.tsbuildinfo": true,
     "packages/*/dist": false,
+    "packages/*/storybook-static": true,
     "packages/*/types": false
   },
   "search.exclude": {
     "*.lock": true,
     "packages/*/dist": true,
+    "packages/*/storybook-static": true,
     "packages/*/types": true
   },
   "files.associations": {

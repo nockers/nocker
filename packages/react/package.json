@@ -1,6 +1,7 @@
 {
   "name": "@nocker/react",
   "version": "0.1.0",
+  "private": true,
   "license": "MIT",
   "main": "index.js",
   "devDependencies": {}
