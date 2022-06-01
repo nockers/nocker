@@ -1,4 +1,3 @@
-export * from "@nocker/client"
 export { NockerCard } from "./components/NockerCard"
 export { NockerEmotion } from "./components/NockerEmotion"
 export { NockerEmotionHand } from "./components/NockerEmotionHand"

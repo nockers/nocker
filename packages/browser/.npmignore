@@ -1,9 +1,0 @@
-public
-src
-index.html
-rollup.config.js
-rollup.iife.config.js
-tsconfig.json
-
-# misc
-.DS_Store

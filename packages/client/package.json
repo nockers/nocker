@@ -10,13 +10,15 @@
   },
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "package.json",
     "dist"
   ],
   "scripts": {
-    "prepublish": "tsc",
+    "build": "vite build",
+    "build:types": "tsc --emitDeclarationOnly",
+    "prepublish": "build",
     "test": "jest",
     "test:watch": "jest --watch"
   },

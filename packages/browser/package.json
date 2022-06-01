@@ -17,10 +17,9 @@
   ],
   "scripts": {
     "build": "vite build",
-    "build:rollup": "NODE_ENV=production rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
     "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
-    "preview": "serve . -l 1234",
     "prepublish": "build"
   },
   "dependencies": {

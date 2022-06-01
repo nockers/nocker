@@ -11,11 +11,13 @@
     "*.lock": true,
     "*.log": true,
     "*.tsbuildinfo": true,
-    "packages/**/public": true,
-    "packages/**/storybook-static": true
+    "packages/**/dist": true,
+    "packages/**/types": true
   },
   "search.exclude": {
-    "yarn.lock": true
+    "*.lock": true,
+    "packages/**/dist": true,
+    "packages/**/types": true
   },
   "files.associations": {
     "*.xml": "html",
