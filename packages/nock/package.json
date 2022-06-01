@@ -1,0 +1,18 @@
+{
+  "name": "@nocker/nock",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "license": "MIT",
+  "files": [
+    "package.json",
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "preview": "serve . -l 1234"
+  },
+  "dependencies": {
+    "@nocker/browser": "next"
+  }
+}

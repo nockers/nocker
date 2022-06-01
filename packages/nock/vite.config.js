@@ -1,0 +1,24 @@
+import path from "path"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  build: {
+    sourcemap: false,
+    commonjsOptions: {
+      include: [/node_modules/],
+    },
+    lib: {
+      name: "nock",
+      entry: path.resolve(__dirname, "lib/index.ts"),
+      formats: ["iife"],
+      fileName: "main",
+    },
+  },
+  resolve: {
+    alias: {
+      "@nocker/browser": "../browser/lib/index.ts",
+      "@nocker/client": "../client/lib/index.ts",
+      "@nocker/mui": "../mui/lib/index.ts",
+    },
+  },
+})
