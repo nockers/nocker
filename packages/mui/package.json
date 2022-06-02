@@ -18,12 +18,13 @@
   ],
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
-    "build:types": "tsc --emitDeclarationOnly",
     "build:storybook": "build-storybook",
+    "build:types": "tsc --emitDeclarationOnly",
     "debug:pack": "npm pack --dry-run",
     "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
     "@nocker/client": "^0.1.20",
@@ -36,7 +37,9 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
     "@mui/lab": "^5.0.0-alpha.83",
-    "@mui/material": "^5.8.1"
+    "@mui/material": "^5.8.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
@@ -44,7 +47,6 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/lab": "^5.0.0-alpha.83",
     "@mui/material": "^5.8.1",
-    "@mui/system": "^5.8.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   }

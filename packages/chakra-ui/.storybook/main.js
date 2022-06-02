@@ -1,4 +1,4 @@
-exports.stories = ["../lib/**/*.stories.tsx"]
+exports.stories = ["../lib"]
 
 exports.addons = [
   "@storybook/addon-links",

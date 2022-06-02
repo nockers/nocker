@@ -19,6 +19,7 @@
     "build": "vite build",
     "build:types": "tsc --emitDeclarationOnly",
     "prepublish": "yarn build",
+    "refactor:package": "npx sort-package-json",
     "test": "jest",
     "test:watch": "jest --watch"
   },
