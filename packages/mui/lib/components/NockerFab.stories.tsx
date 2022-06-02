@@ -4,16 +4,16 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
 import { NockerFab } from "./NockerFab"
 
-const meta: ComponentMeta<typeof NockerFab> = {
+export default {
   title: "NockerFab",
   component: NockerFab,
   parameters: {
     layout: "fullscreen",
   },
   argTypes: {},
-}
+} as ComponentMeta<typeof NockerFab>
 
-export const Story: ComponentStoryObj<typeof NockerFab> = {
+export const Default: ComponentStoryObj<typeof NockerFab> = {
   storyName: "NockerFab",
   args: {
     widgetConfig: widgetConfigDefault,
