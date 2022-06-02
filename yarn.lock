@@ -10510,6 +10510,11 @@ prettier-plugin-organize-imports@^2.3.4:
   resolved "https://registry.yarnpkg.com/prettier-plugin-organize-imports/-/prettier-plugin-organize-imports-2.3.4.tgz#65473861ae5ab7960439fff270a2258558fbe9ba"
   integrity sha512-R8o23sf5iVL/U71h9SFUdhdOEPsi3nm42FD/oDYIZ2PQa4TNWWuWecxln6jlIQzpZTDMUeO1NicJP6lLn2TtRw==
 
+prettier-plugin-tailwindcss@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.1.11.tgz#6112da68d9d022b7f896d35c070464931c99c35f"
+  integrity sha512-a28+1jvpIZQdZ/W97wOXb6VqI762MKE/TxMMuibMEHhyYsSxQA8Ek30KObd5kJI2HF1ldtSYprFayXJXi3pz8Q==
+
 "prettier@>=2.2.1 <=2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
