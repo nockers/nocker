@@ -7,12 +7,12 @@
     "packages/*"
   ],
   "scripts": {
-    "publish:browser": "yarn workspace @nocker/browser publish --access=public",
-    "publish:chakra-ui": "yarn workspace @nocker/chakra-ui publish --access=public",
-    "publish:client": "yarn workspace @nocker/client publish --access=public",
-    "publish:mui": "yarn workspace @nocker/mui publish --access=public",
-    "publish:react": "yarn workspace @nocker/react publish --access=public",
-    "publish:vue": "yarn workspace @nocker/vue publish --access=public",
+    "publish:browser": "yarn workspace @nocker/browser build && yarn workspace @nocker/browser publish --access=public",
+    "publish:chakra-ui": "yarn workspace @nocker/chakra-ui build && yarn workspace @nocker/chakra-ui publish --access=public",
+    "publish:client": "yarn workspace @nocker/client build && yarn workspace @nocker/client publish --access=public",
+    "publish:mui": "yarn workspace @nocker/mui build && yarn workspace @nocker/mui publish --access=public",
+    "publish:react": "yarn workspace @nocker/react build && yarn workspace @nocker/react publish --access=public",
+    "publish:vue": "yarn workspace @nocker/vue build && yarn workspace @nocker/vue publish --access=public",
     "www": "serve www -l 1234"
   },
   "resolutions": {
@@ -23,6 +23,7 @@
     "@storybook/addon-essentials": "6.5.6",
     "@storybook/addon-interactions": "^6.5.6",
     "@storybook/addon-links": "6.5.6",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-vite": "^0.1.35",
     "@storybook/builder-webpack5": "^6.5.6",
     "@storybook/manager-webpack5": "^6.5.6",
