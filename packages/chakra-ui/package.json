@@ -25,7 +25,7 @@
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
-    "@nocker/client": "^0.1.20",
+    "@nocker/client": "^0.1.21",
     "@sentry/minimal": "^6.19.7",
     "react-icons": "^4.4.0",
     "react-transition-group": "^4.4.2"
