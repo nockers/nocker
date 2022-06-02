@@ -1,0 +1,6 @@
+export { NockerProvider } from "./components/NockerProvider"
+export { NockerTicket } from "./components/NockerTicket"
+export { ConfigContext } from "./contexts"
+export * from "./types"
+export { createConfig } from "./utils"
+import "tailwindcss/tailwind.css"

@@ -1,7 +1,3 @@
 module.exports = {
-  content: ["./lib/**/*.tsx"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  content: ["./.storybook/preview.tsx", "./lib/**/*.tsx"],
 }

@@ -3,6 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "main": "index.js",
-  "devDependencies": {}
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./dist/main.umd.js",
+      "import": "./dist/main.es.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "main": "dist/main.umd.js",
+  "module": "dist/main.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "types"
+  ],
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "build:storybook": "build-storybook",
+    "build:types": "tsc --emitDeclarationOnly",
+    "debug:pack": "npm pack --dry-run",
+    "dev": "start-storybook -p 6006",
+    "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
+    "refactor:package": "npx sort-package-json"
+  },
+  "dependencies": {
+    "@nocker/client": "^0.1.21",
+    "@sentry/minimal": "^6.19.7",
+    "react-icons": "^4.4.0",
+    "react-transition-group": "^4.4.2"
+  },
+  "devDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
 }
