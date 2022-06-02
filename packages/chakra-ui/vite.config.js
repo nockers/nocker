@@ -15,7 +15,7 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-        "react-dom/client",
+        /react-icons/,
       ],
     },
     commonjsOptions: {

@@ -1,7 +1,7 @@
-import plugin from "@vitejs/plugin-react"
 import path from "path"
 import { defineConfig } from "vite"
 import { dependencies, peerDependencies } from "./package.json"
+import plugin from "@vitejs/plugin-react"
 
 export default defineConfig({
   plugins: [plugin({ jsxRuntime: "classic" })],
@@ -15,7 +15,7 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-        "react-dom/client",
+        /@mui/,
       ],
     },
     commonjsOptions: {

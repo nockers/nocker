@@ -2,12 +2,6 @@ import path from "path"
 import { defineConfig } from "vite"
 import { dependencies, peerDependencies } from "./package.json"
 
-console.log([
-  ...Object.keys(peerDependencies),
-  ...Object.keys(dependencies),
-  "react-dom/client",
-])
-
 export default defineConfig({
   optimizeDeps: {
     include: ["@nocker/mui", "@nocker/client"],
@@ -20,8 +14,6 @@ export default defineConfig({
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
         "react-dom/client",
-        "@sentry/browser",
-        "@sentry/minimal",
       ],
     },
     commonjsOptions: {
