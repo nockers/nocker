@@ -13,7 +13,7 @@ exports.features = {
 exports.core = {
   get builder() {
     return process.env.NODE_ENV === "production"
-      ? "webpack4"
+      ? "webpack5"
       : "@storybook/builder-vite"
   },
 }

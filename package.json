@@ -13,7 +13,9 @@
     "publish:mui": "yarn workspace @nocker/mui build && yarn workspace @nocker/mui publish --access=public",
     "publish:react": "yarn workspace @nocker/react build && yarn workspace @nocker/react publish --access=public",
     "publish:vue": "yarn workspace @nocker/vue build && yarn workspace @nocker/vue publish --access=public",
-    "www": "serve www -l 1234"
+    "www": "serve www -l 1234",
+    "render:storybook:mui": "rm package.json && cd packages/mui && yarn install && yarn build:storybook",
+    "render:storybook:chakra-ui": "rm package.json && cd packages/chakra-ui && yarn install && yarn build:storybook"
   },
   "resolutions": {
     "jest-mock": "^28.1.0"
