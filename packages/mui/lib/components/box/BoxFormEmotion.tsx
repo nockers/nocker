@@ -17,7 +17,7 @@ type Props = {
   onSelect(grade: WidgetGrade): void
 }
 
-export const NockerFormEmotion: FC<Props> = (props) => {
+export const BoxFormEmotion: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   const emotionText = useEmotionText(props.config, props.grade)

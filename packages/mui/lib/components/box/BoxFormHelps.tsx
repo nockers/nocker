@@ -10,7 +10,7 @@ type Props = {
   onOpen?(): void
 }
 
-export const NockerFormHelps: FC<Props> = (props) => {
+export const BoxFormHelps: FC<Props> = (props) => {
   return (
     <Stack>
       <Stack

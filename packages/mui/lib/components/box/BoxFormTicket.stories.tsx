@@ -1,14 +1,14 @@
 import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { NockerFormTicket } from "./BoxFormTicket"
+import { BoxFormTicket } from "./BoxFormTicket"
 
 export default {
-  title: "NockerFormTicket",
-  component: NockerFormTicket,
-} as ComponentMeta<typeof NockerFormTicket>
+  title: "BoxFormTicket",
+  component: BoxFormTicket,
+} as ComponentMeta<typeof BoxFormTicket>
 
-export const Default: ComponentStoryObj<typeof NockerFormTicket> = {
-  storyName: "NockerFormTicket",
+export const Default: ComponentStoryObj<typeof BoxFormTicket> = {
+  storyName: "BoxFormTicket",
   args: {
     config: {
       buttonSubmitText: widgetConfigDefault.ticketButtonSubmitText,

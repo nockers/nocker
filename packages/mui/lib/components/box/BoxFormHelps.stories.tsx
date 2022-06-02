@@ -1,13 +1,13 @@
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { NockerFormHelps } from "./BoxFormHelps"
+import { BoxFormHelps } from "./BoxFormHelps"
 
 export default {
-  title: "NockerFormHelps",
-  component: NockerFormHelps,
-} as ComponentMeta<typeof NockerFormHelps>
+  title: "BoxFormHelps",
+  component: BoxFormHelps,
+} as ComponentMeta<typeof BoxFormHelps>
 
-export const Default: ComponentStoryObj<typeof NockerFormHelps> = {
-  storyName: "NockerFormHelps",
+export const Default: ComponentStoryObj<typeof BoxFormHelps> = {
+  storyName: "BoxFormHelps",
   args: {
     inputPlaceholder: "何かお困りですか？",
     helps: [],

@@ -11,7 +11,7 @@ type Props = {
   onSubmit(): Promise<void>
 }
 
-export const NockerFormTicket: FC<Props> = (props) => {
+export const BoxFormTicket: FC<Props> = (props) => {
   return (
     <div className={"grid w-full gap-y-4"}>
       <textarea

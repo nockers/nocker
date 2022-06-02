@@ -18,13 +18,13 @@ import React, { FC, useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "../types"
-import { NockerFormEmotion } from "./box/BoxFormEmotion"
-import { NockerFormEmotionTwo } from "./box/BoxFormEmotionTwo"
-import { NockerFormHelps } from "./box/BoxFormHelps"
-import { NockerFormTicket } from "./box/BoxFormTicket"
+import { BoxFormEmotion } from "./box/BoxFormEmotion"
+import { BoxFormEmotionTwo } from "./box/BoxFormEmotionTwo"
+import { BoxFormHelps } from "./box/BoxFormHelps"
+import { BoxFormTicket } from "./box/BoxFormTicket"
 import { BoxThanks } from "./box/BoxThanks"
 import { ButtonClose } from "./button/ButtonClose"
-import { NockerCapure } from "./NockerCapure"
+import { BoxCapure } from "./box/BoxCapure"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -212,7 +212,7 @@ export const NockerCard: FC<Props> = (props) => {
               )}
               {widgetConfig.emotionType === "FIVE" && (
                 <Box sx={{ pb: 0.75, px: 0.75 }}>
-                  <NockerFormEmotion
+                  <BoxFormEmotion
                     config={{
                       gradeFiveMessage:
                         widgetConfig.emotionFiveGradeFiveMessage,
@@ -230,7 +230,7 @@ export const NockerCard: FC<Props> = (props) => {
               )}
               {widgetConfig.emotionType === "TWO" && (
                 <Box sx={{ pt: 0.5, pb: 1.25, px: 1.25 }}>
-                  <NockerFormEmotionTwo
+                  <BoxFormEmotionTwo
                     config={{
                       gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
                       gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
@@ -253,7 +253,7 @@ export const NockerCard: FC<Props> = (props) => {
               <Collapse in={isOpenTicket}>
                 {hasEmotion && <Divider />}
                 <Box sx={{ pl: 1, pr: 2, pt: hasEmotion ? 2 : 0.5, pb: 2 }}>
-                  <NockerFormTicket
+                  <BoxFormTicket
                     config={{
                       buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                       inputPlaceholder: widgetConfig.ticketInputPlaceholder,
@@ -282,7 +282,7 @@ export const NockerCard: FC<Props> = (props) => {
             {hasHelps && (
               <>
                 <Divider />
-                <NockerFormHelps
+                <BoxFormHelps
                   inputPlaceholder={"何かお困りですか？"}
                   helps={config.helps}
                 />
@@ -292,7 +292,7 @@ export const NockerCard: FC<Props> = (props) => {
         </Card>
       )}
       {isOpenCapture && (
-        <NockerCapure onCapture={onCapture} onCancel={onCancelCapture} />
+        <BoxCapure onCapture={onCapture} onCancel={onCancelCapture} />
       )}
     </>
   )

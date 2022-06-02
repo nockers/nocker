@@ -3,7 +3,7 @@ import React, { FC, useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { WidgetTicketSubmit } from "../types"
-import { NockerFormTicket } from "./NockerFormTicket"
+import { BoxFormTicket } from "./box/BoxFormTicket"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -43,7 +43,7 @@ export const NockerTicket: FC<Props> = (props) => {
   return (
     <div className={"w-100 max-w-64 overflow-hidden rounded-md bg-white"}>
       <div className={"pl-4 pr-4 pt-4 pb-4"}>
-        <NockerFormTicket
+        <BoxFormTicket
           config={{
             buttonSubmitText: widgetConfig.ticketButtonSubmitText,
             inputPlaceholder: widgetConfig.ticketInputPlaceholder,

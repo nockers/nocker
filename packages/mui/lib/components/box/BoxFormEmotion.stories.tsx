@@ -1,14 +1,14 @@
 import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { NockerFormEmotion } from "./BoxFormEmotion"
+import { BoxFormEmotion } from "./BoxFormEmotion"
 
 export default {
-  title: "NockerFormEmotion",
-  component: NockerFormEmotion,
-} as ComponentMeta<typeof NockerFormEmotion>
+  title: "BoxFormEmotion",
+  component: BoxFormEmotion,
+} as ComponentMeta<typeof BoxFormEmotion>
 
-export const Default: ComponentStoryObj<typeof NockerFormEmotion> = {
-  storyName: "NockerFormEmotion",
+export const Default: ComponentStoryObj<typeof BoxFormEmotion> = {
+  storyName: "BoxFormEmotion",
   args: {
     grade: 2,
     config: {

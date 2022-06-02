@@ -2,16 +2,16 @@ import { Box, Button, Paper, Stack } from "@mui/material"
 import { captureException } from "@sentry/minimal"
 import html2canvas from "html2canvas"
 import React, { FC, useEffect, useRef, useState } from "react"
-import { useResize } from "../hooks"
-import { BoxBackdrop } from "./box/BoxBackdrop"
-import { NockerCanvas } from "./NockerCanvas"
+import { useResize } from "../../hooks"
+import { BoxBackdrop } from "./BoxBackdrop"
+import { BoxCanvas } from "./BoxCanvas"
 
 type Props = {
   onCapture(imageText: string): void
   onCancel(): void
 }
 
-export const NockerCapure: FC<Props> = (props) => {
+export const BoxCapure: FC<Props> = (props) => {
   const boxRef = useRef<HTMLDivElement>(null)
 
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
@@ -85,7 +85,7 @@ export const NockerCapure: FC<Props> = (props) => {
           src={backgroundImage}
           sx={{ width: "100%", overflow: "hidden" }}
         />
-        <NockerCanvas width={canvasSize.width} height={canvasSize.height} />
+        <BoxCanvas width={canvasSize.width} height={canvasSize.height} />
         <Box
           sx={{
             position: "absolute",

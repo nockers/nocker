@@ -10,7 +10,7 @@ type Props = {
   onClick(): void
 }
 
-export const NockerFormEmotionOne: FC<Props> = (props) => {
+export const BoxFormEmotionOne: FC<Props> = (props) => {
   return (
     <Button
       startIcon={<FavoriteIcon />}

@@ -5,7 +5,7 @@ import React, { FC, useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { WidgetEmotionSubmit } from "../types"
-import { NockerFormEmotionTwo } from "./box/BoxFormEmotionTwo"
+import { BoxFormEmotionTwo } from "./box/BoxFormEmotionTwo"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -78,7 +78,7 @@ export const NockerEmotionHand: FC<Props> = (props) => {
           </Box>
         )}
         <Box sx={{ pt: 1, pb: 1.25, px: 1.25 }}>
-          <NockerFormEmotionTwo
+          <BoxFormEmotionTwo
             config={{
               gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
               gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,

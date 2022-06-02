@@ -7,7 +7,7 @@ type Props = {
   height: number
 }
 
-export const NockerCanvas: FC<Props> = (props) => {
+export const BoxCanvas: FC<Props> = (props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const [isDrawing, setDrawing] = useState(false)

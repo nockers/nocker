@@ -5,7 +5,7 @@ import React, { FC, useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { WidgetEmotionSubmit } from "../types"
-import { NockerFormEmotionOne } from "./box/BoxFormEmotionOne"
+import { BoxFormEmotionOne } from "./box/BoxFormEmotionOne"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -65,7 +65,7 @@ export const NockerEmotionLike: FC<Props> = (props) => {
       }}
     >
       <Box sx={{ py: 0, px: 0 }}>
-        <NockerFormEmotionOne
+        <BoxFormEmotionOne
           config={{
             buttonText: widgetConfig.emotionOneButtonText,
           }}

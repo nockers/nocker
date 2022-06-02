@@ -1,19 +1,19 @@
 import { Box } from "@mui/material"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import React from "react"
-import { NockerCanvas } from "./NockerCanvas"
+import { BoxCanvas } from "./BoxCanvas"
 
 export default {
-  title: "NockerCanvas",
-  component: NockerCanvas,
+  title: "BoxCanvas",
+  component: BoxCanvas,
   argTypes: {},
   parameters: {
     layout: "fullscreen",
   },
-} as ComponentMeta<typeof NockerCanvas>
+} as ComponentMeta<typeof BoxCanvas>
 
-export const Default: ComponentStoryObj<typeof NockerCanvas> = {
-  storyName: "NockerCanvas",
+export const Default: ComponentStoryObj<typeof BoxCanvas> = {
+  storyName: "BoxCanvas",
   args: {
     width: 400,
     height: 400,
@@ -21,7 +21,7 @@ export const Default: ComponentStoryObj<typeof NockerCanvas> = {
   render(args) {
     return (
       <Box sx={{ width: args.width, height: args.height, background: "white" }}>
-        <NockerCanvas {...args} />
+        <BoxCanvas {...args} />
       </Box>
     )
   },

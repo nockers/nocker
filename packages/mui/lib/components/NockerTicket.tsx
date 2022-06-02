@@ -5,9 +5,9 @@ import React, { FC, useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { useClient, useWidgetConfig } from "../hooks"
 import { WidgetTicketSubmit } from "../types"
-import { NockerFormTicket } from "./box/BoxFormTicket"
+import { BoxFormTicket } from "./box/BoxFormTicket"
 import { BoxThanks } from "./box/BoxThanks"
-import { NockerCapure } from "./NockerCapure"
+import { BoxCapure } from "./box/BoxCapure"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -113,7 +113,7 @@ export const NockerTicket: FC<Props> = (props) => {
               pb: 2,
             }}
           >
-            <NockerFormTicket
+            <BoxFormTicket
               config={{
                 buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                 inputPlaceholder: widgetConfig.ticketInputPlaceholder,
@@ -140,7 +140,7 @@ export const NockerTicket: FC<Props> = (props) => {
         </Collapse>
       </Paper>
       {isOpenCapture && (
-        <NockerCapure onCapture={onCapture} onCancel={onCancelCapture} />
+        <BoxCapure onCapture={onCapture} onCancel={onCancelCapture} />
       )}
     </>
   )
