@@ -22,13 +22,7 @@ export const NockerTicket: FC<Props> = (props) => {
 
   const client = useClient()
 
-  const [isOpenCapture, openCapture] = useState(false)
-
   const [formText, setFormText] = useState("")
-
-  const [formImageText, setFormImageText] = useState<string | null>(null)
-
-  const [isOpenHelpForm, openHelpForm] = useState(false)
 
   const [isDone, markAsDone] = useState(false)
 
@@ -40,22 +34,8 @@ export const NockerTicket: FC<Props> = (props) => {
     setFormText(text)
   }
 
-  const onOpenCapture = async () => {
-    openCapture(true)
-  }
-
-  const onCapture = (imageText: string) => {
-    setFormImageText(imageText)
-    openCapture(false)
-  }
-
-  const onCancelCapture = () => {
-    openCapture(false)
-  }
-
   const onReset = () => {
     setFormText("")
-    setFormImageText(null)
     markAsDone(false)
     props.onDone?.()
   }
@@ -69,10 +49,8 @@ export const NockerTicket: FC<Props> = (props) => {
             inputPlaceholder: widgetConfig.ticketInputPlaceholder,
           }}
           text={formText}
-          hasImage={formImageText !== null}
           isLoading={isLoading}
           onChangeText={onChangeText}
-          onOpenCapture={onOpenCapture}
           onSubmit={onCreateTicket}
         />
       </div>

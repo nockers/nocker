@@ -7,10 +7,8 @@ type Props = {
   }
   text: string
   isLoading: boolean
-  hasImage: boolean
   onChangeText(text: string): void
   onSubmit(): Promise<void>
-  onOpenCapture(): void
 }
 
 export const NockerFormTicket: FC<Props> = (props) => {
