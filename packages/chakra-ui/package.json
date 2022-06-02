@@ -11,8 +11,9 @@
   "module": "dist/main.es.js",
   "types": "dist/index.d.ts",
   "files": [
+    "dist",
     "package.json",
-    "dist"
+    "types"
   ],
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",

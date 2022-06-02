@@ -12,8 +12,9 @@
   "module": "dist/index.es.js",
   "types": "types/index.d.ts",
   "files": [
+    "dist",
     "package.json",
-    "dist"
+    "types"
   ],
   "scripts": {
     "build": "vite build",
