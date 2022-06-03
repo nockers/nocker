@@ -19,4 +19,8 @@ exports.core = {
   },
 }
 
+exports.typescript = {
+  reactDocgen: "react-docgen",
+}
+
 exports.framework = "@storybook/react"

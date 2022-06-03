@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof BoxFormTicket>
 
 export const Default: ComponentStoryObj<typeof BoxFormTicket> = {
-  storyName: "BoxFormTicket",
+  name: "BoxFormTicket",
   args: {
     config: {
       buttonSubmitText: widgetConfigDefault.ticketButtonSubmitText,

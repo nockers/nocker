@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof NockerFab>
 
 export const Default: ComponentStoryObj<typeof NockerFab> = {
-  storyName: "NockerFab",
+  name: "NockerFab",
   args: {
     widgetConfig: widgetConfigDefault,
   },

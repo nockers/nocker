@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof BoxFormEmotionTwo>
 
 export const Default: ComponentStoryObj<typeof BoxFormEmotionTwo> = {
-  storyName: "BoxFormEmotionTwo",
+  name: "BoxFormEmotionTwo",
   args: {
     config: {
       gradeOneMessage: widgetConfigDefault.emotionTwoGradeOneMessage,

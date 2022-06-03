@@ -13,7 +13,7 @@ type Props = {
   onDone?(): void
 }
 
-export const NockerTicket: FC<Props> = (props) => {
+export const NockerEmotionHand: FC<Props> = (props) => {
   return (
     <Box>
       <Button>{"Hello"}</Button>

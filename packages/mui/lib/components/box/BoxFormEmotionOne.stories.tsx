@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof BoxFormEmotionOne>
 
 export const Default: ComponentStoryObj<typeof BoxFormEmotionOne> = {
-  storyName: "BoxFormEmotionOne",
+  name: "BoxFormEmotionOne",
   args: {
     config: {
       buttonText: widgetConfigDefault.emotionOneButtonText,

@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof BoxThanks>
 
 export const Default: ComponentStoryObj<typeof BoxThanks> = {
-  storyName: "BoxThanks",
+  name: "BoxThanks",
   args: {
     config: {
       thanksMessage: widgetConfigDefault.ticketThanksMessage,

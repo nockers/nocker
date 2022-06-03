@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof BoxCanvas>
 
 export const Default: ComponentStoryObj<typeof BoxCanvas> = {
-  storyName: "BoxCanvas",
+  name: "BoxCanvas",
   args: {
     width: 400,
     height: 400,

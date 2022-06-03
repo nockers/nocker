@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof BoxCapure>
 
 export const Default: ComponentStoryObj<typeof BoxCapure> = {
-  storyName: "BoxCapure",
+  name: "BoxCapure",
   args: {},
   render(args) {
     return (

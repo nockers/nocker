@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof BoxFormEmotion>
 
 export const Default: ComponentStoryObj<typeof BoxFormEmotion> = {
-  storyName: "BoxFormEmotion",
+  name: "BoxFormEmotion",
   args: {
     grade: 2,
     config: {

@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof NockerEmotionHand>
 
 export const Default: ComponentStoryObj<typeof NockerEmotionHand> = {
-  storyName: "NockerEmotionHand",
+  name: "NockerEmotionHand",
   args: {
     widgetConfig: widgetConfigDefault,
     hasBorder: true,

@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof BoxFormHelps>
 
 export const Default: ComponentStoryObj<typeof BoxFormHelps> = {
-  storyName: "BoxFormHelps",
+  name: "BoxFormHelps",
   args: {
     inputPlaceholder: "何かお困りですか？",
     helps: [],

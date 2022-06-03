@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof NockerCard>
 
 export const Default: ComponentStoryObj<typeof NockerCard> = {
-  storyName: "NockerCard",
+  name: "NockerCard",
   args: {
     widgetConfig: widgetConfigDefault,
   },
