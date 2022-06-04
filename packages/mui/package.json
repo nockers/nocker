@@ -18,7 +18,7 @@
     "types"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && tsc --emitDeclarationOnly",
     "build:storybook": "build-storybook",
     "build:types": "tsc --emitDeclarationOnly",
     "debug:pack": "npm pack --dry-run",

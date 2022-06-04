@@ -1,7 +1,7 @@
 import { Box, Button } from "@chakra-ui/react"
 import { WidgetConfig, WidgetTicket } from "@nocker/client"
 import React, { FC } from "react"
-import { WidgetTicketSubmit } from "../types"
+import { WidgetTicketSubmit } from "./types"
 
 type Props = {
   widgetConfig?: WidgetConfig | null

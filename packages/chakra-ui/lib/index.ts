@@ -1,5 +1,5 @@
-export { NockerProvider } from "./components/NockerProvider"
-export { NockerTicket } from "./components/NockerTicket"
+export { NockerProvider } from "./NockerProvider"
+export { NockerTicket } from "./NockerTicket"
 export { ConfigContext } from "./contexts"
 export * from "./types"
 export { createConfig } from "./utils"
