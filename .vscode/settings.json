@@ -13,7 +13,7 @@
     "*.tsbuildinfo": true,
     "packages/*/dist": false,
     "packages/*/storybook-static": true,
-    "packages/*/types": false
+    "packages/*/types": true
   },
   "search.exclude": {
     "*.lock": true,

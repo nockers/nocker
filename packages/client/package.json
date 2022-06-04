@@ -17,7 +17,7 @@
     "types"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && tsc --emitDeclarationOnly",
     "build:types": "tsc --emitDeclarationOnly",
     "refactor:package": "npx sort-package-json",
     "test": "jest",

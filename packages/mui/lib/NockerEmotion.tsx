@@ -2,22 +2,23 @@ import { Box, Card, Stack, Typography } from "@mui/material"
 import { WidgetConfig, WidgetEmotion, WidgetGrade } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
-import { ConfigContext } from "../contexts"
-import { useClient, useWidgetConfig } from "../hooks"
-import { WidgetEmotionSubmit } from "../types"
-import { BoxFormEmotionTwo } from "./box/BoxFormEmotionTwo"
+import { ConfigContext } from "./contexts"
+import { useClient, useWidgetConfig } from "./hooks"
+import { WidgetEmotionSubmit } from "./types"
+import { BoxFormEmotion } from "./components/box/BoxFormEmotion"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
   pagePath?: string | null
   pageTitle?: string | null
   hasBorder?: boolean | null
+  isStandalone?: boolean | null
   onSubmitted?(emotion: WidgetEmotion): void
   onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
 }
 
-export const NockerEmotionHand: FC<Props> = (props) => {
+export const NockerEmotion: FC<Props> = (props) => {
   const config = useContext(ConfigContext)
 
   const widgetConfig = useWidgetConfig(props.widgetConfig)
@@ -32,8 +33,9 @@ export const NockerEmotionHand: FC<Props> = (props) => {
     if (client !== null) {
       const emotion = await client.emotions().create({
         pagePath: props.pagePath || window.location.pathname,
-        type: "TWO",
+        type: "FIVE",
         grade,
+        slug: null,
         ticketId: null,
       })
       if (emotion instanceof Error) {
@@ -45,7 +47,7 @@ export const NockerEmotionHand: FC<Props> = (props) => {
     }
     if (client === null) {
       const emotion: WidgetEmotionSubmit = {
-        type: "TWO",
+        type: "FIVE",
         grade,
         pagePath: props.pagePath || window.location.pathname,
         pageTitle: window.document.title,
@@ -66,8 +68,8 @@ export const NockerEmotionHand: FC<Props> = (props) => {
       }}
     >
       <Stack sx={{ width: "100%" }}>
-        {widgetConfig.emotionType !== null && (
-          <Box sx={{ pt: 2, pb: 0, pr: 1, pl: 2 }}>
+        {widgetConfig.hasEmotionQuestionMessage && (
+          <Box sx={{ pt: 2, px: 2 }}>
             <Typography
               fontSize={14}
               color={"text.secondary"}
@@ -77,12 +79,14 @@ export const NockerEmotionHand: FC<Props> = (props) => {
             </Typography>
           </Box>
         )}
-        <Box sx={{ pt: 1, pb: 1.25, px: 1.25 }}>
-          <BoxFormEmotionTwo
+        <Box sx={{ pt: 0.5, pb: 0.75, px: 0.75 }}>
+          <BoxFormEmotion
             config={{
-              gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
-              gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
-              thanksMessage: widgetConfig.emotionThanksMessage,
+              gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
+              gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,
+              gradeThreeMessage: widgetConfig.emotionFiveGradeThreeMessage,
+              gradeTwoMessage: widgetConfig.emotionFiveGradeTwoMessage,
+              gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
             }}
             grade={grade}
             onSelect={(grade) => {

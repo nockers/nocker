@@ -13,14 +13,14 @@
   },
   "main": "dist/main.umd.js",
   "module": "dist/main.es.js",
-  "types": "dist/index.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "dist",
     "package.json",
     "types"
   ],
   "scripts": {
-    "build": "vite build && tsc --emitDeclarationOnly",
+    "build": "vite build && rm -rf types && tsc --emitDeclarationOnly",
     "build:storybook": "build-storybook",
     "build:types": "tsc --emitDeclarationOnly",
     "debug:pack": "npm pack --dry-run",
@@ -29,8 +29,10 @@
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
+    "@mui/material": "^5.8.1",
     "@nocker/client": "^0.1.21",
     "@sentry/minimal": "^6.19.7",
+    "clsx": "^1.1.1",
     "react-icons": "^4.4.0",
     "react-transition-group": "^4.4.2"
   },

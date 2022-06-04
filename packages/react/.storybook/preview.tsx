@@ -1,6 +1,6 @@
 import { Story } from "@storybook/react"
 import "tailwindcss/tailwind.css"
-import { NockerProvider } from "../lib/components/NockerProvider"
+import { NockerProvider } from "../lib/NockerProvider"
 import { createConfig } from "../lib/utils"
 
 export const parameters = {
@@ -33,7 +33,7 @@ const withProvider = (Story: Story) => {
 
   return (
     <NockerProvider config={config}>
-      <div className={"w-72"}>
+      <div className={"w-80"}>
         <Story />
       </div>
     </NockerProvider>

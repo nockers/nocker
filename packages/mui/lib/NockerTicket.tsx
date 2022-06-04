@@ -2,12 +2,12 @@ import { Box, Collapse, Fade, Paper } from "@mui/material"
 import { WidgetConfig, WidgetTicket } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, useContext, useState } from "react"
-import { ConfigContext } from "../contexts"
-import { useClient, useWidgetConfig } from "../hooks"
-import { WidgetTicketSubmit } from "../types"
-import { BoxFormTicket } from "./box/BoxFormTicket"
-import { BoxThanks } from "./box/BoxThanks"
-import { BoxCapure } from "./box/BoxCapure"
+import { ConfigContext } from "./contexts"
+import { useClient, useWidgetConfig } from "./hooks"
+import { WidgetTicketSubmit } from "./types"
+import { BoxFormTicket } from "./components/box/BoxFormTicket"
+import { BoxThanks } from "./components/box/BoxThanks"
+import { BoxCapure } from "./components/box/BoxCapure"
 
 type Props = {
   widgetConfig?: WidgetConfig | null

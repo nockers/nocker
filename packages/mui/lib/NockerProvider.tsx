@@ -7,8 +7,8 @@ import {
 } from "@nocker/client"
 import { captureException } from "@sentry/minimal"
 import React, { FC, ReactNode, useEffect, useState } from "react"
-import { ConfigContext } from "../contexts"
-import { useClient } from "../hooks"
+import { ConfigContext } from "./contexts"
+import { useClient } from "./hooks"
 
 type Props = {
   data?: WidgetLogin | null

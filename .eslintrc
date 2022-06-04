@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "plugins": ["import", "unused-imports"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "unused-imports/no-unused-imports": "warn",
+    "import/order": ["warn", { "alphabetize": { "order": "asc" } }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
