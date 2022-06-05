@@ -1,6 +1,6 @@
 import { Box, extendTheme, ThemeProvider } from "@chakra-ui/react"
 import { Story } from "@storybook/react"
-import { NockerProvider } from "../lib/components/NockerProvider"
+import { NockerProvider } from "../lib/NockerProvider"
 import { createConfig } from "../lib/utils"
 
 export const parameters = {

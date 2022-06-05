@@ -1,6 +1,6 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material"
 import { Story } from "@storybook/react"
-import { NockerProvider } from "../lib/components/NockerProvider"
+import { NockerProvider } from "../lib/NockerProvider"
 import { createConfig, createDefaultTheme } from "../lib/utils"
 
 export const parameters = {
