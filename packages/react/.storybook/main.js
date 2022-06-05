@@ -25,3 +25,5 @@ exports.typescript = {
 }
 
 exports.framework = "@storybook/react"
+
+exports.staticDirs = ["./public"]
