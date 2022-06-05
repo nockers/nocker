@@ -3,7 +3,6 @@ import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@nocker/client"
 import React, { FC, useState } from "react"
 import { NockerCard } from "./NockerCard"
 import { ButtonAction } from "./components/button/ButtonAction"
-import { useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
 
 type Props = {
@@ -17,9 +16,7 @@ type Props = {
   onDone?(): void
 }
 
-export const Nocker: FC<Props> = (props) => {
-  const widgetConfig = useWidgetConfig(props.widgetConfig)
-
+export const NockerFab: FC<Props> = (props) => {
   const [isOpen, setOpen] = useState(false)
 
   const onClose = () => {
@@ -45,7 +42,7 @@ export const Nocker: FC<Props> = (props) => {
         </div>
       </Grow>
       <Grow in={isOpen} unmountOnExit>
-        <div className={"fixed right-4 bottom-4 w-64"}>
+        <div className={"fixed right-4 bottom-4 w-80"}>
           <NockerCard
             widgetConfig={props.widgetConfig}
             pagePath={null}

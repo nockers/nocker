@@ -23,7 +23,7 @@ export const ButtonAction: FC<Props> = (props) => {
   return (
     <button
       className={
-        "cursor-pointer rounded-full border-none bg-white p-0 p-3 shadow-lg hover:bg-slate-50 active:bg-slate-100 dark:bg-slate-900"
+        "cursor-pointer rounded-full border-none bg-white p-3 shadow-lg hover:bg-slate-50 active:bg-slate-100 dark:bg-slate-900"
       }
       onClick={props.onClick}
     >

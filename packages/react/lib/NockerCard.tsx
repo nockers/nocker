@@ -1,9 +1,11 @@
 import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@nocker/client"
 import React, { FC } from "react"
+import { ButtonClose } from "./components/button/ButtonClose"
+import { DivFormEmotion } from "./components/div/DivFormEmotion"
 import { DivFormTicket } from "./components/div/DivFormTicket"
 import { DivThanks } from "./components/div/DivThanks"
 import { TransitionOpacity } from "./components/transition/TransitionOpacity"
-import { useWidgetConfig } from "./hooks"
+import { useMutationEmotion, useWidgetConfig } from "./hooks"
 import { useMutationTicket } from "./hooks/useMutationTicket"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
 
@@ -25,7 +27,7 @@ type Props = {
 export const NockerCard: FC<Props> = (props) => {
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
-  const mutation = useMutationTicket({
+  const mutationTicket = useMutationTicket({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
     onSubmitted: props.onSubmitted,
@@ -34,29 +36,67 @@ export const NockerCard: FC<Props> = (props) => {
     onDone: props.onDone,
   })
 
+  const hasHeader = typeof props.onClose !== "undefined"
+
+  const mutationEmotion = useMutationEmotion({
+    pagePath: props.pagePath,
+    pageTitle: props.pageTitle,
+    onSubmitted: props.onSubmitted,
+    onSubmit: props.onSubmitEmotion,
+    onError: props.onError,
+  })
+
   return (
     <div
       className={
         "relative w-full max-w-sm overflow-hidden rounded-md border border-solid border-slate-500 bg-white dark:bg-gray-800"
       }
     >
+      <div>
+        <div className={"grid grid-flow-col justify-between"}>
+          <div className={"pt-4 pl-4"}>
+            <div
+              className={"font-sans text-sm text-gray-500 dark:text-gray-200"}
+            >
+              {widgetConfig.emotionQuestionMessage}
+            </div>
+          </div>
+          <div className={"pr-3 pt-3"}>
+            <ButtonClose onClick={props.onClose} />
+          </div>
+        </div>
+        <div className={"px-1.5 pb-1.5"}>
+          <DivFormEmotion
+            config={{
+              gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
+              gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,
+              gradeThreeMessage: widgetConfig.emotionFiveGradeThreeMessage,
+              gradeTwoMessage: widgetConfig.emotionFiveGradeTwoMessage,
+              gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
+            }}
+            grade={mutationEmotion.emotionGrade}
+            onSelect={mutationEmotion.onCreateEmotion}
+          />
+        </div>
+      </div>
+      <div className={"h-px w-full bg-slate-200"} />
       <div className={"p-4"}>
         <DivFormTicket
           config={{
             buttonSubmitText: widgetConfig.ticketButtonSubmitText,
             inputPlaceholder: widgetConfig.ticketInputPlaceholder,
           }}
-          text={mutation.formText}
-          isLoading={mutation.isLoading}
-          onChangeText={mutation.onChangeFormText}
-          onSubmit={mutation.onCreateTicket}
+          text={mutationTicket.formText}
+          isLoading={mutationTicket.isLoading}
+          onChangeText={mutationTicket.onChangeFormText}
+          onSubmit={mutationTicket.onCreateTicket}
         />
       </div>
-      <TransitionOpacity in={mutation.isDone}>
+      <TransitionOpacity in={mutationTicket.isDone}>
         <DivThanks
           message={widgetConfig.ticketThanksMessage}
           buttonText={widgetConfig.ticketButtonResetText}
-          onClick={mutation.onResetForm}
+          onClick={mutationTicket.onResetForm}
         />
       </TransitionOpacity>
     </div>

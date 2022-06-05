@@ -29,12 +29,12 @@ export const NockerEmotionHand: FC<Props> = (props) => {
     <div
       className={"relative w-full max-w-sm overflow-hidden rounded-md bg-white"}
     >
-      <div className={"px-4 pt-4"}>
+      <div className={"px-4 pt-4 pb-2.5"}>
         <div className={"font-sans text-sm text-gray-500"}>
           {widgetConfig.emotionQuestionMessage}
         </div>
       </div>
-      <div className={"px-2.5 pb-2.5 pt-3.5"}>
+      <div className={"px-2.5 pb-2.5"}>
         <DivFormEmotionHand
           config={{
             gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,

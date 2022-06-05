@@ -1,16 +1,16 @@
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { Nocker } from "./Nocker"
+import { NockerFab } from "./NockerFab"
 
 export default {
   title: "Nocker",
-  component: Nocker,
+  component: NockerFab,
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
   },
-} as ComponentMeta<typeof Nocker>
+} as ComponentMeta<typeof NockerFab>
 
-export const Default: ComponentStoryObj<typeof Nocker> = {
+export const Default: ComponentStoryObj<typeof NockerFab> = {
   name: "Nocker",
   args: {},
 }
