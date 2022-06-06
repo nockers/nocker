@@ -4,8 +4,15 @@ exports.addons = [
   "@storybook/addon-links",
   "@storybook/addon-essentials",
   "@storybook/addon-interactions",
-  "@storybook/addon-postcss",
   "storybook-tailwind-dark-mode",
+  {
+    name: "@storybook/addon-postcss",
+    options: {
+      postcssLoaderOptions: {
+        implementation: require("postcss"),
+      },
+    },
+  },
 ]
 
 exports.features = {

@@ -1,7 +1,7 @@
 import { Story } from "@storybook/react"
-import "tailwindcss/tailwind.css"
 import { NockerProvider } from "../lib/NockerProvider"
 import { createConfig } from "../lib/utils"
+import "./main.css"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

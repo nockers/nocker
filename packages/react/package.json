@@ -24,7 +24,7 @@
     "build:storybook": "build-storybook",
     "build:types": "tsc --emitDeclarationOnly",
     "debug:pack": "npm pack --dry-run",
-    "dev": "start-storybook -p 6006",
+    "dev": "rm -rf node_modules/.cache && start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
     "refactor:package": "npx sort-package-json"
   },

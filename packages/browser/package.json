@@ -19,8 +19,6 @@
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
     "build:types": "tsc --emitDeclarationOnly",
-    "dev": "start-storybook -p 6006",
-    "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
