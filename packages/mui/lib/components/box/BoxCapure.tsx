@@ -1,5 +1,5 @@
 import { Box, Button, Paper, Stack } from "@mui/material"
-import { captureException } from "@sentry/minimal"
+import { captureException } from "@sentry/hub"
 import html2canvas from "html2canvas"
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useResize } from "../../hooks"

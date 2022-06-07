@@ -1,5 +1,5 @@
 import { WidgetTicket } from "@nocker/client"
-import { captureException } from "@sentry/minimal"
+import { captureException } from "@sentry/hub"
 import { useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { WidgetTicketSubmit } from "../types"

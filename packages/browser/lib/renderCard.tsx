@@ -5,7 +5,7 @@ import {
   WidgetEmotionSubmit,
   WidgetTicketSubmit,
 } from "@nocker/mui"
-import { captureException } from "@sentry/minimal"
+import { captureException } from "@sentry/hub"
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { StateProvider } from "./components"

@@ -24,6 +24,6 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@sentry/minimal": "^6.19.7"
+    "@sentry/hub": "^7.1.0"
   }
 }

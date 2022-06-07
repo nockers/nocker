@@ -1,4 +1,4 @@
-import { captureException } from "@sentry/minimal"
+import { captureException } from "@sentry/hub"
 import { InternalError } from "./errors"
 import { UnauthorizedError } from "./errors/unauthorizedError"
 import { Store } from "./store"

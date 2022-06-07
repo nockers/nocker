@@ -26,13 +26,13 @@
   },
   "dependencies": {
     "@nocker/client": "^0.1.21",
-    "@sentry/minimal": "^6.19.7",
+    "@sentry/hub": "^7.1.0",
     "react-icons": "^4.4.0",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
-    "@chakra-ui/react": "^2.1.2",
-    "@chakra-ui/storybook-addon": "^3.0.2",
+    "@chakra-ui/react": "^2.2.1",
+    "@chakra-ui/storybook-addon": "^4.0.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "framer-motion": "^6",
@@ -40,7 +40,7 @@
     "react-dom": "^18.1.0"
   },
   "peerDependencies": {
-    "@chakra-ui/react": "^2.1.2",
+    "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "framer-motion": "^6",

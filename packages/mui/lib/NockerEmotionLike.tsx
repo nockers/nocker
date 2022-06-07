@@ -1,6 +1,6 @@
 import { Box, Card } from "@mui/material"
 import { WidgetConfig, WidgetEmotion } from "@nocker/client"
-import { captureException } from "@sentry/minimal"
+import { captureException } from "@sentry/hub"
 import React, { FC, useContext, useState } from "react"
 import { ConfigContext } from "./contexts"
 import { useClient, useWidgetConfig } from "./hooks"

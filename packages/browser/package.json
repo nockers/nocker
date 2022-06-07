@@ -24,20 +24,20 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.0",
-    "@mui/lab": "^5.0.0-alpha.83",
-    "@mui/material": "^5.8.1",
+    "@mui/icons-material": "^5.8.2",
+    "@mui/lab": "^5.0.0-alpha.84",
+    "@mui/material": "^5.8.2",
     "@nocker/client": "^0.1.21",
-    "@nocker/mui": "^0.4.6",
-    "@sentry/browser": "^7.0.0",
-    "@sentry/minimal": "^6.19.7"
+    "@nocker/mui": "^0.4.7",
+    "@sentry/browser": "^7.1.0",
+    "@sentry/hub": "^7.1.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.0",
-    "@mui/lab": "^5.0.0-alpha.83",
-    "@mui/material": "^5.8.1"
+    "@mui/icons-material": "^5.8.2",
+    "@mui/lab": "^5.0.0-alpha.84",
+    "@mui/material": "^5.8.2"
   },
   "peerDependencies": {
     "react": "^18.1.0",

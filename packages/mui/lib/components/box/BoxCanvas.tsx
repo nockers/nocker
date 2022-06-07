@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material"
-import { captureException } from "@sentry/minimal"
+import { captureException } from "@sentry/hub"
 import React, { FC, useRef, useState } from "react"
 
 type Props = {
