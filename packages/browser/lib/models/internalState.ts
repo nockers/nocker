@@ -24,13 +24,13 @@ export class InternalState {
 
   static widgetConfig: WidgetConfig = widgetConfigDefault
 
-  static effects: Function[] = []
+  static effects: (() => void)[] = []
 
   get isLoggingIn() {
     return InternalState.isLoggingIn
   }
 
-  listenLoginState(method: Function) {
+  listenLoginState(method: () => void) {
     if (InternalState.isLoggingIn) {
       InternalState.effects.push(method)
     }

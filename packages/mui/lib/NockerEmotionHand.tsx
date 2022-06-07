@@ -2,10 +2,10 @@ import { Box, Card, Stack, Typography } from "@mui/material"
 import { WidgetConfig, WidgetEmotion, WidgetGrade } from "@nocker/client"
 import { captureException } from "@sentry/hub"
 import React, { FC, useContext, useState } from "react"
+import { BoxFormEmotionTwo } from "./components/box/BoxFormEmotionTwo"
 import { ConfigContext } from "./contexts"
 import { useClient, useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit } from "./types"
-import { BoxFormEmotionTwo } from "./components/box/BoxFormEmotionTwo"
 
 type Props = {
   widgetConfig?: WidgetConfig | null

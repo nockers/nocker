@@ -15,16 +15,16 @@ import {
 } from "@nocker/client"
 import { captureException } from "@sentry/hub"
 import React, { FC, useContext, useState } from "react"
-import { ConfigContext } from "./contexts"
-import { useClient, useWidgetConfig } from "./hooks"
-import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
+import { BoxCapure } from "./components/box/BoxCapure"
 import { BoxFormEmotion } from "./components/box/BoxFormEmotion"
 import { BoxFormEmotionTwo } from "./components/box/BoxFormEmotionTwo"
 import { BoxFormHelps } from "./components/box/BoxFormHelps"
 import { BoxFormTicket } from "./components/box/BoxFormTicket"
 import { BoxThanks } from "./components/box/BoxThanks"
 import { ButtonClose } from "./components/button/ButtonClose"
-import { BoxCapure } from "./components/box/BoxCapure"
+import { ConfigContext } from "./contexts"
+import { useClient, useWidgetConfig } from "./hooks"
+import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
