@@ -1,3 +1,7 @@
+const path = require("path")
+
+const { loadConfigFromFile, mergeConfig } = require("vite")
+
 exports.stories = ["../lib/**/*.stories.tsx"]
 
 exports.addons = [
@@ -20,12 +24,12 @@ exports.features = {
 }
 
 exports.core = {
-  get builder() {
-    return process.env.NODE_ENV === "production"
-      ? "webpack5"
-      : "@storybook/builder-vite"
-  },
+  builder: "webpack5",
 }
+
+// exports.core = {
+//   builder: "@storybook/builder-vite"
+// }
 
 exports.typescript = {
   reactDocgen: "react-docgen-typescript",

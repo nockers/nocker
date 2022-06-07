@@ -18,12 +18,13 @@
     "types"
   ],
   "scripts": {
-    "build": "vite build && tsc --emitDeclarationOnly",
-    "build:storybook": "build-storybook",
+    "build": "rm -rf node_modules && vite build && tsc --emitDeclarationOnly",
+    "build:storybook": "yarn predev && build-storybook",
     "build:types": "tsc --emitDeclarationOnly",
     "debug:pack": "npm pack --dry-run",
-    "dev": "rm -rf node_modules/.cache && start-storybook -p 6006",
+    "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
+    "predev": "yarn workspace @nocker/client build",
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {

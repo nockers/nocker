@@ -12,12 +12,12 @@ exports.features = {
 }
 
 exports.core = {
-  get builder() {
-    return process.env.NODE_ENV === "production"
-      ? "webpack5"
-      : "@storybook/builder-vite"
-  },
+  builder: "webpack5",
 }
+
+// exports.core = {
+//   builder: "@storybook/builder-vite"
+// }
 
 exports.typescript = {
   reactDocgen: "react-docgen",

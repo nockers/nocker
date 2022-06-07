@@ -13,8 +13,7 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-        "react-dom/client",
-      ],
+      ].map((name) => new RegExp(name)),
     },
     commonjsOptions: {
       include: [/node_modules/],
@@ -29,6 +28,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@nocker/client": "../client/lib/index.ts",
+      "@nocker/mui": "../mui/lib/index.ts",
     },
   },
 })

@@ -19,7 +19,9 @@
     "render:storybook:chakra-ui": "rm package.json && cd packages/chakra-ui && yarn install && yarn build:storybook",
     "render:storybook:mui": "rm package.json && cd packages/mui && yarn install && yarn build:storybook",
     "render:storybook:react": "rm package.json && cd packages/react && yarn install && yarn build:storybook",
-    "www": "serve www -l 1234"
+    "rm:dist": "rm -rf packages/*/dist",
+    "www": "serve www -l 1234",
+    "reset": "rm -rf node_modules && yarn install"
   },
   "resolutions": {
     "jest-mock": "^28.1.0"

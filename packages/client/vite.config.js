@@ -7,7 +7,7 @@ export default defineConfig({
     target: "esnext",
     sourcemap: true,
     rollupOptions: {
-      external: [...Object.keys(dependencies)],
+      external: [...Object.keys(dependencies)].map((name) => new RegExp(name)),
     },
     commonjsOptions: {
       include: [/node_modules/],

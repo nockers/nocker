@@ -15,8 +15,7 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-        /react-icons/,
-      ],
+      ].map((name) => new RegExp(name)),
     },
     commonjsOptions: {
       include: [/node_modules/],
@@ -28,6 +27,10 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
   },
+  /**
+   * config for `vite build`
+   * Failed to resolve entry for package "@nocker/client".
+   */
   resolve: {
     alias: {
       "@nocker/client": "../client/lib/index.ts",

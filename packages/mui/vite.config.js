@@ -1,13 +1,10 @@
 import path from "path"
+import plugin from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import { dependencies, peerDependencies } from "./package.json"
-import plugin from "@vitejs/plugin-react"
 
 export default defineConfig({
   plugins: [plugin({ jsxRuntime: "classic" })],
-  optimizeDeps: {
-    include: ["@nocker/client"],
-  },
   build: {
     target: "esnext",
     sourcemap: true,
@@ -15,8 +12,7 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-        /@mui/,
-      ],
+      ].map((name) => new RegExp(name)),
     },
     commonjsOptions: {
       include: [/node_modules/],

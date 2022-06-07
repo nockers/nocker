@@ -1,5 +1,5 @@
-import plugin from "@vitejs/plugin-react"
 import path from "path"
+import plugin from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import { dependencies, peerDependencies } from "./package.json"
 
@@ -15,8 +15,7 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-        /react-icons/,
-      ],
+      ].map((name) => new RegExp(name)),
     },
     commonjsOptions: {
       include: [/node_modules/],
