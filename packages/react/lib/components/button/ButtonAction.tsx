@@ -15,7 +15,10 @@ export const ButtonAction: FC<Props> = (props) => {
         }
         onClick={props.onClick}
       >
-        <img className={"block h-14 w-14"} src={"/nocker.png"} />
+        <img
+          className={"block h-14 w-14"}
+          src={"https://nocker.app/nocker.png"}
+        />
       </button>
     )
   }

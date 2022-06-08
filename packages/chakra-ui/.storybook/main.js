@@ -1,4 +1,4 @@
-exports.stories = ["../lib"]
+exports.stories = ["../lib/**/*.stories.tsx"]
 
 exports.addons = [
   "@storybook/addon-links",
@@ -18,9 +18,5 @@ exports.core = {
 // exports.core = {
 //   builder: "@storybook/builder-vite"
 // }
-
-exports.typescript = {
-  reactDocgen: "react-docgen",
-}
 
 exports.framework = "@storybook/react"

@@ -11,12 +11,15 @@ type Props = {
   onSubmitted?(emotion: WidgetEmotion): void
   onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
+  ticketId?(): string | null
 }
 
 export const useMutationEmotion = (props: Props) => {
   const config = useContext(ConfigContext)
 
   const client = useClient()
+
+  const [emotionId, setEmotionId] = useState<string | null>(null)
 
   const [emotionGrade, setEmotionGrade] = useState<WidgetGrade | null>(null)
 
@@ -26,12 +29,13 @@ export const useMutationEmotion = (props: Props) => {
     if (config.isLoggingIn) return
     setEmotionGrade(grade)
     if (client !== null) {
+      const ticketId = props.ticketId?.()
       const emotion = await client.emotions().create({
         pagePath: props.pagePath || window.location.pathname,
         type: "FIVE",
         grade,
         slug: null,
-        ticketId: null,
+        ticketId,
       })
       if (emotion instanceof Error) {
         captureException(emotion)
@@ -39,6 +43,7 @@ export const useMutationEmotion = (props: Props) => {
         return
       }
       props.onSubmitted?.(emotion)
+      setEmotionId(emotion.id)
     }
     if (client === null) {
       const emotion: WidgetEmotionSubmit = {
@@ -52,6 +57,7 @@ export const useMutationEmotion = (props: Props) => {
   }
 
   return {
+    emotionId,
     emotionGrade,
     isDone,
     onCreateEmotion,

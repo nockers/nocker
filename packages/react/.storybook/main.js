@@ -1,7 +1,3 @@
-const path = require("path")
-
-const { loadConfigFromFile, mergeConfig } = require("vite")
-
 exports.stories = ["../lib/**/*.stories.tsx"]
 
 exports.addons = [
@@ -30,10 +26,6 @@ exports.core = {
 // exports.core = {
 //   builder: "@storybook/builder-vite"
 // }
-
-exports.typescript = {
-  reactDocgen: "react-docgen-typescript",
-}
 
 exports.framework = "@storybook/react"
 

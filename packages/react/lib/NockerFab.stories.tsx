@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { NockerFab } from "./NockerFab"
 
 export default {
-  title: "Nocker",
+  title: "NockerFab",
   component: NockerFab,
   argTypes: {
     pagePath: { table: { disable: true } },
@@ -11,6 +11,6 @@ export default {
 } as ComponentMeta<typeof NockerFab>
 
 export const Default: ComponentStoryObj<typeof NockerFab> = {
-  name: "Nocker",
+  name: "NockerFab",
   args: {},
 }

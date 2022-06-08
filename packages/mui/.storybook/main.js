@@ -1,6 +1,4 @@
-const path = require("path")
-
-exports.stories = ["../lib"]
+exports.stories = ["../lib/**/*.stories.tsx"]
 
 exports.addons = [
   "@storybook/addon-links",

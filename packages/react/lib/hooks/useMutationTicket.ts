@@ -12,12 +12,15 @@ type Props = {
   onSubmit?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
+  emotionId?(): string | null
 }
 
 export const useMutationTicket = (props: Props) => {
   const config = useContext(ConfigContext)
 
   const client = useClient()
+
+  const [ticketId, setTicketId] = useState<string | null>(null)
 
   const [formText, setFormText] = useState("")
 
@@ -39,11 +42,12 @@ export const useMutationTicket = (props: Props) => {
     if (config.isLoggingIn) return
     setLoading(true)
     if (client !== null) {
+      const emotionId = props.emotionId?.()
       const ticket = await client.tickets().create({
         type: null,
         text: formText,
         imageText: null,
-        emotionId: null,
+        emotionId,
         pagePath: props.pagePath || window.location.pathname,
       })
       if (ticket instanceof Error) {
@@ -53,26 +57,28 @@ export const useMutationTicket = (props: Props) => {
         return
       }
       markAsDone(true)
+      setTicketId(ticket.id)
       props.onSubmitted?.(ticket)
+      setLoading(false)
+      return
     }
-    if (client === null) {
-      const ticket: WidgetTicketSubmit = {
-        type: null,
-        text: formText,
-        imageText: null,
-        pagePath: props.pagePath || window.location.pathname,
-        pageTitle: window.document.title,
-        emotionGrade: null,
-        emotionType: null,
-      }
-      await new Promise((resolve) => setTimeout(resolve, 500))
-      markAsDone(true)
-      props.onSubmit?.(ticket)
+    const ticket: WidgetTicketSubmit = {
+      type: null,
+      text: formText,
+      imageText: null,
+      pagePath: props.pagePath || window.location.pathname,
+      pageTitle: window.document.title,
+      emotionGrade: null,
+      emotionType: null,
     }
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    markAsDone(true)
+    props.onSubmit?.(ticket)
     setLoading(false)
   }
 
   return {
+    ticketId,
     formText,
     isLoading,
     isDone,

@@ -17,13 +17,18 @@ export const DivFormTicket: FC<Props> = (props) => {
   return (
     <div className={"grid w-full gap-y-4"}>
       <TextareaTicket
+        value={props.text}
         placeholder={props.config.inputPlaceholder}
         isLoading={props.isLoading}
         onChange={(event) => {
           props.onChangeText(event.target.value)
         }}
       />
-      <ButtonFilled isLoading={props.isLoading} onClick={props.onSubmit}>
+      <ButtonFilled
+        isDisabled={props.text.length < 2}
+        isLoading={props.isLoading}
+        onClick={props.onSubmit}
+      >
         {props.config.buttonSubmitText}
       </ButtonFilled>
     </div>

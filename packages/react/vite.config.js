@@ -15,7 +15,8 @@ export default defineConfig({
       external: [
         ...Object.keys(peerDependencies),
         ...Object.keys(dependencies),
-      ].map((name) => new RegExp(name)),
+        /react-icons/,
+      ],
     },
     commonjsOptions: {
       include: [/node_modules/],

@@ -39,8 +39,7 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^18.1.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
@@ -48,7 +47,6 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^18.1.0"
   }
 }
