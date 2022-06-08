@@ -1,4 +1,5 @@
-import { Box, Button } from "@chakra-ui/react"
+import { Box, Button, Text } from "@chakra-ui/react"
+import FavoriteIcon from "@mui/icons-material/Favorite"
 import { WidgetConfig, WidgetTicket } from "@nocker/client"
 import React, { FC } from "react"
 import { WidgetTicketSubmit } from "./types"
@@ -16,7 +17,11 @@ type Props = {
 export const NockerEmotionLike: FC<Props> = (props) => {
   return (
     <Box>
-      <Button>{"Hello"}</Button>
+      <Button>
+        <FavoriteIcon />
+        {"いいね"}
+        <Text paddingLeft={2}>{"20"}</Text>
+      </Button>
     </Box>
   )
 }
