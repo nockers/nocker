@@ -1,4 +1,3 @@
-export * from "./useClient"
 export * from "./useEmotionText"
 export * from "./useMutationEmotion"
 export * from "./useMutationTicket"

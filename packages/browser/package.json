@@ -27,7 +27,7 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.2",
-    "@nocker/client": "^0.1.21",
+    "@nocker/client": "^0.1.22",
     "@nocker/mui": "^0.4.7",
     "@sentry/browser": "^7.1.0",
     "@sentry/hub": "^7.1.0"

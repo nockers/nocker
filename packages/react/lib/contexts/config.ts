@@ -1,17 +1,15 @@
 import {
+  type Nocker,
   WidgetConfig,
   widgetConfigDefault,
   WidgetCustomer,
-  WidgetEnvironment,
   WidgetHelp,
 } from "@nocker/client"
 import { createContext } from "react"
 
 export type Context = {
   isLoggingIn: boolean
-  projectId: string | null
-  environment: WidgetEnvironment
-  baseURL: string
+  client: Nocker | null
   customer: WidgetCustomer | null
   helps: WidgetHelp[]
   widgetConfig: WidgetConfig
@@ -19,9 +17,7 @@ export type Context = {
 
 export const ConfigContext = createContext<Context>({
   isLoggingIn: false,
-  projectId: null,
-  environment: "PRODUCTION",
-  baseURL: "https://nocker.app/api",
+  client: null,
   widgetConfig: widgetConfigDefault,
   customer: null,
   helps: [],

@@ -1,18 +1,18 @@
 import { widgetConfigDefault } from "@nocker/client"
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
-import { Nocker } from "./Nocker"
+import { NockerCard } from "./NockerCard"
 
 export default {
-  title: "Nocker",
-  component: Nocker,
+  title: "NockerCard",
+  component: NockerCard,
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
   },
-} as ComponentMeta<typeof Nocker>
+} as ComponentMeta<typeof NockerCard>
 
-export const Default: ComponentStoryObj<typeof Nocker> = {
-  name: "Nocker",
+export const Default: ComponentStoryObj<typeof NockerCard> = {
+  name: "NockerCard",
   args: {
     pagePath: "",
     pageTitle: "",

@@ -3,7 +3,6 @@ import { captureException } from "@sentry/hub"
 import { useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { WidgetTicketSubmit } from "../types"
-import { useClient } from "./useClient"
 
 type Props = {
   pagePath?: string | null
@@ -17,8 +16,6 @@ type Props = {
 
 export const useMutationTicket = (props: Props) => {
   const config = useContext(ConfigContext)
-
-  const client = useClient()
 
   const [ticketId, setTicketId] = useState<string | null>(null)
 
@@ -41,9 +38,9 @@ export const useMutationTicket = (props: Props) => {
   const onCreateTicket = async () => {
     if (config.isLoggingIn) return
     setLoading(true)
-    if (client !== null) {
+    if (config.client !== null) {
       const emotionId = props.emotionId?.()
-      const ticket = await client.tickets().create({
+      const ticket = await config.client.tickets().create({
         type: null,
         text: formText,
         imageText: null,

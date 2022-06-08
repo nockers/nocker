@@ -1,5 +1,5 @@
 import {
-  Config,
+  type Nocker,
   WidgetConfig,
   widgetConfigDefault,
   WidgetCustomer,
@@ -8,19 +8,16 @@ import {
 import { captureException } from "@sentry/hub"
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import { ConfigContext } from "./contexts"
-import { useClient } from "./hooks"
 
 type Props = {
   data?: WidgetLogin | null
-  config?: Config
   widgetConfig?: WidgetConfig | null
   children: ReactNode
+  client: Nocker
 }
 
 export const NockerProvider: FC<Props> = (props) => {
-  const client = useClient(props.config)
-
-  const [isLoggingIn, setLoading] = useState(client !== null)
+  const [isLoggingIn, setLoading] = useState(props.client !== null)
 
   const [data, setData] = useState<WidgetLogin | Error | null>(() => {
     return props.data ?? null
@@ -31,11 +28,11 @@ export const NockerProvider: FC<Props> = (props) => {
       setLoading(false)
       return
     }
-    if (client === null) {
+    if (props.client === null) {
       setLoading(false)
       return
     }
-    client
+    props.client
       .login()
       .then((data) => {
         setData(data)
@@ -63,9 +60,7 @@ export const NockerProvider: FC<Props> = (props) => {
 
   const value = {
     isLoggingIn,
-    projectId: props.config?.projectId ?? "xxxxxxxxxxxxxxxxxxxxx",
-    environment: props.config?.environment ?? "PRODUCTION",
-    baseURL: props.config?.baseURL ?? "https://nocker.app/api",
+    client: props.client,
     customer: data?.customer ?? customerPlaceholder,
     helps: data?.helps ?? [],
     widgetConfig: widgetConfig,

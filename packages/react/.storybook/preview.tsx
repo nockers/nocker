@@ -1,3 +1,4 @@
+import { Nocker } from "@nocker/client"
 import { Story } from "@storybook/react"
 import { NockerProvider } from "../lib/NockerProvider"
 import { createConfig } from "../lib/utils"
@@ -25,14 +26,13 @@ const withProvider = (Story: Story) => {
       ? "http://localhost:3000/api"
       : "https://nocker.app/api"
 
-  const config = createConfig({
+  const client = new Nocker({
     projectId: "xxxxxxxxxxxxxxxxxxxxx",
     environment: "DEVELOPMENT",
-    baseURL,
   })
 
   return (
-    <NockerProvider config={config}>
+    <NockerProvider client={client}>
       <div className={"w-80"}>
         <Story />
       </div>

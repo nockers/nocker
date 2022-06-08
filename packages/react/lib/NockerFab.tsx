@@ -1,12 +1,13 @@
 import { Grow } from "@mui/material"
 import { WidgetConfig, WidgetEmotion, WidgetTicket } from "@nocker/client"
 import React, { FC, useState } from "react"
-import { Nocker } from "./Nocker"
+import { NockerCard } from "./NockerCard"
 import { ButtonAction } from "./components/button/ButtonAction"
+import { useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   onOpen?(): void
   onClose?(): void
   onSubmitted?(data: WidgetTicket | WidgetEmotion): void
@@ -17,7 +18,11 @@ type Props = {
 }
 
 export const NockerFab: FC<Props> = (props) => {
+  const widgetConfig = useWidgetConfig(props.widgetConfig)
+
   const [isOpen, setOpen] = useState(false)
+
+  console.log(widgetConfig)
 
   const onClose = () => {
     setOpen(false)
@@ -38,13 +43,17 @@ export const NockerFab: FC<Props> = (props) => {
     <>
       <Grow in={!isOpen} unmountOnExit>
         <div className={"fixed right-4 bottom-4"}>
-          <ButtonAction icon={""} onClick={onOpen} />
+          <ButtonAction
+            text={widgetConfig.fabText}
+            icon={widgetConfig.fabIcon}
+            onClick={onOpen}
+          />
         </div>
       </Grow>
       <Grow in={isOpen} unmountOnExit>
         <div className={"fixed right-4 bottom-4 w-80"}>
-          <Nocker
-            widgetConfig={props.widgetConfig}
+          <NockerCard
+            widgetConfig={widgetConfig}
             pagePath={null}
             pageTitle={null}
             onClose={onClose}

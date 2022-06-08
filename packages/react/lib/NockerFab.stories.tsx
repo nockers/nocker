@@ -11,6 +11,29 @@ export default {
 } as ComponentMeta<typeof NockerFab>
 
 export const Default: ComponentStoryObj<typeof NockerFab> = {
-  name: "NockerFab",
-  args: {},
+  name: "Default",
+  args: {
+    widgetConfig: {
+      fabText: null,
+      fabIcon: null,
+    },
+  },
+}
+
+export const WithText: ComponentStoryObj<typeof NockerFab> = {
+  name: "Text",
+  args: {
+    widgetConfig: {
+      fabText: "このページは役に立ちましたか？",
+    },
+  },
+}
+
+export const WithIcon: ComponentStoryObj<typeof NockerFab> = {
+  name: "Icon",
+  args: {
+    widgetConfig: {
+      fabIcon: "",
+    },
+  },
 }

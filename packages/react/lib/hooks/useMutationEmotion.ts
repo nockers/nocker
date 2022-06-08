@@ -3,7 +3,6 @@ import { captureException } from "@sentry/hub"
 import { useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
 import { WidgetEmotionSubmit } from "../types"
-import { useClient } from "./useClient"
 
 type Props = {
   pagePath?: string | null
@@ -17,8 +16,6 @@ type Props = {
 export const useMutationEmotion = (props: Props) => {
   const config = useContext(ConfigContext)
 
-  const client = useClient()
-
   const [emotionId, setEmotionId] = useState<string | null>(null)
 
   const [emotionGrade, setEmotionGrade] = useState<WidgetGrade | null>(null)
@@ -28,9 +25,9 @@ export const useMutationEmotion = (props: Props) => {
   const onCreateEmotion = async (grade: WidgetGrade) => {
     if (config.isLoggingIn) return
     setEmotionGrade(grade)
-    if (client !== null) {
+    if (config.client !== null) {
       const ticketId = props.ticketId?.()
-      const emotion = await client.emotions().create({
+      const emotion = await config.client.emotions().create({
         pagePath: props.pagePath || window.location.pathname,
         type: "FIVE",
         grade,
@@ -45,7 +42,7 @@ export const useMutationEmotion = (props: Props) => {
       props.onSubmitted?.(emotion)
       setEmotionId(emotion.id)
     }
-    if (client === null) {
+    if (config.client === null) {
       const emotion: WidgetEmotionSubmit = {
         type: "FIVE",
         grade,

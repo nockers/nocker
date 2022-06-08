@@ -23,7 +23,7 @@ type Props = {
   onDone?(): void
 }
 
-export const Nocker: FC<Props> = (props) => {
+export const NockerCard: FC<Props> = (props) => {
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const mutationEmotion = useMutationEmotion({

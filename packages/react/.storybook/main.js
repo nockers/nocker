@@ -19,13 +19,17 @@ exports.features = {
   storyStoreV7: true,
 }
 
-exports.core = {
-  builder: "webpack5",
-}
-
 // exports.core = {
-//   builder: "@storybook/builder-vite"
+//   builder: "webpack5",
 // }
+
+exports.core = {
+  get builder() {
+    return process.env.NODE_ENV === "development"
+      ? "@storybook/builder-vite"
+      : "webpack5"
+  },
+}
 
 exports.framework = "@storybook/react"
 

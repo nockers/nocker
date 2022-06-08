@@ -28,7 +28,7 @@
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
-    "@nocker/client": "^0.1.21",
+    "@nocker/client": "^0.1.22",
     "@sentry/hub": "^7.1.0",
     "html2canvas": "^1.4.1",
     "react-transition-group": "^4.4.2"
