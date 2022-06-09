@@ -5,6 +5,9 @@ import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
   plugins: [plugin({ jsxRuntime: "classic" })],
+  optimizeDeps: {
+    include: ["@nocker/client", "@nocker/react"],
+  },
   build: {
     target: "esnext",
     sourcemap: true,
@@ -20,13 +23,13 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "lib/index.ts"),
       name: "lib",
-      formats: ["es", "cjs"],
       fileName: (format) => `index.${format}.js`,
     },
   },
   resolve: {
     alias: {
       "@nocker/client": "../client/lib/index.ts",
+      "@nocker/react": "../react/lib/index.ts",
     },
   },
 })

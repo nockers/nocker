@@ -1,11 +1,10 @@
-import { Nocker, WidgetEnvironment } from "@nocker/client"
-import { createConfig } from "@nocker/mui"
+import { Environment, Nocker } from "@nocker/client"
 import { InternalState } from "./models"
 import { initSentry } from "./utils"
 
 type Props = {
   projectId: string
-  environment?: WidgetEnvironment | null
+  environment?: Environment | null
   baseURL?: string | null
   disableSentry?: boolean
 }
@@ -25,16 +24,10 @@ export const login = async (props: Props) => {
     return null
   }
 
-  const config = createConfig({
-    projectId: props.projectId,
-    baseURL: props.baseURL,
-    environment: props.environment,
-  })
-
   const client = new Nocker({
-    projectId: config.projectId,
-    environment: config.environment,
-    baseURL: config.baseURL,
+    projectId: props.projectId,
+    environment: props.environment,
+    baseURL: props.baseURL,
   })
 
   state.setLoginState(true)
@@ -46,11 +39,7 @@ export const login = async (props: Props) => {
     throw widgetLogin
   }
 
-  state.setProjectId(props.projectId)
-
-  state.setEnvironment(props.environment)
-
-  state.setBaseURL(props.baseURL)
+  state.setClient(client)
 
   state.setCustomer(widgetLogin.customer)
 

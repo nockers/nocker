@@ -1,24 +1,20 @@
 import { Theme } from "@mui/material"
 import {
+  Customer,
+  Nocker,
   WidgetConfig,
   widgetConfigDefault,
-  WidgetCustomer,
-  WidgetEnvironment,
-} from "@nocker/client"
+} from "@nocker/mui"
 import { createDefaultTheme } from "@nocker/mui"
 
 export class InternalState {
   static isLoggingIn = false
 
-  static projectId: string | null = null
-
-  static environment: WidgetEnvironment = "PRODUCTION"
-
-  static baseURL = "https://nocker.app/api"
+  static client: Nocker | null = null
 
   static theme: Theme = createDefaultTheme("light")
 
-  static customer: WidgetCustomer | null = null
+  static customer: Customer | null = null
 
   static widgetConfigLocal: WidgetConfig | null = null
 
@@ -50,9 +46,7 @@ export class InternalState {
   getConfig() {
     return {
       isLoggingIn: InternalState.isLoggingIn,
-      projectId: InternalState.projectId,
-      environment: InternalState.environment,
-      baseURL: InternalState.baseURL,
+      client: InternalState.client,
       customer: InternalState.customer,
       helps: [],
       widgetConfig:
@@ -88,23 +82,13 @@ export class InternalState {
     return InternalState.theme
   }
 
-  setProjectId(projectId: string) {
-    InternalState.projectId = projectId
+  setClient(client: Nocker) {
+    InternalState.client = client
     return null
   }
 
-  setEnvironment(environment?: WidgetEnvironment | null) {
-    InternalState.environment = environment ?? "PRODUCTION"
-    return null
-  }
-
-  setBaseURL(baseURL?: string | null) {
-    InternalState.baseURL = baseURL ?? "https://nocker.app/api"
-    return null
-  }
-
-  setCustomer(widgetCustomer: WidgetCustomer) {
-    InternalState.customer = widgetCustomer
+  setCustomer(customer: Customer) {
+    InternalState.customer = customer
     return null
   }
 }

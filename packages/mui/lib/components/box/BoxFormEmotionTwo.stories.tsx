@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { BoxFormEmotionTwo } from "./BoxFormEmotionTwo"
 
 export default {
-  title: "BoxFormEmotionTwo",
+  title: "internals/BoxFormEmotionTwo",
   component: BoxFormEmotionTwo,
   argTypes: {
     grade: { control: "number" },

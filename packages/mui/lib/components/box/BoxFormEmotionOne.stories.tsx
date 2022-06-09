@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { BoxFormEmotionOne } from "./BoxFormEmotionOne"
 
 export default {
-  title: "BoxFormEmotionOne",
+  title: "internals/BoxFormEmotionOne",
   component: BoxFormEmotionOne,
 } as ComponentMeta<typeof BoxFormEmotionOne>
 

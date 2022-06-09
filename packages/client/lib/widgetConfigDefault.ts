@@ -17,6 +17,7 @@ export const widgetConfigDefault: WidgetConfig = {
   emotionTwoGradeTwoMessage: "良い",
   emotionOneButtonText: "いいね",
   hasEmotionQuestionMessage: true,
+  fabType: "DEFAULT",
   fabText: null,
   fabIcon: null,
   emotionType: "FIVE",

@@ -1,4 +1,4 @@
-import { WidgetConfig } from "@nocker/client"
+import type { WidgetConfig } from "@nocker/client"
 import { useContext } from "react"
 import { ConfigContext } from "../contexts"
 
@@ -52,6 +52,7 @@ export const useWidgetConfig = (
       remoteConfig.emotionTwoGradeTwoMessage,
     emotionOneButtonText:
       widgetConfig?.emotionOneButtonText ?? remoteConfig.emotionOneButtonText,
+    fabType: widgetConfig?.fabType ?? remoteConfig.fabType,
     fabText: widgetConfig?.fabText ?? remoteConfig.fabText,
     fabIcon: widgetConfig?.fabIcon ?? remoteConfig.fabIcon,
     emotionType: widgetConfig?.emotionType ?? remoteConfig.emotionType,

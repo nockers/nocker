@@ -1,4 +1,4 @@
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 import clsx from "clsx"
 import React, { FC, ReactNode } from "react"
 import { BiLike, BiDislike } from "react-icons/bi"
@@ -6,7 +6,7 @@ import { useStateComponent } from "../../hooks"
 
 type Props = {
   children: ReactNode
-  grade: WidgetGrade
+  grade: EmotionGrade
   isActive: boolean
   isDisabled: boolean
   onClick(): void

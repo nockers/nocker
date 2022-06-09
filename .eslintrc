@@ -11,8 +11,8 @@
     "node": true
   },
   "rules": {
-    "unused-imports/no-unused-imports": "warn",
-    "import/order": ["warn", { "alphabetize": { "order": "asc" } }]
+    "unused-imports/no-unused-imports": 1,
+    "import/order": [1, { "alphabetize": { "order": "asc" } }]
   },
   "settings": {
     "react": {

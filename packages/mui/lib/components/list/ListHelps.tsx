@@ -1,11 +1,11 @@
 import { List, ListItemButton, ListItemText } from "@mui/material"
-import { WidgetHelp } from "@nocker/client"
+import { Help } from "@nocker/client"
 import React, { FC, Fragment } from "react"
 
 type Props = {
   title?: string
   isSinglePage?: boolean
-  helps: WidgetHelp[]
+  helps: Help[]
 }
 
 export const NockerListHelps: FC<Props> = (props) => {

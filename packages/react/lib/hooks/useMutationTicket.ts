@@ -1,4 +1,4 @@
-import { WidgetTicket } from "@nocker/client"
+import type { Ticket } from "@nocker/client"
 import { captureException } from "@sentry/hub"
 import { useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
@@ -7,7 +7,7 @@ import { WidgetTicketSubmit } from "../types"
 type Props = {
   pagePath?: string | null
   pageTitle?: string | null
-  onSubmitted?(data: WidgetTicket): void
+  onSubmitted?(data: Ticket): void
   onSubmit?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
@@ -29,7 +29,7 @@ export const useMutationTicket = (props: Props) => {
     setFormText(text)
   }
 
-  const onResetForm = () => {
+  const onReset = () => {
     setFormText("")
     markAsDone(false)
     props.onDone?.()
@@ -81,6 +81,6 @@ export const useMutationTicket = (props: Props) => {
     isDone,
     onCreateTicket,
     onChangeFormText,
-    onResetForm,
+    onReset,
   }
 }

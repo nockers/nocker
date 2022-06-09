@@ -13,19 +13,19 @@ export const nock = (method: string, option: any) => {
     return nocker.setWidgetConfig(option)
   }
 
-  if (method === "render") {
-    return nocker.render(option)
+  if (method === "renderWidget") {
+    return nocker.renderWidget(option)
   }
 
-  if (method === "renderCard") {
-    return nocker.renderCard(option)
+  if (method === "renderWidgetEmotion") {
+    return nocker.renderWidgetEmotion(option)
   }
 
-  if (method === "renderEmotion") {
-    return nocker.renderEmotion(option)
+  if (method === "renderWidgetFab") {
+    return nocker.renderWidgetFab(option)
   }
 
-  if (method === "renderTicket") {
-    return nocker.renderTicket(option)
+  if (method === "renderWidgetTicket") {
+    return nocker.renderWidgetTicket(option)
   }
 }

@@ -1,7 +1,7 @@
 import { Nocker } from "@nocker/client"
 import { Story } from "@storybook/react"
+import React from "react"
 import { NockerProvider } from "../lib/NockerProvider"
-import { createConfig } from "../lib/utils"
 import "./main.css"
 
 export const parameters = {
@@ -29,6 +29,7 @@ const withProvider = (Story: Story) => {
   const client = new Nocker({
     projectId: "xxxxxxxxxxxxxxxxxxxxx",
     environment: "DEVELOPMENT",
+    baseURL,
   })
 
   return (

@@ -1,11 +1,11 @@
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 import clsx from "clsx"
 import React, { FC } from "react"
 import { useStateComponent } from "../../hooks"
 import { IconEmotion } from "../icon/IconEmotion"
 
 type Props = {
-  grade: WidgetGrade
+  grade: EmotionGrade
   isActive: boolean
   isLoading?: boolean
   isDisabled?: boolean

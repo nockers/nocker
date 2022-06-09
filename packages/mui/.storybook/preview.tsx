@@ -1,7 +1,9 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material"
+import { Nocker } from "@nocker/client"
+import { NockerProvider } from "@nocker/react"
 import { Story } from "@storybook/react"
-import { NockerProvider } from "../lib/NockerProvider"
-import { createConfig, createDefaultTheme } from "../lib/utils"
+import React from "react"
+import { createDefaultTheme } from "../lib/utils"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -29,7 +31,7 @@ const withProvider = (Story: Story) => {
       ? "http://localhost:3000/api"
       : "https://nocker.app/api"
 
-  const config = createConfig({
+  const client = new Nocker({
     projectId: "xxxxxxxxxxxxxxxxxxxxx",
     environment: "DEVELOPMENT",
     baseURL,
@@ -37,7 +39,7 @@ const withProvider = (Story: Story) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <NockerProvider config={config}>
+      <NockerProvider client={client}>
         <Box sx={{ width: (theme) => theme.spacing(40) }}>
           <Story />
         </Box>

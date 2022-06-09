@@ -1,17 +1,17 @@
 import { login } from "./login"
-import { render } from "./render"
-import { renderCard } from "./renderCard"
-import { renderEmotion } from "./renderEmotion"
-import { renderTicket } from "./renderTicket"
+import { renderWidget } from "./renderWidget"
+import { renderWidgetEmotion } from "./renderWidgetEmotion"
+import { renderWidgetFab } from "./renderWidgetFab"
+import { renderWidgetTicket } from "./renderWidgetTicket"
 import { setTheme } from "./setTheme"
 import { setWidgetConfig } from "./setWidgetConfig"
 
 export const nocker = {
   login,
-  render,
-  renderCard,
-  renderEmotion,
-  renderTicket,
+  renderWidgetFab,
+  renderWidget,
+  renderWidgetEmotion,
+  renderWidgetTicket,
   setTheme,
   setWidgetConfig,
 }

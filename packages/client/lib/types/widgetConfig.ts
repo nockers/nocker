@@ -14,9 +14,10 @@ export type WidgetConfig = {
   emotionTwoGradeTwoMessage: string
   emotionOneButtonText: string
   hasEmotionQuestionMessage: boolean
+  fabType: "DEFAULT" | "TEXT" | "ICON" | "TEXT-WITH-ICON"
   fabText: string | null
   fabIcon: string | null
-  emotionType: "ONE" | "TWO" | "FIVE" | null
+  emotionType: "FIVE" | "TWO" | "ONE" | null
   isMinimal: boolean
   hasBorder: boolean
   hasHelps: boolean

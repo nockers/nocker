@@ -1,11 +1,11 @@
 import { IconButton } from "@mui/material"
-import { WidgetGrade } from "@nocker/client"
+import { EmotionGrade } from "@nocker/client"
 import React, { FC } from "react"
 import { useEmotionColor } from "../../hooks"
 import { IconEmotion } from "../icon/IconEmotion"
 
 type Props = {
-  grade: WidgetGrade
+  grade: EmotionGrade
   isActive: boolean
   onClick(): void
 }

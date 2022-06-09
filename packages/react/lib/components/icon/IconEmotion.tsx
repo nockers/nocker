@@ -1,4 +1,4 @@
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 import React, { FC } from "react"
 import {
   BiTired,
@@ -10,7 +10,7 @@ import {
 
 type Props = {
   className: string
-  grade: WidgetGrade
+  grade: EmotionGrade
 }
 
 export const IconEmotion: FC<Props> = (props) => {

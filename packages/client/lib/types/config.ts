@@ -1,9 +1,9 @@
-import { Store } from "../store"
-import { WidgetEnvironment } from "./widgetEnvironment"
+import { StoreDefault } from "../storeDefault"
+import { Environment } from "./environment"
 
 export type Config = {
   projectId: string
-  environment?: WidgetEnvironment | null
+  environment?: Environment | null
   baseURL?: string | null
-  store?: Store
+  store?: StoreDefault
 }

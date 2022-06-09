@@ -1,8 +1,8 @@
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 
 export type WidgetEmotionSubmit = {
   type: string
-  grade: WidgetGrade
+  grade: EmotionGrade
   pagePath: string
   pageTitle: string | null
 }

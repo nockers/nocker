@@ -1,5 +1,5 @@
 import { Collapse } from "@mui/material"
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
 import { useEmotionText } from "../../hooks"
@@ -14,8 +14,8 @@ type Props = {
     gradeTwoMessage: string
     gradeOneMessage: string
   }
-  grade: WidgetGrade | null
-  onSelect(grade: WidgetGrade): void
+  grade: EmotionGrade | null
+  onSelect(grade: EmotionGrade): void
 }
 
 export const DivFormEmotion: FC<Props> = (props) => {
@@ -36,7 +36,7 @@ export const DivFormEmotion: FC<Props> = (props) => {
     }
   }, [props.grade])
 
-  const grades: WidgetGrade[] =
+  const grades: EmotionGrade[] =
     props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (

@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "yarn workspace @nocker/react dev",
     "publish:browser": "yarn workspace @nocker/browser build && yarn workspace @nocker/browser publish --access=public",
     "publish:chakra-ui": "yarn workspace @nocker/chakra-ui build && yarn workspace @nocker/chakra-ui publish --access=public",
     "publish:client": "yarn workspace @nocker/client build && yarn workspace @nocker/client publish --access=public",
@@ -22,15 +23,15 @@
     "jest-mock": "^28.1.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "6.5.7",
-    "@storybook/addon-essentials": "6.5.7",
-    "@storybook/addon-interactions": "^6.5.7",
-    "@storybook/addon-links": "6.5.7",
+    "@storybook/addon-actions": "6.5.8",
+    "@storybook/addon-essentials": "6.5.8",
+    "@storybook/addon-interactions": "^6.5.8",
+    "@storybook/addon-links": "6.5.8",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-vite": "^0.1.36",
-    "@storybook/builder-webpack5": "^6.5.7",
-    "@storybook/manager-webpack5": "^6.5.7",
-    "@storybook/react": "6.5.7",
+    "@storybook/builder-webpack5": "^6.5.8",
+    "@storybook/manager-webpack5": "^6.5.8",
+    "@storybook/react": "6.5.8",
     "@storybook/testing-library": "^0.0.11",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.197",
@@ -48,7 +49,7 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "jest": "^28.1.1",
     "node-fetch": "3.2",
-    "npm-check-updates": "^13.1.1",
+    "npm-check-updates": "^13.1.2",
     "postcss": "^8.4.14",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",
@@ -56,7 +57,7 @@
     "react-dom": "^18.1.0",
     "serve": "^13.0.2",
     "storybook-tailwind-dark-mode": "^1.0.12",
-    "tailwindcss": "^3.0.24",
+    "tailwindcss": "^3.1.0",
     "typescript": "^4.7.3",
     "vite": "^3.0.0-alpha.8"
   },

@@ -1,16 +1,16 @@
 import {
   type Nocker,
-  WidgetConfig,
+  type Login,
+  type WidgetConfig,
+  type Customer,
   widgetConfigDefault,
-  WidgetCustomer,
-  WidgetLogin,
 } from "@nocker/client"
 import { captureException } from "@sentry/hub"
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import { ConfigContext } from "./contexts"
 
 type Props = {
-  data?: WidgetLogin | null
+  data?: Login | null
   widgetConfig?: WidgetConfig | null
   children: ReactNode
   client: Nocker
@@ -19,7 +19,7 @@ type Props = {
 export const NockerProvider: FC<Props> = (props) => {
   const [isLoggingIn, setLoading] = useState(props.client !== null)
 
-  const [data, setData] = useState<WidgetLogin | Error | null>(() => {
+  const [data, setData] = useState<Login | Error | null>(() => {
     return props.data ?? null
   })
 
@@ -47,7 +47,7 @@ export const NockerProvider: FC<Props> = (props) => {
     return null
   }
 
-  const customerPlaceholder: WidgetCustomer = {
+  const customerPlaceholder: Customer = {
     id: "xxxxxxxxxxxxxxxxxxxxx",
     projectId: "xxxxxxxxxxxxxxxxxxxxx",
     environment: "DEVELOPMENT",

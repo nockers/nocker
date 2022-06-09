@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { BoxFormHelps } from "./BoxFormHelps"
 
 export default {
-  title: "BoxFormHelps",
+  title: "internals/BoxFormHelps",
   component: BoxFormHelps,
 } as ComponentMeta<typeof BoxFormHelps>
 

@@ -1,4 +1,4 @@
-import { WidgetEmotion, WidgetGrade } from "@nocker/client"
+import type { Emotion, EmotionGrade } from "@nocker/client"
 import { captureException } from "@sentry/hub"
 import { useContext, useState } from "react"
 import { ConfigContext } from "../contexts"
@@ -7,7 +7,8 @@ import { WidgetEmotionSubmit } from "../types"
 type Props = {
   pagePath?: string | null
   pageTitle?: string | null
-  onSubmitted?(emotion: WidgetEmotion): void
+  emotionType: "FIVE" | "TWO" | "ONE"
+  onSubmitted?(emotion: Emotion): void
   onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
   ticketId?(): string | null
@@ -18,19 +19,19 @@ export const useMutationEmotion = (props: Props) => {
 
   const [emotionId, setEmotionId] = useState<string | null>(null)
 
-  const [emotionGrade, setEmotionGrade] = useState<WidgetGrade | null>(null)
+  const [emotionGrade, setEmotionGrade] = useState<EmotionGrade | null>(null)
 
   const isDone = emotionGrade !== null
 
-  const onCreateEmotion = async (grade: WidgetGrade) => {
+  const onCreateEmotion = async () => {
     if (config.isLoggingIn) return
-    setEmotionGrade(grade)
+    if (emotionGrade === null) return
     if (config.client !== null) {
       const ticketId = props.ticketId?.()
       const emotion = await config.client.emotions().create({
         pagePath: props.pagePath || window.location.pathname,
-        type: "FIVE",
-        grade,
+        type: props.emotionType,
+        grade: emotionGrade,
         slug: null,
         ticketId,
       })
@@ -44,8 +45,8 @@ export const useMutationEmotion = (props: Props) => {
     }
     if (config.client === null) {
       const emotion: WidgetEmotionSubmit = {
-        type: "FIVE",
-        grade,
+        type: props.emotionType,
+        grade: emotionGrade,
         pagePath: props.pagePath || window.location.pathname,
         pageTitle: window.document.title,
       }
@@ -53,10 +54,21 @@ export const useMutationEmotion = (props: Props) => {
     }
   }
 
+  const onChangeEmotionGrade = (grade: EmotionGrade) => {
+    setEmotionGrade(grade)
+  }
+
+  const onReset = () => {
+    setEmotionId(null)
+    setEmotionGrade(null)
+  }
+
   return {
     emotionId,
     emotionGrade,
     isDone,
+    onChangeEmotionGrade,
     onCreateEmotion,
+    onReset,
   }
 }

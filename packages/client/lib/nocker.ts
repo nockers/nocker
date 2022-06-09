@@ -1,8 +1,8 @@
 import { Client } from "./client"
-import { Emotion } from "./emotion"
-import { Emotions } from "./emotions"
-import { Ticket } from "./ticket"
-import { Tickets } from "./tickets"
+import { ClientEmotion } from "./clientEmotion"
+import { ClientEmotions } from "./clientEmotions"
+import { ClientTicket } from "./clientTicket"
+import { ClientTickets } from "./clientTickets"
 import { Config } from "./types"
 
 export class Nocker extends Client {
@@ -10,29 +10,29 @@ export class Nocker extends Client {
     super(config)
   }
 
-  customer() {}
+  customer() {
+    return null
+  }
 
-  tickets(): Tickets
+  tickets(): ClientTickets
 
-  tickets(ticketId: string): Ticket
+  tickets(ticketId: string): ClientTicket
 
   tickets(ticketId?: string) {
     if (typeof ticketId === "undefined") {
-      return new Tickets(this.config)
+      return new ClientTickets(this.config)
     }
-
-    return new Ticket(this.config, ticketId)
+    return new ClientTicket(this.config, ticketId)
   }
 
-  emotions(): Emotions
+  emotions(): ClientEmotions
 
-  emotions(emotionId: string): Emotion
+  emotions(emotionId: string): ClientEmotion
 
   emotions(emotionId?: string) {
     if (typeof emotionId === "undefined") {
-      return new Emotions(this.config)
+      return new ClientEmotions(this.config)
     }
-
-    return new Emotion(this.config, emotionId)
+    return new ClientEmotion(this.config, emotionId)
   }
 }

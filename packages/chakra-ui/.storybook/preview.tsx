@@ -1,7 +1,8 @@
-import { Box, extendTheme, ThemeProvider } from "@chakra-ui/react"
+import { extendTheme, ThemeProvider } from "@chakra-ui/react"
+import { Nocker } from "@nocker/client"
+import { NockerProvider } from "@nocker/react"
 import { Story } from "@storybook/react"
-import { NockerProvider } from "../lib/NockerProvider"
-import { createConfig } from "../lib/utils"
+import React from "react"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -27,7 +28,7 @@ const withProvider = (Story: Story) => {
       ? "http://localhost:3000/api"
       : "https://nocker.app/api"
 
-  const config = createConfig({
+  const client = new Nocker({
     projectId: "xxxxxxxxxxxxxxxxxxxxx",
     environment: "DEVELOPMENT",
     baseURL,
@@ -35,7 +36,7 @@ const withProvider = (Story: Story) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <NockerProvider config={config}>
+      <NockerProvider client={client}>
         <Story />
       </NockerProvider>
     </ThemeProvider>

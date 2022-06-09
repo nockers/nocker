@@ -1,17 +1,17 @@
 import { captureException } from "@sentry/hub"
 import { InternalError } from "./errors"
 import { UnauthorizedError } from "./errors/unauthorizedError"
-import { Store } from "./store"
-import { Config, WidgetEnvironment, WidgetLogin } from "./types"
+import { StoreDefault } from "./storeDefault"
+import { Config, Environment, Login } from "./types"
 
 type LoginData = {
-  environment: WidgetEnvironment
+  environment: Environment
 }
 
 export class Client {
-  readonly store: Store
+  readonly store: StoreDefault
 
-  readonly environment: WidgetEnvironment
+  readonly environment: Environment
 
   readonly projectId: string
 
@@ -23,7 +23,7 @@ export class Client {
     this.baseURL = config.baseURL ?? "https://nocker.app/api"
     this.store =
       config.store ??
-      new Store({
+      new StoreDefault({
         projectId: config.projectId,
         environment: config.environment ?? "PRODUCTION",
       })
@@ -126,7 +126,7 @@ export class Client {
   async login() {
     const token = await this.store.readAccessToken()
 
-    const data = await this.fetch<WidgetLogin, { environment: string }>({
+    const data = await this.fetch<Login, { environment: string }>({
       method: "POST",
       path: "login",
       token,
@@ -157,7 +157,7 @@ export class Client {
   async refreshToken() {
     const token = await this.store.readRefreshToken()
 
-    const widgetLogin = await this.fetch<WidgetLogin, LoginData>({
+    const widgetLogin = await this.fetch<Login, LoginData>({
       method: "POST",
       path: "login",
       token: token,
@@ -193,7 +193,7 @@ export class Client {
     await this.store.removeTokens()
 
     // ログインする
-    const widgetLogin = await this.fetch<WidgetLogin, LoginData>({
+    const widgetLogin = await this.fetch<Login, LoginData>({
       method: "POST",
       path: "login",
       token: null,

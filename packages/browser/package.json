@@ -1,6 +1,6 @@
 {
   "name": "@nocker/browser",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "private": false,
   "description": "",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "types"
   ],
   "scripts": {
-    "build": "vite build && tsc --emitDeclarationOnly",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build": "vite build && rm -rf types && tsc --emitDeclarationOnly",
+    "build:types": "rm -rf types && tsc --emitDeclarationOnly",
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
@@ -27,17 +27,14 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.2",
-    "@nocker/client": "^0.1.22",
-    "@nocker/mui": "^0.4.7",
+    "@mui/utils": "^5.8.0",
+    "@nocker/mui": "^0.4.12",
     "@sentry/browser": "^7.1.0",
     "@sentry/hub": "^7.1.0"
   },
   "devDependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.2",
-    "@mui/lab": "^5.0.0-alpha.84",
-    "@mui/material": "^5.8.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "peerDependencies": {
     "react": "^18.1.0",

@@ -1,7 +1,5 @@
-import PhotoCameraBackIcon from "@mui/icons-material/PhotoCameraBackRounded"
-import PhotoCamera from "@mui/icons-material/PhotoCameraRounded"
 import { LoadingButton } from "@mui/lab"
-import { IconButton, InputBase, Stack } from "@mui/material"
+import { InputBase, Stack } from "@mui/material"
 import React, { FC } from "react"
 
 type Props = {
@@ -11,16 +9,16 @@ type Props = {
   }
   text: string
   isLoading: boolean
-  hasImage: boolean
+  // hasImage: boolean
   onChangeText(text: string): void
   onSubmit(): Promise<void>
-  onOpenCapture(): void
+  // onOpenCapture(): void
 }
 
 export const BoxFormTicket: FC<Props> = (props) => {
   return (
     <Stack sx={{ width: "100%" }} spacing={1}>
-      <Stack sx={{ pl: 1, flex: 1 }}>
+      <Stack sx={{ pl: 0, flex: 1 }}>
         <InputBase
           fullWidth
           multiline
@@ -34,13 +32,13 @@ export const BoxFormTicket: FC<Props> = (props) => {
         />
       </Stack>
       <Stack direction={"row"} spacing={1} sx={{ pl: 0 }}>
-        <IconButton
+        {/* <IconButton
           onClick={props.onOpenCapture}
           size={"small"}
           color={props.hasImage ? "info" : "default"}
         >
           {props.hasImage ? <PhotoCameraBackIcon /> : <PhotoCamera />}
-        </IconButton>
+        </IconButton> */}
         <LoadingButton
           size={"small"}
           variant={"contained"}

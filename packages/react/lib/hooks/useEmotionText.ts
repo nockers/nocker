@@ -1,4 +1,4 @@
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 
 type Config = {
   gradeFiveMessage: string
@@ -8,7 +8,7 @@ type Config = {
   gradeOneMessage: string
 }
 
-export const useEmotionText = (config: Config, grade: WidgetGrade | null) => {
+export const useEmotionText = (config: Config, grade: EmotionGrade | null) => {
   if (grade === 0) {
     return config.gradeOneMessage
   }

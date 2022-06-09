@@ -1,8 +1,8 @@
 import { Box, Collapse, Fade, Stack, Typography } from "@mui/material"
-import { WidgetGrade } from "@nocker/client"
+import { EmotionGrade } from "@nocker/client"
+import { useEmotionText } from "@nocker/react"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
-import { useEmotionText } from "../../hooks"
 import { ButtonEmotion } from "../button/ButtonEmotion"
 
 type Props = {
@@ -13,8 +13,8 @@ type Props = {
     gradeTwoMessage: string
     gradeOneMessage: string
   }
-  grade: WidgetGrade | null
-  onSelect(grade: WidgetGrade): void
+  grade: EmotionGrade | null
+  onSelect(grade: EmotionGrade): void
 }
 
 export const BoxFormEmotion: FC<Props> = (props) => {
@@ -35,7 +35,7 @@ export const BoxFormEmotion: FC<Props> = (props) => {
     }
   }, [props.grade])
 
-  const grades: WidgetGrade[] =
+  const grades: EmotionGrade[] =
     props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (

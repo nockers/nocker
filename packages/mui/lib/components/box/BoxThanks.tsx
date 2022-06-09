@@ -7,10 +7,13 @@ type Props = {
     thanksMessage: string
     buttonResetText: string
   }
+  isMinimal?: boolean
   onReset(): void
 }
 
 export const BoxThanks: FC<Props> = (props) => {
+  const hasIcon = props.isMinimal !== true
+
   return (
     <Box
       sx={{
@@ -28,7 +31,7 @@ export const BoxThanks: FC<Props> = (props) => {
         sx={{ height: "100%" }}
       >
         <Stack spacing={2} sx={{ p: 4 }} alignItems={"center"}>
-          <DoneOutlineIcon sx={{ fontSize: 40 }} />
+          {hasIcon && <DoneOutlineIcon sx={{ fontSize: 40 }} />}
           <Typography fontSize={14}>{props.config.thanksMessage}</Typography>
           <Button
             size={"small"}

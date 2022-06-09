@@ -11,7 +11,7 @@ export default defineConfig({
       name: "nock",
       entry: path.resolve(__dirname, "lib/index.ts"),
       formats: ["iife"],
-      fileName: "main",
+      fileName: "index",
     },
   },
   resolve: {
@@ -19,6 +19,7 @@ export default defineConfig({
       "@nocker/browser": "../browser/lib/index.ts",
       "@nocker/client": "../client/lib/index.ts",
       "@nocker/mui": "../mui/lib/index.ts",
+      "@nocker/react": "../react/lib/index.ts",
     },
   },
 })

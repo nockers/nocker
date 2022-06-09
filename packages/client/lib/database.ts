@@ -1,11 +1,19 @@
+import { captureException } from "@sentry/hub"
+
 export class Database {
   constructor(protected indexedDB?: IDBDatabase) {}
 
-  protected onUpgradeneeded(request: IDBOpenDBRequest) {}
+  protected onUpgradeneeded(request: IDBOpenDBRequest) {
+    return
+  }
 
-  protected onBlocked(request: IDBOpenDBRequest) {}
+  protected onBlocked(request: IDBOpenDBRequest) {
+    return
+  }
 
-  protected onSuccess(request: IDBOpenDBRequest) {}
+  protected onSuccess(request: IDBOpenDBRequest) {
+    return
+  }
 
   protected putRecord<T>(name: string, data: T) {
     return this.createTransaction(name, (store) => {
@@ -39,6 +47,7 @@ export class Database {
         idb.close()
       }
       request.onerror = () => {
+        captureException(request.error)
         reject(request.error)
         idb.close()
       }
@@ -59,6 +68,7 @@ export class Database {
         resolve(request.result)
       }
       request.onerror = () => {
+        captureException(request.error)
         reject(request.error)
       }
     })
@@ -71,6 +81,7 @@ export class Database {
         resolve(null)
       }
       request.onerror = () => {
+        captureException(request.error)
         reject(request.error)
       }
     })

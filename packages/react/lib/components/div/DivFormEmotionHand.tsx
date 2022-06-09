@@ -1,5 +1,5 @@
 import { Collapse } from "@mui/material"
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
 import { ButtonThumb } from "../button/ButtonThumb"
@@ -11,8 +11,8 @@ type Props = {
     gradeTwoMessage: string
     thanksMessage: string
   }
-  grade: WidgetGrade | null
-  onSelect(grade: WidgetGrade): void
+  grade: EmotionGrade | null
+  onSelect(grade: EmotionGrade): void
 }
 
 export const DivFormEmotionHand: FC<Props> = (props) => {
@@ -31,7 +31,7 @@ export const DivFormEmotionHand: FC<Props> = (props) => {
     }
   }, [props.grade])
 
-  const onClickFactory = (grade: WidgetGrade) => {
+  const onClickFactory = (grade: EmotionGrade) => {
     return () => {
       if (props.grade !== null) return
       props.onSelect(grade)

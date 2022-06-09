@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react"
 import { BoxFormTicket } from "./BoxFormTicket"
 
 export default {
-  title: "BoxFormTicket",
+  title: "internals/BoxFormTicket",
   component: BoxFormTicket,
 } as ComponentMeta<typeof BoxFormTicket>
 
@@ -16,6 +16,5 @@ export const Default: ComponentStoryObj<typeof BoxFormTicket> = {
     },
     text: "",
     isLoading: false,
-    hasImage: false,
   },
 }

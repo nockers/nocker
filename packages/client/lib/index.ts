@@ -1,11 +1,16 @@
-export * from "./client"
-export * from "./database"
-export * from "./emotion"
-export * from "./emotions"
-export * from "./errors"
-export * from "./nocker"
-export * from "./store"
-export * from "./ticket"
-export * from "./tickets"
-export * from "./types"
-export * from "./widgetConfigDefault"
+export type {
+  Config,
+  Customer,
+  Emotion,
+  EmotionGrade,
+  Environment,
+  Help,
+  Login,
+  Tag,
+  Ticket,
+  TicketStatus,
+  TicketType,
+  WidgetConfig,
+} from "./types"
+export { Nocker } from "./nocker"
+export { widgetConfigDefault } from "./widgetConfigDefault"

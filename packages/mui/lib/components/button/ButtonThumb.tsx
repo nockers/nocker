@@ -1,13 +1,13 @@
 import ThumbDownIcon from "@mui/icons-material/ThumbDownRounded"
 import ThumbUpIcon from "@mui/icons-material/ThumbUpRounded"
 import { Button, Typography } from "@mui/material"
-import { WidgetGrade } from "@nocker/client"
+import type { EmotionGrade } from "@nocker/client"
 import React, { FC, ReactNode } from "react"
 import { useEmotionColor } from "../../hooks"
 
 type Props = {
   children: ReactNode
-  grade: WidgetGrade
+  grade: EmotionGrade
   isActive: boolean
   isDisabled: boolean
   onClick(): void
