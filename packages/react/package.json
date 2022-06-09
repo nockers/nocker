@@ -1,6 +1,6 @@
 {
   "name": "@nocker/react",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "private": false,
   "license": "MIT",
   "sideEffects": false,

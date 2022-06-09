@@ -11,9 +11,9 @@ import { ConfigContext } from "./contexts"
 
 type Props = {
   data?: Login | null
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   children: ReactNode
-  client: Nocker
+  client: Nocker | null
 }
 
 export const NockerProvider: FC<Props> = (props) => {
@@ -55,8 +55,15 @@ export const NockerProvider: FC<Props> = (props) => {
     name: null,
   }
 
-  const widgetConfig: WidgetConfig =
-    props.widgetConfig ?? data?.widgetConfig ?? widgetConfigDefault
+  const partialWidgetConfig = props.widgetConfig ?? {}
+
+  const partialWidgetConfigRemote = data?.widgetConfig ?? {}
+
+  const widgetConfig: WidgetConfig = {
+    ...widgetConfigDefault,
+    ...partialWidgetConfigRemote,
+    ...partialWidgetConfig,
+  }
 
   const value = {
     isLoggingIn,
