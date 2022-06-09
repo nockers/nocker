@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@nocker/client": "^0.1.26",
-    "@nocker/react": "^0.1.4",
+    "@nocker/react": "^0.1.6",
     "@sentry/hub": "^7.1.0",
     "react-icons": "^4.4.0",
     "react-transition-group": "^4.4.2"
