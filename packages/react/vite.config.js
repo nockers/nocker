@@ -5,9 +5,6 @@ import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
   plugins: [plugin({ jsxRuntime: "classic" })],
-  // optimizeDeps: {
-  //   include: ["@nocker/client", "@nocker/core"],
-  // },
   build: {
     target: "esnext",
     sourcemap: true,
