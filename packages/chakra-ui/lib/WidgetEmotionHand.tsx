@@ -1,7 +1,9 @@
-import { Box, Button } from "@chakra-ui/react"
+import { Box, Button, HStack } from "@chakra-ui/react"
 import { WidgetConfig, Ticket } from "@nocker/client"
 import { WidgetTicketSubmit } from "@nocker/react"
 import React, { FC } from "react"
+import { BiDislike } from "react-icons/bi"
+import { BiLike } from "react-icons/bi"
 
 type Props = {
   widgetConfig?: WidgetConfig | null
@@ -15,8 +17,16 @@ type Props = {
 
 export const WidgetEmotionHand: FC<Props> = (props) => {
   return (
-    <Box>
-      <Button>{"Hello"}</Button>
+    <Box bg="white" w="100%" p={4} color="gray">
+      このページは役に立ちましたか？
+      <HStack>
+        <Button>
+          <BiDislike />
+          良くない
+          <BiLike />
+          良い
+        </Button>
+      </HStack>
     </Box>
   )
 }
