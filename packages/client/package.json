@@ -19,6 +19,8 @@
   "scripts": {
     "build": "vite build && rm -rf types && tsc --emitDeclarationOnly",
     "build:types": "rm -rf types && tsc --emitDeclarationOnly",
+    "prebuild": "yarn predev",
+    "predev": "yarn workspace @nocker/core build",
     "prepublish": "yarn build",
     "refactor:package": "npx sort-package-json",
     "test": "jest",

@@ -23,6 +23,7 @@
     "build": "vite build && rm -rf types && tsc --emitDeclarationOnly",
     "build:storybook": "yarn predev && build-storybook",
     "build:types": "rm -rf types && tsc --emitDeclarationOnly",
+    "prebuild": "yarn predev",
     "debug:pack": "npm pack --dry-run",
     "dev": "rm -rf node_modules/.cache && start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",

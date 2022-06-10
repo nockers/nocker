@@ -4,7 +4,7 @@ import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
   optimizeDeps: {
-    include: ["@nocker/client", "@nocker/react", "@nocker/mui"],
+    include: ["@nocker/client", "@nocker/core", "@nocker/react", "@nocker/mui"],
   },
   build: {
     target: "esnext",
@@ -27,6 +27,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@nocker/client": "../client/lib/index.ts",
+      "@nocker/core": "../core/lib/index.ts",
       "@nocker/mui": "../mui/lib/index.ts",
       "@nocker/react": "../react/lib/index.ts",
     },

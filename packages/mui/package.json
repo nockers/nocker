@@ -24,7 +24,7 @@
     "debug:pack": "npm pack --dry-run",
     "dev": "start-storybook -p 6006",
     "dev:local": "STORYBOOK_LOCALHOST=true start-storybook -p 6006",
-    "predev": "yarn workspace @nocker/client build && yarn workspace @nocker/react build",
+    "predev": "yarn workspace @nocker/react build",
     "prepublish": "yarn build",
     "refactor:package": "npx sort-package-json"
   },

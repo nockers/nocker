@@ -6,7 +6,7 @@ import { dependencies, peerDependencies } from "./package.json"
 export default defineConfig({
   plugins: [plugin({ jsxRuntime: "classic" })],
   optimizeDeps: {
-    include: ["@nocker/client"],
+    include: ["@nocker/client", "@nocker/core"],
   },
   build: {
     target: "esnext",
@@ -34,6 +34,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@nocker/client": "../client/lib/index.ts",
+      "@nocker/core": "../core/lib/index.ts",
     },
   },
 })
