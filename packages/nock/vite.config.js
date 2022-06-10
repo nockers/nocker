@@ -18,6 +18,7 @@ export default defineConfig({
     alias: {
       "@nocker/browser": "../browser/lib/index.ts",
       "@nocker/client": "../client/lib/index.ts",
+      "@nocker/core": "../core/lib/index.ts",
       "@nocker/mui": "../mui/lib/index.ts",
       "@nocker/react": "../react/lib/index.ts",
     },

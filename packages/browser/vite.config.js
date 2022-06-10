@@ -3,9 +3,9 @@ import { defineConfig } from "vite"
 import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
-  optimizeDeps: {
-    include: ["@nocker/client", "@nocker/core", "@nocker/react", "@nocker/mui"],
-  },
+  // optimizeDeps: {
+  //   include: ["@nocker/client", "@nocker/core", "@nocker/react", "@nocker/mui"],
+  // },
   build: {
     target: "esnext",
     sourcemap: true,
