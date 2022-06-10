@@ -5,9 +5,9 @@ import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
   plugins: [plugin({ jsxRuntime: "classic" })],
-  // optimizeDeps: {
-  //   include: ["@nocker/client"],
-  // },
+  optimizeDeps: {
+    include: ["@nocker/client"],
+  },
   build: {
     target: "esnext",
     sourcemap: true,
@@ -31,9 +31,9 @@ export default defineConfig({
    * config for `vite build`
    * Failed to resolve entry for package "@nocker/client".
    */
-  // resolve: {
-  //   alias: {
-  //     "@nocker/client": "../client/lib/index.ts",
-  //   },
-  // },
+  resolve: {
+    alias: {
+      "@nocker/client": "../client/lib/index.ts",
+    },
+  },
 })
