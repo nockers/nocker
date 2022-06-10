@@ -19,6 +19,7 @@
   "scripts": {
     "build": "vite build && rm -rf types && tsc --emitDeclarationOnly",
     "build:types": "rm -rf types && tsc --emitDeclarationOnly",
+    "prepublish": "yarn build",
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {

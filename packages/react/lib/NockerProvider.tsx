@@ -13,26 +13,24 @@ type Props = {
   data?: Login | null
   widgetConfig?: Partial<WidgetConfig> | null
   children: ReactNode
-  client: Nocker | null
+  client?: Nocker | null
 }
 
 export const NockerProvider: FC<Props> = (props) => {
-  const [isLoggingIn, setLoading] = useState(props.client !== null)
+  const client = props.client ?? null
 
   const [data, setData] = useState<Login | Error | null>(() => {
     return props.data ?? null
   })
 
+  const [isLoggingIn, setLoading] = useState(() => {
+    return client !== null || data !== null
+  })
+
   useEffect(() => {
-    if (typeof props.data !== "undefined" && props.data !== null) {
-      setLoading(false)
-      return
-    }
-    if (props.client === null) {
-      setLoading(false)
-      return
-    }
-    props.client
+    if (!isLoggingIn) return
+    if (client === null) return
+    client
       .login()
       .then((data) => {
         setData(data)
@@ -67,7 +65,7 @@ export const NockerProvider: FC<Props> = (props) => {
 
   const value = {
     isLoggingIn,
-    client: props.client,
+    client: client,
     customer: data?.customer ?? customerPlaceholder,
     helps: data?.helps ?? [],
     widgetConfig: widgetConfig,

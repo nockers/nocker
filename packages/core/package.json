@@ -1,6 +1,6 @@
 {
-  "name": "@nocker/client",
-  "version": "0.1.26",
+  "name": "@nocker/core",
+  "version": "0.1.0",
   "description": "",
   "license": "MIT",
   "sideEffects": false,
@@ -23,9 +23,5 @@
     "refactor:package": "npx sort-package-json",
     "test": "jest",
     "test:watch": "jest --watch"
-  },
-  "dependencies": {
-    "@nocker/core": "^0.1.0",
-    "@sentry/hub": "^7.1.0"
   }
 }

@@ -3,9 +3,9 @@ import { defineConfig } from "vite"
 import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
-  optimizeDeps: {
-    include: ["@nocker/client", "@nocker/react", "@nocker/mui"],
-  },
+  // optimizeDeps: {
+  //   include: ["@nocker/client", "@nocker/react", "@nocker/mui"],
+  // },
   build: {
     target: "esnext",
     sourcemap: true,
@@ -24,11 +24,11 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
   },
-  resolve: {
-    alias: {
-      "@nocker/client": "../client/lib/index.ts",
-      "@nocker/mui": "../mui/lib/index.ts",
-      "@nocker/react": "../react/lib/index.ts",
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     "@nocker/client": "../client/lib/index.ts",
+  //     "@nocker/mui": "../mui/lib/index.ts",
+  //     "@nocker/react": "../react/lib/index.ts",
+  //   },
+  // },
 })

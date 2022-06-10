@@ -1,8 +1,8 @@
+import { Environment, Login } from "@nocker/core"
 import { captureException } from "@sentry/hub"
-import { InternalError } from "./errors"
-import { UnauthorizedError } from "./errors/unauthorizedError"
+import { InternalError, UnauthorizedError } from "./errors"
 import { StoreDefault } from "./storeDefault"
-import { Config, Environment, Login } from "./types"
+import { Config } from "./types"
 
 type LoginData = {
   environment: Environment

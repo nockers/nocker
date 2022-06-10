@@ -16,7 +16,7 @@ export class InternalState {
 
   static customer: Customer | null = null
 
-  static widgetConfigLocal: WidgetConfig | null = null
+  static widgetConfigOverride: Partial<WidgetConfig> = {}
 
   static widgetConfig: WidgetConfig = widgetConfigDefault
 
@@ -49,19 +49,19 @@ export class InternalState {
       client: InternalState.client,
       customer: InternalState.customer,
       helps: [],
-      widgetConfig:
-        InternalState.widgetConfigLocal ?? InternalState.widgetConfig,
+      widgetConfig: {
+        ...widgetConfigDefault,
+        ...InternalState.widgetConfig,
+        ...InternalState.widgetConfigOverride,
+      },
     }
   }
 
-  setWidgetConfigLocal(widgetConfig: Partial<WidgetConfig>) {
+  setWidgetConfigOverride(widgetConfig: Partial<WidgetConfig>) {
     if (typeof widgetConfig === "undefined") {
       return null
     }
-    InternalState.widgetConfigLocal = {
-      ...widgetConfigDefault,
-      ...widgetConfig,
-    }
+    InternalState.widgetConfigOverride = widgetConfig
     return null
   }
 

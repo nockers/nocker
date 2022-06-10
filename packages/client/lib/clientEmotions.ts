@@ -1,5 +1,6 @@
+import { Emotion, EmotionGrade } from "@nocker/core"
 import { Client } from "./client"
-import { Config, Emotion, EmotionGrade } from "./types"
+import { Config } from "./types"
 
 export type CreateEmotionData = {
   type: "ONE" | "TWO" | "FIVE"

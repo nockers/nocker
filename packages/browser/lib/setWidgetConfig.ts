@@ -10,7 +10,7 @@ export const setWidgetConfig = async (widgetConfig?: Props) => {
 
   const state = new InternalState()
 
-  state.setWidgetConfigLocal(widgetConfig)
+  state.setWidgetConfigOverride(widgetConfig)
 
   return null
 }

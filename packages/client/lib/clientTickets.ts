@@ -1,5 +1,6 @@
+import { Ticket } from "@nocker/core"
 import { Client } from "./client"
-import { Config, Ticket } from "./types"
+import { Config } from "./types"
 
 export type CreateTicketData = {
   type?: string | null
