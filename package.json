@@ -18,6 +18,7 @@
     "refactor": "yarn refactor:eslint && yarn refactor:prettier",
     "refactor:eslint": "eslint --fix packages/*/lib/**/*.{ts,tsx}",
     "refactor:prettier": "prettier --write packages/*/lib/**/*.{ts,tsx}",
+    "reset": "rm -rf packages/*/dist",
     "www": "serve www -l 1234"
   },
   "resolutions": {
