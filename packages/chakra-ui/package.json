@@ -38,6 +38,8 @@
     "@chakra-ui/storybook-addon": "^4.0.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@types/react": "18.0.12",
+    "@types/react-dom": "^18.0.5",
     "framer-motion": "^6",
     "react": "^18.1.0"
   },

@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
+    },
+    {
+      "name": "vue",
+      "path": "packages/vue"
+    }
+  ],
+  "settings": {
+    "jest.autoRun": { "watch": true },
+    "jest.jestCommandLine": "yarn test",
+    "jest.disabledWorkspaceFolders": ["root"]
+  }
+}
