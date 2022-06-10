@@ -1,7 +1,21 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require("tailwindcss/colors")
+
 module.exports = {
-  content: ["./src/**/*.vue"],
+  content: ["./.storybook/preview.tsx", "./lib/**/*.vue"],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["'M PLUS 1'"],
+      serif: ["'M PLUS 1'", "sans-serif"],
+    },
+    extend: {
+      colors: {
+        nocker: colors.blue,
+      },
+    },
   },
-  plugins: [],
+  darkMode: "class",
+  corePlugins: {
+    preflight: false,
+  },
 }

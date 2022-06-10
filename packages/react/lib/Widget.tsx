@@ -60,7 +60,7 @@ export const Widget: FC<Props> = (props) => {
   return (
     <div
       className={clsx(
-        "nocker relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-gray-800",
+        "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-gray-800",
         widgetConfig?.hasBorder && "border border-solid border-slate-500",
       )}
     >
