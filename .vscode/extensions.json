@@ -3,8 +3,6 @@
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "Vue.volar",
-    "Vue.vscode-typescript-vue-plugin"
+    "esbenp.prettier-vscode"
   ]
 }
