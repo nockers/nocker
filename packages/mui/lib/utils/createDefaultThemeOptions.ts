@@ -66,7 +66,7 @@ export const createDefaultThemeOptions = (
       },
       MuiPaper: {
         defaultProps: {
-          variant: colorMode === "dark" ? "elevation" : "outlined",
+          // variant: colorMode === "dark" ? "elevation" : "outlined",
         },
         styleOverrides: {
           rounded: {

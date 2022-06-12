@@ -86,8 +86,8 @@ export const Widget: FC<Props> = (props) => {
         display: "flex",
         width: props.isNotEmbedded ? (theme) => theme.spacing(40) : "100%",
         maxWidth: (theme) => theme.spacing(40),
-        borderWidth: widgetConfig.hasBorder ? 1 : 0,
       }}
+      variant={widgetConfig.hasBorder ? "outlined" : "elevation"}
     >
       <Stack
         sx={{

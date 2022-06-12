@@ -13,12 +13,20 @@ type Props = {
   onSubmitTicket?(ticket: WidgetTicketSubmit): void
   onError?(error: Error): void
   onDone?(): void
+  position?: {
+    bottom?: number
+    top?: number
+    left?: number
+    right?: number
+  }
 }
 
 export const WidgetFloating: FC<Props> = (props) => {
+  const position = props.position ?? { bottom: 16, right: 16 }
+
   return (
     <Grow in={props.isOpen} unmountOnExit>
-      <Box sx={{ position: "fixed", bottom: 16, right: 16 }}>
+      <Box sx={{ position: "fixed", ...position, zIndex: 1 }}>
         <Widget
           widgetConfig={props.widgetConfig}
           pagePath={null}
