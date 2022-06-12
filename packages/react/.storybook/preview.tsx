@@ -21,13 +21,12 @@ export const parameters = {
 }
 
 const withProvider = (Story: Story) => {
-  const baseURL =
-    process.env.STORYBOOK_LOCALHOST === "true"
-      ? "http://localhost:3000/api"
-      : "https://nocker.app/api"
+  const baseURL = "http://localhost:3000/api"
+
+  // const baseURL = "https://nocker.app/api"
 
   const client = new Nocker({
-    projectId: "xxxxxxxxxxxxxxxxxxxxx",
+    projectId: "wkLoRg1EBAq2fh1AFgXMO",
     environment: "DEVELOPMENT",
     baseURL,
   })

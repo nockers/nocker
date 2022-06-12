@@ -1,6 +1,6 @@
 {
   "name": "@nocker/react",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "license": "MIT",
   "sideEffects": false,
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@mui/material": "^5.8.2",
-    "@nocker/client": "^0.1.26",
+    "@nocker/client": "^0.1.27",
     "@sentry/hub": "^7.1.0",
     "clsx": "^1.1.1",
     "react-icons": "^4.4.0",

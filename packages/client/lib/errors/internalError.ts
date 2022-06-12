@@ -7,10 +7,9 @@ export class InternalError extends Error {
   readonly __proto__: InternalError
 
   constructor(message?: string) {
-    super(message)
-    this.name = "INTERNAL_ERROR"
     const trueProto = new.target.prototype
     super(message)
     this.__proto__ = trueProto
+    this.name = "INTERNAL_ERROR"
   }
 }
