@@ -46,7 +46,7 @@ export const WidgetFab: FC<Props> = (props) => {
   return (
     <>
       <Grow in={isOpen} unmountOnExit>
-        <Box sx={{ position: "fixed", bottom: 16, right: 16, zIndex: 1 }}>
+        <Box sx={{ position: "fixed", bottom: 16, right: 16, zIndex: 4 }}>
           <Widget
             widgetConfig={props.widgetConfig}
             pagePath={null}
@@ -62,7 +62,7 @@ export const WidgetFab: FC<Props> = (props) => {
         </Box>
       </Grow>
       <Grow in={!isOpen} unmountOnExit>
-        <Box sx={{ position: "fixed", bottom: 16, right: 16, zIndex: 1 }}>
+        <Box sx={{ position: "fixed", bottom: 16, right: 16, zIndex: 4 }}>
           <ButtonTrigger
             isLoggingIn={config.isLoggingIn}
             config={{
