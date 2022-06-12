@@ -9,7 +9,7 @@ import { useMutationTicket } from "./hooks/useMutationTicket"
 import { WidgetTicketSubmit } from "./types"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onSubmitted?(data: Ticket): void

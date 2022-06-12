@@ -10,7 +10,7 @@ import { BoxFormTicket } from "./components/box/BoxFormTicket"
 import { BoxThanks } from "./components/box/BoxThanks"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onSubmitted?(data: Ticket): void

@@ -35,7 +35,7 @@ export const createDefaultThemeOptions = (
       "none",
     ],
     typography: {
-      fontFamily: ["'M PLUS 1 Code'", "sans-serif"].join(","),
+      fontFamily: ["'M PLUS 1p'", "sans-serif"].join(","),
     },
     components: {
       MuiButton: {

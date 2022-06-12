@@ -25,7 +25,7 @@ import { BoxThanks } from "./components/box/BoxThanks"
 import { ButtonClose } from "./components/button/ButtonClose"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   isNotEmbedded?: boolean

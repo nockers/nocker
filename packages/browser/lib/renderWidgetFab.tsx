@@ -14,7 +14,7 @@ import { StateProvider } from "./components"
 import { InternalState } from "./models"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   onOpen?(): void
   onClose?(): void
   onSubmitted?(data: Ticket | Emotion): void

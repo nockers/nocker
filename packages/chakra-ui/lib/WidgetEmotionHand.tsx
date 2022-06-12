@@ -6,7 +6,7 @@ import { BiDislike } from "react-icons/bi"
 import { BiLike } from "react-icons/bi"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onSubmitted?(data: Ticket): void

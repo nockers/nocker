@@ -4,7 +4,7 @@ import { WidgetTicketSubmit } from "@nocker/react"
 import React, { FC } from "react"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onSubmitted?(data: Ticket): void

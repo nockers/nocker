@@ -9,7 +9,7 @@ import React, { FC } from "react"
 import { BoxFormEmotionOne } from "./components/box/BoxFormEmotionOne"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   hasBorder?: boolean | null

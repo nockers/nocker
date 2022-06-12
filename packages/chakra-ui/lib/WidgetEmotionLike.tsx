@@ -5,7 +5,7 @@ import React, { FC } from "react"
 import { AiFillHeart } from "react-icons/ai"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onSubmitted?(data: Ticket): void

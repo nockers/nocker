@@ -13,7 +13,7 @@ import { useMutationTicket } from "./hooks/useMutationTicket"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onClose?(): void

@@ -11,7 +11,7 @@ import { Widget } from "./Widget"
 import { ButtonTrigger } from "./components/button/ButtonTrigger"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   onOpen?(): void
   onClose?(): void
   onSubmitted?(data: Ticket | Emotion): void

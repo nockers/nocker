@@ -5,7 +5,7 @@ import { useMutationEmotion, useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit } from "./types"
 
 type Props = {
-  widgetConfig?: WidgetConfig | null
+  widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
   onSubmitted?(data: Emotion): void
