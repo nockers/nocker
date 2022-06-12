@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@nocker/client": "^0.1.27",
-    "@nocker/react": "^0.1.8",
+    "@nocker/react": "^0.1.9",
     "@sentry/hub": "^7.1.0",
     "html2canvas": "^1.4.1",
     "react-transition-group": "^4.4.2"
