@@ -18,7 +18,7 @@ type Props = {
   onSelect(grade: EmotionGrade): void
 }
 
-export const DivFormEmotion: FC<Props> = (props) => {
+export const DivEmotion: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   const emotionText = useEmotionText(props.config, props.grade)

@@ -1,6 +1,6 @@
 import type { WidgetConfig, Emotion } from "@nocker/client"
 import React, { FC } from "react"
-import { DivFormEmotion } from "./components/div/DivFormEmotion"
+import { DivEmotion } from "./components/div/DivEmotion"
 import { useMutationEmotion, useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit } from "./types"
 
@@ -38,7 +38,7 @@ export const WidgetEmotion: FC<Props> = (props) => {
         </div>
       </div>
       <div className={"px-1.5 pb-1.5"}>
-        <DivFormEmotion
+        <DivEmotion
           config={{
             gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
             gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,

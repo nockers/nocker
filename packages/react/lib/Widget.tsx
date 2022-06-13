@@ -4,7 +4,7 @@ import React, { FC, Fragment } from "react"
 import { BiSearch } from "react-icons/bi"
 import { ButtonClose } from "./components/button/ButtonClose"
 import { ButtonFilled } from "./components/button/ButtonFilled"
-import { DivFormEmotion } from "./components/div/DivFormEmotion"
+import { DivEmotion } from "./components/div/DivEmotion"
 import { DivThanks } from "./components/div/DivThanks"
 import { TextareaTicket } from "./components/textarea/TextareaTicket"
 import { TransitionOpacity } from "./components/transition/TransitionOpacity"
@@ -80,7 +80,7 @@ export const Widget: FC<Props> = (props) => {
           )}
         </div>
         <div className={"px-1.5 pb-1.5"}>
-          <DivFormEmotion
+          <DivEmotion
             config={{
               gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
               gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,
