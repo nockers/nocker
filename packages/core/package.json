@@ -1,6 +1,6 @@
 {
   "name": "@nocker/core",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "",
   "license": "MIT",
   "sideEffects": false,
@@ -23,5 +23,8 @@
     "refactor:package": "npx sort-package-json",
     "test": "jest",
     "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "zod": "^3.17.3"
   }
 }

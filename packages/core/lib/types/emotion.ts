@@ -7,8 +7,7 @@ export type Emotion = {
   grade: EmotionGrade
   gradeSum: number | null
   type: string
-  slug: string | null
-  pagePath: string
+  pagePath: string | null
   pageTitle: string | null
   projectId: string
   customerId: string

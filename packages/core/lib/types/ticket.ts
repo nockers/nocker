@@ -9,8 +9,7 @@ export type Ticket = {
   type: TicketType | null
   status: TicketStatus
   text: string
-  slug: string | null
-  pagePath: string
+  pagePath: string | null
   pageTitle: string | null
   projectId: string
   customerId: string
