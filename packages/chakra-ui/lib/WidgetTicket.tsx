@@ -1,7 +1,11 @@
-import { Button, Stack, Textarea } from "@chakra-ui/react"
 import { WidgetConfig, Ticket } from "@nocker/client"
 import { WidgetTicketSubmit } from "@nocker/react"
+import { useMutationTicket, useWidgetConfig } from "@nocker/react/types/hooks"
 import React, { FC } from "react"
+import { ButtonFilled } from "./components/button/ButtonFilled"
+import { DivThanks } from "./components/div/DivThanks"
+import { TextareaTicket } from "./components/textarea/TextareaTicket"
+import { TransitionOpacity } from "./components/transition/TransitionOpacity"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
@@ -14,14 +18,49 @@ type Props = {
 }
 
 export const WidgetTicket: FC<Props> = (props) => {
+  const widgetConfig = useWidgetConfig(props.widgetConfig)
+
+  const mutationTicket = useMutationTicket({
+    pagePath: props.pagePath,
+    pageTitle: props.pageTitle,
+    onSubmitted: props.onSubmitted,
+    onSubmit: props.onSubmit,
+    onError: props.onError,
+    onDone: props.onDone,
+  })
+
   return (
-    <Stack>
-      <Textarea
-        bg={"white"}
-        color={"black"}
-        placeholder="製品の改善についてご意見・ご要望をお聞かせください。"
-      ></Textarea>
-      <Button>{"送信"}</Button>
-    </Stack>
+    <div
+      className={
+        "relative w-full max-w-sm overflow-hidden rounded-md border border-solid border-slate-500 bg-white dark:bg-gray-800"
+      }
+    >
+      <div className={"p-4"}>
+        <div className={"grid w-full gap-y-4"}>
+          <TextareaTicket
+            value={mutationTicket.formText}
+            placeholder={widgetConfig.ticketInputPlaceholder}
+            isLoading={mutationTicket.isLoading}
+            onChange={(event) => {
+              mutationTicket.onChangeFormText(event.target.value)
+            }}
+          />
+          <ButtonFilled
+            isDisabled={mutationTicket.formText.length < 2}
+            isLoading={mutationTicket.isLoading}
+            onClick={mutationTicket.onCreateTicket}
+          >
+            {widgetConfig.ticketButtonSubmitText}
+          </ButtonFilled>
+        </div>
+      </div>
+      <TransitionOpacity in={mutationTicket.isDone}>
+        <DivThanks
+          message={widgetConfig.ticketThanksMessage}
+          buttonText={widgetConfig.ticketButtonResetText}
+          onClick={mutationTicket.onReset}
+        />
+      </TransitionOpacity>
+    </div>
   )
 }
