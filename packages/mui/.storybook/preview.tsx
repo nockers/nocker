@@ -26,12 +26,12 @@ const withProvider = (Story: Story) => {
 
   const theme = createTheme(defaultTheme)
 
-  const baseURL = "http://localhost:3000/api"
+  // const baseURL = "http://localhost:3000/api"
 
-  // const baseURL = "https://nocker.app/api"
+  const baseURL = "https://nocker.app/api"
 
   const client = new Nocker({
-    projectId: "7UVQakP4NIgO-IFYCHVi2",
+    projectId: "xxxxxxxxxxxxxxxxxxxxx", // "7UVQakP4NIgO-IFYCHVi2",
     environment: "DEVELOPMENT",
     baseURL,
   })
