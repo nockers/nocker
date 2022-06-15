@@ -22,7 +22,7 @@ type Props = {
 export const WidgetEmotion: FC<Props> = (props) => {
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
-  const mutationEmotion = useMutationEmotion({
+  const emotion = useMutationEmotion({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
     emotionType: "FIVE",
@@ -61,10 +61,9 @@ export const WidgetEmotion: FC<Props> = (props) => {
               gradeTwoMessage: widgetConfig.emotionFiveGradeTwoMessage,
               gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
             }}
-            grade={mutationEmotion.emotionGrade}
+            grade={emotion.emotionGrade}
             onSelect={(grade) => {
-              mutationEmotion.onChangeEmotionGrade(grade)
-              mutationEmotion.onCreateEmotion()
+              emotion.createEmotion(grade)
             }}
           />
         </Box>

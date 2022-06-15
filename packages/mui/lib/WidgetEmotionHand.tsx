@@ -60,8 +60,7 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
             }}
             grade={mutationEmotion.emotionGrade}
             onSelect={(grade) => {
-              mutationEmotion.onChangeEmotionGrade(grade)
-              mutationEmotion.onCreateEmotion()
+              mutationEmotion.createEmotion(grade)
             }}
           />
         </Box>

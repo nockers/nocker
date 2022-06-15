@@ -21,7 +21,7 @@ type Props = {
 export const WidgetEmotionLike: FC<Props> = (props) => {
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
-  const mutationEmotion = useMutationEmotion({
+  const mutation = useMutationEmotion({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
     emotionType: "ONE",
@@ -43,10 +43,9 @@ export const WidgetEmotionLike: FC<Props> = (props) => {
           config={{
             buttonText: widgetConfig.emotionOneButtonText,
           }}
-          isActive={mutationEmotion.emotionGrade !== null}
+          isActive={mutation.emotionGrade !== null}
           onClick={() => {
-            mutationEmotion.onChangeEmotionGrade(1)
-            mutationEmotion.onCreateEmotion()
+            mutation.createEmotion(1)
           }}
         />
       </Box>

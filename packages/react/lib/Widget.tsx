@@ -1,6 +1,6 @@
 import type { WidgetConfig, Emotion, Ticket } from "@nocker/client"
 import clsx from "clsx"
-import React, { FC, Fragment } from "react"
+import React, { FC, Fragment, useContext } from "react"
 import { BiSearch } from "react-icons/bi"
 import { ButtonClose } from "./components/button/ButtonClose"
 import { ButtonFilled } from "./components/button/ButtonFilled"
@@ -8,6 +8,7 @@ import { DivEmotion } from "./components/div/DivEmotion"
 import { DivThanks } from "./components/div/DivThanks"
 import { TextareaTicket } from "./components/textarea/TextareaTicket"
 import { TransitionOpacity } from "./components/transition/TransitionOpacity"
+import { ConfigContext } from "./contexts"
 import { useMutationEmotion, useWidgetConfig } from "./hooks"
 import { useMutationTicket } from "./hooks/useMutationTicket"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
@@ -25,6 +26,8 @@ type Props = {
 }
 
 export const Widget: FC<Props> = (props) => {
+  const config = useContext(ConfigContext)
+
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const mutationEmotion = useMutationEmotion({
@@ -89,9 +92,9 @@ export const Widget: FC<Props> = (props) => {
               gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
             }}
             grade={mutationEmotion.emotionGrade}
+            isDisabled={config.isLoggingIn}
             onSelect={(grade) => {
-              mutationEmotion.onChangeEmotionGrade(grade)
-              mutationEmotion.onCreateEmotion()
+              mutationEmotion.createEmotion(grade)
             }}
           />
         </div>
@@ -102,24 +105,32 @@ export const Widget: FC<Props> = (props) => {
               value={mutationTicket.formText}
               placeholder={widgetConfig.ticketInputPlaceholder}
               isLoading={mutationTicket.isLoading}
+              isDisabled={config.isLoggingIn}
               onChange={(event) => {
-                mutationTicket.onChangeFormText(event.target.value)
+                mutationTicket.changeFormText(event.target.value)
               }}
             />
             <ButtonFilled
-              isDisabled={mutationTicket.formText.length < 2}
+              isDisabled={
+                config.isLoggingIn || mutationTicket.formText.length < 2
+              }
               isLoading={mutationTicket.isLoading}
-              onClick={mutationTicket.onCreateTicket}
+              onClick={() => {
+                mutationTicket.createTicket()
+              }}
             >
               {widgetConfig.ticketButtonSubmitText}
             </ButtonFilled>
           </div>
         </div>
-        <TransitionOpacity in={mutationTicket.isDone}>
+        <TransitionOpacity in={mutationTicket.isDone} withDelay>
           <DivThanks
             message={widgetConfig.ticketThanksMessage}
             buttonText={widgetConfig.ticketButtonResetText}
-            onClick={mutationTicket.onReset}
+            onClick={() => {
+              mutationEmotion.reset()
+              mutationTicket.reset()
+            }}
           />
         </TransitionOpacity>
       </div>

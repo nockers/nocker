@@ -1,6 +1,7 @@
 import type { WidgetConfig, Emotion } from "@nocker/client"
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { DivEmotion } from "./components/div/DivEmotion"
+import { ConfigContext } from "./contexts"
 import { useMutationEmotion, useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit } from "./types"
 
@@ -15,6 +16,8 @@ type Props = {
 }
 
 export const WidgetEmotion: FC<Props> = (props) => {
+  const config = useContext(ConfigContext)
+
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const mutation = useMutationEmotion({
@@ -47,9 +50,9 @@ export const WidgetEmotion: FC<Props> = (props) => {
             gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
           }}
           grade={mutation.emotionGrade}
+          isDisabled={config.isLoggingIn}
           onSelect={(grade) => {
-            mutation.onChangeEmotionGrade(grade)
-            mutation.onCreateEmotion()
+            mutation.createEmotion(grade)
           }}
         />
       </div>

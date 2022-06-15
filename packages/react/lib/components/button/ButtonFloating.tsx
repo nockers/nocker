@@ -5,6 +5,7 @@ type Props = {
   type: string
   icon: string | null
   text: string | null
+  isLoading: boolean
   onClick(): void
 }
 

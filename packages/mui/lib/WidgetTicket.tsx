@@ -22,7 +22,7 @@ type Props = {
 export const WidgetTicket: FC<Props> = (props) => {
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
-  const mutationTicket = useMutationTicket({
+  const mutation = useMutationTicket({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
     onSubmitted: props.onSubmitted,
@@ -52,14 +52,16 @@ export const WidgetTicket: FC<Props> = (props) => {
                 buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                 inputPlaceholder: widgetConfig.ticketInputPlaceholder,
               }}
-              text={mutationTicket.formText}
-              isLoading={mutationTicket.isLoading}
+              text={mutation.formText}
+              isLoading={mutation.isLoading}
               onChangeText={(text) => {
-                mutationTicket.onChangeFormText(text)
+                mutation.changeFormText(text)
               }}
-              onSubmit={mutationTicket.onCreateTicket}
+              onSubmit={() => {
+                mutation.createTicket()
+              }}
             />
-            <Fade in={mutationTicket.isDone}>
+            <Fade in={mutation.isDone}>
               <Box>
                 <BoxThanks
                   isMinimal={true}
@@ -67,7 +69,7 @@ export const WidgetTicket: FC<Props> = (props) => {
                     thanksMessage: widgetConfig.ticketThanksMessage,
                     buttonResetText: widgetConfig.ticketButtonResetText,
                   }}
-                  onReset={mutationTicket.onReset}
+                  onReset={mutation.reset}
                 />
               </Box>
             </Fade>

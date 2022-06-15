@@ -25,17 +25,17 @@ export const useMutationTicket = (props: Props) => {
 
   const [isLoading, setLoading] = useState(false)
 
-  const onChangeFormText = (text: string) => {
+  const changeFormText = (text: string) => {
     setFormText(text)
   }
 
-  const onReset = () => {
+  const reset = () => {
     setFormText("")
     markAsDone(false)
     props.onDone?.()
   }
 
-  const onCreateTicket = async () => {
+  const createTicket = async () => {
     if (config.isLoggingIn) return
     setLoading(true)
     if (config.client !== null) {
@@ -79,8 +79,8 @@ export const useMutationTicket = (props: Props) => {
     formText,
     isLoading,
     isDone,
-    onCreateTicket,
-    onChangeFormText,
-    onReset,
+    createTicket,
+    changeFormText,
+    reset,
   }
 }

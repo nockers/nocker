@@ -12,11 +12,15 @@ type Props = {
     thanksMessage: string
   }
   grade: EmotionGrade | null
+  isDisabled: boolean
   onSelect(grade: EmotionGrade): void
 }
 
 export const DivEmotionHand: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
+
+  const isDisabled =
+    props.isDisabled || (props.grade !== null && props.grade !== 0)
 
   useEffect(() => {
     if (props.grade === null) {
@@ -50,7 +54,7 @@ export const DivEmotionHand: FC<Props> = (props) => {
             <ButtonThumb
               grade={0}
               isActive={isOpenMessage}
-              isDisabled={props.grade !== null && props.grade !== 0}
+              isDisabled={isDisabled}
               onClick={onClickFactory(0)}
             >
               {props.config.gradeOneMessage}

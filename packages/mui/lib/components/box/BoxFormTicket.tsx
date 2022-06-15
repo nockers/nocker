@@ -11,7 +11,7 @@ type Props = {
   isLoading: boolean
   // hasImage: boolean
   onChangeText(text: string): void
-  onSubmit(): Promise<void>
+  onSubmit(): void
   // onOpenCapture(): void
 }
 

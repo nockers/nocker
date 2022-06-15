@@ -1,9 +1,10 @@
 import type { WidgetConfig, Ticket } from "@nocker/client"
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { ButtonFilled } from "./components/button/ButtonFilled"
 import { DivThanks } from "./components/div/DivThanks"
 import { TextareaTicket } from "./components/textarea/TextareaTicket"
 import { TransitionOpacity } from "./components/transition/TransitionOpacity"
+import { ConfigContext } from "./contexts"
 import { useWidgetConfig } from "./hooks"
 import { useMutationTicket } from "./hooks/useMutationTicket"
 import { WidgetTicketSubmit } from "./types"
@@ -19,9 +20,11 @@ type Props = {
 }
 
 export const WidgetTicket: FC<Props> = (props) => {
+  const config = useContext(ConfigContext)
+
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
-  const mutationTicket = useMutationTicket({
+  const mutation = useMutationTicket({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
     onSubmitted: props.onSubmitted,
@@ -39,27 +42,32 @@ export const WidgetTicket: FC<Props> = (props) => {
       <div className={"p-4"}>
         <div className={"grid w-full gap-y-4"}>
           <TextareaTicket
-            value={mutationTicket.formText}
+            value={mutation.formText}
             placeholder={widgetConfig.ticketInputPlaceholder}
-            isLoading={mutationTicket.isLoading}
+            isLoading={mutation.isLoading}
+            isDisabled={config.isLoggingIn}
             onChange={(event) => {
-              mutationTicket.onChangeFormText(event.target.value)
+              mutation.changeFormText(event.target.value)
             }}
           />
           <ButtonFilled
-            isDisabled={mutationTicket.formText.length < 2}
-            isLoading={mutationTicket.isLoading}
-            onClick={mutationTicket.onCreateTicket}
+            isDisabled={config.isLoggingIn || mutation.formText.length < 2}
+            isLoading={mutation.isLoading}
+            onClick={() => {
+              mutation.createTicket()
+            }}
           >
             {widgetConfig.ticketButtonSubmitText}
           </ButtonFilled>
         </div>
       </div>
-      <TransitionOpacity in={mutationTicket.isDone}>
+      <TransitionOpacity in={mutation.isDone}>
         <DivThanks
           message={widgetConfig.ticketThanksMessage}
           buttonText={widgetConfig.ticketButtonResetText}
-          onClick={mutationTicket.onReset}
+          onClick={() => {
+            mutation.reset()
+          }}
         />
       </TransitionOpacity>
     </div>

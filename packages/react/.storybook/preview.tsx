@@ -26,7 +26,7 @@ const withProvider = (Story: Story) => {
   const baseURL = "https://nocker.app/api"
 
   const client = new Nocker({
-    projectId: "wkLoRg1EBAq2fh1AFgXMO",
+    projectId: "xxxxxxxxxxxxxxxxxxxxx", // "7UVQakP4NIgO-IFYCHVi2",
     environment: "DEVELOPMENT",
     baseURL,
   })

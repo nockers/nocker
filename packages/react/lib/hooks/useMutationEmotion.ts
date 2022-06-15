@@ -23,9 +23,9 @@ export const useMutationEmotion = (props: Props) => {
 
   const isDone = emotionGrade !== null
 
-  const onCreateEmotion = async () => {
+  const createEmotion = async (emotionGrade: EmotionGrade) => {
+    setEmotionGrade(emotionGrade)
     if (config.isLoggingIn) return
-    if (emotionGrade === null) return
     if (config.client !== null) {
       const ticketId = props.ticketId?.()
       const emotion = await config.client.emotions().create({
@@ -54,11 +54,7 @@ export const useMutationEmotion = (props: Props) => {
     }
   }
 
-  const onChangeEmotionGrade = (grade: EmotionGrade) => {
-    setEmotionGrade(grade)
-  }
-
-  const onReset = () => {
+  const reset = () => {
     setEmotionId(null)
     setEmotionGrade(null)
   }
@@ -67,8 +63,7 @@ export const useMutationEmotion = (props: Props) => {
     emotionId,
     emotionGrade,
     isDone,
-    onChangeEmotionGrade,
-    onCreateEmotion,
-    onReset,
+    createEmotion,
+    reset,
   }
 }

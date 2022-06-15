@@ -15,6 +15,7 @@ type Props = {
     gradeOneMessage: string
   }
   grade: EmotionGrade | null
+  isDisabled: boolean
   onSelect(grade: EmotionGrade): void
 }
 
@@ -40,7 +41,7 @@ export const DivEmotion: FC<Props> = (props) => {
     props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (
-    <div className={"grid grid-flow-col justify-start"}>
+    <div className={"grid grid-flow-col justify-start h-10 overflow-hidden"}>
       <TransitionGroup>
         {grades.map((grade) => (
           <Collapse
@@ -56,6 +57,7 @@ export const DivEmotion: FC<Props> = (props) => {
             <ButtonEmotion
               grade={grade}
               isActive={isOpenMessage}
+              isDisabled={props.isDisabled}
               onClick={() => {
                 props.onSelect(grade)
               }}

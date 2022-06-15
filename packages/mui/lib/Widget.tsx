@@ -76,8 +76,8 @@ export const Widget: FC<Props> = (props) => {
     mutationEmotion.emotionGrade !== null
 
   const onReset = () => {
-    mutationEmotion.onReset()
-    mutationTicket.onReset()
+    mutationEmotion.reset()
+    mutationTicket.reset()
   }
 
   return (
@@ -124,8 +124,7 @@ export const Widget: FC<Props> = (props) => {
                 }}
                 grade={mutationEmotion.emotionGrade}
                 onSelect={(grade) => {
-                  mutationEmotion.onChangeEmotionGrade(grade)
-                  mutationEmotion.onCreateEmotion()
+                  mutationEmotion.createEmotion(grade)
                 }}
               />
             </Box>
@@ -140,8 +139,7 @@ export const Widget: FC<Props> = (props) => {
                 }}
                 grade={mutationEmotion.emotionGrade}
                 onSelect={(grade) => {
-                  mutationEmotion.onChangeEmotionGrade(grade)
-                  mutationEmotion.onCreateEmotion()
+                  mutationEmotion.createEmotion(grade)
                 }}
               />
             </Box>
@@ -166,9 +164,11 @@ export const Widget: FC<Props> = (props) => {
                 text={mutationTicket.formText}
                 isLoading={mutationTicket.isLoading}
                 onChangeText={(text) => {
-                  mutationTicket.onChangeFormText(text)
+                  mutationTicket.changeFormText(text)
                 }}
-                onSubmit={mutationTicket.onCreateTicket}
+                onSubmit={() => {
+                  mutationTicket.createTicket()
+                }}
               />
             </Box>
             <Fade in={mutationTicket.isDone}>

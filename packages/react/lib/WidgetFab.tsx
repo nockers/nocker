@@ -1,8 +1,9 @@
 import { Grow } from "@mui/material"
 import type { WidgetConfig, Emotion, Ticket } from "@nocker/client"
-import React, { FC, useState } from "react"
+import React, { FC, useContext, useState } from "react"
 import { Widget } from "./Widget"
 import { ButtonFloating } from "./components/button/ButtonFloating"
+import { ConfigContext } from "./contexts"
 import { useWidgetConfig } from "./hooks"
 import { WidgetEmotionSubmit, WidgetTicketSubmit } from "./types"
 
@@ -18,6 +19,8 @@ type Props = {
 }
 
 export const WidgetFab: FC<Props> = (props) => {
+  const config = useContext(ConfigContext)
+
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const [isOpen, setOpen] = useState(false)
@@ -45,6 +48,7 @@ export const WidgetFab: FC<Props> = (props) => {
             type={widgetConfig.fabType}
             text={widgetConfig.fabText}
             icon={widgetConfig.fabIcon}
+            isLoading={config.isLoggingIn}
             onClick={onOpen}
           />
         </div>
