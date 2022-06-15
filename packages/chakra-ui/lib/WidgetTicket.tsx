@@ -2,6 +2,10 @@ import { WidgetConfig, Ticket } from "@nocker/client"
 import { WidgetTicketSubmit } from "@nocker/react"
 import { useMutationTicket, useWidgetConfig } from "@nocker/react/types/hooks"
 import React, { FC } from "react"
+import { ButtonFilled } from "./components/button/ButtonFilled"
+import { DivThanks } from "./components/div/DivThanks"
+import { TextareaTicket } from "./components/textarea/TextareaTicket"
+import { TransitionOpacity } from "./components/transition/TransitionOpacity"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
