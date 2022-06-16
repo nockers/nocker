@@ -133,7 +133,38 @@ export class Client {
       body: { environment: this.environment },
     })
 
-    // 認証に失敗失敗した場合
+    // 認証に失敗した場合
+    if (data instanceof UnauthorizedError) {
+      return await this.refreshToken()
+    }
+
+    // リトライする
+    if (data instanceof Error) {
+      return await this.retryLogin()
+    }
+
+    // アクセストークンがあれば書き込む
+    if (data.accessToken !== null && data.refreshToken !== null) {
+      await this.store.writeTokens(data.accessToken, data.refreshToken)
+    }
+
+    return data
+  }
+
+  /**
+   * リトライする
+   * @returns
+   */
+  async retryLogin() {
+    const token = await this.store.readAccessToken()
+
+    const data = await this.fetch<Login, { environment: string }>({
+      method: "POST",
+      path: "login",
+      token,
+      body: { environment: this.environment },
+    })
+
     if (data instanceof UnauthorizedError) {
       return await this.refreshToken()
     }
@@ -142,7 +173,6 @@ export class Client {
       return new InternalError()
     }
 
-    // アクセストークンがあれば書き込む
     if (data.accessToken !== null && data.refreshToken !== null) {
       await this.store.writeTokens(data.accessToken, data.refreshToken)
     }
