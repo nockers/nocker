@@ -5,8 +5,8 @@ module.exports = {
   content: ["./.storybook/preview.tsx", "./lib/**/*.tsx", "./lib/**/*.ts"],
   theme: {
     fontFamily: {
-      sans: ["'M PLUS 1'"],
-      serif: ["'M PLUS 1'", "sans-serif"],
+      sans: ["'M PLUS 1p'"],
+      serif: ["'M PLUS 1p'", "sans-serif"],
     },
     extend: {
       colors: {
