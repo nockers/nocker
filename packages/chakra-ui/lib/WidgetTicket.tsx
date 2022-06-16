@@ -1,3 +1,4 @@
+import { HStack, Stack } from "@chakra-ui/react"
 import { Ticket, WidgetConfig } from "@nocker/client"
 import {
   ConfigContext,
@@ -36,13 +37,9 @@ export const WidgetTicket: FC<Props> = (props) => {
   })
 
   return (
-    <div
-      className={
-        "relative w-full max-w-sm overflow-hidden rounded-md border border-solid border-slate-500 bg-white dark:bg-gray-800"
-      }
-    >
-      <div className={"p-4"}>
-        <div className={"grid w-full gap-y-4"}>
+    <Stack>
+      <HStack>
+        <Stack>
           <TextareaTicket
             value={mutation.formText}
             placeholder={widgetConfig.ticketInputPlaceholder}
@@ -61,8 +58,8 @@ export const WidgetTicket: FC<Props> = (props) => {
           >
             {widgetConfig.ticketButtonSubmitText}
           </ButtonFilled>
-        </div>
-      </div>
+        </Stack>
+      </HStack>
       <TransitionOpacity in={mutation.isDone}>
         <DivThanks
           message={widgetConfig.ticketThanksMessage}
@@ -72,6 +69,6 @@ export const WidgetTicket: FC<Props> = (props) => {
           }}
         />
       </TransitionOpacity>
-    </div>
+    </Stack>
   )
 }
