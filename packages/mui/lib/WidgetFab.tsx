@@ -8,7 +8,7 @@ import {
 } from "@nocker/react"
 import React, { FC, useContext, useState } from "react"
 import { Widget } from "./Widget"
-import { ButtonTrigger } from "./components/button/ButtonTrigger"
+import { ButtonFloating } from "./components/button/ButtonFloating"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
@@ -28,12 +28,12 @@ export const WidgetFab: FC<Props> = (props) => {
 
   const [isOpen, setOpen] = useState(false)
 
-  const onClose = () => {
+  const onCloseWidget = () => {
     setOpen(false)
     props.onClose?.()
   }
 
-  const onOpen = () => {
+  const onOpenWidget = () => {
     setOpen(true)
     props.onOpen?.()
   }
@@ -52,7 +52,7 @@ export const WidgetFab: FC<Props> = (props) => {
             pagePath={null}
             pageTitle={null}
             isNotEmbedded={true}
-            onClose={onClose}
+            onClose={onCloseWidget}
             onSubmitted={props.onSubmitted}
             onSubmitEmotion={props.onSubmitEmotion}
             onSubmitTicket={props.onSubmitTicket}
@@ -63,12 +63,12 @@ export const WidgetFab: FC<Props> = (props) => {
       </Grow>
       <Grow in={!isOpen} unmountOnExit>
         <Box sx={{ position: "fixed", bottom: 16, right: 16, zIndex: 4 }}>
-          <ButtonTrigger
-            isLoggingIn={config.isLoggingIn}
-            config={{
-              text: widgetConfig.fabText,
-            }}
-            onOpen={onOpen}
+          <ButtonFloating
+            type={widgetConfig.fabType}
+            text={widgetConfig.fabText}
+            icon={widgetConfig.fabIcon}
+            isLoading={config.isLoggingIn}
+            onClick={onOpenWidget}
           />
         </Box>
       </Grow>

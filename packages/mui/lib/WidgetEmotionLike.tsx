@@ -19,6 +19,8 @@ type Props = {
 }
 
 export const WidgetEmotionLike: FC<Props> = (props) => {
+  console.log("aaa")
+
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const mutation = useMutationEmotion({

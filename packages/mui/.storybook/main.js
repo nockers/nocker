@@ -11,7 +11,11 @@ exports.features = {
 }
 
 exports.core = {
-  builder: "webpack5",
+  get builder() {
+    return process.env.NODE_ENV === "development"
+      ? "@storybook/builder-vite"
+      : "webpack5"
+  },
 }
 
 // exports.core = {
