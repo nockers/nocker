@@ -6,11 +6,13 @@ type Props = {
   value: string
   placeholder: string
   isLoading?: boolean
+  isDisabled?: boolean
   onChange: ChangeEventHandler<HTMLTextAreaElement>
 }
 
 export const TextareaTicket: FC<Props> = (props) => {
   const state = useStateComponent({
+    isDisabled: props.isDisabled,
     isLoading: props.isLoading,
   })
 
