@@ -13,6 +13,9 @@ export default defineConfig({
       formats: ["iife"],
       fileName: "index",
     },
+    define: {
+      "process.env": process.env,
+    },
   },
   resolve: {
     alias: {
