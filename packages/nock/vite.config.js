@@ -23,4 +23,7 @@ export default defineConfig({
       "@nocker/react": "../react/lib/index.ts",
     },
   },
+  define: {
+    NODE_ENV: "production",
+  },
 })
