@@ -13,9 +13,6 @@ export default defineConfig({
       formats: ["iife"],
       fileName: "index",
     },
-    define: {
-      "process.env": process.env,
-    },
   },
   resolve: {
     alias: {
@@ -25,5 +22,8 @@ export default defineConfig({
       "@nocker/mui": "../mui/lib/index.ts",
       "@nocker/react": "../react/lib/index.ts",
     },
+  },
+  define: {
+    "process.env": process.env,
   },
 })
