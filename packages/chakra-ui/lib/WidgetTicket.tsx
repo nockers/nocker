@@ -35,7 +35,12 @@ export const WidgetTicket: FC<Props> = (props) => {
   })
 
   return (
-    <Stack color={"black"} borderWidth={"1px"} borderRadius={"lg"}>
+    <Stack
+      color={"black"}
+      borderWidth={"1px"}
+      borderRadius={"lg"}
+      padding={"14px"}
+    >
       <HStack>
         <Stack>
           <TextareaTicket
