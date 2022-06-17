@@ -23,7 +23,4 @@ export default defineConfig({
       "@nocker/react": "../react/lib/index.ts",
     },
   },
-  define: {
-    "process.env": process.env,
-  },
 })
