@@ -1,8 +1,8 @@
 import type { Ticket } from "@nocker/client"
-import { ConfigContext } from "@nocker/react/types/contexts/config.context"
 import { captureException } from "@sentry/hub"
 import { useContext, useState } from "react"
-import { WidgetTicketSubmit } from ".."
+import { ConfigContext } from "../contexts"
+import { WidgetTicketSubmit } from "../types"
 
 type Props = {
   pagePath?: string | null
@@ -25,17 +25,17 @@ export const useMutationTicket = (props: Props) => {
 
   const [isLoading, setLoading] = useState(false)
 
-  const onChangeFormText = (text: string) => {
+  const changeFormText = (text: string) => {
     setFormText(text)
   }
 
-  const onReset = () => {
+  const reset = () => {
     setFormText("")
     markAsDone(false)
     props.onDone?.()
   }
 
-  const onCreateTicket = async () => {
+  const createTicket = async () => {
     if (config.isLoggingIn) return
     setLoading(true)
     if (config.client !== null) {
@@ -79,8 +79,8 @@ export const useMutationTicket = (props: Props) => {
     formText,
     isLoading,
     isDone,
-    onCreateTicket,
-    onChangeFormText,
-    onReset,
+    createTicket,
+    changeFormText,
+    reset,
   }
 }

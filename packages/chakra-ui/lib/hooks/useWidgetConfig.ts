@@ -1,6 +1,6 @@
 import type { WidgetConfig } from "@nocker/client"
-import { ConfigContext } from "@nocker/react/types/contexts/config.context"
 import { useContext } from "react"
+import { ConfigContext } from "../contexts"
 
 export const useWidgetConfig = (
   widgetConfig?: Partial<WidgetConfig> | null,

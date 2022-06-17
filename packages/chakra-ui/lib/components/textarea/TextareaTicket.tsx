@@ -26,7 +26,7 @@ export const TextareaTicket: FC<Props> = (props) => {
       value={props.value}
       placeholder={props.placeholder}
       rows={3}
-      readOnly={props.isLoading}
+      readOnly={state.isLoading}
       onChange={props.onChange}
     />
   )

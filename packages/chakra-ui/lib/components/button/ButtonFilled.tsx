@@ -20,9 +20,9 @@ export const ButtonFilled: FC<Props> = (props) => {
   return (
     <button
       className={clsx(
-        "bg-nocker-500 focus:ring-nocker-300 w-full rounded-md border-none py-1.5 font-sans text-white",
+        "w-full rounded-md border-none bg-nocker-500 py-1.5 font-sans text-white focus:ring-nocker-300",
         state.isDefault &&
-          "hover:bg-nocker-500/90 active:bg-nocker-600 cursor-pointer focus:ring",
+          "cursor-pointer hover:bg-nocker-500/90 focus:ring active:bg-nocker-600",
         state.isDisabled && "cursor-not-allowed opacity-70",
         state.isLoading && "cursor-progress opacity-80",
       )}

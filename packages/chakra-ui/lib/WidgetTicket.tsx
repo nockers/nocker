@@ -1,16 +1,14 @@
 import { HStack, Stack } from "@chakra-ui/react"
-import { Ticket, WidgetConfig } from "@nocker/client"
-import {
-  ConfigContext,
-  useMutationTicket,
-  useWidgetConfig,
-  WidgetTicketSubmit,
-} from "@nocker/react"
+import type { WidgetConfig, Ticket } from "@nocker/client"
 import React, { FC, useContext } from "react"
 import { ButtonFilled } from "./components/button/ButtonFilled"
 import { DivThanks } from "./components/div/DivThanks"
 import { TextareaTicket } from "./components/textarea/TextareaTicket"
 import { TransitionOpacity } from "./components/transition/TransitionOpacity"
+import { ConfigContext } from "./contexts"
+import { useWidgetConfig } from "./hooks"
+import { useMutationTicket } from "./hooks/useMutationTicket"
+import { WidgetTicketSubmit } from "./types"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
@@ -37,7 +35,7 @@ export const WidgetTicket: FC<Props> = (props) => {
   })
 
   return (
-    <Stack bg={"white"} p={4} borderRadius="lg" borderWidth="1px" color="black">
+    <Stack color={"black"} borderWidth={"1px"} borderRadius={"lg"}>
       <HStack>
         <Stack>
           <TextareaTicket
