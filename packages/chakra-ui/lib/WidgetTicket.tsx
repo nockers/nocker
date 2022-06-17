@@ -37,7 +37,7 @@ export const WidgetTicket: FC<Props> = (props) => {
   })
 
   return (
-    <Stack>
+    <Stack bg={"white"} p={4} borderRadius="lg" borderWidth="1px" color="black">
       <HStack>
         <Stack>
           <TextareaTicket
