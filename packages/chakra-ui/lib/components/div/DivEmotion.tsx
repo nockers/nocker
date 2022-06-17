@@ -4,7 +4,6 @@ import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
 import { useEmotionText } from "../../hooks"
 import { ButtonEmotion } from "../button/ButtonEmotion"
-import { TransitionOpacity } from "../transition/TransitionOpacity"
 
 type Props = {
   config: {
@@ -41,7 +40,7 @@ export const DivEmotion: FC<Props> = (props) => {
     props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (
-    <div className={"grid grid-flow-col justify-start h-10 overflow-hidden"}>
+    <div className={"grid h-10 grid-flow-col justify-start overflow-hidden"}>
       <TransitionGroup>
         {grades.map((grade) => (
           <Collapse
@@ -66,13 +65,6 @@ export const DivEmotion: FC<Props> = (props) => {
           </Collapse>
         ))}
       </TransitionGroup>
-      <TransitionOpacity in={isOpenMessage}>
-        <div className={"grid content-center"}>
-          <div className={"font-sans text-sm dark:text-gray-200"}>
-            {emotionText}
-          </div>
-        </div>
-      </TransitionOpacity>
     </div>
   )
 }
