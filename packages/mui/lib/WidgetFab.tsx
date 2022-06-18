@@ -39,7 +39,6 @@ export const WidgetFab: FC<Props> = (props) => {
   }
 
   const onDone = () => {
-    setOpen(false)
     props.onDone?.()
   }
 
