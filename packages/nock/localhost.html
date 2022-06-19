@@ -13,7 +13,7 @@
       window.nock = (a, b) => (nock.a = nock.a || []).push([a, b])
       window.nock("login", {
         projectId: "wkLoRg1EBAq2fh1AFgXMO",
-        environment: "PRODUCTION",
+        environment: "DEVELOPMENT",
         baseURL: "http://localhost:3000/api",
       })
       window.nock("renderWidgetFab")
