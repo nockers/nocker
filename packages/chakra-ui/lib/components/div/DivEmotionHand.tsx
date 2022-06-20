@@ -1,9 +1,8 @@
-import { Collapse } from "@mui/material"
+import { Fade, HStack } from "@chakra-ui/react"
 import type { EmotionGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
 import { ButtonThumb } from "../button/ButtonThumb"
-import { TransitionOpacity } from "../transition/TransitionOpacity"
 
 type Props = {
   config: {
@@ -46,9 +45,8 @@ export const DivEmotionHand: FC<Props> = (props) => {
     <div className={"grid grid-flow-col justify-start gap-x-4"}>
       <TransitionGroup>
         {(props.grade === null || props.grade === 0) && (
-          <Collapse
+          <HStack
             key={0}
-            orientation={"horizontal"}
             sx={{ display: "inline-block", verticalAlign: "top" }}
           >
             <ButtonThumb
@@ -59,22 +57,21 @@ export const DivEmotionHand: FC<Props> = (props) => {
             >
               {props.config.gradeOneMessage}
             </ButtonThumb>
-          </Collapse>
+          </HStack>
         )}
         {props.grade === null && (
-          <Collapse
+          <HStack
             key={"-"}
-            orientation={"horizontal"}
             sx={{ display: "inline-block", verticalAlign: "top" }}
           >
             <div className={"w-4"} />
-          </Collapse>
+          </HStack>
         )}
         {(props.grade === null || props.grade !== 0) && (
-          <Collapse
+          <HStack
             key={1}
-            orientation={"horizontal"}
             sx={{ display: "inline-block", verticalAlign: "top" }}
+            pl={4}
           >
             <ButtonThumb
               grade={1}
@@ -84,16 +81,16 @@ export const DivEmotionHand: FC<Props> = (props) => {
             >
               {props.config.gradeTwoMessage}
             </ButtonThumb>
-          </Collapse>
+          </HStack>
         )}
       </TransitionGroup>
-      <TransitionOpacity in={isOpenMessage}>
+      <Fade in={isOpenMessage}>
         <div className={"grid content-center"}>
           <div className={"font-sans text-sm"}>
             {props.config.thanksMessage}
           </div>
         </div>
-      </TransitionOpacity>
+      </Fade>
     </div>
   )
 }
