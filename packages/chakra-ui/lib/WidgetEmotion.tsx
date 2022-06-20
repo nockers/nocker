@@ -1,3 +1,4 @@
+import { Stack, Text } from "@chakra-ui/react"
 import type { WidgetConfig, Emotion } from "@nocker/client"
 import React, { FC, useContext } from "react"
 import { DivEmotion } from "./components/div/DivEmotion"
@@ -31,17 +32,11 @@ export const WidgetEmotion: FC<Props> = (props) => {
   })
 
   return (
-    <div
-      className={
-        "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-gray-800"
-      }
-    >
-      <div className={"px-4 pt-4 pb-1.5"}>
-        <div className={"font-sans text-sm text-gray-500 dark:text-gray-200"}>
-          {widgetConfig.emotionQuestionMessage}
-        </div>
-      </div>
-      <div className={"px-1.5 pb-1.5"}>
+    <Stack>
+      <Stack>
+        <Text>{widgetConfig.emotionQuestionMessage}</Text>
+      </Stack>
+      <Stack>
         <DivEmotion
           config={{
             gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
@@ -56,7 +51,7 @@ export const WidgetEmotion: FC<Props> = (props) => {
             mutation.createEmotion(grade)
           }}
         />
-      </div>
-    </div>
+      </Stack>
+    </Stack>
   )
 }

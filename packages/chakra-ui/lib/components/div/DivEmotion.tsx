@@ -1,6 +1,9 @@
+import { Collapse, HStack } from "@chakra-ui/react"
 import type { EmotionGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
+import { TransitionGroup } from "react-transition-group"
 import { useEmotionText } from "../../hooks"
+import { ButtonEmotion } from "../button/ButtonEmotion"
 import { TransitionOpacity } from "../transition/TransitionOpacity"
 
 type Props = {
@@ -39,6 +42,30 @@ export const DivEmotion: FC<Props> = (props) => {
 
   return (
     <div className={"grid h-10 grid-flow-col justify-start overflow-hidden"}>
+      <TransitionGroup>
+        {grades.map((grade) => (
+          <HStack
+            key={grade}
+            orientation={"horizontal"}
+            sx={{
+              display: "inline-block",
+              verticalAlign: "top",
+              height: "2.5rem",
+              overflow: "hidden",
+            }}
+          >
+            <ButtonEmotion
+              grade={grade}
+              isActive={isOpenMessage}
+              isDisabled={props.isDisabled}
+              onClick={() => {
+                props.onSelect(grade)
+              }}
+            />
+            <div className={"inline-block w-2"} />
+          </HStack>
+        ))}
+      </TransitionGroup>
       <TransitionOpacity in={isOpenMessage}>
         <div className={"grid content-center"}>
           <div className={"font-sans text-sm dark:text-gray-200"}>
