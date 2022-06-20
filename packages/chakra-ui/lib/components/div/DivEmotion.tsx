@@ -1,4 +1,4 @@
-import { Collapse, HStack } from "@chakra-ui/react"
+import { HStack, Stack } from "@chakra-ui/react"
 import type { EmotionGrade } from "@nocker/client"
 import React, { FC, useEffect, useState } from "react"
 import { TransitionGroup } from "react-transition-group"
@@ -41,7 +41,7 @@ export const DivEmotion: FC<Props> = (props) => {
     props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (
-    <div className={"grid h-10 grid-flow-col justify-start overflow-hidden"}>
+    <Stack>
       <TransitionGroup>
         {grades.map((grade) => (
           <HStack
@@ -73,6 +73,6 @@ export const DivEmotion: FC<Props> = (props) => {
           </div>
         </div>
       </TransitionOpacity>
-    </div>
+    </Stack>
   )
 }
