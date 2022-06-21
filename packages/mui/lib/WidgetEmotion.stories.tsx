@@ -9,7 +9,6 @@ export default {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
     isStandalone: { control: "boolean" },
-    hasBorder: { control: "boolean" },
   },
 } as ComponentMeta<typeof WidgetEmotion>
 
@@ -17,7 +16,5 @@ export const Default: ComponentStoryObj<typeof WidgetEmotion> = {
   name: "WidgetEmotion",
   args: {
     widgetConfig: widgetConfigDefault,
-    isStandalone: true,
-    hasBorder: true,
   },
 }

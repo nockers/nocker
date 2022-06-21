@@ -34,7 +34,7 @@ export const ButtonEmotion: FC<Props> = (props) => {
       className={clsx(
         "box-border h-10 w-10 rounded-full border-none bg-transparent p-2 focus:ring-nocker-300",
         state.isDefault &&
-          "cursor-pointer hover:bg-gray-500/20 active:bg-gray-500/40",
+          "cursor-pointer hover:bg-gray-500/10 active:bg-gray-500/20",
       )}
       disabled={state.isDisabled}
       onClick={props.onClick}

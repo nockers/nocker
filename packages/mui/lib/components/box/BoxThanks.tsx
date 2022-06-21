@@ -20,7 +20,7 @@ export const BoxThanks: FC<Props> = (props) => {
         position: "absolute",
         top: 0,
         left: 0,
-        background: "white",
+        background: (theme) => theme.palette.background.paper,
         width: "100%",
         height: "100%",
       }}

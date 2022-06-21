@@ -35,3 +35,14 @@ export const TypeIconWithText: ComponentStoryObj<typeof WidgetFab> = {
     },
   },
 }
+
+export const TypeText: ComponentStoryObj<typeof WidgetFab> = {
+  name: "Text",
+  args: {
+    widgetConfig: {
+      ...widgetConfigDefault,
+      fabType: "TEXT",
+      fabText: "フィードバック",
+    },
+  },
+}

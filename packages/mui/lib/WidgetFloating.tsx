@@ -26,7 +26,7 @@ export const WidgetFloating: FC<Props> = (props) => {
 
   return (
     <Grow in={props.isOpen} unmountOnExit>
-      <Box sx={{ position: "fixed", ...position, zIndex: 4 }}>
+      <Box sx={{ position: "fixed", ...position, zIndex: 40 }}>
         <Widget
           widgetConfig={props.widgetConfig}
           pagePath={null}

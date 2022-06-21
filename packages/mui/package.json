@@ -1,6 +1,6 @@
 {
   "name": "@nocker/mui",
-  "version": "0.4.21",
+  "version": "1.0.0",
   "private": false,
   "description": "",
   "license": "MIT",
@@ -29,8 +29,8 @@
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
-    "@nocker/client": "^0.1.28",
-    "@nocker/react": "^0.1.10",
+    "@nocker/client": "^1.0.0",
+    "@nocker/react": "^1.0.0",
     "@sentry/hub": "^7.1.0",
     "html2canvas": "^1.4.1",
     "react-transition-group": "^4.4.2"

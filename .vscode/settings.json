@@ -7,7 +7,7 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "files.exclude": {
-    "**/node_modules": false,
+    "**/node_modules": true,
     "*.lock": true,
     "*.log": true,
     "*.tsbuildinfo": true,

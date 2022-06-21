@@ -80,14 +80,16 @@ export const Widget: FC<Props> = (props) => {
     mutationTicket.reset()
   }
 
+  const hasCloseButton = typeof props.onClose !== "undefined"
+
   return (
     <Card
       sx={{
         display: "flex",
         width: props.isNotEmbedded ? (theme) => theme.spacing(40) : "100%",
         maxWidth: (theme) => theme.spacing(40),
+        borderWidth: widgetConfig.hasBorder ? 1 : 0,
       }}
-      variant={widgetConfig.hasBorder ? "outlined" : "elevation"}
     >
       <Stack
         sx={{
@@ -98,19 +100,22 @@ export const Widget: FC<Props> = (props) => {
       >
         <Box sx={{ position: "relative", overflowY: "hidden" }}>
           {widgetConfig.emotionType !== null && (
-            <Box sx={{ pt: 1, pl: 2, pr: 1 }}>
-              <Stack
-                direction={"row"}
-                alignItems={"center"}
-                justifyContent={"space-between"}
-                spacing={1}
-              >
-                <Typography fontSize={14} color={"text.secondary"}>
-                  {widgetConfig.emotionQuestionMessage}
-                </Typography>
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+              spacing={1}
+              sx={{ pt: 1, pl: 2, pr: 1 }}
+            >
+              <Typography fontSize={14} color={"text.secondary"}>
+                {widgetConfig.emotionQuestionMessage}
+              </Typography>
+              {hasCloseButton ? (
                 <ButtonClose onClose={props.onClose} />
-              </Stack>
-            </Box>
+              ) : (
+                <Box sx={{ width: 34, height: 34 }} />
+              )}
+            </Stack>
           )}
           {widgetConfig.emotionType === "FIVE" && (
             <Box sx={{ pb: 0.75, px: 0.75 }}>
@@ -150,7 +155,11 @@ export const Widget: FC<Props> = (props) => {
               justifyContent={"flex-end"}
               sx={{ pt: 1, px: 1 }}
             >
-              <ButtonClose onClose={props.onClose} />
+              {hasCloseButton ? (
+                <ButtonClose onClose={props.onClose} />
+              ) : (
+                <Box sx={{ width: 34, height: 34 }} />
+              )}
             </Stack>
           )}
           <Collapse in={isOpenTicket}>

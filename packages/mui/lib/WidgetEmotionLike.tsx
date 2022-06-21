@@ -12,15 +12,12 @@ type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
-  hasBorder?: boolean | null
   onSubmitted?(emotion: Emotion): void
   onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
 }
 
 export const WidgetEmotionLike: FC<Props> = (props) => {
-  console.log("aaa")
-
   const widgetConfig = useWidgetConfig(props.widgetConfig)
 
   const mutation = useMutationEmotion({

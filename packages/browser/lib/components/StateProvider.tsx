@@ -1,13 +1,13 @@
 import { ConfigContext } from "@nocker/mui"
 import React, { FC, ReactNode, useEffect, useState } from "react"
-import { InternalState } from "../models"
+import { State } from "../models"
 
 type Props = {
   children: ReactNode
 }
 
 export const StateProvider: FC<Props> = (props) => {
-  const state = new InternalState()
+  const state = new State()
 
   const [isLoggingIn, setLoading] = useState(() => {
     return state.isLoggingIn
@@ -20,9 +20,7 @@ export const StateProvider: FC<Props> = (props) => {
     })
   }, [])
 
-  const config = state.getConfig()
-
-  const value = { ...config, isLoggingIn }
+  const value = state.getProviderValue(isLoggingIn)
 
   return (
     <ConfigContext.Provider value={value}>

@@ -7,8 +7,10 @@ import {
 } from "@nocker/mui"
 import { createDefaultTheme } from "@nocker/mui"
 
-export class InternalState {
+export class State {
   static isLoggingIn = false
+
+  static isError = false
 
   static client: Nocker | null = null
 
@@ -23,36 +25,42 @@ export class InternalState {
   static effects: (() => void)[] = []
 
   get isLoggingIn() {
-    return InternalState.isLoggingIn
+    return State.isLoggingIn
   }
 
   listenLoginState(method: () => void) {
-    if (InternalState.isLoggingIn) {
-      InternalState.effects.push(method)
+    if (State.isLoggingIn) {
+      State.effects.push(method)
     }
+    return null
+  }
+
+  setErrorState(isError: boolean) {
+    State.isError = isError
     return null
   }
 
   setLoginState(isLoggingIn: boolean) {
-    InternalState.isLoggingIn = isLoggingIn
+    State.isLoggingIn = isLoggingIn
     if (isLoggingIn) return null
-    for (const func of InternalState.effects) {
+    for (const func of State.effects) {
       func()
     }
-    InternalState.effects = []
+    State.effects = []
     return null
   }
 
-  getConfig() {
+  getProviderValue(isLoggingIn?: boolean) {
     return {
-      isLoggingIn: InternalState.isLoggingIn,
-      client: InternalState.client,
-      customer: InternalState.customer,
+      isError: State.isError,
+      isLoggingIn: isLoggingIn ?? State.isLoggingIn,
+      client: State.client,
+      customer: State.customer,
       helps: [],
       widgetConfig: {
         ...widgetConfigDefault,
-        ...InternalState.widgetConfig,
-        ...InternalState.widgetConfigOverride,
+        ...State.widgetConfig,
+        ...State.widgetConfigOverride,
       },
     }
   }
@@ -61,7 +69,7 @@ export class InternalState {
     if (typeof widgetConfig === "undefined") {
       return null
     }
-    InternalState.widgetConfigOverride = widgetConfig
+    State.widgetConfigOverride = widgetConfig
     return null
   }
 
@@ -69,26 +77,26 @@ export class InternalState {
     if (typeof widgetConfig === "undefined") {
       return null
     }
-    InternalState.widgetConfig = widgetConfig
+    State.widgetConfig = widgetConfig
     return null
   }
 
   setTheme(theme: Theme) {
-    InternalState.theme = theme
+    State.theme = theme
     return null
   }
 
   getTheme(): Theme {
-    return InternalState.theme
+    return State.theme
   }
 
   setClient(client: Nocker) {
-    InternalState.client = client
+    State.client = client
     return null
   }
 
   setCustomer(customer: Customer) {
-    InternalState.customer = customer
+    State.customer = customer
     return null
   }
 }

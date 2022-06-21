@@ -35,12 +35,11 @@ export const WidgetTicket: FC<Props> = (props) => {
 
   return (
     <>
-      <Paper sx={{ width: (theme) => theme.spacing(40) }}>
+      <Paper sx={{ width: (theme) => theme.spacing(40), overflow: "hidden" }}>
         <Collapse in={!isOpenHelpForm}>
           <Box
             sx={{
               position: "relative",
-              overflow: "hidden",
               pl: 2,
               pr: 2,
               pt: 2,

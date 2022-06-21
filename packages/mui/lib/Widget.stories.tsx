@@ -9,7 +9,6 @@ export default {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
     isNotEmbedded: { control: "boolean" },
-    hasBorder: { control: "boolean" },
   },
 } as ComponentMeta<typeof Widget>
 
@@ -29,5 +28,18 @@ export const WithMinimal: ComponentStoryObj<typeof Widget> = {
       isMinimal: true,
     },
     isNotEmbedded: false,
+  },
+}
+
+export const WithButton: ComponentStoryObj<typeof Widget> = {
+  name: "Close Button",
+  args: {
+    widgetConfig: {
+      ...widgetConfigDefault,
+      isMinimal: true,
+    },
+    onClose: () => {
+      console.log()
+    },
   },
 }

@@ -42,6 +42,10 @@ export const Widget: FC<Props> = (props) => {
     },
   })
 
+  if (config.isError) {
+    config.isLoggingIn
+  }
+
   const mutationTicket = useMutationTicket({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
@@ -54,7 +58,7 @@ export const Widget: FC<Props> = (props) => {
     },
   })
 
-  const hasHeader = typeof props.onClose !== "undefined"
+  const hasCloseButton = typeof props.onClose !== "undefined"
 
   const helps = [] as const
 
@@ -68,20 +72,24 @@ export const Widget: FC<Props> = (props) => {
       )}
     >
       <div>
-        <div className={"grid grid-flow-col justify-between"}>
-          <div className={"pt-4 pl-4"}>
+        {widgetConfig.emotionType !== null && (
+          <div
+            className={
+              "grid grid-flow-col items-center justify-between pt-2 pl-4 pr-2"
+            }
+          >
             <div
               className={"font-sans text-sm text-gray-500 dark:text-gray-200"}
             >
               {widgetConfig.emotionQuestionMessage}
             </div>
-          </div>
-          {hasHeader && (
-            <div className={"pr-3 pt-3"}>
+            {hasCloseButton ? (
               <ButtonClose onClick={props.onClose} />
-            </div>
-          )}
-        </div>
+            ) : (
+              <div style={{ width: 34, height: 34 }} />
+            )}
+          </div>
+        )}
         <div className={"px-1.5 pb-1.5"}>
           <DivEmotion
             config={{

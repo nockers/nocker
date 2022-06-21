@@ -9,7 +9,7 @@ import { captureException } from "@sentry/hub"
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { StateProvider } from "./components"
-import { InternalState } from "./models"
+import { State } from "./models"
 
 type Props = {
   element: HTMLElement
@@ -20,7 +20,7 @@ type Props = {
 
 export const renderWidgetEmotion = (props: Props) => {
   try {
-    const state = new InternalState()
+    const state = new State()
 
     const theme = state.getTheme()
 

@@ -31,9 +31,25 @@ export const ButtonFloating: FC<Props> = (props) => {
         disabled={props.isLoading}
         onClick={props.onClick}
         size={"small"}
+        sx={{ paddingRight: 2 }}
       >
         <AutoAwesomeIcon />
         <Box sx={{ pl: 1 }}>{props.text ?? "フィードバック"}</Box>
+      </Fab>
+    )
+  }
+
+  if (props.type === "TEXT") {
+    return (
+      <Fab
+        aria-label={props.text ?? "ボタン"}
+        variant={"extended"}
+        disabled={props.isLoading}
+        onClick={props.onClick}
+        size={"small"}
+        sx={{ paddingLeft: 2, paddingRight: 2 }}
+      >
+        {props.text ?? "フィードバック"}
       </Fab>
     )
   }

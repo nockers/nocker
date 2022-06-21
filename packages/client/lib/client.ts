@@ -18,15 +18,14 @@ export class Client {
   readonly baseURL: string
 
   constructor(config: Config) {
+    const store = new StoreDefault({
+      projectId: config.projectId,
+      environment: config.environment ?? "PRODUCTION",
+    })
     this.projectId = config.projectId
     this.environment = config.environment ?? "PRODUCTION"
     this.baseURL = config.baseURL ?? "https://nocker.app/api"
-    this.store =
-      config.store ??
-      new StoreDefault({
-        projectId: config.projectId,
-        environment: config.environment ?? "PRODUCTION",
-      })
+    this.store = config.store ?? store
   }
 
   protected async call<T, U>(props: {
@@ -87,7 +86,7 @@ export class Client {
     try {
       const endpoint = `${this.baseURL}/widgets/${this.projectId}/${props.path}`
 
-      const response = await fetch(endpoint, {
+      const resp = await fetch(endpoint, {
         method: props.method,
         body: props.body ? JSON.stringify(props.body) : null,
         headers: props.token
@@ -98,14 +97,14 @@ export class Client {
           : { "Content-Type": "application/json" },
       })
 
-      const json = await response.json()
+      const json = await resp.json()
 
       // 認証エラー
-      if (response.status === 401) {
+      if (resp.status === 401) {
         return new UnauthorizedError()
       }
 
-      if (response.status !== 200 && response.status !== 201) {
+      if (resp.status !== 200 && resp.status !== 201) {
         return new Error(json.message)
       }
 
@@ -187,7 +186,7 @@ export class Client {
   async refreshToken() {
     const token = await this.store.readRefreshToken()
 
-    const widgetLogin = await this.fetch<Login, LoginData>({
+    const data = await this.fetch<Login, LoginData>({
       method: "POST",
       path: "login",
       token: token,
@@ -195,24 +194,21 @@ export class Client {
     })
 
     // アクセストークンの更新に失敗した場合
-    if (widgetLogin instanceof UnauthorizedError) {
+    if (data instanceof UnauthorizedError) {
       return await this.refetchToken()
     }
 
-    if (widgetLogin instanceof Error) {
+    if (data instanceof Error) {
       return new InternalError()
     }
 
-    if (widgetLogin.accessToken === null || widgetLogin.refreshToken === null) {
+    if (data.accessToken === null || data.refreshToken === null) {
       return new InternalError()
     }
 
-    await this.store.writeTokens(
-      widgetLogin.accessToken,
-      widgetLogin.refreshToken,
-    )
+    await this.store.writeTokens(data.accessToken, data.refreshToken)
 
-    return widgetLogin
+    return data
   }
 
   /**
@@ -223,26 +219,23 @@ export class Client {
     await this.store.removeTokens()
 
     // ログインする
-    const widgetLogin = await this.fetch<Login, LoginData>({
+    const data = await this.fetch<Login, LoginData>({
       method: "POST",
       path: "login",
       token: null,
       body: { environment: this.environment },
     })
 
-    if (widgetLogin instanceof Error) {
+    if (data instanceof Error) {
       return new InternalError()
     }
 
-    if (widgetLogin.accessToken === null || widgetLogin.refreshToken === null) {
+    if (data.accessToken === null || data.refreshToken === null) {
       return new InternalError()
     }
 
-    await this.store.writeTokens(
-      widgetLogin.accessToken,
-      widgetLogin.refreshToken,
-    )
+    await this.store.writeTokens(data.accessToken, data.refreshToken)
 
-    return widgetLogin
+    return data
   }
 }

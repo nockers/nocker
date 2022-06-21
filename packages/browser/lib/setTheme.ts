@@ -1,7 +1,7 @@
 import { createTheme, ThemeOptions } from "@mui/material"
 import { deepmerge } from "@mui/utils"
 import { createDefaultThemeOptions } from "@nocker/mui"
-import { InternalState } from "./models"
+import { State } from "./models"
 
 type Props = ThemeOptions | null
 
@@ -10,7 +10,7 @@ export const setTheme = async (themeOptions?: Props) => {
     return null
   }
 
-  const state = new InternalState()
+  const state = new State()
 
   const defaultThemeOptions = createDefaultThemeOptions(
     themeOptions?.palette?.mode ?? "light",

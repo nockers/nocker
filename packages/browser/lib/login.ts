@@ -1,5 +1,5 @@
 import { Environment, Nocker } from "@nocker/client"
-import { InternalState } from "./models"
+import { State } from "./models"
 import { initSentry } from "./utils"
 
 type Props = {
@@ -18,7 +18,7 @@ export const login = async (props: Props) => {
     throw new Error("projectId is Required")
   }
 
-  const state = new InternalState()
+  const state = new State()
 
   if (state.isLoggingIn) {
     return null
@@ -35,6 +35,7 @@ export const login = async (props: Props) => {
   const widgetLogin = await client.login()
 
   if (widgetLogin instanceof Error) {
+    state.setErrorState(true)
     state.setLoginState(false)
     throw widgetLogin
   }

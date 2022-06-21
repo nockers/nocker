@@ -8,7 +8,6 @@ export default {
   argTypes: {
     pagePath: { table: { disable: true } },
     pageTitle: { table: { disable: true } },
-    hasBorder: { control: "boolean" },
   },
 } as ComponentMeta<typeof WidgetEmotionHand>
 
@@ -16,6 +15,5 @@ export const Default: ComponentStoryObj<typeof WidgetEmotionHand> = {
   name: "WidgetEmotionHand",
   args: {
     widgetConfig: widgetConfigDefault,
-    hasBorder: true,
   },
 }

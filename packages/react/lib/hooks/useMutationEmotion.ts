@@ -32,7 +32,6 @@ export const useMutationEmotion = (props: Props) => {
         pagePath: props.pagePath || window.location.pathname,
         type: props.emotionType,
         grade: emotionGrade,
-        slug: null,
         ticketId,
       })
       if (emotion instanceof Error) {

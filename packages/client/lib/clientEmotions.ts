@@ -5,15 +5,14 @@ import { Config } from "./types"
 export type CreateEmotionData = {
   type: "ONE" | "TWO" | "FIVE"
   grade: EmotionGrade
-  slug?: string | null
-  pagePath: string
+  pagePath?: string | null
   pageTitle?: string | null
   appVersion?: string | null
+  tags?: string[]
   ticketId?: string | null
 }
 
 export type ReadEmotionParams = {
-  slug?: string
   surveyId?: string
 }
 
@@ -31,10 +30,10 @@ export class ClientEmotions extends Client {
   }
 
   async read(params: ReadEmotionParams) {
-    if (typeof params.slug === "string") {
+    if (typeof params.surveyId === "string") {
       return this.call<Emotion[], null>({
         method: "GET",
-        path: `emotions?slug=${params.slug}`,
+        path: `emotions?surveyId=${params.surveyId}`,
       })
     }
 

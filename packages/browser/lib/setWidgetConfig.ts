@@ -1,14 +1,14 @@
 import { WidgetConfig } from "@nocker/mui"
-import { InternalState } from "./models"
+import { State } from "./models"
 
-type Props = WidgetConfig | null
+type Props = Partial<WidgetConfig> | null
 
 export const setWidgetConfig = async (widgetConfig?: Props) => {
   if (typeof widgetConfig === "undefined" || widgetConfig === null) {
     return null
   }
 
-  const state = new InternalState()
+  const state = new State()
 
   state.setWidgetConfigOverride(widgetConfig)
 

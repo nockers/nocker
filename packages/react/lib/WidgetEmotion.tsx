@@ -35,10 +35,15 @@ export const WidgetEmotion: FC<Props> = (props) => {
         "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-gray-800"
       }
     >
-      <div className={"px-4 pt-4 pb-1.5"}>
+      <div
+        className={
+          "grid grid-flow-col items-center justify-between pt-2 pl-4 pr-2"
+        }
+      >
         <div className={"font-sans text-sm text-gray-500 dark:text-gray-200"}>
           {widgetConfig.emotionQuestionMessage}
         </div>
+        <div style={{ width: 34, height: 34 }} />
       </div>
       <div className={"px-1.5 pb-1.5"}>
         <DivEmotion

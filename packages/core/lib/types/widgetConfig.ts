@@ -1,24 +1,24 @@
 export type WidgetConfig = {
+  emotionFiveGradeFiveMessage: string
+  emotionFiveGradeFourMessage: string
+  emotionFiveGradeOneMessage: string
+  emotionFiveGradeThreeMessage: string
+  emotionFiveGradeTwoMessage: string
+  emotionOneButtonText: string
   emotionQuestionMessage: string
   emotionThanksMessage: string
-  ticketInputPlaceholder: string
-  ticketThanksMessage: string
-  ticketButtonSubmitText: string
-  ticketButtonResetText: string
-  emotionFiveGradeOneMessage: string
-  emotionFiveGradeTwoMessage: string
-  emotionFiveGradeThreeMessage: string
-  emotionFiveGradeFourMessage: string
-  emotionFiveGradeFiveMessage: string
   emotionTwoGradeOneMessage: string
   emotionTwoGradeTwoMessage: string
-  emotionOneButtonText: string
-  hasEmotionQuestionMessage: boolean
-  fabType: "DEFAULT" | "TEXT" | "ICON" | "TEXT_WITH_ICON"
-  fabText: string | null
-  fabIcon: string | null
   emotionType: "FIVE" | "TWO" | "ONE" | null
-  isMinimal: boolean
+  fabIcon: string | null
+  fabText: string | null
+  fabType: "DEFAULT" | "TEXT" | "ICON" | "TEXT_WITH_ICON"
   hasBorder: boolean
+  hasEmotionQuestionMessage: boolean
   hasHelps: boolean
+  isMinimal: boolean
+  ticketButtonResetText: string
+  ticketButtonSubmitText: string
+  ticketInputPlaceholder: string
+  ticketThanksMessage: string
 }

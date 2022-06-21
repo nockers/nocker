@@ -6,18 +6,14 @@ export type CreateTicketData = {
   type?: string | null
   text: string
   imageText?: string | null
-  pagePath: string
+  pagePath?: string | null
   pageTitle?: string | null
-  appPlatform?: string | null
   appVersion?: string | null
-  appDevice?: string | null
-  slug?: string
   tags?: string[]
   emotionId?: string | null
 }
 
 export type ReadTicketParams = {
-  slug?: string
   surveyId?: string
 }
 
@@ -35,10 +31,10 @@ export class ClientTickets extends Client {
   }
 
   async read(params: ReadTicketParams) {
-    if (typeof params.slug === "string") {
+    if (typeof params.surveyId === "string") {
       return this.call<Ticket[], null>({
         method: "GET",
-        path: `tickets?slug=${params.slug}`,
+        path: `tickets?surveyId=${params.surveyId}`,
       })
     }
 

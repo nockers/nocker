@@ -2,10 +2,8 @@ import {
   type Nocker,
   type Login,
   type WidgetConfig,
-  type Customer,
   widgetConfigDefault,
 } from "@nocker/client"
-import { captureException } from "@sentry/hub"
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import { ConfigContext } from "./contexts"
 
@@ -16,59 +14,56 @@ type Props = {
   client?: Nocker | null
 }
 
+let __LOGIN__: Login | null = null
+
 export const NockerProvider: FC<Props> = (props) => {
   const client = props.client ?? null
 
   const [data, setData] = useState<Login | Error | null>(() => {
+    if (__LOGIN__) {
+      return __LOGIN__
+    }
     return props.data ?? null
   })
 
   const [isLoggingIn, setLoading] = useState(() => {
-    return client !== null || data !== null
+    if (__LOGIN__ !== null || data !== null) {
+      return false
+    }
+    return client !== null
   })
 
   useEffect(() => {
     if (!isLoggingIn) return
-    if (client === null) return
-    client
-      .login()
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-      .catch((error) => {
-        captureException(error)
-      })
+    client?.login().then((data) => {
+      setData(data)
+      setLoading(false)
+      if (data instanceof Error) return
+      __LOGIN__ = data
+    })
   }, [])
 
-  if (data instanceof Error) {
-    return null
-  }
+  const isError = data instanceof Error
 
-  const customerPlaceholder: Customer = {
-    id: "xxxxxxxxxxxxxxxxxxxxx",
-    projectId: "xxxxxxxxxxxxxxxxxxxxx",
-    environment: "DEVELOPMENT",
-    userId: null,
-    name: null,
-  }
+  const login = isError ? null : data
 
-  const partialWidgetConfig = props.widgetConfig ?? {}
+  const widgetConfigOverride = props.widgetConfig ?? {}
 
-  const partialWidgetConfigRemote = data?.widgetConfig ?? {}
+  const widgetConfigRemote = isError ? {} : data?.widgetConfig ?? {}
 
   const widgetConfig: WidgetConfig = {
     ...widgetConfigDefault,
-    ...partialWidgetConfigRemote,
-    ...partialWidgetConfig,
+    ...widgetConfigRemote,
+    ...widgetConfigOverride,
   }
 
   const value = {
+    isError,
     isLoggingIn,
-    client: client,
-    customer: data?.customer ?? customerPlaceholder,
-    helps: data?.helps ?? [],
-    widgetConfig: widgetConfig,
+    client,
+    widgetConfig,
+    customer: login?.customer ?? null,
+    helps: login?.helps ?? [],
   }
 
   return (

@@ -12,7 +12,6 @@ type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
   pagePath?: string | null
   pageTitle?: string | null
-  hasBorder?: boolean | null
   onSubmitted?(emotion: Emotion): void
   onSubmit?(emotion: WidgetEmotionSubmit): void
   onError?(error: Error): void
@@ -41,17 +40,25 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
     >
       <Stack sx={{ width: "100%" }}>
         {widgetConfig.emotionType !== null && (
-          <Box sx={{ pt: 2, pb: 0, pr: 1, pl: 2 }}>
-            <Typography
-              fontSize={14}
-              color={"text.secondary"}
-              sx={{ lineHeight: "22px" }}
+          <Box sx={{ pt: 1, pl: 2, pr: 1 }}>
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+              spacing={1}
             >
-              {widgetConfig.emotionQuestionMessage}
-            </Typography>
+              <Typography
+                fontSize={14}
+                color={"text.secondary"}
+                sx={{ lineHeight: "22px" }}
+              >
+                {widgetConfig.emotionQuestionMessage}
+              </Typography>
+              <Box sx={{ height: 34, width: 34 }} />
+            </Stack>
           </Box>
         )}
-        <Box sx={{ pt: 1, pb: 1.25, px: 1.25 }}>
+        <Box sx={{ pt: 0.5, pb: 1.25, px: 1.25 }}>
           <BoxFormEmotionTwo
             config={{
               gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
