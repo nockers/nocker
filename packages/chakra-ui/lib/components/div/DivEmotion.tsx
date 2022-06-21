@@ -62,7 +62,6 @@ export const DivEmotion: FC<Props> = (props) => {
                 props.onSelect(grade)
               }}
             />
-            <div className={"inline-block w-2"} />
           </HStack>
         ))}
       </TransitionGroup>
