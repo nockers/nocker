@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/material"
+import { Card } from "@mui/material"
 import { Emotion, WidgetConfig } from "@nocker/client"
 import {
   useMutationEmotion,
@@ -31,23 +31,21 @@ export const WidgetEmotionLike: FC<Props> = (props) => {
 
   return (
     <Card
+      variant={"outlined"}
       sx={{
-        display: "flex",
         width: "fit-content",
         borderWidth: widgetConfig.hasBorder ? 1 : 0,
       }}
     >
-      <Box sx={{ py: 0, px: 0 }}>
-        <BoxFormEmotionOne
-          config={{
-            buttonText: widgetConfig.emotionOneButtonText,
-          }}
-          isActive={mutation.emotionGrade !== null}
-          onClick={() => {
-            mutation.createEmotion(1)
-          }}
-        />
-      </Box>
+      <BoxFormEmotionOne
+        config={{
+          buttonText: widgetConfig.emotionOneButtonText,
+        }}
+        isActive={mutation.emotionGrade !== null}
+        onClick={() => {
+          mutation.createEmotion(1)
+        }}
+      />
     </Card>
   )
 }

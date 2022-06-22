@@ -13,8 +13,7 @@ export class StoreDefault extends Database {
     super(indexedDB)
   }
 
-  // override
-  onUpgradeneeded(request: IDBOpenDBRequest) {
+  override onUpgradeneeded(request: IDBOpenDBRequest) {
     const database = request.result
     database.createObjectStore("tokens", { keyPath: "id" })
   }

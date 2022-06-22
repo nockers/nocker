@@ -31,8 +31,8 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
 
   return (
     <Card
+      variant={"outlined"}
       sx={{
-        display: "flex",
         width: "100%",
         maxWidth: (theme) => theme.spacing(40),
         borderWidth: widgetConfig.hasBorder ? 1 : 0,
@@ -40,23 +40,22 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
     >
       <Stack sx={{ width: "100%" }}>
         {widgetConfig.emotionType !== null && (
-          <Box sx={{ pt: 1, pl: 2, pr: 1 }}>
-            <Stack
-              direction={"row"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-              spacing={1}
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            spacing={1}
+            sx={{ pt: 1, pl: 2, pr: 1 }}
+          >
+            <Typography
+              fontSize={14}
+              color={"text.secondary"}
+              sx={{ lineHeight: "22px" }}
             >
-              <Typography
-                fontSize={14}
-                color={"text.secondary"}
-                sx={{ lineHeight: "22px" }}
-              >
-                {widgetConfig.emotionQuestionMessage}
-              </Typography>
-              <Box sx={{ height: 34, width: 34 }} />
-            </Stack>
-          </Box>
+              {widgetConfig.emotionQuestionMessage}
+            </Typography>
+            <Box sx={{ height: 34, width: 34 }} />
+          </Stack>
         )}
         <Box sx={{ pt: 0.5, pb: 1.25, px: 1.25 }}>
           <BoxFormEmotionTwo

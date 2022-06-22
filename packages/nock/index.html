@@ -14,7 +14,8 @@
     <script>
       window.nock = (a, b) => (nock.a = nock.a || []).push([a, b])
       window.nock("login", {
-        projectId: "xxxxxxxxxxxxxxxxxxxxx",
+        projectId: "_37FClGfvhOjxjeVklUWu",
+        environment: "DEVELOPMENT",
       })
       window.nock("setTheme", {
         palette: {
@@ -24,6 +25,7 @@
       window.nock("setWidgetConfig", {
         fabType: "TEXT_WITH_ICON",
         fabText: "こんにちは",
+        hasBorder: true,
       })
       window.nock("renderWidgetFab")
     </script>

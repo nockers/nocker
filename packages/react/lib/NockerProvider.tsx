@@ -20,17 +20,11 @@ export const NockerProvider: FC<Props> = (props) => {
   const client = props.client ?? null
 
   const [data, setData] = useState<Login | Error | null>(() => {
-    if (__LOGIN__) {
-      return __LOGIN__
-    }
-    return props.data ?? null
+    return props.data ?? __LOGIN__ ?? null
   })
 
   const [isLoggingIn, setLoading] = useState(() => {
-    if (__LOGIN__ !== null || data !== null) {
-      return false
-    }
-    return client !== null
+    return __LOGIN__ === null && data === null && client !== null
   })
 
   useEffect(() => {

@@ -16,7 +16,7 @@ export const BoxFormEmotionOne: FC<Props> = (props) => {
       startIcon={<FavoriteIcon />}
       color={props.isActive ? "primary" : "inherit"}
       aria-label={props.config.buttonText}
-      sx={{ letterSpacing: 1, fontSize: 16, lineHeight: 1, px: 2 }}
+      sx={{ px: 2 }}
     >
       <Stack direction={"row"} alignItems={"center"} spacing={1}>
         <Typography fontSize={14}>{props.config.buttonText}</Typography>

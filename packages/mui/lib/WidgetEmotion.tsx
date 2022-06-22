@@ -31,8 +31,9 @@ export const WidgetEmotion: FC<Props> = (props) => {
 
   return (
     <Card
+      variant={"outlined"}
       sx={{
-        display: "flex",
+        overflow: "hidden",
         width: "100%",
         maxWidth: (theme) => theme.spacing(40),
         borderWidth: widgetConfig.hasBorder ? 1 : 0,
@@ -40,19 +41,18 @@ export const WidgetEmotion: FC<Props> = (props) => {
     >
       <Stack sx={{ width: "100%" }}>
         {widgetConfig.hasEmotionQuestionMessage && (
-          <Box sx={{ pt: 1, pl: 2, pr: 1 }}>
-            <Stack
-              direction={"row"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-              spacing={1}
-            >
-              <Typography fontSize={14} color={"text.secondary"}>
-                {widgetConfig.emotionQuestionMessage}
-              </Typography>
-              <Box sx={{ height: 34, width: 34 }} />
-            </Stack>
-          </Box>
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            spacing={1}
+            sx={{ pt: 1, pl: 2, pr: 1 }}
+          >
+            <Typography fontSize={14} color={"text.secondary"}>
+              {widgetConfig.emotionQuestionMessage}
+            </Typography>
+            <Box sx={{ height: 34, width: 34 }} />
+          </Stack>
         )}
         <Box sx={{ pb: 0.75, px: 0.75 }}>
           <BoxFormEmotion
