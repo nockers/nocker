@@ -13,6 +13,6 @@
     "preview": "serve . -l 1234"
   },
   "dependencies": {
-    "@nocker/browser": "^0.1.4"
+    "@nocker/browser": "^1.0.0"
   }
 }
