@@ -68,7 +68,11 @@ export const DivEmotion: FC<Props> = (props) => {
       </TransitionGroup>
       <TransitionOpacity in={isOpenMessage}>
         <div className={"grid content-center"}>
-          <div className={"font-sans text-sm font-bold dark:text-neutral-200"}>
+          <div
+            className={
+              "font-sans text-sm font-bold text-neutral-600 dark:text-neutral-200"
+            }
+          >
             {emotionText}
           </div>
         </div>

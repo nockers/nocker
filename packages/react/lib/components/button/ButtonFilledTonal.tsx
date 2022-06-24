@@ -20,7 +20,7 @@ export const ButtonFilledTonal: FC<Props> = (props) => {
   return (
     <button
       className={clsx(
-        "w-full rounded-md border-none bg-nocker-50 py-1.5 font-sans text-neutral-900 text-white focus:ring-nocker-300",
+        "w-full rounded-md border-none bg-nocker-50 py-1.5 font-sans font-bold text-neutral-600 focus:ring-nocker-300",
         isDefault &&
           "cursor-pointer hover:bg-nocker-100 focus:ring active:bg-nocker-200",
         isDisabled && "cursor-not-allowed opacity-70",

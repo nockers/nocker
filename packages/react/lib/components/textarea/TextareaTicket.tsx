@@ -19,7 +19,7 @@ export const TextareaTicket: FC<Props> = (props) => {
   return (
     <textarea
       className={clsx(
-        "w-full border-0 p-0 font-sans font-bold focus:outline-none dark:bg-neutral-800",
+        "w-full border-0 p-0 font-sans font-bold text-neutral-600 focus:outline-none dark:bg-neutral-800",
         state.isLoading && "cursor-not-allowed opacity-60",
       )}
       style={{ resize: "none" }}

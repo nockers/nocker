@@ -47,7 +47,7 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
         </div>
         <div style={{ width: 34, height: 34 }} />
       </div>
-      <div className={"px-2.5 pb-2.5"}>
+      <div className={"px-2.5 pb-2.5 pt-1"}>
         <DivEmotionHand
           config={{
             gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,

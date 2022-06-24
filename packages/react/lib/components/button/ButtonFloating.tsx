@@ -27,7 +27,7 @@ export const ButtonFloating: FC<Props> = (props) => {
     return (
       <button
         className={
-          "cursor-pointer overflow-hidden rounded-full border-none bg-white px-4 py-2 font-sans shadow-md hover:bg-neutral-50 active:bg-neutral-100 dark:bg-neutral-900"
+          "cursor-pointer overflow-hidden rounded-full border-none bg-white px-4 py-2 font-sans font-bold text-neutral-600 shadow-md hover:bg-neutral-50 active:bg-neutral-100 dark:bg-neutral-900"
         }
         onClick={props.onClick}
       >

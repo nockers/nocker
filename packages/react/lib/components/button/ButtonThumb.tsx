@@ -24,7 +24,7 @@ export const ButtonThumb: FC<Props> = (props) => {
         className={clsx(
           "box-border grid min-w-max grid-flow-col justify-start gap-1 rounded-md border-none bg-transparent px-1 py-1.5 transition focus:ring-nocker-300",
           state.isDefault &&
-            "cursor-pointer hover:bg-neutral-500/20 active:bg-neutral-500/40",
+            "cursor-pointer hover:bg-neutral-500/10 active:bg-neutral-500/20",
         )}
         disabled={state.isDisabled}
         onClick={props.onClick}
@@ -36,7 +36,9 @@ export const ButtonThumb: FC<Props> = (props) => {
           )}
           size={20}
         />
-        <div className={"font-sans text-sm font-bold"}>{props.children}</div>
+        <div className={"font-sans text-sm font-bold text-neutral-600"}>
+          {props.children}
+        </div>
       </button>
     )
   }
@@ -58,7 +60,9 @@ export const ButtonThumb: FC<Props> = (props) => {
           state.isActive && "fill-green-800",
         )}
       />
-      <div className={"font-sans text-sm font-bold"}>{props.children}</div>
+      <div className={"font-sans text-sm font-bold text-neutral-600"}>
+        {props.children}
+      </div>
     </button>
   )
 }
