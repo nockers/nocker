@@ -36,7 +36,7 @@ export const WidgetTicket: FC<Props> = (props) => {
   return (
     <div
       className={
-        "relative w-full max-w-sm overflow-hidden rounded-md border border-solid border-slate-500 bg-white dark:bg-gray-800"
+        "relative w-full max-w-sm overflow-hidden rounded-md border border-solid border-neutral-500 bg-white dark:bg-neutral-800"
       }
     >
       <div className={"p-4"}>

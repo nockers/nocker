@@ -32,7 +32,7 @@ export const WidgetEmotion: FC<Props> = (props) => {
   return (
     <div
       className={
-        "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-gray-800"
+        "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-neutral-800"
       }
     >
       <div
@@ -40,7 +40,11 @@ export const WidgetEmotion: FC<Props> = (props) => {
           "grid grid-flow-col items-center justify-between pt-2 pl-4 pr-2"
         }
       >
-        <div className={"font-sans text-sm text-gray-500 dark:text-gray-200"}>
+        <div
+          className={
+            "font-sans text-sm font-bold text-neutral-500 dark:text-neutral-200"
+          }
+        >
           {widgetConfig.emotionQuestionMessage}
         </div>
         <div style={{ width: 34, height: 34 }} />

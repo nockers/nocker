@@ -67,8 +67,8 @@ export const Widget: FC<Props> = (props) => {
   return (
     <div
       className={clsx(
-        "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-gray-800",
-        widgetConfig?.hasBorder && "border border-solid border-slate-500",
+        "relative w-full max-w-sm overflow-hidden rounded-md bg-white dark:bg-neutral-800",
+        widgetConfig?.hasBorder && "border border-solid border-neutral-500",
       )}
     >
       <div>
@@ -79,7 +79,9 @@ export const Widget: FC<Props> = (props) => {
             }
           >
             <div
-              className={"font-sans text-sm text-gray-500 dark:text-gray-200"}
+              className={
+                "font-sans text-sm font-bold text-neutral-500 dark:text-neutral-200"
+              }
             >
               {widgetConfig.emotionQuestionMessage}
             </div>
@@ -106,7 +108,7 @@ export const Widget: FC<Props> = (props) => {
             }}
           />
         </div>
-        <div className={"h-px w-full bg-slate-200"} />
+        <div className={"h-px w-full bg-neutral-200"} />
         <div className={"p-4"}>
           <div className={"grid w-full gap-y-4"}>
             <TextareaTicket
@@ -142,11 +144,11 @@ export const Widget: FC<Props> = (props) => {
           />
         </TransitionOpacity>
       </div>
-      {hasHelps && <div className={"h-px w-full bg-slate-200"} />}
+      {hasHelps && <div className={"h-px w-full bg-neutral-200"} />}
       {hasHelps && (
         <div className={"max-h-32 overflow-y-auto"}>
           <div className={"flex px-4 py-3"}>
-            <BiSearch className={"h-5 w-5 fill-slate-500"} />
+            <BiSearch className={"h-5 w-5 fill-neutral-500"} />
             <input
               className={
                 "ml-2 flex-1 border-0 p-0 font-sans focus:outline-none"
@@ -156,9 +158,9 @@ export const Widget: FC<Props> = (props) => {
           </div>
           {helps.map((help, i) => (
             <Fragment key={i}>
-              <div className={"h-px w-full bg-slate-100"} />
+              <div className={"h-px w-full bg-neutral-100"} />
               <div className={"px-4 py-2"}>
-                <div className={"font-sans text-sm text-slate-700"}>{""}</div>
+                <div className={"font-sans text-sm text-neutral-600"}>{""}</div>
               </div>
             </Fragment>
           ))}

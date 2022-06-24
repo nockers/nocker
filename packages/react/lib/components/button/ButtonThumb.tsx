@@ -22,21 +22,21 @@ export const ButtonThumb: FC<Props> = (props) => {
     return (
       <button
         className={clsx(
-          "box-border grid min-w-max grid-flow-col justify-start gap-1 rounded-md border-none bg-transparent px-1 py-1.5 focus:ring-nocker-300",
+          "box-border grid min-w-max grid-flow-col justify-start gap-1 rounded-md border-none bg-transparent px-1 py-1.5 transition focus:ring-nocker-300",
           state.isDefault &&
-            "cursor-pointer hover:bg-gray-500/20 active:bg-gray-500/40",
+            "cursor-pointer hover:bg-neutral-500/20 active:bg-neutral-500/40",
         )}
         disabled={state.isDisabled}
         onClick={props.onClick}
       >
         <BiDislike
           className={clsx(
-            state.isDefault && "fill-gray-700",
+            state.isDefault && "fill-neutral-600",
             state.isActive && "fill-red-800",
           )}
           size={20}
         />
-        <div className={"font-sans text-sm"}>{props.children}</div>
+        <div className={"font-sans text-sm font-bold"}>{props.children}</div>
       </button>
     )
   }
@@ -44,9 +44,9 @@ export const ButtonThumb: FC<Props> = (props) => {
   return (
     <button
       className={clsx(
-        "box-border grid min-w-max grid-flow-col justify-start gap-1 rounded-md border-none bg-transparent px-1 py-1.5 focus:ring-nocker-300",
+        "box-border grid min-w-max grid-flow-col justify-start gap-1 rounded-md border-none bg-transparent px-1 py-1.5 transition focus:ring-nocker-300",
         state.isDefault &&
-          "cursor-pointer hover:bg-gray-500/20 active:bg-gray-500/40",
+          "cursor-pointer hover:bg-neutral-500/10 active:bg-neutral-500/20",
       )}
       disabled={state.isDisabled}
       onClick={props.onClick}
@@ -54,11 +54,11 @@ export const ButtonThumb: FC<Props> = (props) => {
       <BiLike
         size={20}
         className={clsx(
-          state.isDefault && "fill-gray-700",
+          state.isDefault && "fill-neutral-600",
           state.isActive && "fill-green-800",
         )}
       />
-      <div className={"font-sans text-sm"}>{props.children}</div>
+      <div className={"font-sans text-sm font-bold"}>{props.children}</div>
     </button>
   )
 }

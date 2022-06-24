@@ -5,8 +5,20 @@ module.exports = {
   content: ["./.storybook/preview.tsx", "./lib/**/*.tsx", "./lib/**/*.ts"],
   theme: {
     fontFamily: {
-      sans: ["'M PLUS 1p'"],
-      serif: ["'M PLUS 1p'", "sans-serif"],
+      sans: [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Roboto",
+        "'Segoe UI semibold'",
+        "'Helvetica Neue'",
+        "HelveticaNeue",
+        "YuGothic",
+        "'Yu Gothic'",
+        "'Segoe UI'",
+        "Verdana",
+        "Meiryo",
+        "sans-serif",
+      ],
     },
     extend: {
       colors: {

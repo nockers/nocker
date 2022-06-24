@@ -54,7 +54,7 @@ export const DivEmotionHand: FC<Props> = (props) => {
             <ButtonThumb
               grade={0}
               isActive={isOpenMessage}
-              isDisabled={isDisabled}
+              isDisabled={props.grade !== null && props.grade !== 0}
               onClick={onClickFactory(0)}
             >
               {props.config.gradeOneMessage}
@@ -89,7 +89,7 @@ export const DivEmotionHand: FC<Props> = (props) => {
       </TransitionGroup>
       <TransitionOpacity in={isOpenMessage}>
         <div className={"grid content-center"}>
-          <div className={"font-sans text-sm"}>
+          <div className={"font-sans text-sm font-bold text-neutral-600"}>
             {props.config.thanksMessage}
           </div>
         </div>

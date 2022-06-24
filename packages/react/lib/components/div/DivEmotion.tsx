@@ -41,7 +41,7 @@ export const DivEmotion: FC<Props> = (props) => {
     props.grade !== null ? [props.grade] : [0, 1, 2, 3, 4]
 
   return (
-    <div className={"grid grid-flow-col justify-start h-10 overflow-hidden"}>
+    <div className={"grid h-10 grid-flow-col justify-start overflow-hidden"}>
       <TransitionGroup>
         {grades.map((grade) => (
           <Collapse
@@ -68,7 +68,7 @@ export const DivEmotion: FC<Props> = (props) => {
       </TransitionGroup>
       <TransitionOpacity in={isOpenMessage}>
         <div className={"grid content-center"}>
-          <div className={"font-sans text-sm dark:text-gray-200"}>
+          <div className={"font-sans text-sm font-bold dark:text-neutral-200"}>
             {emotionText}
           </div>
         </div>

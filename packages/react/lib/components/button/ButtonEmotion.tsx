@@ -32,9 +32,9 @@ export const ButtonEmotion: FC<Props> = (props) => {
   return (
     <button
       className={clsx(
-        "box-border h-10 w-10 rounded-full border-none bg-transparent p-2 focus:ring-nocker-300",
+        "box-border h-10 w-10 rounded-full border-none bg-transparent p-2 transition focus:ring-nocker-300",
         state.isDefault &&
-          "cursor-pointer hover:bg-gray-500/10 active:bg-gray-500/20",
+          "cursor-pointer hover:bg-neutral-500/10 active:bg-neutral-500/20",
       )}
       disabled={state.isDisabled}
       onClick={props.onClick}
@@ -42,12 +42,12 @@ export const ButtonEmotion: FC<Props> = (props) => {
       <IconEmotion
         grade={props.grade}
         className={clsx(
-          state.isDefault && "fill-gray-700 dark:fill-gray-300",
-          isColorVeryBad && "fill-red-800 dark:fill-red-400",
-          isColorBad && "fill-red-700 dark:fill-red-300",
-          isColorNeutral && "fill-gray-700 dark:fill-gray-400",
-          isColorGood && "fill-green-700 dark:fill-green-400",
-          isColorVeryGood && "fill-green-800 dark:fill-green-300",
+          state.isDefault && "fill-neutral-500 dark:fill-neutral-300",
+          isColorVeryBad && "fill-red-600 dark:fill-red-400",
+          isColorBad && "fill-red-600 dark:fill-red-300",
+          isColorNeutral && "fill-neutral-600 dark:fill-neutral-400",
+          isColorGood && "fill-green-600 dark:fill-green-400",
+          isColorVeryGood && "fill-green-600 dark:fill-green-300",
         )}
       />
     </button>

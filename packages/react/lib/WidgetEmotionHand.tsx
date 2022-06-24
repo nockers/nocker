@@ -33,10 +33,19 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
     <div
       className={"relative w-full max-w-sm overflow-hidden rounded-md bg-white"}
     >
-      <div className={"px-4 pt-4 pb-2.5"}>
-        <div className={"font-sans text-sm text-gray-500"}>
+      <div
+        className={
+          "grid grid-flow-col items-center justify-between pt-2 pl-4 pr-2"
+        }
+      >
+        <div
+          className={
+            "font-sans text-sm font-bold text-neutral-500 dark:text-neutral-200"
+          }
+        >
           {widgetConfig.emotionQuestionMessage}
         </div>
+        <div style={{ width: 34, height: 34 }} />
       </div>
       <div className={"px-2.5 pb-2.5"}>
         <DivEmotionHand

@@ -9,11 +9,11 @@ export const ButtonClose: FC<Props> = (props) => {
   return (
     <button
       className={
-        "cursor-pointer rounded-full border-none bg-white p-1 hover:bg-slate-50 active:bg-slate-100 dark:bg-slate-900"
+        "cursor-pointer rounded-full border-none bg-white p-1 hover:bg-neutral-50 active:bg-neutral-100 dark:bg-neutral-900"
       }
       onClick={props.onClick}
     >
-      <BiX className={"block fill-slate-500"} size={26} />
+      <BiX className={"block fill-neutral-500"} size={26} />
     </button>
   )
 }

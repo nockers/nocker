@@ -32,6 +32,8 @@
     "refactor:package": "npx sort-package-json"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.8.2",
     "@nocker/client": "^1.0.0",
     "@sentry/hub": "^7.1.0",
