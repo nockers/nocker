@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "yarn workspace @nocker/react dev",
-    "publish:browser": " yarn workspace @nocker/browser publish --access=public",
+    "publish:browser": "yarn workspace @nocker/browser publish --access=public",
     "publish:chakra-ui": "yarn workspace @nocker/chakra-ui publish --access=public",
     "publish:client": "yarn workspace @nocker/client publish --access=public",
     "publish:core": "yarn workspace @nocker/core publish --access=public",
