@@ -42,10 +42,6 @@ export const Widget: FC<Props> = (props) => {
     },
   })
 
-  if (config.isError) {
-    config.isLoggingIn
-  }
-
   const mutationTicket = useMutationTicket({
     pagePath: props.pagePath,
     pageTitle: props.pageTitle,
@@ -112,18 +108,16 @@ export const Widget: FC<Props> = (props) => {
         <div className={"p-4"}>
           <div className={"grid w-full gap-y-4"}>
             <TextareaTicket
-              value={mutationTicket.formText}
+              value={mutationTicket.text}
               placeholder={widgetConfig.ticketInputPlaceholder}
               isLoading={mutationTicket.isLoading}
               isDisabled={config.isLoggingIn}
               onChange={(event) => {
-                mutationTicket.changeFormText(event.target.value)
+                mutationTicket.updateText(event.target.value)
               }}
             />
             <ButtonFilled
-              isDisabled={
-                config.isLoggingIn || mutationTicket.formText.length < 2
-              }
+              isDisabled={mutationTicket.text.length < 2}
               isLoading={mutationTicket.isLoading}
               onClick={() => {
                 mutationTicket.createTicket()

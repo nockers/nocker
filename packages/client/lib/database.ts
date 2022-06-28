@@ -1,8 +1,6 @@
 import { captureException } from "@sentry/hub"
 
 export class Database {
-  constructor(protected indexedDB?: IDBDatabase) {}
-
   protected onUpgradeneeded(request: IDBOpenDBRequest) {
     return
   }

@@ -8,19 +8,29 @@ import {
 import { createContext } from "react"
 
 type Value = {
-  isError: boolean
-  isLoggingIn: boolean
   client: Nocker | null
+  isLoggingIn: boolean
+  widgetConfig: WidgetConfig
   customer: Customer | null
   helps: Help[]
-  widgetConfig: WidgetConfig
+  setWidgetConfig(widgetConfig?: WidgetConfig): void
+  setCustomer(customer?: Customer): void
+  setHelps(helps?: Help[]): void
 }
 
 export const ConfigContext = createContext<Value>({
-  isError: false,
-  isLoggingIn: false,
   client: null,
+  isLoggingIn: false,
   widgetConfig: widgetConfigDefault,
   customer: null,
   helps: [],
+  setWidgetConfig() {
+    return
+  },
+  setCustomer() {
+    return
+  },
+  setHelps() {
+    return
+  },
 })

@@ -1,5 +1,5 @@
 import "tailwindcss/tailwind.css"
-export { ConfigContext } from "./contexts"
+export { ConfigContext as ConfigContext } from "./contexts"
 export {
   useEmotionText,
   useMutationEmotion,

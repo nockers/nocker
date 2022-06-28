@@ -170,10 +170,10 @@ export const Widget: FC<Props> = (props) => {
                   buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                   inputPlaceholder: widgetConfig.ticketInputPlaceholder,
                 }}
-                text={mutationTicket.formText}
+                text={mutationTicket.text}
                 isLoading={mutationTicket.isLoading}
                 onChangeText={(text) => {
-                  mutationTicket.changeFormText(text)
+                  mutationTicket.updateText(text)
                 }}
                 onSubmit={() => {
                   mutationTicket.createTicket()

@@ -8,9 +8,8 @@ export class StoreDefault extends Database {
       projectId: string
       environment: Environment
     },
-    protected indexedDB?: IDBDatabase,
   ) {
-    super(indexedDB)
+    super()
   }
 
   override onUpgradeneeded(request: IDBOpenDBRequest) {

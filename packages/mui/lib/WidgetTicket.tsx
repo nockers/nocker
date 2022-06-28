@@ -59,10 +59,10 @@ export const WidgetTicket: FC<Props> = (props) => {
                 buttonSubmitText: widgetConfig.ticketButtonSubmitText,
                 inputPlaceholder: widgetConfig.ticketInputPlaceholder,
               }}
-              text={mutation.formText}
+              text={mutation.text}
               isLoading={mutation.isLoading}
               onChangeText={(text) => {
-                mutation.changeFormText(text)
+                mutation.updateText(text)
               }}
               onSubmit={() => {
                 mutation.createTicket()

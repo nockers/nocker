@@ -24,32 +24,41 @@ export const useMutationEmotion = (props: Props) => {
   const isDone = emotionGrade !== null
 
   const createEmotion = async (emotionGrade: EmotionGrade) => {
-    setEmotionGrade(emotionGrade)
-    if (config.isLoggingIn) return
-    if (config.client !== null) {
-      const ticketId = props.ticketId?.()
-      const emotion = await config.client.emotions().create({
-        pagePath: props.pagePath || window.location.pathname,
-        type: props.emotionType,
-        grade: emotionGrade,
-        ticketId,
-      })
-      if (emotion instanceof Error) {
-        captureException(emotion)
-        props.onError?.(emotion)
-        return
+    try {
+      setEmotionGrade(emotionGrade)
+      if (config.client !== null) {
+        const isLoggedIn = await config.client.isLoggedIn()
+        if (isLoggedIn) {
+          const login = await config.client.login()
+          config.setCustomer(login?.customer)
+          config.setHelps(login?.helps)
+          config.setWidgetConfig(login?.widgetConfig)
+        }
+        const ticketId = props.ticketId?.()
+        const emotion = await config.client.emotions().create({
+          type: props.emotionType,
+          pagePath: props.pagePath || window.location.pathname,
+          pageTitle: window.document.title,
+          grade: emotionGrade,
+          ticketId,
+        })
+        props.onSubmitted?.(emotion)
+        setEmotionId(emotion.id)
       }
-      props.onSubmitted?.(emotion)
-      setEmotionId(emotion.id)
-    }
-    if (config.client === null) {
-      const emotion: WidgetEmotionSubmit = {
-        type: props.emotionType,
-        grade: emotionGrade,
-        pagePath: props.pagePath || window.location.pathname,
-        pageTitle: window.document.title,
+      if (config.client === null) {
+        const emotion: WidgetEmotionSubmit = {
+          type: props.emotionType,
+          pagePath: props.pagePath || window.location.pathname,
+          pageTitle: window.document.title,
+          grade: emotionGrade,
+        }
+        props.onSubmit?.(emotion)
       }
-      props.onSubmit?.(emotion)
+    } catch (error) {
+      captureException(error)
+      if (error instanceof Error) {
+        props.onError?.(error)
+      }
     }
   }
 

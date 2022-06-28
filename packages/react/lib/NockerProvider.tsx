@@ -1,6 +1,7 @@
 import {
+  type Customer,
+  type Help,
   type Nocker,
-  type Login,
   type WidgetConfig,
   widgetConfigDefault,
 } from "@nocker/client"
@@ -8,56 +9,72 @@ import React, { FC, ReactNode, useEffect, useState } from "react"
 import { ConfigContext } from "./contexts"
 
 type Props = {
-  data?: Login | null
-  widgetConfig?: Partial<WidgetConfig> | null
   children: ReactNode
+  widgetConfig?: Partial<WidgetConfig> | null
   client?: Nocker | null
+  customer?: Customer
+  helps?: Help[]
 }
 
-let __LOGIN__: Login | null = null
+let __IS_INITIALIZED__ = false
 
 export const NockerProvider: FC<Props> = (props) => {
   const client = props.client ?? null
 
-  const [data, setData] = useState<Login | Error | null>(() => {
-    return props.data ?? __LOGIN__ ?? null
+  const [widgetConfig, setWidgetConfig] = useState<WidgetConfig | null>(null)
+
+  const [customer, setCustomer] = useState<Customer | null>(() => {
+    return props.customer ?? null
   })
 
-  const [isLoggingIn, setLoading] = useState(() => {
-    return __LOGIN__ === null && data === null && client !== null
+  const [helps, setHelps] = useState<Help[]>(() => {
+    return props.helps ?? []
+  })
+
+  const [isLoggingIn, setLoggingIn] = useState(() => {
+    return !__IS_INITIALIZED__
   })
 
   useEffect(() => {
-    if (!isLoggingIn) return
-    client?.login().then((data) => {
-      setData(data)
-      setLoading(false)
-      if (data instanceof Error) return
-      __LOGIN__ = data
+    if (__IS_INITIALIZED__) return
+    setLoggingIn(true)
+    const boot = client?.boot()
+    boot?.then((login) => {
+      if (login === null) return
+      setWidgetConfig(login.widgetConfig)
+      setCustomer(login.customer)
+      setHelps(login.helps)
+      setLoggingIn(false)
     })
+    boot?.finally(() => {
+      setLoggingIn(false)
+    })
+    __IS_INITIALIZED__ = true
   }, [])
-
-  const isError = data instanceof Error
-
-  const login = isError ? null : data
 
   const widgetConfigOverride = props.widgetConfig ?? {}
 
-  const widgetConfigRemote = isError ? {} : data?.widgetConfig ?? {}
-
-  const widgetConfig: WidgetConfig = {
+  const widgetConfigMerged: WidgetConfig = {
     ...widgetConfigDefault,
-    ...widgetConfigRemote,
+    ...widgetConfig,
     ...widgetConfigOverride,
   }
 
   const value = {
-    isError,
     isLoggingIn,
     client,
-    widgetConfig,
-    customer: login?.customer ?? null,
-    helps: login?.helps ?? [],
+    widgetConfig: widgetConfigMerged,
+    customer,
+    helps,
+    setWidgetConfig(widgetConfig?: WidgetConfig) {
+      setWidgetConfig(widgetConfig ?? null)
+    },
+    setCustomer(customer?: Customer) {
+      setCustomer(customer ?? null)
+    },
+    setHelps(helps?: Help[]) {
+      setHelps(helps ?? [])
+    },
   }
 
   return (

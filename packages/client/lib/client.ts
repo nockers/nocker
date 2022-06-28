@@ -1,6 +1,7 @@
 import { Environment, Login } from "@nocker/core"
 import { captureException } from "@sentry/hub"
 import { InternalError, UnauthorizedError } from "./errors"
+import { State } from "./state"
 import { StoreDefault } from "./storeDefault"
 import { Config } from "./types"
 
@@ -17,6 +18,8 @@ export class Client {
 
   readonly baseURL: string
 
+  readonly state: State
+
   constructor(config: Config) {
     const store = new StoreDefault({
       projectId: config.projectId,
@@ -26,50 +29,53 @@ export class Client {
     this.environment = config.environment ?? "PRODUCTION"
     this.baseURL = config.baseURL ?? "https://nocker.app/api"
     this.store = config.store ?? store
+    this.state = new State()
   }
 
   protected async call<T, U>(props: {
     method: "POST" | "PUT" | "GET"
     path: string
     body?: U
-  }): Promise<T | Error> {
-    try {
+  }): Promise<Awaited<T>> {
+    const token = await this.store.readAccessToken()
+
+    const data = await this.fetch<T, U>({
+      method: props.method,
+      path: props.path,
+      body: props.body,
+      token,
+    })
+
+    // 認証エラー
+    if (data instanceof UnauthorizedError) {
+      const refresh = await this.refreshToken()
+
+      if (refresh instanceof Error) {
+        throw refresh
+      }
+
       const token = await this.store.readAccessToken()
 
-      const data = await this.fetch<T, U>({
+      // リクエストを送信する
+      const result = await this.fetch<T, U>({
         method: props.method,
         path: props.path,
         body: props.body,
         token,
       })
 
-      // 認証エラー
-      if (data instanceof UnauthorizedError) {
-        const refresh = await this.refreshToken()
-
-        if (refresh instanceof Error) {
-          return refresh
-        }
-
-        const token = await this.store.readAccessToken()
-
-        // リクエストを送信する
-        return await this.fetch<T, U>({
-          method: props.method,
-          path: props.path,
-          body: props.body,
-          token,
-        })
+      if (result instanceof Error) {
+        throw result
       }
 
-      return data
-    } catch (error) {
-      captureException(error)
-      if (error instanceof Error) {
-        return new Error(error.message)
-      }
-      return new Error("UNEXPECTED_ERROR")
+      return result
     }
+
+    if (data instanceof Error) {
+      throw data
+    }
+
+    return data
   }
 
   /**
@@ -114,8 +120,28 @@ export class Client {
       if (error instanceof Error) {
         return new Error(error.message)
       }
-      return new Error("UNEXPECTED_ERROR")
+      return new Error()
     }
+  }
+
+  /**
+   * アクセストークンがある場合はログインする
+   * @returns
+   */
+  async boot() {
+    if (this.state.isBooted) {
+      throw new Error("Already booted")
+    }
+
+    this.state.boot()
+
+    const token = await this.store.readAccessToken()
+
+    if (token === null) {
+      return null
+    }
+
+    return await this.login()
   }
 
   /**
@@ -169,7 +195,7 @@ export class Client {
     }
 
     if (data instanceof Error) {
-      return new InternalError()
+      throw new InternalError()
     }
 
     if (data.accessToken !== null && data.refreshToken !== null) {
@@ -199,11 +225,11 @@ export class Client {
     }
 
     if (data instanceof Error) {
-      return new InternalError()
+      throw new InternalError()
     }
 
     if (data.accessToken === null || data.refreshToken === null) {
-      return new InternalError()
+      throw new InternalError()
     }
 
     await this.store.writeTokens(data.accessToken, data.refreshToken)
@@ -227,15 +253,21 @@ export class Client {
     })
 
     if (data instanceof Error) {
-      return new InternalError()
+      throw new InternalError()
     }
 
     if (data.accessToken === null || data.refreshToken === null) {
-      return new InternalError()
+      throw new InternalError()
     }
 
     await this.store.writeTokens(data.accessToken, data.refreshToken)
 
     return data
+  }
+
+  async isLoggedIn() {
+    const token = await this.store.readAccessToken()
+
+    return token !== null
   }
 }

@@ -42,16 +42,16 @@ export const WidgetTicket: FC<Props> = (props) => {
       <div className={"p-4"}>
         <div className={"grid w-full gap-y-4"}>
           <TextareaTicket
-            value={mutation.formText}
+            value={mutation.text}
             placeholder={widgetConfig.ticketInputPlaceholder}
             isLoading={mutation.isLoading}
             isDisabled={config.isLoggingIn}
             onChange={(event) => {
-              mutation.changeFormText(event.target.value)
+              mutation.updateText(event.target.value)
             }}
           />
           <ButtonFilled
-            isDisabled={config.isLoggingIn || mutation.formText.length < 2}
+            isDisabled={mutation.text.length < 2}
             isLoading={mutation.isLoading}
             onClick={() => {
               mutation.createTicket()

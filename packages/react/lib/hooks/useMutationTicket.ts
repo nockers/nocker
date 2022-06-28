@@ -19,68 +19,78 @@ export const useMutationTicket = (props: Props) => {
 
   const [ticketId, setTicketId] = useState<string | null>(null)
 
-  const [formText, setFormText] = useState("")
+  const [text, setText] = useState("")
 
   const [isDone, markAsDone] = useState(false)
 
   const [isLoading, setLoading] = useState(false)
 
-  const changeFormText = (text: string) => {
-    setFormText(text)
+  const updateText = (text: string) => {
+    setText(text)
   }
 
   const reset = () => {
-    setFormText("")
+    setText("")
     markAsDone(false)
     props.onDone?.()
   }
 
   const createTicket = async () => {
-    if (config.isLoggingIn) return
-    setLoading(true)
-    if (config.client !== null) {
-      const emotionId = props.emotionId?.()
-      const ticket = await config.client.tickets().create({
-        type: null,
-        text: formText,
-        imageText: null,
-        emotionId,
-        pagePath: props.pagePath || window.location.pathname,
-      })
-      if (ticket instanceof Error) {
-        captureException(ticket)
-        props.onError?.(ticket)
+    try {
+      setLoading(true)
+      if (config.client !== null) {
+        const isLoggedIn = await config.client.isLoggedIn()
+        if (isLoggedIn) {
+          const login = await config.client.login()
+          config.setCustomer(login?.customer)
+          config.setHelps(login?.helps)
+          config.setWidgetConfig(login?.widgetConfig)
+        }
+        const emotionId = props.emotionId?.()
+        const ticket = await config.client.tickets().create({
+          type: null,
+          pagePath: props.pagePath || window.location.pathname,
+          pageTitle: window.document.title,
+          text: text,
+          imageText: null,
+          emotionId,
+        })
+        markAsDone(true)
+        setTicketId(ticket.id)
+        props.onSubmitted?.(ticket)
         setLoading(false)
-        return
       }
-      markAsDone(true)
-      setTicketId(ticket.id)
-      props.onSubmitted?.(ticket)
+      if (config.client === null) {
+        const ticket: WidgetTicketSubmit = {
+          type: null,
+          pagePath: props.pagePath || window.location.pathname,
+          pageTitle: window.document.title,
+          text: text,
+          imageText: null,
+          emotionGrade: null,
+          emotionType: null,
+        }
+        await new Promise((resolve) => setTimeout(resolve, 500))
+        markAsDone(true)
+        props.onSubmit?.(ticket)
+        setLoading(false)
+      }
+    } catch (error) {
+      captureException(error)
       setLoading(false)
-      return
+      if (error instanceof Error) {
+        props.onError?.(error)
+      }
     }
-    const ticket: WidgetTicketSubmit = {
-      type: null,
-      text: formText,
-      imageText: null,
-      pagePath: props.pagePath || window.location.pathname,
-      pageTitle: window.document.title,
-      emotionGrade: null,
-      emotionType: null,
-    }
-    await new Promise((resolve) => setTimeout(resolve, 500))
-    markAsDone(true)
-    props.onSubmit?.(ticket)
-    setLoading(false)
   }
 
   return {
     ticketId,
-    formText,
+    text,
     isLoading,
     isDone,
     createTicket,
-    changeFormText,
+    updateText,
     reset,
   }
 }

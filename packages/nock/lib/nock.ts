@@ -1,8 +1,8 @@
 import { nocker } from "@nocker/browser"
 
 export const nock = (method: string, option: any) => {
-  if (method === "login") {
-    return nocker.login(option)
+  if (method === "boot") {
+    return nocker.boot(option)
   }
 
   if (method === "setTheme") {
