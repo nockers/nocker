@@ -1,6 +1,11 @@
+import { widgetConfigDefault } from "@nocker/core"
 import { Client } from "./client"
+import { ClientCustomer } from "./clientCustomer"
 import { ClientEmotion } from "./clientEmotion"
 import { ClientEmotions } from "./clientEmotions"
+import { ClientHelp } from "./clientHelp"
+import { ClientHelps } from "./clientHelps"
+import { ClientProject } from "./clientProject"
 import { ClientTicket } from "./clientTicket"
 import { ClientTickets } from "./clientTickets"
 import { Config } from "./types"
@@ -10,8 +15,36 @@ export class Nocker extends Client {
     super(config)
   }
 
-  customer() {
-    return null
+  customers(customerId: string): ClientCustomer
+
+  customers(customerId: string) {
+    return new ClientCustomer(this.config, customerId)
+  }
+
+  emotions(): ClientEmotions
+
+  emotions(emotionId: string): ClientEmotion
+
+  emotions(emotionId?: string) {
+    if (typeof emotionId === "undefined") {
+      return new ClientEmotions(this.config)
+    }
+    return new ClientEmotion(this.config, emotionId)
+  }
+
+  helps(): ClientHelps
+
+  helps(helpId: string): ClientHelps
+
+  helps(helpId?: string) {
+    if (typeof helpId === "undefined") {
+      return new ClientHelps(this.config)
+    }
+    return new ClientHelp(this.config, helpId)
+  }
+
+  project() {
+    return new ClientProject(this.config)
   }
 
   tickets(): ClientTickets
@@ -25,14 +58,15 @@ export class Nocker extends Client {
     return new ClientTicket(this.config, ticketId)
   }
 
-  emotions(): ClientEmotions
+  get currentWidgetConfig() {
+    return this.state.widgetConfig ?? widgetConfigDefault
+  }
 
-  emotions(emotionId: string): ClientEmotion
+  get currentCustomer() {
+    return this.state.customer
+  }
 
-  emotions(emotionId?: string) {
-    if (typeof emotionId === "undefined") {
-      return new ClientEmotions(this.config)
-    }
-    return new ClientEmotion(this.config, emotionId)
+  get currentHelps() {
+    return this.state.helps
   }
 }

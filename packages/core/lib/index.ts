@@ -5,6 +5,7 @@ export type {
   Environment,
   Help,
   Login,
+  Project,
   Tag,
   Ticket,
   TicketStatus,

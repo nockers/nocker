@@ -1,5 +1,5 @@
 import { Environment } from "@nocker/core"
-import { StoreDefault } from "../storeDefault"
+import { StoreDefault } from "../helpers/storeDefault"
 
 export type Config = {
   projectId: string

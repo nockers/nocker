@@ -1,4 +1,5 @@
 import { Environment, Nocker } from "@nocker/client"
+import { captureException } from "@sentry/hub"
 import { State } from "./models"
 import { initSentry } from "./utils"
 
@@ -9,7 +10,7 @@ type Props = {
   disableSentry?: boolean
 }
 
-export const login = async (props: Props) => {
+export const init = async (props: Props) => {
   if (props.disableSentry !== true) {
     initSentry()
   }
@@ -30,21 +31,25 @@ export const login = async (props: Props) => {
     baseURL: props.baseURL,
   })
 
-  state.setLoginState(true)
-
-  const widgetLogin = await client.login()
-
-  if (widgetLogin instanceof Error) {
-    state.setErrorState(true)
-    state.setLoginState(false)
-    throw widgetLogin
-  }
-
   state.setClient(client)
 
-  state.setCustomer(widgetLogin.customer)
+  state.setLoginState(true)
 
-  state.setWidgetConfig(widgetLogin.widgetConfig)
+  try {
+    const project = await client.project().read()
+    state.setProject(project)
+  } catch (error) {
+    captureException(error)
+  }
+
+  try {
+    const login = await client.init()
+    if (login !== null) {
+      state.setCustomer(login.customer)
+    }
+  } catch (error) {
+    captureException(error)
+  }
 
   state.setLoginState(false)
 

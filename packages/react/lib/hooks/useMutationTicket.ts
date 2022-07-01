@@ -39,12 +39,10 @@ export const useMutationTicket = (props: Props) => {
     try {
       setLoading(true)
       if (config.client !== null) {
-        const isLoggedIn = await config.client.isLoggedIn()
-        if (isLoggedIn) {
+        const isNotLoggedIn = await config.client.isNotLoggedIn()
+        if (isNotLoggedIn) {
           const login = await config.client.login()
           config.setCustomer(login?.customer)
-          config.setHelps(login?.helps)
-          config.setWidgetConfig(login?.widgetConfig)
         }
         const emotionId = props.emotionId?.()
         const ticket = await config.client.tickets().create({

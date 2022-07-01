@@ -21,9 +21,9 @@ export const parameters = {
 }
 
 const withProvider = (Story: Story) => {
-  // const baseURL = "http://localhost:3000/api"
+  const baseURL = "http://localhost:3000/api"
 
-  const baseURL = "https://nocker.app/api"
+  // sconst baseURL = "https://nocker.app/api"
 
   const client = new Nocker({
     projectId: "xxxxxxxxxxxxxxxxxxxxx", // "7UVQakP4NIgO-IFYCHVi2",

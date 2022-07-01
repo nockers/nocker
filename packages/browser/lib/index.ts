@@ -1,4 +1,4 @@
-import { login } from "./login"
+import { init } from "./init"
 import { renderWidget } from "./renderWidget"
 import { renderWidgetEmotion } from "./renderWidgetEmotion"
 import { renderWidgetFab } from "./renderWidgetFab"
@@ -7,7 +7,7 @@ import { setTheme } from "./setTheme"
 import { setWidgetConfig } from "./setWidgetConfig"
 
 export const nocker = {
-  login,
+  init,
   renderWidgetFab,
   renderWidget,
   renderWidgetEmotion,

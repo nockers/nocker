@@ -1,6 +1,6 @@
 import { Environment } from "@nocker/core"
+import { RecordToken } from "../types/recordToken"
 import { Database } from "./database"
-import { RecordToken } from "./types/recordToken"
 
 export class StoreDefault extends Database {
   constructor(

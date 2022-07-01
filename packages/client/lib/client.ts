@@ -1,8 +1,8 @@
-import { Environment, Login } from "@nocker/core"
+import { Environment, Help, Login, WidgetConfig } from "@nocker/core"
 import { captureException } from "@sentry/hub"
 import { InternalError, UnauthorizedError } from "./errors"
-import { State } from "./state"
-import { StoreDefault } from "./storeDefault"
+import { State } from "./helpers/state"
+import { StoreDefault } from "./helpers/storeDefault"
 import { Config } from "./types"
 
 type LoginData = {
@@ -12,24 +12,24 @@ type LoginData = {
 export class Client {
   readonly store: StoreDefault
 
+  readonly state: State
+
   readonly environment: Environment
 
   readonly projectId: string
 
   readonly baseURL: string
 
-  readonly state: State
-
   constructor(config: Config) {
     const store = new StoreDefault({
       projectId: config.projectId,
       environment: config.environment ?? "PRODUCTION",
     })
+    this.store = config.store ?? store
+    this.state = new State()
     this.projectId = config.projectId
     this.environment = config.environment ?? "PRODUCTION"
     this.baseURL = config.baseURL ?? "https://nocker.app/api"
-    this.store = config.store ?? store
-    this.state = new State()
   }
 
   protected async call<T, U>(props: {
@@ -39,7 +39,7 @@ export class Client {
   }): Promise<Awaited<T>> {
     const token = await this.store.readAccessToken()
 
-    const data = await this.fetch<T, U>({
+    const data = await this.#fetch<T, U>({
       method: props.method,
       path: props.path,
       body: props.body,
@@ -48,7 +48,7 @@ export class Client {
 
     // 認証エラー
     if (data instanceof UnauthorizedError) {
-      const refresh = await this.refreshToken()
+      const refresh = await this.#refreshToken()
 
       if (refresh instanceof Error) {
         throw refresh
@@ -57,7 +57,7 @@ export class Client {
       const token = await this.store.readAccessToken()
 
       // リクエストを送信する
-      const result = await this.fetch<T, U>({
+      const result = await this.#fetch<T, U>({
         method: props.method,
         path: props.path,
         body: props.body,
@@ -83,14 +83,14 @@ export class Client {
    * @param props
    * @returns
    */
-  protected async fetch<T, U>(props: {
+  async #fetch<T, U>(props: {
     method: "POST" | "PUT" | "GET"
     path: string
     token: string | null
     body?: U
   }): Promise<T | Error> {
     try {
-      const endpoint = `${this.baseURL}/widgets/${this.projectId}/${props.path}`
+      const endpoint = `${this.baseURL}/widgets/${this.projectId}${props.path}`
 
       const resp = await fetch(endpoint, {
         method: props.method,
@@ -128,12 +128,12 @@ export class Client {
    * アクセストークンがある場合はログインする
    * @returns
    */
-  async boot() {
-    if (this.state.isBooted) {
+  async init() {
+    if (this.state.isInitialized) {
       throw new Error("Already booted")
     }
 
-    this.state.boot()
+    this.state.initialize()
 
     const token = await this.store.readAccessToken()
 
@@ -151,27 +151,29 @@ export class Client {
   async login() {
     const token = await this.store.readAccessToken()
 
-    const data = await this.fetch<Login, { environment: string }>({
+    const data = await this.#fetch<Login, { environment: string }>({
       method: "POST",
-      path: "login",
+      path: "/login",
       token,
       body: { environment: this.environment },
     })
 
     // 認証に失敗した場合
     if (data instanceof UnauthorizedError) {
-      return await this.refreshToken()
+      return await this.#refreshToken()
     }
 
     // リトライする
     if (data instanceof Error) {
-      return await this.retryLogin()
+      return await this.#retryLogin()
     }
 
     // アクセストークンがあれば書き込む
     if (data.accessToken !== null && data.refreshToken !== null) {
       await this.store.writeTokens(data.accessToken, data.refreshToken)
     }
+
+    this.state.updateCustomer(data.customer)
 
     return data
   }
@@ -180,27 +182,30 @@ export class Client {
    * リトライする
    * @returns
    */
-  async retryLogin() {
+  async #retryLogin() {
     const token = await this.store.readAccessToken()
 
-    const data = await this.fetch<Login, { environment: string }>({
+    const data = await this.#fetch<Login, { environment: string }>({
       method: "POST",
-      path: "login",
+      path: "/login",
       token,
       body: { environment: this.environment },
     })
 
     if (data instanceof UnauthorizedError) {
-      return await this.refreshToken()
+      return await this.#refreshToken()
     }
 
     if (data instanceof Error) {
       throw new InternalError()
     }
 
+    // アクセストークンがあれば書き込む
     if (data.accessToken !== null && data.refreshToken !== null) {
       await this.store.writeTokens(data.accessToken, data.refreshToken)
     }
+
+    this.state.updateCustomer(data.customer)
 
     return data
   }
@@ -209,19 +214,19 @@ export class Client {
    * アクセストークンを更新する
    * @returns
    */
-  async refreshToken() {
+  async #refreshToken() {
     const token = await this.store.readRefreshToken()
 
-    const data = await this.fetch<Login, LoginData>({
+    const data = await this.#fetch<Login, LoginData>({
       method: "POST",
-      path: "login",
+      path: "/login",
       token: token,
       body: { environment: this.environment },
     })
 
     // アクセストークンの更新に失敗した場合
     if (data instanceof UnauthorizedError) {
-      return await this.refetchToken()
+      return await this.#refetchToken()
     }
 
     if (data instanceof Error) {
@@ -234,6 +239,8 @@ export class Client {
 
     await this.store.writeTokens(data.accessToken, data.refreshToken)
 
+    this.state.updateCustomer(data.customer)
+
     return data
   }
 
@@ -241,13 +248,13 @@ export class Client {
    * アクセストークンを再取得する
    * @returns
    */
-  async refetchToken() {
+  async #refetchToken() {
     await this.store.removeTokens()
 
     // ログインする
-    const data = await this.fetch<Login, LoginData>({
+    const data = await this.#fetch<Login, LoginData>({
       method: "POST",
-      path: "login",
+      path: "/login",
       token: null,
       body: { environment: this.environment },
     })
@@ -262,6 +269,8 @@ export class Client {
 
     await this.store.writeTokens(data.accessToken, data.refreshToken)
 
+    this.state.updateCustomer(data.customer)
+
     return data
   }
 
@@ -269,5 +278,19 @@ export class Client {
     const token = await this.store.readAccessToken()
 
     return token !== null
+  }
+
+  async isNotLoggedIn() {
+    const token = await this.store.readAccessToken()
+
+    return token === null
+  }
+
+  updateHelps(helps: Help[]) {
+    this.state.updateHelps(helps)
+  }
+
+  updateWidgetConfig(widgetConfig: WidgetConfig) {
+    this.state.updateWidgetConfig(widgetConfig)
   }
 }

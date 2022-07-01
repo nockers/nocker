@@ -21,7 +21,13 @@ let __IS_INITIALIZED__ = false
 export const NockerProvider: FC<Props> = (props) => {
   const client = props.client ?? null
 
-  const [widgetConfig, setWidgetConfig] = useState<WidgetConfig | null>(null)
+  const [isLoggingIn, setLoggingIn] = useState(() => {
+    return !__IS_INITIALIZED__
+  })
+
+  const [widgetConfig, setWidgetConfig] = useState<WidgetConfig | null>(() => {
+    return null
+  })
 
   const [customer, setCustomer] = useState<Customer | null>(() => {
     return props.customer ?? null
@@ -31,33 +37,31 @@ export const NockerProvider: FC<Props> = (props) => {
     return props.helps ?? []
   })
 
-  const [isLoggingIn, setLoggingIn] = useState(() => {
-    return !__IS_INITIALIZED__
-  })
-
   useEffect(() => {
     if (__IS_INITIALIZED__) return
     setLoggingIn(true)
-    const boot = client?.boot()
-    boot?.then((login) => {
+    const login = client?.init()
+    login?.then((login) => {
       if (login === null) return
-      setWidgetConfig(login.widgetConfig)
       setCustomer(login.customer)
-      setHelps(login.helps)
       setLoggingIn(false)
     })
-    boot?.finally(() => {
+    login?.finally(() => {
       setLoggingIn(false)
+    })
+    const project = client?.project().read()
+    project?.then((project) => {
+      console.log(project)
+      setWidgetConfig(project.widgetConfig)
+      setHelps(project.helps)
     })
     __IS_INITIALIZED__ = true
   }, [])
 
-  const widgetConfigOverride = props.widgetConfig ?? {}
-
   const widgetConfigMerged: WidgetConfig = {
     ...widgetConfigDefault,
     ...widgetConfig,
-    ...widgetConfigOverride,
+    ...props.widgetConfig,
   }
 
   const value = {
@@ -66,14 +70,8 @@ export const NockerProvider: FC<Props> = (props) => {
     widgetConfig: widgetConfigMerged,
     customer,
     helps,
-    setWidgetConfig(widgetConfig?: WidgetConfig) {
-      setWidgetConfig(widgetConfig ?? null)
-    },
     setCustomer(customer?: Customer) {
       setCustomer(customer ?? null)
-    },
-    setHelps(helps?: Help[]) {
-      setHelps(helps ?? [])
     },
   }
 

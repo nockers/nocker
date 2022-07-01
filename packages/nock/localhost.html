@@ -11,7 +11,7 @@
     />
     <script>
       window.nock = (a, b) => (nock.a = nock.a || []).push([a, b])
-      window.nock("login", {
+      window.nock("init", {
         projectId: "wkLoRg1EBAq2fh1AFgXMO",
         environment: "DEVELOPMENT",
         baseURL: "http://localhost:3000/api",

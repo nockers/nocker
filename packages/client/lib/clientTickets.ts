@@ -13,34 +13,47 @@ export type CreateTicketData = {
   emotionId?: string | null
 }
 
-export type ReadTicketParams = {
+export type ReadTicketsParams = {
   surveyId?: string
 }
 
+/**
+ * チケット
+ */
 export class ClientTickets extends Client {
   constructor(config: Config) {
     super(config)
   }
 
+  /**
+   * チケットを作成する
+   * @param data
+   * @returns
+   */
   async create(data: CreateTicketData) {
     return await this.call<Ticket, CreateTicketData>({
       method: "POST",
-      path: "tickets",
+      path: "/tickets",
       body: data,
     })
   }
 
-  async read(params: ReadTicketParams) {
+  /**
+   * チケットを取得する
+   * @param params
+   * @returns
+   */
+  async read(params: ReadTicketsParams) {
     if (typeof params.surveyId === "string") {
       return this.call<Ticket[], null>({
         method: "GET",
-        path: `tickets?surveyId=${params.surveyId}`,
+        path: `/tickets?surveyId=${params.surveyId}`,
       })
     }
 
     return this.call<Ticket[], null>({
       method: "GET",
-      path: "tickets",
+      path: "/tickets",
     })
   }
 }
