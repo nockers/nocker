@@ -107,7 +107,11 @@ export const Widget: FC<Props> = (props) => {
               spacing={1}
               sx={{ pt: 1, pl: 2, pr: 1 }}
             >
-              <Typography fontSize={14} color={"text.secondary"}>
+              <Typography
+                fontSize={14}
+                color={"text.secondary"}
+                sx={{ fontWeight: "bold" }}
+              >
                 {widgetConfig.emotionQuestionMessage}
               </Typography>
               {hasCloseButton ? (

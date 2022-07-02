@@ -1,11 +1,13 @@
-import { ThemeOptions } from "@mui/material"
+import { PaletteMode, ThemeOptions } from "@mui/material"
 
-export const createDefaultThemeOptions = (
-  colorMode: "dark" | "light",
-): ThemeOptions => {
+type Props = {
+  paletteMode: PaletteMode
+}
+
+export const createDefaultThemeOptions = (props: Props): ThemeOptions => {
   return {
     palette: {
-      mode: colorMode,
+      mode: props.paletteMode,
     },
     shadows: [
       "none",
@@ -35,7 +37,20 @@ export const createDefaultThemeOptions = (
       "none",
     ],
     typography: {
-      fontFamily: ["'M PLUS 1p'", "sans-serif"].join(","),
+      fontFamily: [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Roboto",
+        "'Segoe UI semibold'",
+        "'Helvetica Neue'",
+        "HelveticaNeue",
+        "YuGothic",
+        "'Yu Gothic'",
+        "'Segoe UI'",
+        "Verdana",
+        "Meiryo",
+        "sans-serif",
+      ].join(","),
     },
     components: {
       MuiButton: {
@@ -46,6 +61,7 @@ export const createDefaultThemeOptions = (
           root: {
             borderRadius: 8,
             textTransform: "none",
+            fontWeight: "bold",
           },
         },
       },
@@ -65,9 +81,6 @@ export const createDefaultThemeOptions = (
         },
       },
       MuiPaper: {
-        defaultProps: {
-          // variant: colorMode === "dark" ? "elevation" : "outlined",
-        },
         styleOverrides: {
           rounded: {
             borderRadius: 8,

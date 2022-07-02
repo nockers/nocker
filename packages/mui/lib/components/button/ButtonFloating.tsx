@@ -34,7 +34,9 @@ export const ButtonFloating: FC<Props> = (props) => {
         sx={{ paddingRight: 2 }}
       >
         <AutoAwesomeIcon />
-        <Box sx={{ pl: 1 }}>{props.text ?? "フィードバック"}</Box>
+        <Box sx={{ pl: 1, fontWeight: "bold" }}>
+          {props.text ?? "フィードバック"}
+        </Box>
       </Fab>
     )
   }
@@ -47,7 +49,7 @@ export const ButtonFloating: FC<Props> = (props) => {
         disabled={props.isLoading}
         onClick={props.onClick}
         size={"small"}
-        sx={{ paddingLeft: 2, paddingRight: 2 }}
+        sx={{ paddingLeft: 2, paddingRight: 2, fontWeight: "bold" }}
       >
         {props.text ?? "フィードバック"}
       </Fab>

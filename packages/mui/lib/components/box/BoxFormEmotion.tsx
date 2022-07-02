@@ -65,7 +65,7 @@ export const BoxFormEmotion: FC<Props> = (props) => {
       </TransitionGroup>
       {isOpenMessage && (
         <Fade in={isOpenMessage}>
-          <Typography>{emotionText}</Typography>
+          <Typography sx={{ fontWeight: "bold" }}>{emotionText}</Typography>
         </Fade>
       )}
     </Stack>

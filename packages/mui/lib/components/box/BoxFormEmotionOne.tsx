@@ -13,14 +13,16 @@ type Props = {
 export const BoxFormEmotionOne: FC<Props> = (props) => {
   return (
     <Button
-      startIcon={<FavoriteIcon />}
       color={props.isActive ? "primary" : "inherit"}
       aria-label={props.config.buttonText}
       sx={{ px: 2 }}
     >
       <Stack direction={"row"} alignItems={"center"} spacing={1}>
-        <Typography fontSize={14}>{props.config.buttonText}</Typography>
-        <Typography>{20}</Typography>
+        <FavoriteIcon sx={{ display: "flex" }} />
+        <Typography sx={{ fontSize: 14, fontWeight: "bold" }}>
+          {props.config.buttonText}
+        </Typography>
+        <Typography sx={{ fontSize: 14, fontWeight: "bold" }}>{20}</Typography>
       </Stack>
     </Button>
   )

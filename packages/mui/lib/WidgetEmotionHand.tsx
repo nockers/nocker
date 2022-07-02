@@ -50,7 +50,7 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
             <Typography
               fontSize={14}
               color={"text.secondary"}
-              sx={{ lineHeight: "22px" }}
+              sx={{ fontWeight: "bold" }}
             >
               {widgetConfig.emotionQuestionMessage}
             </Typography>

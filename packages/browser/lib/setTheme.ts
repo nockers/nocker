@@ -12,9 +12,9 @@ export const setTheme = async (themeOptions?: Props) => {
 
   const state = new State()
 
-  const defaultThemeOptions = createDefaultThemeOptions(
-    themeOptions?.palette?.mode ?? "light",
-  )
+  const defaultThemeOptions = createDefaultThemeOptions({
+    paletteMode: themeOptions?.palette?.mode ?? "light",
+  })
 
   const mergedThemeOptions = deepmerge(defaultThemeOptions, themeOptions)
 

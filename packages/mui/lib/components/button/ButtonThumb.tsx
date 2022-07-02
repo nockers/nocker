@@ -30,6 +30,7 @@ export const ButtonThumb: FC<Props> = (props) => {
             lineHeight: 1,
             color: "text.secondary",
             fontSize: 14,
+            fontWeight: "bold",
           }}
         >
           {props.children}
@@ -51,6 +52,7 @@ export const ButtonThumb: FC<Props> = (props) => {
           lineHeight: 1,
           color: "text.secondary",
           fontSize: 14,
+          fontWeight: "bold",
         }}
       >
         {props.children}
