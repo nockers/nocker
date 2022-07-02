@@ -3,10 +3,8 @@ import { Box, Button, Stack, Typography } from "@mui/material"
 import React, { FC } from "react"
 
 type Props = {
-  config: {
-    thanksMessage: string
-    buttonResetText: string
-  }
+  message: string
+  buttonText: string
   isMinimal?: boolean
   onReset(): void
 }
@@ -32,13 +30,13 @@ export const BoxThanks: FC<Props> = (props) => {
       >
         <Stack spacing={2} sx={{ p: 4 }} alignItems={"center"}>
           {hasIcon && <DoneOutlineIcon sx={{ fontSize: 40 }} />}
-          <Typography fontSize={14}>{props.config.thanksMessage}</Typography>
+          <Typography fontSize={14}>{props.message}</Typography>
           <Button
             size={"small"}
             sx={{ width: "100%", maxWidth: "8rem" }}
             onClick={props.onReset}
           >
-            {props.config.buttonResetText}
+            {props.buttonText}
           </Button>
         </Stack>
       </Stack>

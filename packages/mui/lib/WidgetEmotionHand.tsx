@@ -6,7 +6,7 @@ import {
   WidgetEmotionSubmit,
 } from "@nocker/react"
 import React, { FC } from "react"
-import { BoxFormEmotionTwo } from "./components/box/BoxFormEmotionTwo"
+import { BoxEmotionTwo } from "./components/box/BoxEmotionTwo"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
@@ -58,12 +58,10 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
           </Stack>
         )}
         <Box sx={{ pt: 0.5, pb: 1.25, px: 1.25 }}>
-          <BoxFormEmotionTwo
-            config={{
-              gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
-              gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
-              thanksMessage: widgetConfig.emotionThanksMessage,
-            }}
+          <BoxEmotionTwo
+            gradeOneMessage={widgetConfig.emotionTwoGradeOneMessage}
+            gradeTwoMessage={widgetConfig.emotionTwoGradeTwoMessage}
+            thanksMessage={widgetConfig.emotionThanksMessage}
             grade={mutationEmotion.emotionGrade}
             onSelect={(grade) => {
               mutationEmotion.createEmotion(grade)

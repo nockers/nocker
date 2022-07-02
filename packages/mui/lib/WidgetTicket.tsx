@@ -1,4 +1,5 @@
-import { Box, Collapse, Fade, Paper } from "@mui/material"
+import { LoadingButton } from "@mui/lab"
+import { Box, Collapse, Fade, Paper, Stack } from "@mui/material"
 import { WidgetConfig, Ticket } from "@nocker/client"
 import {
   useMutationTicket,
@@ -6,8 +7,8 @@ import {
   WidgetTicketSubmit,
 } from "@nocker/react"
 import React, { FC } from "react"
-import { BoxFormTicket } from "./components/box/BoxFormTicket"
 import { BoxThanks } from "./components/box/BoxThanks"
+import { InputTicket } from "./components/box/BoxTicket"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
@@ -54,28 +55,38 @@ export const WidgetTicket: FC<Props> = (props) => {
               pb: 2,
             }}
           >
-            <BoxFormTicket
-              config={{
-                buttonSubmitText: widgetConfig.ticketButtonSubmitText,
-                inputPlaceholder: widgetConfig.ticketInputPlaceholder,
-              }}
-              text={mutation.text}
-              isLoading={mutation.isLoading}
-              onChangeText={(text) => {
-                mutation.updateText(text)
-              }}
-              onSubmit={() => {
-                mutation.createTicket()
-              }}
-            />
+            <Stack sx={{ width: "100%" }} spacing={1}>
+              <Stack sx={{ pl: 0, flex: 1 }}>
+                <InputTicket
+                  placeholder={widgetConfig.ticketInputPlaceholder}
+                  value={mutation.text}
+                  isLoading={mutation.isLoading}
+                  onChangeText={(text) => {
+                    mutation.updateText(text)
+                  }}
+                />
+              </Stack>
+              <Stack direction={"row"} spacing={1} sx={{ pl: 0 }}>
+                <LoadingButton
+                  size={"small"}
+                  variant={"contained"}
+                  sx={{ flex: 1 }}
+                  onClick={() => {
+                    mutation.createTicket()
+                  }}
+                  disabled={mutation.text.length < 4}
+                  loading={mutation.isLoading}
+                >
+                  {widgetConfig.ticketButtonSubmitText}
+                </LoadingButton>
+              </Stack>
+            </Stack>
             <Fade in={mutation.isDone}>
               <Box>
                 <BoxThanks
                   isMinimal={true}
-                  config={{
-                    thanksMessage: widgetConfig.ticketThanksMessage,
-                    buttonResetText: widgetConfig.ticketButtonResetText,
-                  }}
+                  message={widgetConfig.ticketThanksMessage}
+                  buttonText={widgetConfig.ticketButtonResetText}
                   onReset={mutation.reset}
                 />
               </Box>

@@ -5,11 +5,9 @@ import { TransitionGroup } from "react-transition-group"
 import { ButtonThumb } from "../button/ButtonThumb"
 
 type Props = {
-  config: {
-    gradeOneMessage: string
-    gradeTwoMessage: string
-    thanksMessage: string
-  }
+  gradeOneMessage: string
+  gradeTwoMessage: string
+  thanksMessage: string
   grade: EmotionGrade | null
   isDisabled: boolean
   onSelect(grade: EmotionGrade): void
@@ -55,7 +53,7 @@ export const DivEmotionHand: FC<Props> = (props) => {
               isDisabled={isDisabled}
               onClick={onClickFactory(0)}
             >
-              {props.config.gradeOneMessage}
+              {props.gradeOneMessage}
             </ButtonThumb>
           </HStack>
         )}
@@ -79,16 +77,14 @@ export const DivEmotionHand: FC<Props> = (props) => {
               isDisabled={props.grade !== null && props.grade !== 1}
               onClick={onClickFactory(1)}
             >
-              {props.config.gradeTwoMessage}
+              {props.gradeTwoMessage}
             </ButtonThumb>
           </HStack>
         )}
       </TransitionGroup>
       <Fade in={isOpenMessage}>
         <div className={"grid content-center"}>
-          <div className={"font-sans text-sm"}>
-            {props.config.thanksMessage}
-          </div>
+          <div className={"font-sans text-sm"}>{props.thanksMessage}</div>
         </div>
       </Fade>
     </div>

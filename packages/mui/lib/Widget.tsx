@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab"
 import {
   Box,
   Card,
@@ -17,11 +18,11 @@ import {
   useWidgetConfig,
 } from "@nocker/react"
 import React, { FC, useContext } from "react"
-import { BoxFormEmotion } from "./components/box/BoxFormEmotion"
-import { BoxFormEmotionTwo } from "./components/box/BoxFormEmotionTwo"
-import { BoxFormHelps } from "./components/box/BoxFormHelps"
-import { BoxFormTicket } from "./components/box/BoxFormTicket"
+import { BoxEmotion } from "./components/box/BoxEmotion"
+import { BoxEmotionTwo } from "./components/box/BoxEmotionTwo"
+import { BoxHelps } from "./components/box/BoxHelps"
 import { BoxThanks } from "./components/box/BoxThanks"
+import { InputTicket } from "./components/box/BoxTicket"
 import { ButtonClose } from "./components/button/ButtonClose"
 
 type Props = {
@@ -123,14 +124,12 @@ export const Widget: FC<Props> = (props) => {
           )}
           {widgetConfig.emotionType === "FIVE" && (
             <Box sx={{ pb: 0.75, px: 0.75 }}>
-              <BoxFormEmotion
-                config={{
-                  gradeFiveMessage: widgetConfig.emotionFiveGradeFiveMessage,
-                  gradeFourMessage: widgetConfig.emotionFiveGradeFourMessage,
-                  gradeThreeMessage: widgetConfig.emotionFiveGradeThreeMessage,
-                  gradeTwoMessage: widgetConfig.emotionFiveGradeTwoMessage,
-                  gradeOneMessage: widgetConfig.emotionFiveGradeOneMessage,
-                }}
+              <BoxEmotion
+                gradeFiveMessage={widgetConfig.emotionFiveGradeFiveMessage}
+                gradeFourMessage={widgetConfig.emotionFiveGradeFourMessage}
+                gradeThreeMessage={widgetConfig.emotionFiveGradeThreeMessage}
+                gradeTwoMessage={widgetConfig.emotionFiveGradeTwoMessage}
+                gradeOneMessage={widgetConfig.emotionFiveGradeOneMessage}
                 grade={mutationEmotion.emotionGrade}
                 onSelect={(grade) => {
                   mutationEmotion.createEmotion(grade)
@@ -140,12 +139,10 @@ export const Widget: FC<Props> = (props) => {
           )}
           {widgetConfig.emotionType === "TWO" && (
             <Box sx={{ pt: 0.5, pb: 1.25, px: 1.25 }}>
-              <BoxFormEmotionTwo
-                config={{
-                  gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
-                  gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
-                  thanksMessage: widgetConfig.emotionThanksMessage,
-                }}
+              <BoxEmotionTwo
+                gradeOneMessage={widgetConfig.emotionTwoGradeOneMessage}
+                gradeTwoMessage={widgetConfig.emotionTwoGradeTwoMessage}
+                thanksMessage={widgetConfig.emotionThanksMessage}
                 grade={mutationEmotion.emotionGrade}
                 onSelect={(grade) => {
                   mutationEmotion.createEmotion(grade)
@@ -169,28 +166,38 @@ export const Widget: FC<Props> = (props) => {
           <Collapse in={isOpenTicket}>
             {hasEmotion && <Divider />}
             <Box sx={{ pl: 2, pr: 2, pt: hasEmotion ? 2 : 0.5, pb: 2 }}>
-              <BoxFormTicket
-                config={{
-                  buttonSubmitText: widgetConfig.ticketButtonSubmitText,
-                  inputPlaceholder: widgetConfig.ticketInputPlaceholder,
-                }}
-                text={mutationTicket.text}
-                isLoading={mutationTicket.isLoading}
-                onChangeText={(text) => {
-                  mutationTicket.updateText(text)
-                }}
-                onSubmit={() => {
-                  mutationTicket.createTicket()
-                }}
-              />
+              <Stack sx={{ width: "100%" }} spacing={1}>
+                <Stack sx={{ pl: 0, flex: 1 }}>
+                  <InputTicket
+                    placeholder={widgetConfig.ticketInputPlaceholder}
+                    value={mutationTicket.text}
+                    isLoading={mutationTicket.isLoading}
+                    onChangeText={(text) => {
+                      mutationTicket.updateText(text)
+                    }}
+                  />
+                </Stack>
+                <Stack direction={"row"} spacing={1} sx={{ pl: 0 }}>
+                  <LoadingButton
+                    size={"small"}
+                    variant={"contained"}
+                    sx={{ flex: 1 }}
+                    onClick={() => {
+                      mutationTicket.createTicket()
+                    }}
+                    disabled={mutationTicket.text.length < 4}
+                    loading={mutationTicket.isLoading}
+                  >
+                    {widgetConfig.ticketButtonSubmitText}
+                  </LoadingButton>
+                </Stack>
+              </Stack>
             </Box>
             <Fade in={mutationTicket.isDone}>
               <Box>
                 <BoxThanks
-                  config={{
-                    thanksMessage: widgetConfig.ticketThanksMessage,
-                    buttonResetText: widgetConfig.ticketButtonResetText,
-                  }}
+                  message={widgetConfig.ticketThanksMessage}
+                  buttonText={widgetConfig.ticketButtonResetText}
                   onReset={onReset}
                 />
               </Box>
@@ -200,7 +207,7 @@ export const Widget: FC<Props> = (props) => {
         {hasHelps && (
           <>
             <Divider />
-            <BoxFormHelps
+            <BoxHelps
               inputPlaceholder={"何かお困りですか？"}
               helps={config.helps}
             />

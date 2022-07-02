@@ -10,7 +10,7 @@ type Props = {
   onOpen?(): void
 }
 
-export const BoxFormHelps: FC<Props> = (props) => {
+export const BoxHelps: FC<Props> = (props) => {
   return (
     <Stack>
       <Stack

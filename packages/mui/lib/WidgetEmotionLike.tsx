@@ -38,9 +38,7 @@ export const WidgetEmotionLike: FC<Props> = (props) => {
       }}
     >
       <ButtonEmotionOne
-        config={{
-          buttonText: widgetConfig.emotionOneButtonText,
-        }}
+        buttonText={widgetConfig.emotionOneButtonText}
         isActive={mutation.emotionGrade !== null}
         onClick={() => {
           mutation.createEmotion(1)

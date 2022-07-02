@@ -3,7 +3,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   build: {
-    target: "esnext",
+    target: "es2015",
     sourcemap: true,
     commonjsOptions: {
       include: [/node_modules/],

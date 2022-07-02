@@ -41,11 +41,9 @@ export const WidgetEmotionHand: FC<Props> = (props) => {
       </div>
       <div className={"px-2.5 pb-2.5"}>
         <DivEmotionHand
-          config={{
-            gradeOneMessage: widgetConfig.emotionTwoGradeOneMessage,
-            gradeTwoMessage: widgetConfig.emotionTwoGradeTwoMessage,
-            thanksMessage: widgetConfig.emotionThanksMessage,
-          }}
+          gradeOneMessage={widgetConfig.emotionTwoGradeOneMessage}
+          gradeTwoMessage={widgetConfig.emotionTwoGradeTwoMessage}
+          thanksMessage={widgetConfig.emotionThanksMessage}
           grade={mutation.emotionGrade}
           isDisabled={config.isLoggingIn}
           onSelect={(grade) => {

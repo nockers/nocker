@@ -4,7 +4,7 @@ import { dependencies } from "./package.json"
 
 export default defineConfig({
   build: {
-    target: "esnext",
+    target: "es2015",
     sourcemap: true,
     rollupOptions: {
       external: [...Object.keys(dependencies)].map((name) => new RegExp(name)),

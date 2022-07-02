@@ -4,7 +4,7 @@ import { dependencies, peerDependencies } from "./package.json"
 
 export default defineConfig({
   build: {
-    target: "esnext",
+    target: "es2015",
     sourcemap: true,
     rollupOptions: {
       external: [

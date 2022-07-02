@@ -10,9 +10,7 @@ export default {
 export const Default: ComponentStoryObj<typeof BoxThanks> = {
   name: "BoxThanks",
   args: {
-    config: {
-      thanksMessage: widgetConfigDefault.ticketThanksMessage,
-      buttonResetText: widgetConfigDefault.ticketButtonResetText,
-    },
+    message: widgetConfigDefault.ticketThanksMessage,
+    buttonText: widgetConfigDefault.ticketButtonResetText,
   },
 }

@@ -6,21 +6,28 @@ import { TransitionGroup } from "react-transition-group"
 import { ButtonEmotion } from "../button/ButtonEmotion"
 
 type Props = {
-  config: {
-    gradeFiveMessage: string
-    gradeFourMessage: string
-    gradeThreeMessage: string
-    gradeTwoMessage: string
-    gradeOneMessage: string
-  }
+  gradeFiveMessage: string
+  gradeFourMessage: string
+  gradeThreeMessage: string
+  gradeTwoMessage: string
+  gradeOneMessage: string
   grade: EmotionGrade | null
   onSelect(grade: EmotionGrade): void
 }
 
-export const BoxFormEmotion: FC<Props> = (props) => {
+export const BoxEmotion: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
-  const emotionText = useEmotionText(props.config, props.grade)
+  const emotionText = useEmotionText(
+    {
+      gradeFiveMessage: props.gradeFiveMessage,
+      gradeFourMessage: props.gradeFourMessage,
+      gradeThreeMessage: props.gradeThreeMessage,
+      gradeTwoMessage: props.gradeTwoMessage,
+      gradeOneMessage: props.gradeOneMessage,
+    },
+    props.grade,
+  )
 
   useEffect(() => {
     if (props.grade === null) {

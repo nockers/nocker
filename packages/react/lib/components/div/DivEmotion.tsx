@@ -7,13 +7,11 @@ import { ButtonEmotion } from "../button/ButtonEmotion"
 import { TransitionOpacity } from "../transition/TransitionOpacity"
 
 type Props = {
-  config: {
-    gradeFiveMessage: string
-    gradeFourMessage: string
-    gradeThreeMessage: string
-    gradeTwoMessage: string
-    gradeOneMessage: string
-  }
+  gradeFiveMessage: string
+  gradeFourMessage: string
+  gradeThreeMessage: string
+  gradeTwoMessage: string
+  gradeOneMessage: string
   grade: EmotionGrade | null
   isDisabled: boolean
   onSelect(grade: EmotionGrade): void
@@ -22,7 +20,16 @@ type Props = {
 export const DivEmotion: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
-  const emotionText = useEmotionText(props.config, props.grade)
+  const emotionText = useEmotionText(
+    {
+      gradeFiveMessage: props.gradeFiveMessage,
+      gradeFourMessage: props.gradeFourMessage,
+      gradeThreeMessage: props.gradeThreeMessage,
+      gradeTwoMessage: props.gradeTwoMessage,
+      gradeOneMessage: props.gradeOneMessage,
+    },
+    props.grade,
+  )
 
   useEffect(() => {
     if (props.grade === null) {

@@ -10,9 +10,7 @@ export default {
 export const Default: ComponentStoryObj<typeof ButtonEmotionOne> = {
   name: "ButtonEmotionOne",
   args: {
-    config: {
-      buttonText: widgetConfigDefault.emotionOneButtonText,
-    },
+    buttonText: widgetConfigDefault.emotionOneButtonText,
     isActive: true,
   },
 }

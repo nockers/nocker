@@ -5,16 +5,14 @@ import { TransitionGroup } from "react-transition-group"
 import { ButtonThumb } from "../button/ButtonThumb"
 
 type Props = {
-  config: {
-    gradeOneMessage: string
-    gradeTwoMessage: string
-    thanksMessage: string
-  }
+  gradeOneMessage: string
+  gradeTwoMessage: string
+  thanksMessage: string
   grade: EmotionGrade | null
   onSelect(grade: EmotionGrade): void
 }
 
-export const BoxFormEmotionTwo: FC<Props> = (props) => {
+export const BoxEmotionTwo: FC<Props> = (props) => {
   const [isOpenMessage, openMessage] = useState(false)
 
   useEffect(() => {
@@ -52,7 +50,7 @@ export const BoxFormEmotionTwo: FC<Props> = (props) => {
               isDisabled={props.grade !== null && props.grade !== 0}
               onClick={onClickFactory(0)}
             >
-              {props.config.gradeOneMessage}
+              {props.gradeOneMessage}
             </ButtonThumb>
           </Collapse>
         )}
@@ -77,14 +75,14 @@ export const BoxFormEmotionTwo: FC<Props> = (props) => {
               isDisabled={props.grade !== null && props.grade !== 1}
               onClick={onClickFactory(1)}
             >
-              {props.config.gradeTwoMessage}
+              {props.gradeTwoMessage}
             </ButtonThumb>
           </Collapse>
         )}
       </TransitionGroup>
       {isOpenMessage && (
         <Fade in={isOpenMessage}>
-          <Typography>{props.config.thanksMessage}</Typography>
+          <Typography>{props.thanksMessage}</Typography>
         </Fade>
       )}
     </Stack>
