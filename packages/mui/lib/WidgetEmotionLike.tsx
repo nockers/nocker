@@ -6,7 +6,7 @@ import {
   WidgetEmotionSubmit,
 } from "@nocker/react"
 import React, { FC } from "react"
-import { BoxFormEmotionOne } from "./components/box/BoxFormEmotionOne"
+import { ButtonEmotionOne } from "./components/button/ButtonEmotionOne"
 
 type Props = {
   widgetConfig?: Partial<WidgetConfig> | null
@@ -37,7 +37,7 @@ export const WidgetEmotionLike: FC<Props> = (props) => {
         borderWidth: widgetConfig.hasBorder ? 1 : 0,
       }}
     >
-      <BoxFormEmotionOne
+      <ButtonEmotionOne
         config={{
           buttonText: widgetConfig.emotionOneButtonText,
         }}

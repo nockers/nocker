@@ -10,7 +10,7 @@ type Props = {
   onClick(): void
 }
 
-export const BoxFormEmotionOne: FC<Props> = (props) => {
+export const ButtonEmotionOne: FC<Props> = (props) => {
   return (
     <Button
       color={props.isActive ? "primary" : "inherit"}
