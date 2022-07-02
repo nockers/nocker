@@ -11,7 +11,9 @@ export class State {
 
   static client: Nocker | null = null
 
-  static theme: Theme = createDefaultTheme("light")
+  static theme: Theme = createDefaultTheme({
+    paletteMode: "light",
+  })
 
   static widgetConfigOverride: Partial<WidgetConfig> = {}
 

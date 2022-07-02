@@ -27,7 +27,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@nocker/core": "^1.1.0",
+    "@nocker/core": "^1.2.0",
     "@sentry/hub": "^7.1.0"
   }
 }

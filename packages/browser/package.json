@@ -29,7 +29,7 @@
     "@mui/lab": "^5.0.0-alpha.84",
     "@mui/material": "^5.8.2",
     "@mui/utils": "^5.8.0",
-    "@nocker/mui": "^1.1.0",
+    "@nocker/mui": "^1.2.0",
     "@sentry/browser": "^7.1.0",
     "@sentry/hub": "^7.1.0"
   },
