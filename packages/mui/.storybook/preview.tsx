@@ -26,7 +26,9 @@ export const parameters = {
 const withProvider = (Story: Story) => {
   const [isDarkMode, setDarkMode] = useState(false)
 
-  const defaultTheme = createDefaultTheme(isDarkMode ? "dark" : "light")
+  const defaultTheme = createDefaultTheme({
+    paletteMode: isDarkMode ? "dark" : "light",
+  })
 
   const theme = createTheme(defaultTheme)
 

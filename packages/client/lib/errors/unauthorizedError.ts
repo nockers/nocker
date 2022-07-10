@@ -7,9 +7,9 @@ export class UnauthorizedError extends Error {
   readonly __proto__: UnauthorizedError
 
   constructor(message?: string) {
-    const trueProto = new.target.prototype
+    const prototype = new.target.prototype
     super(message)
-    this.__proto__ = trueProto
+    this.__proto__ = prototype
     this.name = "UNATHORIZED_ERROR"
   }
 }
